@@ -710,6 +710,69 @@
 
 
   
+    <article id="post-培训笔记07" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/09/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007/" class="article-date">
+      <time datetime="2023-12-09T05:23:15.000Z" itemprop="datePublished">2023-12-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/09/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007/">form表单，写政府网页</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-form表单"><a href="#一-form表单" class="headerlink" title="一.form表单"></a>一.form表单</h2><p>1.提交方式：post<br> 格式:   协议名：&#x2F;&#x2F;目标ip:端口&#x2F;请求资源路径？参数&#x3D;值；参数&#x3D;值；<br> 2.端口范围：1-65535<br>常见协议的端口号：<br>  ssh——-22<br>  http——22<br>  https——443<br>  smb——–445<br>3.全球共有13台dns根服务器<br><img src="/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007.assets/image-20231212085509028.png" alt="image-20231212085509028"><br>4.pc机与设备进行交互优先级向下递减<br>5.post提交方式原理图<br><img src="/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007.assets/image-20231212085549438.png" alt="image-20231212085549438"><br>6.下图两个name&#x3D;gender一样运行出来就是单选框，不一样是多选框<br>单选<br><img src="/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007.assets/image-20231212085611676.png" alt="image-20231212085611676"><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1701953347107-cf32b3ce-b17a-418c-9225-065e99ab558c.png#averageHue=%23b0dfaa&clientId=ubc24790b-68a7-4&from=paste&height=130&id=u37a65353&originHeight=130&originWidth=584&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7689&status=done&style=none&taskId=u17905185-590e-4ba6-aa0c-aefa0d0b220&title=&width=584" alt="Image.png"></p>
+<p>多选</p>
+<p><img src="/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007.assets/image-20231212085708861.png" alt="Image.png"></p>
+<p>7.Bootstrap5框架：Bootstrap是一个流行的开源CSS框架，它提供了一套用于构建响应式、移动设备优先的网页界面的工具和样式。Bootstrap 5是Bootstrap框架的最新版本，它在前几个版本的基础上进行了重大改进和更新。<br>8.web开发分为前端和后端，前端为html+css,后端主要为java，c#,node,go</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702209580154-b57b3638-a78b-43fe-ae20-facfd96a377c.png" alt="图片.png"></h2><h2 id="二-写政府网页"><a href="#二-写政府网页" class="headerlink" title="二.写政府网页"></a>二.写政府网页</h2><p>1.打开vscode，新建一个1.html文件<br>2.仿照湖南政府网页<a target="_blank" rel="noopener" href="http://www.hunan.gov.cn/">http://www.hunan.gov.cn/</a>，编写代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;省政府&lt;/title&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">  font-family: Arial, sans-serif;</span><br><span class="line">  margin: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">header &#123;</span><br><span class="line">  background-color: #003366;</span><br><span class="line">  color: #fff;</span><br><span class="line">  padding: 20px;</span><br><span class="line">  background-image: url(../img/x1.png);</span><br><span class="line">  background-repeat: no-repeat;</span><br><span class="line">  background-position: center;</span><br><span class="line">  text-align: center;</span><br><span class="line">  height: 250px;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nav ul &#123;</span><br><span class="line">  list-style: none;</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nav li &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  margin-right: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nav a &#123;</span><br><span class="line">  color: #fff;</span><br><span class="line">  text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main &#123;</span><br><span class="line">  max-width: 960px;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#box1 &#123;</span><br><span class="line">  margin-bottom: 30px;</span><br><span class="line">  background-image: url(../img/x2.jpg);</span><br><span class="line">  background-repeat: no-repeat;</span><br><span class="line">  height: 400px;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">#bottom &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">h2 &#123;</span><br><span class="line">  font-size: 24px;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  margin-bottom: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ul &#123;</span><br><span class="line">  list-style: none;</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">li &#123;</span><br><span class="line">  margin-bottom: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a img &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  max-width: 100%;</span><br><span class="line">  height: auto;</span><br><span class="line">  margin-bottom: 5px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">footer &#123;</span><br><span class="line">  background-color: #003366;</span><br><span class="line">  color: #fff;</span><br><span class="line">  text-align: center;</span><br><span class="line">  padding: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;header&gt;</span><br><span class="line">    &lt;nav&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;省政府&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;政务要闻&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;政务公开&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;一件事一次办&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;互动交流&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;政府数据&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;锦绣潇湘&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">  &lt;/header&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;main&gt;</span><br><span class="line">    &lt;div id=&quot;box1&quot;&gt;</span><br><span class="line">     &lt;strong&gt;&lt;a  href=&quot;#&quot; id=&quot;bottom&quot;&gt;习近平：中欧有责任共同为世界提供更多稳定性 为发展提供更多推动力&lt;/a&gt;&lt;/strong&gt;</span><br><span class="line">      </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;div id=&quot;box2&quot;&gt;</span><br><span class="line">      &lt;h2&gt;政策法规&lt;/h2&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;img src=&quot;../img/x3.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;img src=&quot;../img/x4.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;img src=&quot;../img/x5.jpg&quot; alt=&quot;图片&quot;&gt;&lt;img src=&quot;../img/x3.jpg&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;../img/x4.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;section&gt;</span><br><span class="line">      &lt;h2&gt;服务指南&lt;/h2&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;服务1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;服务2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;服务3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/section&gt;</span><br><span class="line">  &lt;/main&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;footer&gt;</span><br><span class="line">    &lt;p&gt;版权所有 © 湖南省政府&lt;/p&gt;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701954249855-be7f5be7-2dea-476a-8a08-366a80445079.png" alt="图片.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记06" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -902,88 +965,6 @@
 <li>公网(外网）ip<br>私网（内网）ip<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192803857.png" alt="image-20231210192803857"><br>D,E类地址用于科研<br>5.光猫可以把私网地址转化为公网地址，下图是手机连接百度的拓扑图：</li>
 </ol>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192822098.png" alt="image-20231210192822098"><br>光纤：光信号转为电信号<br>内网ip只能访问内网<br>6.下图是校园网拓扑图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210193022006.png" alt="image-20231210193022006"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记03" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B003/" class="article-date">
-      <time datetime="2023-12-02T15:40:36.000Z" itemprop="datePublished">2023-12-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B003/">Linux的基本命令，ssh登录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="day05"><a href="#day05" class="headerlink" title="day05"></a>day05</h1><h2 id="一-Linux的基本命令"><a href="#一-Linux的基本命令" class="headerlink" title="一.Linux的基本命令"></a>一.Linux的基本命令</h2><p>1.下载CentOS-7-x86_64-Minimal-2009.iso镜像文件，链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E9%95%9C%E5%83%8F%E5%A4%A7%E5%85%A8/CentOS-7-x86_64-Minimal-2009.iso">http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E9%95%9C%E5%83%8F%E5%A4%A7%E5%85%A8/CentOS-7-x86_64-Minimal-2009.iso</a>   <strong>注意不要下到中文目录</strong><br>2.打开VMware,创建虚拟机，点击浏览，选择已经安装的镜像文件的路径，如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701421725737-98295f79-2048-4223-82c6-d304dd9eb780.png" alt="图片.png"><br>3.然后一直点下一步，安装。更改语言为简体中文，root的密码设置为123456。进入CentOS虚拟机。输入root,再输入密码123456，进入交互式的shell。<br>4.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls      //查看当前目录文件</span><br><span class="line">ls /    //看根目录   </span><br><span class="line">ls -a   //看隐藏文件</span><br><span class="line">touch 123    //创建123文件</span><br><span class="line">touch  .1    //创建隐藏文件 .1   隐藏文件格式：隐藏文件  .xxxxxx</span><br><span class="line">ls -al       //显示所有文件</span><br></pre></td></tr></table></figure>
-
-<p>  结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701422807416-ea99f47d-f805-489f-a5f6-f5ba99c707ad.png" alt="图片.png"><br>5.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir test1   //创建目录</span><br><span class="line">mkdir -p test1/test2/test3    //-p 递归创建</span><br></pre></td></tr></table></figure>
-
-<p>ps:r w x   读 、写、 执行、权限<br>    4 2 1<br>结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701423348835-69d57f1f-bc94-4025-9990-90c6de378de1.png" alt="图片.png">6.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701423643765-ebe42b79-ac3e-4837-961a-3586247959ac.png" alt="图片.png">根目录下<br>bin        放置二进制执行文件<br>boot      放驱动<br>dev       储存硬件设备<br>etc        放编辑文件<br>home   存储用户的个人信息。例如用户的个人文件夹和系统设置文件<br>sbin      放置系统管理的必备程序<br>tmp     临时目录<br>var      放日志文件<br>lib lib64     系统库<br>7.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">whoami                      //用户</span><br><span class="line">id                          //查看用户名和所属组</span><br><span class="line">pwd                         //显示当前目录</span><br><span class="line">rm -f   文件名              //强制删除  </span><br><span class="line">rm -rf  w文件名             //强制递归删除</span><br><span class="line">ls /bin|grep mv            //查找bin目录下含有mv字母的文件</span><br><span class="line">ls /bin |more</span><br><span class="line">ls /bin |grep ls</span><br><span class="line">cat                        //查看文本文件</span><br><span class="line">wq!                        //保存退出</span><br><span class="line">q！                        //不保存退出</span><br><span class="line">cat -n 123                //看123文件的内容</span><br><span class="line">chmod 755 123             //改123文件的权限</span><br><span class="line">echo &quot;123&quot;   &gt;&gt;test1/4    //输出123追加到test1目录下</span><br><span class="line">find / -name ls           //在根目录下搜索名字为ls的文件</span><br></pre></td></tr></table></figure>
-
-<h2 id="二-ssh登录"><a href="#二-ssh登录" class="headerlink" title="二.ssh登录"></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701425065579-61cf8cd4-a9a9-4e3c-8583-72c3ab20b68e.png" alt="图片.png">二.ssh登录</h2><p>1.设定指定服务开机开启</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable sshd </span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>重新启动服务</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemct1 restart sshd</span><br></pre></td></tr></table></figure>
-
-<p>3.查看虚拟机的Ip地址,IP为192.168.228.130</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip add</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495784457-47f94908-e41d-479f-9876-fc74a35168e9.png" alt="图片.png"><br>4.打开sshd_config文件，找到38行，将最前面的#删掉</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br><span class="line">:set nu 显示行号</span><br><span class="line">：wq!</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495106862-761cb740-d728-433f-a314-2097c996ce0e.png" alt="图片.png"><br>5.在物理机输入ssh root@虚拟机ip地址：ssh root@+ip<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495876372-9f26ad19-5554-4c45-b99b-e6604c4d0fd1.png" alt="图片.png"></p>
 
       
     </div>
