@@ -1,730 +1,825 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
+
+
 <head>
-
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Tangxianshen" />
-
-
-    
-    
+    <meta charset="utf-8">
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Tangxianshen">
-<meta name="twitter:card" content="summary">
+    <title>Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
 
-
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/favicon.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-    <style> .article { opacity: 0;} </style>
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>Hexo</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: true,
-        isPost: false,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
+    <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/"></a></h1>
-        </hgroup>
-
-        
-
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
                     
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
-                        
-                        <li>Friends</li>
-                        
-                        
-                        <li>About Me</li>
-                        
-                    </ul>
-                </div>
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
             </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于前端</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
-            </hgroup>
             
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
-</nav>
-      <div class="body-wrap">
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
   
-    <article id="post-培训笔记04" class="article article-type-post" itemscope itemprop="blogPost">
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
   
-    <div class="article-meta">
-      <a href="/2023/12/04/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B004/" class="article-date">
-      <time datetime="2023-12-04T12:42:57.000Z" itemprop="datePublished">2023-12-04</time>
-</a>
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Contact</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>Friends</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
 
 
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/04/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B004/">复盘上周知识&amp;网络基础知识</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-正向shell和反向shell"><a href="#一-正向shell和反向shell" class="headerlink" title="一.正向shell和反向shell"></a>一.正向shell和反向shell</h2><p>1.下载老师发的自动关闭win10安全防护的stopDefender.exe<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701686956663-2638a707-7aaa-4133-ad4f-ae13095871cb.png" alt="图片.png"><br>2.CVE,cnvd,cnnvd三个网站的介绍<br>CVE: CVE全称是Common Vulnerabilities and Exposures，即通用漏洞披露，它是MITRE公司维护和更新的安全漏洞列表，列表中的每个条目都会有一个唯一的CVE编号，即CVE ID，供安全研究员和受攻击的软件供应商使用，以便确定和回应安全漏洞。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701687353021-890b689c-d290-4857-b8fd-e3f954f950b6.png" alt="图片.png"><br>cnvd,国家信息安全漏洞共享平台,即中国国家信息安全漏洞库（China National Vulnerability Database of Information Security），是中国官方的信息安全漏洞公共服务系统，由国家互联网应急中心（CNCERT&#x2F;CC）负责运营管理。CNVD旨在收集、整理、分析和发布信息安全漏洞信息，为用户提供漏洞咨询、预警、修复等服务，以增强国内网络环境的安全性。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701687664807-57f178fe-8f46-4fe4-a379-baa135b8aa0a.png" alt="图片.png"><br>cnnvd,即中国国家信息安全漏洞共享平台（China National Vulnerability Database of Information Security），它是由中国信息安全测评中心（CNITSEC）负责维护的国家级信息安全漏洞库。CNNVD和CNVD在名称上非常相似，但它们是由不同的机构运营管理的。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701687884875-7c3d7ed6-b2f4-489a-934c-d53e542fec4c.png" alt="图片.png"><br>3.正向shell和反向shell原理图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192629320.png" alt="image-20231210192629320"></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192648318.png" alt="image-20231210192648318"></p>
-<p>正向shell可能会出现bug，会有window或者Linux的防火墙抵御来自sever的监听。<br>但是反向shell不会，因为反向shell是客户机c出栈，正向shell是入栈。<br>4.解决防火墙抵御bug的解决方法<br>  直接关闭防火墙或者在防火墙高级设置中允许连接<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701688564533-4da27c5b-6e1f-4526-beed-495823f3bd76.png" alt="图片.png"></p>
-<h2 id="二-安卓远控软件AhMyth的使用"><a href="#二-安卓远控软件AhMyth的使用" class="headerlink" title="二.安卓远控软件AhMyth的使用"></a>二.安卓远控软件AhMyth的使用</h2><ol>
-<li>下载并演示安卓远控软件AhMyth   链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E8%BF%9C%E6%8E%A7/%E5%AE%89%E5%8D%93%E7%97%85%E6%AF%92%E7%9B%91%E5%90%AC/AhMyth_Win64.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E8%BF%9C%E6%8E%A7/%E5%AE%89%E5%8D%93%E7%97%85%E6%AF%92%E7%9B%91%E5%90%AC/AhMyth_Win64.exe</a>以及下载MuMu6，链接：<a target="_blank" rel="noopener" href="https://mumu.163.com/">https://mumu.163.com/</a><br>2.首先win+r,cmd,用ipconfig命令查询本机的ip地址 ，在AHMyth的左上角APK输入物理机ip地址，生成木马，复制木马的路径，粘贴在盘符并找到木马。然后在AhMyth开启监听，在MuMu6模拟器双击木马。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701689219407-2ac220f4-5675-47c9-8a63-608913533d50.png" alt="图片.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701692904616-df935809-2da4-4bbd-84a1-89c62104a03e.png" alt="图片.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701689294935-fdb551e6-8a49-426d-a612-ea5992c70438.png" alt="图片.png"><br>3.下载evething.exe，谷歌搜索evething,链接：<a target="_blank" rel="noopener" href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a><br>在evething.exe搜索java.exe,右击java.exe，打开路径，在路径输入cmd,输入java -version查看java的版本<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701689716547-54431333-6412-4d56-999c-2328b9404503.png" alt="图片.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701689666994-eac56817-b7b0-4537-b285-dfe228ecb299.png" alt="图片.png"><br>4.查看环境变量，编辑path,路径越靠上，优先级越高。</li>
-</ol>
-<p>5.计划<br>（1）文件名命名空格以下划线_做代替<br>（2）遇到报错以管理员身份运行<br>（3）应用不要装c盘<br>（4）卸载软件不能直接删除文件夹，用geek<br>（5）每天写笔记<br>（6）早晚打卡（必做）<br>（7）请假在企业微信<br>（8）每个知识点有提高部分（隐藏）</p>
-<h2 id="三-网络基础知识"><a href="#三-网络基础知识" class="headerlink" title="三.网络基础知识"></a>三.网络基础知识</h2><ol>
-<li>以太网适配器：有线插槽</li>
-<li>IPv6的写法<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192742123.png" alt="image-20231210192742123"></li>
-<li>ipuu网站。 ipv6连接测试</li>
-<li>.1是网关地址，  .255是广播地址</li>
-<li>在可活动的地址内，必须有一个广播地址和一个网关地址<br>例如255.255.255.255&#x2F;30     32-30&#x3D;2   01 00 10 11   11作为广播地址，00不算</li>
-<li>公网(外网）ip<br>私网（内网）ip<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192803857.png" alt="image-20231210192803857"><br>D,E类地址用于科研<br>5.光猫可以把私网地址转化为公网地址，下图是手机连接百度的拓扑图：</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192822098.png" alt="image-20231210192822098"><br>光纤：光信号转为电信号<br>内网ip只能访问内网<br>6.下图是校园网拓扑图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210193022006.png" alt="image-20231210193022006"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记03" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B003/" class="article-date">
-      <time datetime="2023-12-02T15:40:36.000Z" itemprop="datePublished">2023-12-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B003/">Linux的基本命令，ssh登录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="day05"><a href="#day05" class="headerlink" title="day05"></a>day05</h1><h2 id="一-Linux的基本命令"><a href="#一-Linux的基本命令" class="headerlink" title="一.Linux的基本命令"></a>一.Linux的基本命令</h2><p>1.下载CentOS-7-x86_64-Minimal-2009.iso镜像文件，链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E9%95%9C%E5%83%8F%E5%A4%A7%E5%85%A8/CentOS-7-x86_64-Minimal-2009.iso">http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E9%95%9C%E5%83%8F%E5%A4%A7%E5%85%A8/CentOS-7-x86_64-Minimal-2009.iso</a>   <strong>注意不要下到中文目录</strong><br>2.打开VMware,创建虚拟机，点击浏览，选择已经安装的镜像文件的路径，如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701421725737-98295f79-2048-4223-82c6-d304dd9eb780.png" alt="图片.png"><br>3.然后一直点下一步，安装。更改语言为简体中文，root的密码设置为123456。进入CentOS虚拟机。输入root,再输入密码123456，进入交互式的shell。<br>4.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls      //查看当前目录文件</span><br><span class="line">ls /    //看根目录   </span><br><span class="line">ls -a   //看隐藏文件</span><br><span class="line">touch 123    //创建123文件</span><br><span class="line">touch  .1    //创建隐藏文件 .1   隐藏文件格式：隐藏文件  .xxxxxx</span><br><span class="line">ls -al       //显示所有文件</span><br></pre></td></tr></table></figure>
-
-<p>  结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701422807416-ea99f47d-f805-489f-a5f6-f5ba99c707ad.png" alt="图片.png"><br>5.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir test1   //创建目录</span><br><span class="line">mkdir -p test1/test2/test3    //-p 递归创建</span><br></pre></td></tr></table></figure>
-
-<p>ps:r w x   读 、写、 执行、权限<br>    4 2 1<br>结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701423348835-69d57f1f-bc94-4025-9990-90c6de378de1.png" alt="图片.png"></p>
-<p>6.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701423643765-ebe42b79-ac3e-4837-961a-3586247959ac.png" alt="图片.png"></p>
-<p>根目录下<br>bin        放置二进制执行文件<br>boot      放驱动<br>dev       储存硬件设备<br>etc        放编辑文件<br>home   存储用户的个人信息。例如用户的个人文件夹和系统设置文件<br>sbin      放置系统管理的必备程序<br>tmp     临时目录<br>var      放日志文件<br>lib lib64     系统库<br>7.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">whoami                      //用户</span><br><span class="line">id                          //查看用户名和所属组</span><br><span class="line">pwd                         //显示当前目录</span><br><span class="line">rm -f   文件名              //强制删除  </span><br><span class="line">rm -rf  w文件名             //强制递归删除</span><br><span class="line">ls /bin|grep mv            //查找bin目录下含有mv字母的文件</span><br><span class="line">ls /bin |more</span><br><span class="line">ls /bin |grep ls</span><br><span class="line">cat                        //查看文本文件</span><br><span class="line">wq!                        //保存退出</span><br><span class="line">q！                        //不保存退出</span><br><span class="line">cat -n 123                //看123文件的内容</span><br><span class="line">chmod 755 123             //改123文件的权限</span><br><span class="line">echo &quot;123&quot;   &gt;&gt;test1/4    //输出123追加到test1目录下</span><br><span class="line">find / -name ls           //在根目录下搜索名字为ls的文件</span><br></pre></td></tr></table></figure>
-
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701425065579-61cf8cd4-a9a9-4e3c-8583-72c3ab20b68e.png" alt="图片.png"></p>
-<h2 id="二-ssh登录"><a href="#二-ssh登录" class="headerlink" title="二.ssh登录"></a>二.ssh登录</h2><p>1.设定指定服务开机开启</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable sshd </span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>重新启动服务</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemct1 restart sshd</span><br></pre></td></tr></table></figure>
-
-<p>3.查看虚拟机的Ip地址,IP为192.168.228.130</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip add</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495784457-47f94908-e41d-479f-9876-fc74a35168e9.png" alt="图片.png"><br>4.打开sshd_config文件，找到38行，将最前面的#删掉</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br><span class="line">:set nu 显示行号</span><br><span class="line">：wq!</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495106862-761cb740-d728-433f-a314-2097c996ce0e.png" alt="图片.png"><br>5.在物理机输入ssh root@虚拟机ip地址：ssh root@+ip<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495876372-9f26ad19-5554-4c45-b99b-e6604c4d0fd1.png" alt="图片.png"></p>
-
-      
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
     </div>
+
     
-    <div class="article-info article-info-index">
-      
-      
 
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记02" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B002/" class="article-date">
-      <time datetime="2023-12-02T15:27:54.000Z" itemprop="datePublished">2023-12-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <ul class="menu-list mobile-menu-list">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B002/">在物理机下载软件，利用github搭建hexo博客，验证图片上传和更换博客主题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
           
-        <h1 id="day04"><a href="#day04" class="headerlink" title="day04"></a>day04</h1><h2 id="一-在物理机下载软件"><a href="#一-在物理机下载软件" class="headerlink" title="一.在物理机下载软件"></a>一.在物理机下载软件</h2><p>1.下载Dism,清理c盘存储空间   链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E7%B3%BB%E7%BB%9F%E6%B8%85%E7%90%86%E5%B7%A5%E5%85%B7/Dism++10.1.1002.1.zip">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E7%B3%BB%E7%BB%9F%E6%B8%85%E7%90%86%E5%B7%A5%E5%85%B7/Dism++10.1.1002.1.zip</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701351697730-5e9af3c6-0902-43a1-b205-294e913fe26c.png" alt="图片.png"><br>2.下载spaceSniff,查看磁盘应用所占空间大小<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701351837313-380c54aa-e987-4a7f-a31c-f4d7d439df2f.png" alt="图片.png"><br>3.在物理机edge浏览器下载SwitchyQmega插件，设置代理协议为socks5，代理服务器127.0.0.1代理端口8080<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701351876810-35d7ecc7-98d5-4e51-a078-4227ed102543.png" alt="图片.png"><br>4.从老师那下载node-v20.10.0-x64，Git-2.43.0-64-bit，  Typroa软件<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701352221273-ce469044-109f-4549-a611-a0bdfc44cecd.png" alt="图片.png"></p>
-<h2 id="二-利用github搭建hexo博客"><a href="#二-利用github搭建hexo博客" class="headerlink" title="二.利用github搭建hexo博客"></a>二.利用github搭建hexo博客</h2><p>1.注册github官网的账号并登录<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701352552572-3cf03604-514d-4496-b81e-23561276f5b3.png" alt="图片.png">2.在f盘创建一个hexo文件夹，点击路径，输入cmd，回车， 使用npm命令安装Hexo ,然后输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">hexo g  </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701354479615-540745d4-5710-4f42-9b4a-3a1c6906722d.png" alt="图片.png"><br>3.切换到blog目录，输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd blog</span><br><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701354534097-c35b70ac-8ef7-4fce-a31b-5dd6362f5a21.png" alt="图片.png"><br>4.在物理机浏览器访问127.0.0.1:4000</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701354065770-2311cbb2-d8df-4614-8b82-7745164c128e.png" alt="图片.png"><br>5.配置ssh</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh </span><br></pre></td></tr></table></figure>
-
-<p>  如果提示：No such file or directory 说明你是第一次使用git。 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C “邮件地址”</span><br></pre></td></tr></table></figure>
-
-<p> 然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701355111977-77f44dcb-9cca-487c-a7b9-a25053d58c1b.png" alt="图片.png">6.   key填写C:\Users\Administrator.ssh\id_rsa.pub中的内容<br>    尝试ssh连接,测试是否成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com # 注意邮箱地址不用改</span><br></pre></td></tr></table></figure>
-
-<pre><code>如果提示Are you sure you want to continue connecting (yes/no)?，输入yes，然后会看到下面这个，就算成功：
-Hi liuxianan! You’ve successfully authenticated, but GitHub does not provide shell access.
-在选中的位置(blog目录下)打开cmd(以管理员身份)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git –save</span><br></pre></td></tr></table></figure>
-
-<p>  7.在上一个Git Bash Here还需要继续配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config –global user.name “luozhixiaowo”// 你的github用户名，非昵称</span><br><span class="line">git config –global user.email “xxx@qq.com“// 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
-
-<p>  8.上传代码<br>    在github上新建一个存储库，命名为Xiaotang23 .github.io<br>    编辑_config.yml文件，在最后改成这样<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701355561136-8fd27816-9007-4328-954e-e8d3ed7c0c61.png" alt="图片.png"> 注意保持格式，缩进不对，会导致一会儿，上传不成功，最后上传。<br>下图是上传成功的截图。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701355686214-2dd018bc-ce3e-4ce7-8d7a-b952ffbc3776.png" alt="图片.png"><br>9.最终的结果如下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701355851349-d8c5bdff-0549-48bc-bb8f-cee823451196.png" alt="图片.png"></p>
-<h2 id="三-验证图片上传和更换博客主题"><a href="#三-验证图片上传和更换博客主题" class="headerlink" title="三.验证图片上传和更换博客主题"></a>三.验证图片上传和更换博客主题</h2><h3 id="3-1验证图片上传"><a href="#3-1验证图片上传" class="headerlink" title="3.1验证图片上传"></a>3.1验证图片上传</h3><p>1.原理：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701420768464-fb378a73-b4a2-4e66-a554-0c2218c6ed20.png" alt="图片.png"><br>1.下载安装Typora， 链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/typora%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6.zip">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/typora%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6.zip</a>    激活Typora, 邮箱填<a href="mailto:&#x31;&#50;&#x33;&#x34;&#x35;&#54;&#x37;&#56;&#57;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#x31;&#50;&#x33;&#x34;&#x35;&#54;&#x37;&#56;&#57;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;</a>  序列号填<br>JCEKRV-4V7ZSU-PSQKQ7-G2NT2Q  ，结果如下图<br>   <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701410220059-3ca84f03-503b-4fd0-9e85-1b57ddcbdc85.png" alt="图片.png"><br>下载安装 PicGo，链接为：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">https://github.com/Molunerfinn/PicGo/releases</a><br>2.打开Typora,点击文件的偏好设置，点击图像，在右栏插入图片选择第三项，勾选四个，上传至PigGo app,路径填F:\picGo\PicGo.exe<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701413934657-4c828369-5071-45e4-8ebe-0bd7ff601914.png" alt="图片.png"><br>3.打开github官网，登陆自己的账号，创建图片存储库。首先，点击窗口右上角的加号的New respository<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701416693846-00c81ca0-2e32-4934-b9c7-61ac0913997e.png" alt="图片.png"><br>4.在Respository name *的下方方框输入tu,再点击Create repository<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701417525448-357e4c42-a5ff-4b77-b306-3b11b25cbe85.png" alt="图片.png"><br>5.点击settings,再点击Developer settings,然后点击Tockens,再点击Generate new tacken(classic)，生成密钥，复制密钥。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701418066611-68a89995-f952-488c-bce6-8c5adb542747.png" alt="图片.png"><br>6.打开PciGo,在左栏找到github,把复制的密钥粘贴到设定Token一栏，其他栏按以下图填写，设定自定义域名一栏不填，最后点确定。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701410443112-d1c3376a-b123-478d-99ef-f39dd4d77901.png" alt="图片.png">7.然后点击设为默认图床<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701418444774-de3e67f2-08b3-4ee7-a431-36fc7c67f614.png" alt="图片.png">8.打开Typora,点击文件的偏好设置，点击图像，点击验证图片上传选项，出现如下结果。</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701418995573-3c7f175f-540f-41e2-b463-07c7a02efbf2.png" alt="图片.png"></p>
-<h3 id="3-2更换博客主题"><a href="#3-2更换博客主题" class="headerlink" title="3.2更换博客主题"></a>3.2更换博客主题</h3><p>1.在浏览器搜索下载hexo主题压缩包，我下载的是hexo-theme-matery-master.zip</p>
-<ol start="2">
-<li>下载完成后，解压文件，把主题文件重命名为theme01（名字是随意的，可以不重命名，但是一般默认名称比较长，后面填主题名称不方便）。<br>把这个文件放到 博客根目录&#x2F;themes&#x2F; 下面 ，例如：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701419791556-91fd5e9c-1e8a-4547-b848-2a057f157d2d.png" alt="图片.png">  3. 然后在博客根目录下 找到 _config.yml 这个配置文件并打开，找到theme：landscape  , 将其改为heme： theme （注意冒号后面必须有一个空格） ，修改后如下：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701419925682-01e05ca4-2ce1-4086-a151-b0afd42816ac.png" alt="图片.png">Ctrl+s保存<br>4.软后依次执行：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean //这个命令一般在修改配置文件才需要执行</span><br><span class="line">hexo  g</span><br><span class="line">hexo  d</span><br></pre></td></tr></table></figure>
-
-<p>5.在浏览器访问自己的博客：<a target="_blank" rel="noopener" href="https://xiaotang23.github.io/">https://Xiaotang23.github.io/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701420488701-4d1ef292-698a-4cf5-8298-2ce9d2a0424f.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记01" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B001/" class="article-date">
-      <time datetime="2023-12-02T15:17:21.000Z" itemprop="datePublished">2023-12-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B001/">社工库查询个人信息，永恒之黑，钓鱼攻击，flash捆绑木马，网站插入js网页</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
           
-        <h1 id="day01"><a href="#day01" class="headerlink" title="day01"></a>day01</h1><h2 id="一-社工库查询个人信息"><a href="#一-社工库查询个人信息" class="headerlink" title="一.社工库查询个人信息"></a>一.社工库查询个人信息</h2><ol>
-<li><p>首先，先进入社工机器人网站，社工机器人链接：<a target="_blank" rel="noopener" href="https://t.me/AJL01_bot?start=C9uZSsbKX1">https://t.me/AJL01_bot?start&#x3D;C9uZSsbKX1</a></p>
-<p><a target="_blank" rel="noopener" href="https://t.me/pingansgk_bot?start=ee95c5680f">https://t.me/pingansgk_bot?start&#x3D;ee95c5680f</a><br><a target="_blank" rel="noopener" href="https://t.me/JokerSGKbot?start=87OE61VQ">https://t.me/JokerSGKbot?start=87OE61VQ</a><br><a target="_blank" rel="noopener" href="https://t.me/XingDun2Bot?start=4eoHoLE">https://t.me/XingDun2Bot?start=4eoHoLE</a><br><a target="_blank" rel="noopener" href="https://sgk66.cc/">https://sgk66.cc/</a></p>
-</li>
-<li><p>其次，在右上角下载Telegram。</p>
-</li>
-<li><p>注册tg账号，进入sms接码平台，链接：<a target="_blank" rel="noopener" href="https://sms-activate.org/cn/freePrice#activation">https://sms-activate.org/cn/freePrice#activation</a>   注册sms账号，然后充值。</p>
-</li>
-<li><p>进入Xeno Link网站购买代理，Xeno Link的链接：<a target="_blank" rel="noopener" href="https://console.xenolink.net/#/register?code=vocvktBL">https://console.xenolink.net/#/register?code=vocvktBL</a>  </p>
-</li>
-<li><p>电脑下载代理软件clash for windows，clash for windows的链接：<a target="_blank" rel="noopener" href="https://clash-for-windows.updatestar.com/">https://clash-for-windows.updatestar.com/</a>  安卓版clash同理。</p>
-</li>
-<li><p>手机和电脑添加订阅，一键导入clash。手机和电脑在clash选择延迟低的结点（地区），打开系统代理开关</p>
-</li>
-<li><p>在sms平台购买国外虚拟手机号，选择印度尼西亚，在手机上telegram输入虚拟电话号码，等待电脑上的验证码。</p>
-</li>
-<li><p>在手机上输入发来的验证码，注册。</p>
-</li>
-<li><p>在telegram输入手机号可查询个人信息。最终的结果如下图</p>
-</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701496108709-24d5bdce-5803-4f86-a78d-966aa82af147.png" alt="图片.png"></p>
-<h2 id="二-永恒之黑实验"><a href="#二-永恒之黑实验" class="headerlink" title="二.永恒之黑实验"></a>二.永恒之黑实验</h2><ol>
-<li>安装VMware虚拟机,链接：<a target="_blank" rel="noopener" href="https://www.vmware.com/products/workstation-pro.html">https://www.vmware.com/products/workstation-pro.html</a><br>下载win10镜像，链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/">http://192.168.2.6:5244/</a></li>
-<li>激活VMware：输入激活码：JU090-6039P-08409-8J0QH-2YR7F<br>在VMware中打开win10hei,配置win10hei虚拟机为nat模式，win+r,然后输入cmd，使用ipconfig命令查询win10hei的ip地址。ip地址为192.168.228.128</li>
-<li>安装环境python3.12  链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83</a></li>
-<li>在主机win+r,输入cmd，输入python，出现python3.12，在下载的python目录输入cmd,在输入python，出现python3.12，与主机的结果相同，则不需配置环境变量，否则需配置环境变量</li>
-<li>在主机win+r,输入cmd，输入以下攻击命令：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python .\CVE-2020-0796.py 192.168.75.128</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>若缺少模块，输入pip3 install   xxxxx -i <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a> –trusted-host mirrors.aliyun.com</li>
-<li>再次输入python .\CVE-2020-0796.py 192.168.75.128</li>
-<li>观察win10，发现win10蓝屏。</li>
-</ol>
-<p>sup:     tg:&#x2F;&#x2F;setlanguage?lang&#x3D;classic-zh-cn浏览器访问，tg转化中文</p>
-<h2 id="三-观看1-x视频"><a href="#三-观看1-x视频" class="headerlink" title="三.观看1-x视频"></a>三.观看1-x视频</h2><p>链接：<br>渗透测试含义：通过实际的攻击进行安全测试与评估的方法<br>Web渗透测试含义：针对web应用程序展开<br>web渗透测试步骤：<br>1.信息收集<br>2.整站映射<br>3.漏洞扫描<br>4.漏洞利用<br>5.测试报告</p>
-<h1 id="day02"><a href="#day02" class="headerlink" title="day02"></a>day02</h1><h2 id="一-了解操作系统的历史和种类"><a href="#一-了解操作系统的历史和种类" class="headerlink" title="一.了解操作系统的历史和种类"></a>一.了解操作系统的历史和种类</h2><ol>
-<li><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701174193246-3f1917ae-c2ba-4d7d-82bb-9540cb083f6d.png" alt="图片.png"></li>
-</ol>
-<h2 id="二-钓鱼攻击"><a href="#二-钓鱼攻击" class="headerlink" title="二.钓鱼攻击"></a>二.钓鱼攻击</h2><ol>
-<li>安装kali机并登录<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701176937215-2a54c607-5264-4107-82b8-68eb8530e050.png" alt="图片.png"></li>
-<li>在kail机输入以下命令<br>（1）vim &#x2F;etc&#x2F;proxychains4.conf    把光标定位到最后一行，输入i,把socket4改成socket5，打开clash for windows的允许局域网，在socket5输入WLAN的ip:192.168.2.24  ,再输入端口7890<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701176846492-7ddb2090-722f-4c03-b7d1-9a5394899d46.png" alt="图片.png"><br>（2）proxychains4  get clone <a target="_blank" rel="noopener" href="http://gitub.com/makdosx/mip22">http://gitub.com/makdosx/mip22</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701177005470-8600956c-3b72-494d-8f0c-f17ec9f95fdc.png" alt="图片.png"><br>（3）Ls，查看到mip22<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701177050851-9f4f90b6-a448-4a8f-adea-5a5a50358b76.png" alt="图片.png"><br>（4）切换到mip22目录  Cd mip22<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701177088239-8fdc3266-4884-41aa-94ec-cb52eb29fae7.png" alt="图片.png"><br>（5）增加权限  chmod +x .&#x2F;*<br>（6）proxychains4 bash .&#x2F;mip22.sh<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701177579656-b995dede-3dd4-40ca-9d85-4838acde256c.png" alt="图片.png"><br>（7）输入 1<br>（8）输入19<br>（9）输入3<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701526218824-4d9ceb4e-613c-427e-bbbc-460216774ece.png" alt="图片.png"></li>
-</ol>
-<h2 id="三-控制工具大灰狼的使用"><a href="#三-控制工具大灰狼的使用" class="headerlink" title="三.控制工具大灰狼的使用"></a>三.控制工具大灰狼的使用</h2><p>1.下载大灰狼软件<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701513657484-b819617f-800a-466f-abc4-8e53242ac692.png" alt="图片.png"><br>2.在物理机输入win+r,查看物理机的ip地址。打开大灰狼软件，在域名处输入物理机的ip地址192.168.2.24，生成一个木马软件Server.exe,将其拖入虚拟机win10hei的桌面。注意：物理机和虚拟机都要关闭杀毒软件和安全防护。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701513953225-29324b07-cff7-4fa1-84e5-5a152b809690.png" alt="图片.png">3.双击Server.exe，在物理机便能控制win1ohei。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701514501841-d6cc42de-7efc-47c9-9dc2-8b7de264f21e.png" alt="图片.png"></p>
-<h1 id="day03"><a href="#day03" class="headerlink" title="day03"></a>day03</h1><h2 id="一-使用Quasar远控工具"><a href="#一-使用Quasar远控工具" class="headerlink" title="一.使用Quasar远控工具"></a>一.使用Quasar远控工具</h2><p>1.在主机下载Quasar远程控制工具，下载链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E8%BF%9C%E6%8E%A7/windows%E7%97%85%E6%AF%92%E7%9B%91%E5%90%AC/Quasar%E6%9C%80%E6%96%B0%E5%86%85%E9%83%A8%E6%88%90%E5%91%98%E6%B1%89%E5%8C%96%E7%89%88%E8%BF%9C%E6%8E%A7%E5%B7%A5%E5%85%B7.rar">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E8%BF%9C%E6%8E%A7/windows%E7%97%85%E6%AF%92%E7%9B%91%E5%90%AC/Quasar%E6%9C%80%E6%96%B0%E5%86%85%E9%83%A8%E6%88%90%E5%91%98%E6%B1%89%E5%8C%96%E7%89%88%E8%BF%9C%E6%8E%A7%E5%B7%A5%E5%85%B7.rar</a>   下载后解压安装。<br>2.打开Quasar工具，点击生成，再点击连接设置，输入主机的ip地址，再生成客户端Client-built.exe。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701260223989-ffb24cd2-2f03-4395-b525-5e2caf237ae2.png" alt="图片.png"><br>3.打开win10hei虚拟机，关闭杀毒软件，把主机上的客户端Client-built.exe移到win10hei的桌面，然后在主机上的Quasar工具的设置界面开启监听，然后点击保存。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701260491291-dd78b77d-4ab0-4b42-99b5-d54e0ca351b0.png" alt="图片.png"><br>4.双击win10hei桌面的Client-built.exe，观察到Quasar的界面如图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701260644031-37a484c1-8e9e-48d0-9a81-b79e33c1efbf.png" alt="图片.png">5.右击这条ip地址，可以对win10hei进行远程控制操作。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701260730816-b401ecfc-9948-4196-82ae-646f1a916226.png" alt="图片.png"></p>
-<h2 id="二-flash页面制作"><a href="#二-flash页面制作" class="headerlink" title="二.flash页面制作"></a>二.flash页面制作</h2><p>1.在主机下载phpstudy,   链接为： <a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%A7%86%E9%A2%91/%E6%9A%97%E6%9C%882022/%E4%B8%80%EF%BC%9A%E5%85%A8%E6%A0%88%E6%B8%97%E9%80%8F%E3%80%90%E6%B3%89%E5%B7%9E%E5%A4%A7%E7%99%BD%E7%BD%91%E7%BB%9C%E7%A7%91%E6%8A%80%E3%80%91/5%EF%BC%9AWEB%E5%AE%89%E5%85%A8php%E5%9F%BA%E7%A1%80%E3%80%90%E6%B3%89%E5%B7%9E%E5%A4%A7%E7%99%BD%E7%BD%91%E7%BB%9C%E7%A7%91%E6%8A%80%E3%80%91/phpStudy_64.zip">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%A7%86%E9%A2%91/%E6%9A%97%E6%9C%882022/%E4%B8%80%EF%BC%9A%E5%85%A8%E6%A0%88%E6%B8%97%E9%80%8F%E3%80%90%E6%B3%89%E5%B7%9E%E5%A4%A7%E7%99%BD%E7%BD%91%E7%BB%9C%E7%A7%91%E6%8A%80%E3%80%91/5%EF%BC%9AWEB%E5%AE%89%E5%85%A8php%E5%9F%BA%E7%A1%80%E3%80%90%E6%B3%89%E5%B7%9E%E5%A4%A7%E7%99%BD%E7%BD%91%E7%BB%9C%E7%A7%91%E6%8A%80%E3%80%91/phpStudy_64.zip</a>  下载后把phpstudy移到win10hei的桌面<br>2.下载老师的flash.js文件，把flash.js文件移到win10hei的桌面。在主机的桌面新建txt文件，打开文件，把老师发的代码复制粘贴进去，重命名为index.html,并把index文件移到win10hei的桌面。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;luyuguo hello world&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3.打开phpstudy,在首页点击启动apache。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701262128837-7bc6b9e7-a7a9-4499-8a11-b06d17c949e3.png" alt="图片.png"><br>4.点击网站，打开根目录，把win10hei桌面上的flash.js文件，index文件复制到根目录<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701263150004-d9405baf-f491-401b-8c63-2cb9de73dd40.png" alt="图片.png"><br>5.在win10hei的浏览器中输入win10的IP地址：192.168.228.128，出现以下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701265437148-c0b2c864-d9ab-4ccc-ad7f-d6d9538f4276.png" alt="图片.png"><br>6.右击flash.js文件，编辑文件，在文件的最后一行修改IP为192.168.228.128<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701263971529-f4d403ff-5495-449d-966e-0e353f0572fe.png" alt="图片.png">7.在index.html插入 <script src="./flash.js"></script>代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script src=&quot;./flash.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;h1&gt;luyuguo hello world&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>8.在浏览器输入127.0.0.1&#x2F;，出现如下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701266304747-460c70b9-8792-4961-8dec-b825cf2b2f73.png" alt="图片.png"></p>
-<h2 id="三-flash捆绑木马"><a href="#三-flash捆绑木马" class="headerlink" title="三.flash捆绑木马"></a>三.flash捆绑木马</h2><p>1.下载 flag.exe 文件，注意win10hei要关闭杀毒软件和安全防护,将flag.exe 复制到win10hei虛拟机的桌面上，，再将phpstudy的根目录中的falsh.exe删除，将flag exe拖到phpstudy的根目录中,重新命名为flash.exe,查看当前虚拟机IP地址是否更改，如果地址发生变化就对flash.js进行改动，没有就不需要改动，最后在物理机的浏览器上输入当前win10hei虚拟机的ip地址，<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701345758010-8bf80a29-ed49-4175-b8bb-b782ae8bf52e.png" alt="图片.png"><br>出现如下结果。会出现蚊子点击它们就会消失，点击立即升级就会下载修改好的flash.exe。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701346891994-0c21bf8a-1a00-47f3-9fc2-1f5aa316f4d4.png" alt="图片.png"><br>2.在主机下载WinRAR解压缩软件，链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/p/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/winrar.zip">http://192.168.2.6:5244/p/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/winrar.zip</a><br>下载后解压，把解压后的WinRAR 文件移到win10hei 的桌面</p>
-<ol start="3">
-<li><p>双击winRAR.exe,找到flashcenter_pp_ax_install_cn和flag.exe文件</p>
-</li>
-<li><p>将flashcenter_pp_ax_install_cn与flag.exe放到同—文件<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701347587107-a191b8cb-e204-4e65-ad34-b3d498b3068a.png" alt="图片.png"></p>
-</li>
-<li><p>ctrl选中flashcenter_pp_ax_install_cn与flag.exe，点击添加，使用winrar创建压缩文件<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701347273345-369cd3e6-5a19-4040-af5a-4e7b80e3bc90.png" alt="图片.png"></p>
-</li>
-<li><p>高级-&gt;高级自解压选项， 路径设置 C:\windows\temp<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701347667747-db064174-9508-45c8-b63c-25b37863de80.png" alt="图片.png"></p>
-</li>
-<li><p>设置添加<br>C:\windows\temp\flashcenter_pp_ax_install_cn.exe<br>C:\windows\temp\flash.exe<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701347725376-ea673c92-61a1-4729-b45b-25d1e94b8729.png" alt="图片.png"><br>8.模式设置全部隐藏<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701347788321-77fc72d9-2b97-45c8-a4bf-71e5f938364d.png" alt="图片.png"></p>
-</li>
-<li><p>更新设置，最后点击确定，生成一个tyb.exe文件<br>10.替换图标，在主机下载安装 Restorator,链接为 <a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/Restorator%E5%9B%BE%E6%A0%87%E4%BF%AE%E6%94%B9%E5%99%A8.rar">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/Restorator%E5%9B%BE%E6%A0%87%E4%BF%AE%E6%94%B9%E5%99%A8.rar</a>      然后解压，把解压后的 Restorator.exe移到win10hei的桌面。<br>11.在 win10hei 的谷歌浏览器搜索flash中心，下载flashcenter_pp_ax_install_cn并保存在桌面。<br>12.把生成的 tyb.exe文件和下载的flashcenter_pp_ax_install_cn.exe文件拖进Restorator，在Restorator中删除tyb.exe的图标文件夹，复制flash的图标文件夹，粘贴到tyb.exe，点击保存。<br>13.重启win10hei。<br>14.tyb.exe的图标变成了的flash图标。双击tyb.exe出现许多苍蝇。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701348429531-fbaa3c69-a381-47ee-9d19-2c2c07de9828.png" alt="图片.png"></p>
-</li>
-</ol>
-<h2 id="四-在网站插入js网页"><a href="#四-在网站插入js网页" class="headerlink" title="四.在网站插入js网页"></a>四.在网站插入js网页</h2><p>1.由于我生成的钓鱼网也不能访问，在百度网页下载了链接进行操作。<br>2.把下载的 百度一下，你就知道.html文件和百度一下，你就知道.file文件添加为一个压缩包，然后命名为yunqishi。将其拖入到win10hei。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701349032280-4d1480d0-9029-41c7-abbb-0586248bd882.png" alt="图片.png">3.用之前下的winRAR压缩软件解压yunqishi.zip,打开win10hei桌面上的phpstudy,开启apache, 把百度一下，你就知道.html文件和百度一下，你就知道.file这两个文件移到phpstudy的根目录上,把之前的index.html文件删掉，把百度一下，你就知道.html重命名为index.html文件。<br>4.在index.html文件插入代码： <script src="./flash.js"></script><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701350031429-7b9f6a5e-b8a3-4959-974d-bc849c0328fd.png" alt="图片.png">5.在物理机的浏览器输入win10hei的IP地址，出现如下结果：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701350265769-269d0e01-c146-413e-9aa0-a5c4b18c4902.png" alt="图片.png"></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			Friends
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
 </div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2023 Tangxianshen
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    subtitle
+                
             </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
             </div>
         </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
+    </div>
+</div>
+
+
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
+
+
+    </div>
+</div>
+
+
+<main class="content">
+
+    
+
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/04/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B004/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="复盘上周知识&amp;网络基础知识">
+                            
+                            <span class="card-title">复盘上周知识&amp;网络基础知识</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.正向shell和反向shell1.下载老师发的自动关闭win10安全防护的stopDefender.exe2.CVE,cnvd,cnnvd三个网站的介绍CVE: CVE全称是Common Vulnerabilities and Expo
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
             </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B003/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Linux的基本命令，ssh登录">
+                            
+                            <span class="card-title">Linux的基本命令，ssh登录</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                day05一.Linux的基本命令1.下载CentOS-7-x86_64-Minimal-2009.iso镜像文件，链接为：http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B002/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="在物理机下载软件，利用github搭建hexo博客，验证图片上传和更换博客主题">
+                            
+                            <span class="card-title">在物理机下载软件，利用github搭建hexo博客，验证图片上传和更换博客主题</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                day04一.在物理机下载软件1.下载Dism,清理c盘存储空间   链接：http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B001/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="社工库查询个人信息，永恒之黑，钓鱼攻击，flash捆绑木马，网站插入js网页">
+                            
+                            <span class="card-title">社工库查询个人信息，永恒之黑，钓鱼攻击，flash捆绑木马，网站插入js网页</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                day01一.社工库查询个人信息
+首先，先进入社工机器人网站，社工机器人链接：https://t.me/AJL01_bot?start&#x3D;C9uZSsbKX1
+https://t.me/pingansgk_bot?start&#x3
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+
+</main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a href="/"
+               class="left btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">2 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a class="right btn-floating btn-large disabled">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
         
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <span id="year">2023</span>
+            <a href="/about" target="_blank">Tangxianshen</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3108957189" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3108957189" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
     </div>
 </footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
     </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
-
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
 </div>
-<script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
 </script>
-  </div>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
 </body>
+
 </html>

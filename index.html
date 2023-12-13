@@ -1,1111 +1,1242 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
+
+
 <head>
-
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Tangxianshen" />
-
-
-    
-    
+    <meta charset="utf-8">
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Tangxianshen">
-<meta name="twitter:card" content="summary">
+    <title>Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
 
-
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/favicon.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-    <style> .article { opacity: 0;} </style>
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>Hexo</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: true,
-        isPost: false,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
+    <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/"></a></h1>
-        </hgroup>
-
-        
-
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
                     
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
-                        
-                        <li>Friends</li>
-                        
-                        
-                        <li>About Me</li>
-                        
-                    </ul>
-                </div>
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
             </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于前端</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
-            </hgroup>
             
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
-</nav>
-      <div class="body-wrap">
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
   
-    <article id="post-培训笔记14" class="article article-type-post" itemscope itemprop="blogPost">
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
   
-    <div class="article-meta">
-      <a href="/2023/12/13/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B014/" class="article-date">
-      <time datetime="2023-12-13T14:58:20.000Z" itemprop="datePublished">2023-12-13</time>
-</a>
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Contact</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>Friends</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
 
 
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/13/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B014/">用vue写网页</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-引入Element按钮，Container布局容器，菜单侧边栏"><a href="#一-引入Element按钮，Container布局容器，菜单侧边栏" class="headerlink" title="一.引入Element按钮，Container布局容器，菜单侧边栏"></a>一.引入Element按钮，Container布局容器，菜单侧边栏</h2><p>1.简单回顾vue的安装和创建项目。<br>2.访问Element官网。   链接：<a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/component/button.html">https://element-plus.org/zh-CN/component/button.html</a>  选择红色按钮，<br>复制红色按钮的代码到vscode的app.vue文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ElButton &#125; from &#x27;element-plus&#x27;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;el-button type=&quot;info&quot;&gt;Danger&lt;/el-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3.发现红色按钮位置是在正中间，是错误的。后来经过老师的提示，要把main.js文件中下列居中代码删掉。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702477935327-f9d694eb-44fc-46d6-8140-63ab3670947e.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;./assets/main.css&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>4.找到要用到的布局，先查看它的代码，再复制到app.vue。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702477982134-682e8b51-64a8-4a95-9d30-9f950184080b.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;common-layout&quot;&gt;</span><br><span class="line">   &lt;el-container&gt;</span><br><span class="line">     &lt;el-aside width=&quot;200px&quot;&gt;Aside&lt;/el-aside&gt;</span><br><span class="line">     &lt;el-container&gt;</span><br><span class="line">       &lt;el-header&gt;Header&lt;/el-header&gt;</span><br><span class="line">       &lt;el-main&gt;Main&lt;/el-main&gt;</span><br><span class="line">     &lt;/el-container&gt;</span><br><span class="line">   &lt;/el-container&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>5.找到要用到的菜单侧边栏，先查看它的代码，再复制到app.vue。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478014643-2c19b422-9987-4c66-a26b-05ed460f4661.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-row class=&quot;tac&quot;&gt;</span><br><span class="line">    &lt;el-col :span=&quot;12&quot;&gt;</span><br><span class="line">      &lt;h5 class=&quot;mb-2&quot;&gt;Default colors&lt;/h5&gt;</span><br><span class="line">      &lt;el-menu</span><br><span class="line">        default-active=&quot;2&quot;</span><br><span class="line">        class=&quot;el-menu-vertical-demo&quot;</span><br><span class="line">        @open=&quot;handleOpen&quot;</span><br><span class="line">        @close=&quot;handleClose&quot;</span><br><span class="line">      &gt;</span><br><span class="line">       </span><br><span class="line">        &lt;el-menu-item index=&quot;2&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;icon-menu /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Two&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;3&quot; disabled&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;document /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Three&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;4&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;setting /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Four&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">      &lt;/el-menu&gt;</span><br><span class="line">    &lt;/el-col&gt;</span><br><span class="line">    &lt;el-col :span=&quot;12&quot;&gt;</span><br><span class="line">      &lt;h5 class=&quot;mb-2&quot;&gt;Custom colors&lt;/h5&gt;</span><br><span class="line">      &lt;el-menu</span><br><span class="line">        active-text-color=&quot;#ffd04b&quot;</span><br><span class="line">        background-color=&quot;#545c64&quot;</span><br><span class="line">        class=&quot;el-menu-vertical-demo&quot;</span><br><span class="line">        default-active=&quot;2&quot;</span><br><span class="line">        text-color=&quot;#fff&quot;</span><br><span class="line">        @open=&quot;handleOpen&quot;</span><br><span class="line">        @close=&quot;handleClose&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;el-sub-menu index=&quot;1&quot;&gt;</span><br><span class="line">          &lt;template #title&gt;</span><br><span class="line">            &lt;el-icon&gt;&lt;location /&gt;&lt;/el-icon&gt;</span><br><span class="line">            &lt;span&gt;Navigator One&lt;/span&gt;</span><br><span class="line">          &lt;/template&gt;</span><br><span class="line">          &lt;el-menu-item-group title=&quot;Group One&quot;&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-1&quot;&gt;item one&lt;/el-menu-item&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-2&quot;&gt;item two&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-menu-item-group&gt;</span><br><span class="line">          &lt;el-menu-item-group title=&quot;Group Two&quot;&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-3&quot;&gt;item three&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-menu-item-group&gt;</span><br><span class="line">          &lt;el-sub-menu index=&quot;1-4&quot;&gt;</span><br><span class="line">            &lt;template #title&gt;item four&lt;/template&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-4-1&quot;&gt;item one&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-sub-menu&gt;</span><br><span class="line">        &lt;/el-sub-menu&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;2&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;icon-menu /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Two&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;3&quot; disabled&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;document /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Three&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;4&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;setting /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Four&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">      &lt;/el-menu&gt;</span><br><span class="line">    &lt;/el-col&gt;</span><br><span class="line">  &lt;/el-row&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123;</span><br><span class="line">  Document,</span><br><span class="line">  Menu as IconMenu,</span><br><span class="line">  Location,</span><br><span class="line">  Setting,</span><br><span class="line">&#125; from &#x27;@element-plus/icons-vue&#x27;</span><br><span class="line">const handleOpen = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">const handleClose = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>6.在app.vue中删除下列代码的string</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const handleOpen = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">const handleClose = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>7.把span&#x3D;12改成span&#x3D;24，侧边栏span&#x3D;24表示占满      el-col :span&#x3D;”24”表示竖直方向占满<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702298169039-6bf73205-5c61-4b50-b56b-518fa680bfea.png" alt="image.png"><br>8.在侧边栏导入图标，复制代码在对应的用户管理，权限管理，商品管理，订单管理语句各自的前一行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478133938-4a3a0f16-2685-47d7-b5fc-2fa4e3f3f26c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702298662954-37b0eb22-a73f-4b8f-badd-6a21f1a55a4b.png" alt="image.png"></p>
-<h2 id="二-在el-header设置阴影，圆角边框"><a href="#二-在el-header设置阴影，圆角边框" class="headerlink" title="二.在el-header设置阴影，圆角边框"></a>二.在el-header设置阴影，圆角边框</h2><p>1.在el-header中创建styled-box1类。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299037715-c342f095-d463-419a-98bf-1b325dcfdd94.png" alt="image.png"><br> 在<style>创建styled-box1样式。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299210651-716ae9ad-d358-4049-82fe-ba1e0fdf90f0.png" alt="image.png"><br>2.CTRL+S保存，在终端输入npm run dev, 结果如下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299408016-718c337f-2f6d-4c53-8f5f-db3ee347fe6f.png" alt="image.png"><br>3.引入搜索框input和搜索，添加用户两个按钮，注意el-row是行，el-col是列。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-row&gt;</span><br><span class="line">          &lt;el-col :span=&quot;4&quot;</span><br><span class="line">            &gt;&lt;el-input v-model=&quot;input&quot; placeholder=&quot;请输入搜索内容&quot;</span><br><span class="line">          /&gt;&lt;/el-col&gt;</span><br><span class="line">          &lt;el-col :span=&quot;2&quot;&gt;&lt;el-button type=&quot;success&quot;&gt;搜索&lt;/el-button&gt;&lt;/el-col&gt;</span><br><span class="line">          &lt;el-col :span=&quot;2&quot;&gt;   &lt;el-button type=&quot;success&quot;&gt;添加用户&lt;/el-button&gt;&lt;/el-col&gt;</span><br><span class="line">        &lt;/el-row&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702300021651-558624ba-d852-43da-aa59-4fad9e072223.png" alt="image.png"></p>
-<h2 id="三-引入表格和分页"><a href="#三-引入表格和分页" class="headerlink" title="三.引入表格和分页"></a>三.引入表格和分页</h2><p>1.找到表格，复制代码引入app.vue<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478209116-41c089fd-0661-4edf-a77a-0c4c56681425.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-table :data=&quot;tableData&quot; style=&quot;width: 100%&quot;&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;date&quot; label=&quot;Date&quot; width=&quot;180&quot; /&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;name&quot; label=&quot;Name&quot; width=&quot;180&quot; /&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;address&quot; label=&quot;Address&quot; /&gt;</span><br><span class="line">  &lt;/el-table&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">const tableData = [</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-03&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-02&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-04&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-01&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.找到分页，引入分页<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478241936-99f04e0f-0a46-45ea-8cec-2849c886f97f.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-pagination</span><br><span class="line">    :page-size=&quot;20&quot;</span><br><span class="line">    :pager-count=&quot;11&quot;</span><br><span class="line">    layout=&quot;prev, pager, next&quot;</span><br><span class="line">    :total=&quot;1000&quot;</span><br><span class="line">  /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<p>刷新浏览器页面，最终的页面如下：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478272976-d56c923e-07ad-4c65-a0c9-0ca9a971be3a.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记07" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/12/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007/" class="article-date">
-      <time datetime="2023-12-12T01:01:38.000Z" itemprop="datePublished">2023-12-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/12/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007/">form表单，写政府网页</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-form表单"><a href="#一-form表单" class="headerlink" title="一.form表单"></a>一.form表单</h2><p>1.提交方式：post<br> 格式:   协议名：&#x2F;&#x2F;目标ip:端口&#x2F;请求资源路径？参数&#x3D;值；参数&#x3D;值；<br> 2.端口范围：1-65535<br>常见协议的端口号：<br>  ssh——-22<br>  http——22<br>  https——443<br>  smb——–445<br>3.全球共有13台dns根服务器<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702209754183-50682c81-74f8-45ad-96bf-569b6341cf8b.png" alt="图片.png"><br>4.pc机与设备进行交互优先级向下递减<br>5.post提交方式原理图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702209078888-dfc6fb2d-0ce9-409c-80b8-ff6bda9c9e41.png" alt="图片.png"></p>
-<p>6.下图两个name&#x3D;gender一样运行出来就是单选框，不一样是多选框<br>单选<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701953230240-cfdc23c4-45e0-4a20-8d63-55a8fbcff033.png" alt="Image.png">   </p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701953347107-cf32b3ce-b17a-418c-9225-065e99ab558c.png" alt="Image.png"></p>
-<p>​                        多选<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701953412417-6dff59ba-22ca-404b-8e79-c0e276179562.png" alt="Image.png"></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701953427101-560414fe-efd7-4350-81df-5f04a04cadbd.png" alt="Image.png">                      </p>
-<p>7.Bootstrap5框架：Bootstrap是一个流行的开源CSS框架，它提供了一套用于构建响应式、移动设备优先的网页界面的工具和样式。Bootstrap 5是Bootstrap框架的最新版本，它在前几个版本的基础上进行了重大改进和更新。<br>8.web开发分为前端和后端，前端为html+css,后端主要为java，c#,node,go</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702209580154-b57b3638-a78b-43fe-ae20-facfd96a377c.png" alt="图片.png"></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="二-写政府网页"><a href="#二-写政府网页" class="headerlink" title="二.写政府网页"></a>二.写政府网页</h2><p>1.打开vscode，新建一个1.html文件<br>2.仿照湖南政府网页<a target="_blank" rel="noopener" href="http://www.hunan.gov.cn/">http://www.hunan.gov.cn/</a>，编写代码。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;省政府&lt;/title&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">  font-family: Arial, sans-serif;</span><br><span class="line">  margin: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">header &#123;</span><br><span class="line">  background-color: #003366;</span><br><span class="line">  color: #fff;</span><br><span class="line">  padding: 20px;</span><br><span class="line">  background-image: url(../img/x1.png);</span><br><span class="line">  background-repeat: no-repeat;</span><br><span class="line">  background-position: center;</span><br><span class="line">  text-align: center;</span><br><span class="line">  height: 250px;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nav ul &#123;</span><br><span class="line">  list-style: none;</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nav li &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  margin-right: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nav a &#123;</span><br><span class="line">  color: #fff;</span><br><span class="line">  text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main &#123;</span><br><span class="line">  max-width: 960px;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#box1 &#123;</span><br><span class="line">  margin-bottom: 30px;</span><br><span class="line">  background-image: url(../img/x2.jpg);</span><br><span class="line">  background-repeat: no-repeat;</span><br><span class="line">  height: 400px;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">#bottom &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">h2 &#123;</span><br><span class="line">  font-size: 24px;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  margin-bottom: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ul &#123;</span><br><span class="line">  list-style: none;</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">li &#123;</span><br><span class="line">  margin-bottom: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a img &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  max-width: 100%;</span><br><span class="line">  height: auto;</span><br><span class="line">  margin-bottom: 5px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">footer &#123;</span><br><span class="line">  background-color: #003366;</span><br><span class="line">  color: #fff;</span><br><span class="line">  text-align: center;</span><br><span class="line">  padding: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;header&gt;</span><br><span class="line">    &lt;nav&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;省政府&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;政务要闻&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;政务公开&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;一件事一次办&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;互动交流&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;政府数据&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;锦绣潇湘&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">  &lt;/header&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;main&gt;</span><br><span class="line">    &lt;div id=&quot;box1&quot;&gt;</span><br><span class="line">     &lt;strong&gt;&lt;a  href=&quot;#&quot; id=&quot;bottom&quot;&gt;习近平：中欧有责任共同为世界提供更多稳定性 为发展提供更多推动力&lt;/a&gt;&lt;/strong&gt;</span><br><span class="line">      </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;div id=&quot;box2&quot;&gt;</span><br><span class="line">      &lt;h2&gt;政策法规&lt;/h2&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;img src=&quot;../img/x3.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;img src=&quot;../img/x4.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;img src=&quot;../img/x5.jpg&quot; alt=&quot;图片&quot;&gt;&lt;img src=&quot;../img/x3.jpg&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;../img/x4.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;section&gt;</span><br><span class="line">      &lt;h2&gt;服务指南&lt;/h2&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;服务1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;服务2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;服务3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/section&gt;</span><br><span class="line">  &lt;/main&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;footer&gt;</span><br><span class="line">    &lt;p&gt;版权所有 © 湖南省政府&lt;/p&gt;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701954249855-be7f5be7-2dea-476a-8a08-366a80445079.png" alt="图片.png"></p>
-
-      
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
     </div>
+
     
-    <div class="article-info article-info-index">
-      
-      
 
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记08" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B008/" class="article-date">
-      <time datetime="2023-12-10T12:09:48.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <ul class="menu-list mobile-menu-list">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B008/">vue3的使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
           
-        <h2 id="一-vue项目的创建"><a href="#一-vue项目的创建" class="headerlink" title="一.vue项目的创建"></a>一.vue项目的创建</h2><p>1.在vscode的终端输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm create vue@latest</span><br><span class="line">cd vue-project</span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702100878521-6a4b4cd4-3877-47b5-8d29-83bdc8f4b216.png" alt="Image.png"><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702100897444-c75ca7da-315f-4b89-aed3-71623cc45b44.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702100908313-cf8ff7f9-7339-4495-9f81-7cbdb765e453.png" alt="Image.png" style="zoom:50%;" /><br>2.安装插件第3个和第7个，让代码有颜色<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702100943583-a3d246e3-08ca-44ef-b871-d5c9167840f0.png" alt="Image.png" style="zoom:50%;" /><br>3.在vue-project中找到App.vue文件，将<header>到</main>注释掉，删掉</style>以下内容。ctrl+s保存，右键vue-project，复制vue-project的路径,   在终端cd  vue-project的路径，之后输入npm run dev<br>点击生成的网站。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702101088527-59c7db29-791c-4be2-b5b0-953485fad9da.png" alt="Image.png" style="zoom:50%;" /><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1702101131944-9178b087-4ef6-457e-8bf2-14a245528858.png#averageHue=%23d8a76d&clientId=uc49066be-e585-4&from=paste&height=428&id=u25a955c7&originHeight=657&originWidth=895&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22371&status=done&style=none&taskId=ue76fd09f-ac23-43d5-a103-69f4c1ad670&title=&width=583" alt="Image.png"></p>
-<h2 id="二-element-组件库的使用"><a href="#二-element-组件库的使用" class="headerlink" title="二.element 组件库的使用"></a>二.element 组件库的使用</h2><p>1.导入按钮。组件库链接：<a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/component/button.html">https://element-plus.org/zh-CN/component/button.html</a>  复制组件库的Button按钮代码粘贴到App.vue，ctrl+s保存，在终端输入npm run dev,点击生成的链接<br><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1702101260517-5c6410ab-46b3-434c-983d-71e258c7529c.png#averageHue=%23fbf9f8&clientId=uc49066be-e585-4&from=paste&height=429&id=uae642383&originHeight=804&originWidth=1134&originalType=binary&ratio=1&rotation=0&showTitle=false&size=144890&status=done&style=none&taskId=u43fd234e-86fa-4a56-8522-86783482a89&title=&width=605" alt="Image.png"><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1702101267401-e4236309-2314-42bc-a6f6-1507e3d8d5cb.png#averageHue=%231f1e1d&clientId=uc49066be-e585-4&from=paste&height=758&id=u487920c6&originHeight=758&originWidth=601&originalType=binary&ratio=1&rotation=0&showTitle=false&size=37920&status=done&style=none&taskId=u61520dc8-d024-4001-a8a6-f93239c59b6&title=&width=601" alt="Image.png"><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702101273696-27317fc5-b92b-429b-8b1d-abd85eaac28e.png" alt="Image.png" style="zoom:50%;" /><br>2.导入form表单<br> （1）vue3中使用如下命令通过 npm 安装  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install element-plus --save</span><br></pre></td></tr></table></figure>
-
-<p>（2） 在vue3中按需引入ElementUI，需要使用其他的插件辅助，需要安装unplugin-vue-components 和 unplugin-auto-import这两款插件；安装方法如下：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D unplugin-vue-components unplugin-auto-import</span><br></pre></td></tr></table></figure>
-
-<p>（3） 在vue.config.js中，添加相应配置。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const &#123; defineConfig &#125; = require(&#x27;@vue/cli-service&#x27;)</span><br><span class="line">const AutoImport = require(&#x27;unplugin-auto-import/webpack&#x27;)</span><br><span class="line">const Components = require(&#x27;unplugin-vue-components/webpack&#x27;)</span><br><span class="line">const &#123; ElementPlusResolver &#125; = require(&#x27;unplugin-vue-components/resolvers&#x27;)</span><br><span class="line"></span><br><span class="line">module.exports = defineConfig(&#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">  	plugins: [</span><br><span class="line">        AutoImport(&#123;</span><br><span class="line">          resolvers: [ElementPlusResolver()],</span><br><span class="line">        &#125;),</span><br><span class="line">        Components(&#123;</span><br><span class="line">          resolvers: [ElementPlusResolver()],</span><br><span class="line">        &#125;),</span><br><span class="line">      ],</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>（4） 引入完毕之后，我们可进行按需引入需要使用的组件，引入form表单。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记13" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B013/" class="article-date">
-      <time datetime="2023-12-10T01:47:45.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B013/">字符集和编码</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
           
-        <h2 id="一-字符集"><a href="#一-字符集" class="headerlink" title="一.字符集"></a>一.字符集</h2><p>1.ascii &#x3D;&gt;编排了128个文字符号，只需要7个0和1就可以表示了。01111111 &#x3D;&gt;1 byte &#x3D;&gt;8bit<br>ANSI&#x3D;&gt; 一套标准，每个字符 16bit,2byte。<br>到了中国，gb2312编码，gbk编码（windows默认）<br>到了台湾，big5编码<br>到了日本，JIS编码</p>
-<p>2.Unicode:万国码<br>3.utf:是可变长度的unicode,可以进行数据的传输和存储<br>  utf-8:最短字节长度8  utf-16：最短字节长度16<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702116211795-d8d7e2d8-93b8-4b95-a48f-221d5f347e6d.png" alt="图片.png"></p>
-<h2 id="二-编码"><a href="#二-编码" class="headerlink" title="二.编码"></a>二.编码</h2><p>1.bytes<br>程序员平时遇到的所有的数据最终单位来自都是字节byte。encode（）编码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;林俊杰&quot;</span><br><span class="line">bs1=s.encode(&quot;gbk&quot;)            # b&#x27;xxxx&#x27;bytes类型</span><br><span class="line">bs2=s.encode（&quot;utf-8&quot;）</span><br><span class="line">print(bs1)</span><br><span class="line">print（bs2）</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702117144548-56188740-c0ba-49a1-b382-a4f0085fce0c.png" alt="图片.png"></p>
-<h2 id="三-解码"><a href="#三-解码" class="headerlink" title="三.解码"></a>三.解码</h2><p>2.decode（）解码<br>2.1把一个gbk的字节转化成utf-8的字节的步骤<br>先变成字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bs=b&#x27;\xc1\xd6\xbf\xa1\xbd\xdc&#x27;</span><br><span class="line">s=bs.decode(&quot;gbk&quot;)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702118001342-a97f83c0-e27c-4c9c-9633-47d3fd6498e5.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记12" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B012/" class="article-date">
-      <time datetime="2023-12-10T01:42:41.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B012/">字典</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
           
-        <h2 id="一-字典的概念"><a href="#一-字典的概念" class="headerlink" title="一.字典的概念"></a>一.字典的概念</h2><p>1.字典以键值对的形式进行存储数据的<br>2.字典的表示方法：{key:value,key2:value,key3:value}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dic=&#123;&quot;jay&quot;:&quot;周杰伦&quot;,&quot;金毛狮王&quot;:&quot;谢逊&quot;&#125;</span><br><span class="line">val=dic[&quot;jay&quot;]</span><br><span class="line">print（val）</span><br></pre></td></tr></table></figure>
-
-<p>3.字典的key必须是可哈希的数据类型<br>  字典的value 可以是任何的数据类型</p>
-<h2 id="二-字典的增删改查"><a href="#二-字典的增删改查" class="headerlink" title="二.字典的增删改查"></a>二.字典的增删改查</h2><p>1.字典元素的新增和修改<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702048317869-a44f18cd-a0ba-4d91-afd1-a645c47511a9.png" alt="图片.png"><br>2.字典元素的删除</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dic pop(&quot;jay&quot;)         /根据key去删除</span><br><span class="line">print(dic)</span><br></pre></td></tr></table></figure>
-
-<p>3.字典元素的查询</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(dic[&#x27;jay&#x27;])       /如果key不存在会报错</span><br><span class="line">print(dic.get(&#x27;key&#x27;))   /如果key不存在，程序返回None</span><br></pre></td></tr></table></figure>
-
-<p>4.a&#x3D;None     #单纯就是空，表示没有的意思</p>
-<h2 id="三-字典的循环和嵌套"><a href="#三-字典的循环和嵌套" class="headerlink" title="三.字典的循环和嵌套"></a>三.字典的循环和嵌套</h2><h3 id="3-1字典的循环"><a href="#3-1字典的循环" class="headerlink" title="3.1字典的循环"></a>3.1字典的循环</h3><p>1.可以用for循环，直接拿到key</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dic=</span><br><span class="line">&#123;</span><br><span class="line">&quot;张三&quot;:&quot;高&quot;</span><br><span class="line">&quot;李四&quot;:&quot;矮&quot;</span><br><span class="line">&quot;王五&quot;：&quot;胖&quot;</span><br><span class="line">&quot;赵六&quot;：&quot;瘦&quot;</span><br><span class="line">&#125;</span><br><span class="line">for key in dic:</span><br><span class="line">print(key)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702104540106-c54c9ec6-8a68-4b49-91b0-48c62aae23a4.png" alt="图片.png"></p>
-<p>2.希望把所有的Key放在同一个列表中<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702105152672-3099f87c-871e-44a0-8455-bce2acb04ada.png" alt="图片.png"><br>3.希望把所有的value放在同一个列表中<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702105419655-7dcd42c2-2a95-4ed0-ab91-5ce9f0447def.png" alt="图片.png"><br>4.直接拿到字典中的key和vlaue</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print（dic.items（））</span><br><span class="line"></span><br><span class="line">fro key,values in dic.items():    //可以直接拿到字典所有的key和values</span><br><span class="line">print(key,vlaue)</span><br><span class="line"></span><br><span class="line">a,b=(1,2)                //元祖和列表都可以进行这个操作，该操作被称为解包</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702106688071-738e0734-0f72-426d-a887-c42ebc33067a.png" alt="图片.png"></h3><h3 id="3-2字典的嵌套"><a href="#3-2字典的嵌套" class="headerlink" title="3.2字典的嵌套"></a>3.2字典的嵌套</h3><p>1.输入以下代码<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702107533010-cdbbd8f7-f576-4e6f-be5a-5140a8e681f7.png" alt="图片.png"></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702107512864-a2397377-4696-414f-a85f-82684e4c57da.png" alt="图片.png"></p>
-<h2 id="四-字典的循环删除"><a href="#四-字典的循环删除" class="headerlink" title="四.字典的循环删除"></a>四.字典的循环删除</h2><p>1.准备一个临时列表temp，存放即将要删除的key<br>删除姓王的名字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dic= &#123;</span><br><span class="line">&quot;张三&quot;: &quot;高&quot;,</span><br><span class="line">&quot;李四&quot;: &quot;矮&quot;,</span><br><span class="line">&quot;王五&quot;: &quot;胖&quot;,</span><br><span class="line">&quot;王六&quot;: &quot;瘦&quot;,</span><br><span class="line">&#125;</span><br><span class="line">temp=[]</span><br><span class="line">for key in dic:</span><br><span class="line">    if key.startswith(&quot;王&quot;):</span><br><span class="line">        temp.append(key)</span><br><span class="line">for t in temp:</span><br><span class="line">    dic.pop(t)</span><br><span class="line">    </span><br><span class="line">print(dic)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702108729624-665cacff-b8e8-4301-b664-5844d8980f97.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记11" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/" class="article-date">
-      <time datetime="2023-12-10T01:38:52.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/">列表，元组，set集合</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
           
-        <h2 id="一-列表"><a href="#一-列表" class="headerlink" title="一.列表"></a>一.列表</h2><p>1.定义：能装东西的东西<br>2.在python中用[]表示列一个列表列表中的元素通过，隔开</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=[&quot;张三丰&quot;,&quot;张无忌&quot;,&quot;张绍刚&quot;,[1,2,3,True]]</span><br></pre></td></tr></table></figure>
-
-<p>3.特性：<br>（1）也像想字符串一样也有索引和切片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst=[&quot;马化腾&quot;,&quot;马云&quot;,&quot;雷军&quot;,&quot;任正非&quot;]</span><br><span class="line">print（lst[0]）</span><br><span class="line">print(lst[0:3])</span><br><span class="line">print(lst[::-1])</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702025581090-44508f8b-fb19-4600-917f-0af631351ba5.png" alt="图片.png"><br>（2）索引超过范围会报错<br>（3）可以用for循环进行遍历<br>（4）可以用len拿到列表的长度</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst=[&quot;马化腾&quot;,&quot;马云&quot;,&quot;雷军&quot;,&quot;任正非&quot;]</span><br><span class="line">for item in lst:</span><br><span class="line">print（item）</span><br><span class="line">print(len(lst))</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702026304717-cbd7ef70-8816-41f8-805d-76f743d69a4f.png" alt="图片.png"></p>
-<h2 id="二-列表的增删改查（重点）"><a href="#二-列表的增删改查（重点）" class="headerlink" title="二.列表的增删改查（重点）"></a>二.列表的增删改查（重点）</h2><p>1.向列表中添加内容  ** append（<strong>）和</strong>insert（）<strong>以及</strong>extend（）**</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lst=[]</span><br><span class="line">lst.append(&quot;华为&quot;)                       </span><br><span class="line">lst.append(&quot;小米&quot;)</span><br><span class="line">lst.append(&quot;苹果&quot;)</span><br><span class="line">lst.insert(0,&quot;vivo&quot;)                      //insert可以选择插入的位置</span><br><span class="line">lst.extend(&#x27;华为&#x27;,&#x27;小米&#x27;,&#x27;苹果&#x27;)           //extend可以批量的加</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702027505032-6ed7635c-d403-4ba6-8edd-0e423afdf42a.png" alt="图片.png"><br>2.删除列表中的内容**   pop（）  remve()**</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ret=lst.pop(3)</span><br><span class="line">print(lst)</span><br><span class="line">print(ret)</span><br><span class="line">lst.remove(&quot;小米&quot;)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702033913762-ae86bd90-3e7f-4d3b-9aa7-d64ca8a83606.png" alt="图片.png"><br>3.修改内容。   直接用索引级就可以进行修改操作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst[4]=&quot;三星&quot;</span><br><span class="line">print（lst）</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702034352927-766b531f-2f44-4bd6-bf94-39ab9550fb9e.png" alt="图片.png"><br>4.查询。直接用索引级就可以进行查询操作<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702034838083-ea2ecaa3-3266-4686-b302-0021c77b5fd8.png" alt="图片.png"><br>5.补充</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst.sort()             //对列表进行升序排序</span><br><span class="line">lst=[&quot;牛&quot;，&quot;羊&quot;，&quot;鸡&quot;，[&quot;狗&quot;，&quot;鹅&quot;，[&quot;鸭&quot;，&quot;马&quot;]]，&quot;猫&quot;]</span><br><span class="line">print(lst[3][2][1])     //列表的嵌套</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="三-元组"><a href="#三-元组" class="headerlink" title="三.元组"></a>三.元组</h2><p>1.tuple 元组，特点：不可变的列表。固定了某些数据，不允许外界修改。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t=(&quot;张无忌&quot;,&quot;赵敏&quot;,&quot;呵呵哒&quot;)</span><br><span class="line">t[0]=&quot;樵夫&quot;          ---报错</span><br></pre></td></tr></table></figure>
-
-<p>2.<strong>（1）元祖如果只有一个元素（*），需要在元素的末尾添加一个逗号</strong><br>**   （2）元祖的内存地址不能变**</p>
-<h2 id="四-set集合"><a href="#四-set集合" class="headerlink" title="四.set集合"></a>四.set集合</h2><p>1.s&#x3D;{1,2,4,3}<br>  set集合是无序的<br>2.输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s=&#123;1,2,3,&quot;呵呵&quot;,[]&#125;</span><br><span class="line">print(s)             ------报错unhashable type:&#x27;set&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>不可哈希：python中set集合进行数据存储时，要对数据进行哈希计算。根据计算出来的哈希值存储数据<br>可变的数据类型：list,dict,set<br>可哈希：不可变的数据类型：int,str,tuple,bool<br>3.输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">set集合元素的增加</span><br><span class="line">s=set()</span><br><span class="line">s.add(&quot;张三&quot;)</span><br><span class="line">s.add(&quot;李四&quot;)</span><br><span class="line">s.add(&quot;王五&quot;)</span><br><span class="line"></span><br><span class="line">set集合元素的删除</span><br><span class="line">s.remove(&quot;张三&quot;)</span><br><span class="line"></span><br><span class="line">set集合元素的修改</span><br><span class="line">s.remove(&quot;张三&quot;)</span><br><span class="line">s.add(&quot;小六&quot;)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702044832079-01152cb9-eff2-4aea-806e-52359a4edc9f.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记10" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B010/" class="article-date">
-      <time datetime="2023-12-10T01:26:50.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B010/">循环语句,字符串</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
           
-        <h2 id="一-循环语句"><a href="#一-循环语句" class="headerlink" title="一.循环语句"></a>一.循环语句</h2><p>1.break和continue<br>（1）.break的作用：让当前这个循环立即停止<br>（2）.continue的作用：停止当前本次循环，继续执行下一次循环<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701613952137-c72b6d8b-d111-4b2d-ac19-77fee9982dd0.png" alt="图片.png"><br>2.for循环<br>2.1字符串是可迭代的<br>for 循环的语法：<br>   for 变量 in 可迭代的东西：<br>        代码<br>把可迭代的东西中的每一项内容拿出来，挨个的赋值给变量，每一次赋值都要执行一次循环体（dai）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701614950920-7e445c7b-a656-46cc-8d10-e6d44f8b22c2.png" alt="图片.png"></p>
-<p>2.2for循环想要计数，必须借助于range</p>
-<p>（1）range（n）:从0数到n,不包含n<br>（2）range(m,n):从m数到n,不包含n<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701790146767-cc00ca9f-ff80-4452-87bd-959d858010b0.png" alt="图片.png" style="zoom:50%;" /><br>（3）range(m,n,s):从m数到n,不包含n,每次的间隔是s<br>         <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701791581991-b78c9866-6fd0-488b-9bc0-7747772163aa.png" alt="图片.png" style="zoom:33%;" /></p>
-<h2 id="二-字符串索引和切片"><a href="#二-字符串索引和切片" class="headerlink" title="二.字符串索引和切片"></a>二.字符串索引和切片</h2><p>索引：按位置提取图片     可以采用索引的方式提取某一个字符切片：从字符串中提取一部分内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;我要去长城&quot;</span><br><span class="line">print(s[3])                 //程序员从0开始数数</span><br><span class="line">print(s[-1])               //表示倒数第一个  </span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701792604990-abbc28e9-fbad-41a6-a3ac-9315d13c609f.png" alt="图片.png"><br>切片语法：1.s[start:end] 从start到end进行切片，但是取不到end<br>                 2.目前只能从左往右切片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;我要去长城,你呢，你要去天安门吗&quot;</span><br><span class="line">print(s[3])           //提取第三个字符，注意从0开始计数</span><br><span class="line">print(s[-1])          //提取倒数第一个字符</span><br><span class="line">print(s[3:6])         //提取第3个到第六个</span><br><span class="line">print(s[:5])          //提取前六个</span><br><span class="line">print(s[6:])          //从第六个开始提取</span><br><span class="line">print(s[:])           //提取全部</span><br><span class="line">print(s[-3:-1])       //倒数第三提取到到倒数第二，最后一个取不到</span><br><span class="line">print(s[-1:-3])       //没结果</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701861192617-b294caad-9631-41dc-935e-fc0336cdc69a.png" alt="图片.png" style="zoom:50%;" />
-
-<p> 3.可以给切片添加步长来控制切片的方向<br>4.s[start:end:step] 从start切到end,每step个元素出来一个元素<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863028474-8cf74e4b-6d11-493c-9fb1-b19f51e332af.png" alt="图片.png" style="zoom:50%;" /></p>
-<h2 id="三-字符串常规操作"><a href="#三-字符串常规操作" class="headerlink" title="三.字符串常规操作"></a>三.字符串常规操作</h2><p>1.字符串的操作一般不会原字符产生影响，一般返回一个新的字符串<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863408101-4faff75d-a959-4044-a9f6-a6915b2571da.png" alt="图片.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;I have a problem&quot;</span><br><span class="line">s1=s.title()</span><br><span class="line">print(s1)</span><br><span class="line">s1=s.lower()</span><br><span class="line">print(s1)</span><br><span class="line">s1=s.upper()</span><br><span class="line">print(s1)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863920314-03e86144-ed9d-41f4-85d9-44a20366cd57.png" alt="图片.png"><br>2.忽略大小写进行判断</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701864270641-92eabaac-f549-406c-91f1-2298e1adaa17.png" alt="图片.png"></p>
-<h2 id="四-字符串切割与替换"><a href="#四-字符串切割与替换" class="headerlink" title="四.字符串切割与替换"></a>四.字符串切割与替换</h2><p>1.strip（） ,去掉字符串左右两端的空白符（空格，\t, \n）<br>2.replace（old，new），字符串替换<br>3.replace（“ ”，“”）&#x2F;去掉所有空格<br>4.split（用什么切割）字符串切割，用什么去切，就会损失掉谁。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;pyhton_c_c++_javaweb&quot;</span><br><span class="line">s1=s.split(&quot;_&quot;)</span><br><span class="line">print(s1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701871876733-07fd61ab-b3cc-4740-8b65-a1399cca230c.png" alt="图片.png"></p>
-<h2 id="五-字符串查找和判断"><a href="#五-字符串查找和判断" class="headerlink" title="五.字符串查找和判断"></a>五.字符串查找和判断</h2><p>1.查找，三种方式：find,index,in,not in输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;你好啊，我叫吴彦祖&quot;</span><br><span class="line">ret=s.find(&quot;吴彦祖12123&quot;)            //如果结果是-1则查找不到</span><br><span class="line">print(ret)</span><br><span class="line"></span><br><span class="line">ret=s.index(&quot;吴彦祖12312&quot;)           //如果报错则查找不到</span><br><span class="line">print(ret)</span><br><span class="line"></span><br><span class="line">print(&quot;吴彦祖12123&quot; in s)            //结果为false则查不到</span><br><span class="line">print(&quot;吴彦祖&quot; not in s)             //结果为flase则查不到</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701873569659-6652826c-4260-469e-a466-2685a9d182b3.png" alt="图片.png"><br>2.判断，startwith（）  判断字符串是否以xxx开头<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701875519140-6c8b4d72-81a3-4737-a391-6cb8a1bde4bf.png" alt="图片.png"></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701876011247-d181d976-4cc2-4c4b-a44b-797c86b745d9.png" alt="图片.png"></h2><h2 id="六-补充和总结"><a href="#六-补充和总结" class="headerlink" title="六.补充和总结"></a>六.补充和总结</h2><p>1.len（）显示字符串的长度<br>2.join（）拼接一个列表中的内容成为新字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;hello,world!&quot;</span><br><span class="line">print(len(s))</span><br><span class="line">lst=[&quot;神舟一号&quot;,&quot;神舟二号&quot;,&quot;神舟三号&quot;,&quot;神舟四号&quot;]</span><br><span class="line">s=&quot;_&quot;.join(lst)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701956551310-5788d21e-05ba-4d04-a40b-edc94911cd4e.png" alt="图片.png"><br>3.%s——-字符串占位<br>  %d———-占位整数<br>  %f———-占位小数</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记09" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/" class="article-date">
-      <time datetime="2023-12-10T01:18:23.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/">第一个python程序，用户交互，if条件判断</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
           
-        <h2 id="一-第一个python"><a href="#一-第一个python" class="headerlink" title="一.第一个python"></a>一.第一个python</h2><p>1.打开pycharm,右击文件夹，新建一个task3.py文件，输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print（&quot;hello!world&quot;）</span><br></pre></td></tr></table></figure>
-
-<p>2.点击运行<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701586196273-c2fe14bc-a74e-4001-9bb6-607e410eac13.png" alt="图片.png"><br>3.python注释</p>
-<p>​    单行注释</p>
-<p>   多行注释有两种方式              （1）  “”””            （2）‘ ’’<br>                                                        多行注释                多行注释<br>                                                         “”””                       ‘ ’’<br>4.装饰器的返回值问题<br>4.1通用装饰器的写法<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701592422626-8fd54359-d72e-41ac-b60e-8538909869a1.png" alt="图片.png"><br>5.常量<br>含义：可以把变量的字母变成大写的就可以认为常量。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701593880857-4852d27e-f728-40c0-a6e4-126928e1420e.png" alt="图片.png"></p>
-<h2 id="二-最简单的用户交互"><a href="#二-最简单的用户交互" class="headerlink" title="二.最简单的用户交互"></a>二.最简单的用户交互</h2><p>1.语法：变量&#x3D;input(提示语），首先会出现提示语，用户输入内容，然后把用户输入的内容传给变量。<br>想把xxx转化成谁，就用int套起来<br>字符串 str &#x3D;&gt;int  int(str)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=input(&quot;请输入第一个数字：&quot;)</span><br><span class="line">b=input(&quot;请输入第二个数字：&quot;)</span><br><span class="line">a=int(a)</span><br><span class="line">b=int(b)</span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701600871438-2cab81f5-5b34-4212-8978-80be7ed139fd.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记06" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/" class="article-date">
-      <time datetime="2023-12-06T13:39:35.000Z" itemprop="datePublished">2023-12-06</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/">复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			Friends
+		</a>
           
-        <h2 id="一-复盘Linux命令"><a href="#一-复盘Linux命令" class="headerlink" title="一.复盘Linux命令"></a>一.复盘Linux命令</h2><ol>
-<li><p>127.0.0.1是本地回环地址</p>
-</li>
-<li><p>0.0.0.0  *    0.0.0.0 是一个特殊的 IP 地址，通常用于表示”未指定”或”任意”地址。在计算机网络中，它有几种不同的含义。</p>
-<p>（1）在 IPv4 地址中，0.0.0.0 通常用作未指定地址。在服务器中，当需要监听所有可用的网络接口时，可以将服务绑定到 0.0.0.0 地址。</p>
-<p>（2）在某些情况下，0.0.0.0 还可以表示”任意地址”，例如在路由表中指示默认路由。</p>
-</li>
-</ol>
-<p>3.打开虚拟机CentOS,安装网络命令和工具。输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools.x86_64 -y         安装网络命令</span><br><span class="line">yum -y install epel-release             安装软件源</span><br><span class="line">yum -y install vim                      安装编辑器</span><br><span class="line">yum install unzip -y                    安装unzip工具</span><br><span class="line">yum search wget -y(yum install wget)    搜索并安装wget工具</span><br><span class="line">yum install -y git                      安装Git版本控制工具</span><br><span class="line">yum install docker -y                   安装容器引擎</span><br><span class="line">yum -y install python-pip               安装python的pip包管理工具</span><br><span class="line">yum install -y docker-compose           安装用于定义和运行多个容器的工具</span><br><span class="line"></span><br><span class="line">yum -y install python-pip^c             安装python-pip包</span><br></pre></td></tr></table></figure>
-
-<h2 id="二-HTML5介绍"><a href="#二-HTML5介绍" class="headerlink" title="二.HTML5介绍"></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701866213572-dba507a2-78f1-40c0-84ea-2bba881fb4a6.png" alt="图片.png">二.HTML5介绍</h2><p>1.HTML:超文本标记语言5, HTML5 是最新的 HTML 标准，于2014年由万维网联盟（W3C）正式推出。HTML5 提供了许多新的功能和语义化标签，旨在改进 Web 开发体验并提供更丰富的内容。<br>2.打开vscode，新建1.html的文件， 输入 ！按tab键， 在<body></body>中输入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;b&lt;/b&gt;                              //加粗</span><br><span class="line">    &lt;i&gt;i&lt;/i&gt;                          //斜体</span><br><span class="line">    &lt;sup&gt;sup&lt;/sup&gt;                    //上标</span><br><span class="line">    </span><br><span class="line">                            //换行</span><br><span class="line">    &lt;sub&gt;sub&lt;/sub&gt;                    //下标</span><br><span class="line">    &lt;hr /&gt;                            //水平线</span><br><span class="line">    &lt;strong&gt;加粗&lt;/strong&gt;             //加粗</span><br><span class="line">    &lt;!--     --&gt;                     //注释 Ctrl+/</span><br><span class="line">&lt;em&gt;em&lt;/em&gt;                          //强调表示斜体</span><br><span class="line">    &lt;h1&gt;标题&lt;/h1&gt;                    //标题1</span><br><span class="line">    &lt;h6&gt;标题&lt;/h6&gt;                    //标题6</span><br><span class="line">    &lt;s&gt;sifuef&lt;/s&gt;                   //文字中下方有横线穿过</span><br><span class="line">    &lt;del&gt;del&lt;/del&gt;                  //删除</span><br><span class="line">    &lt;a href=&quot;https://home.firefoxchina.cn&quot;&gt;火狐&lt;/a&gt;          //超链接</span><br><span class="line">    &lt;img src=&quot;./1.jpg&quot; alt=&quot;1&quot;&gt;                             //引入图片</span><br><span class="line">    &lt;p&gt;老默，我想吃鱼了快去&lt;img src=&quot;./1.jpg&quot; width=&quot;50&quot; height=&quot;70&quot; alt=&quot;树&quot;&gt;钓几条鱼&lt;/p&gt;  //文字中引入图片</span><br><span class="line">      &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;4&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;5&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;6&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701867060599-47d73f04-c5fa-485c-8889-fe9ae5bb56dc.png" alt="图片.png" style="zoom:50%;" />
-
-
-
-
-
-<p>3.写一个from表单</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/submit-form&quot; method=&quot;post&quot;&gt;  </span><br><span class="line">        &lt;label for=&quot;name&quot;&gt;姓名：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;email&quot;&gt;电子邮件：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;message&quot;&gt;留言：&lt;/label&gt;  </span><br><span class="line">        &lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;  </span><br><span class="line">      &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231206215421975.png" alt="image-20231206215421975"></p>
-<h2 id="三-写一个网页"><a href="#三-写一个网页" class="headerlink" title="三.写一个网页"></a>三.写一个网页</h2><p>1.新建2.html文件，输入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;简单的网页布局&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #container &#123;</span><br><span class="line">            width: 600px;</span><br><span class="line">            text-align: center;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #header &#123;</span><br><span class="line">            height: 300px;</span><br><span class="line">            width: 500px;</span><br><span class="line">            background-color: aqua;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box02 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 200px;</span><br><span class="line">            background-color: burlywood;</span><br><span class="line">            float: left;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box03 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 300px;</span><br><span class="line">            float: left;</span><br><span class="line">            background-color: chartreuse;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;header&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是顶部盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box02&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第二个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box03&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第三个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701869852940-bd77b4b2-0c1f-43cd-b2e3-85831460b788.png" alt="图片.png" style="zoom:50%;" />
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记05" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/" class="article-date">
-      <time datetime="2023-12-05T15:03:17.000Z" itemprop="datePublished">2023-12-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/">介绍路由，代理和OSI模型，VMware workstation，wireshark</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-静态路由和动态路由"><a href="#一-静态路由和动态路由" class="headerlink" title="一. 静态路由和动态路由"></a>一. 静态路由和动态路由</h2><p>1.静态路由：必须由管理员手工指定<br> 动态路由：自动生成，指明下一跳是谁，自动协商最优解。<br>2.dhcp(动态主机配置协议），是一个网络管理协议，用于自动为网络中的设备分配IP地址，以及配置其他相关网络信息，如子网掩码、默认网关和DNS服务器地址。它在TCP&#x2F;IP网络中广泛使用，极大地简化了网络管理员的工作。<br>3.静态ip和动态ip    Ip相同时，静态ip的优先级高于动态ip<br> 静态ip设置好后，设置动态ip,动态ip一定上不了网<br> 动态ip设置好后，设置静态ip,动态ip可能上不了网</p>
-<h2 id="二-代理和OSI模型"><a href="#二-代理和OSI模型" class="headerlink" title="二.代理和OSI模型"></a>二.代理和OSI模型</h2><p>1.socks5： tcp&#x2F;ip的数据都可以走<br>2.OSI模型介绍： OSI （Open System Interconnect）模型全称为开放式通信系统互连参考模型，是国际标准化组织 ( ISO ) 提出的一个试图使各种计算机在世界范围内互连为网络的标准框架。</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702206485972-a7b05fda-4162-46a7-99b0-bb6cfb3d5395.png" alt="图片.png"></p>
-<p>用户使用qq在应用层发送数据，通过一系列的数据加密，传送到物理层，数据在物理层通过一系列的数据解密，发送到另一个用户的qq。<br>注意： ping不能走socks5<br>3.子网掩码含义：子网掩码(subnet mask)又叫<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E6%8E%A9%E7%A0%81/7862514?fromModule=lemma_inlink">网络掩码</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9C%B0%E5%9D%80%E6%8E%A9%E7%A0%81/8623995?fromModule=lemma_inlink">地址掩码</a>、子网络遮罩，它用来指明一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IP%E5%9C%B0%E5%9D%80/0?fromModule=lemma_inlink">IP地址</a>的哪些位标识的是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>所在的子网，以及哪些位标识的是主机的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702200418355-b325b79e-80b1-4a17-ac89-69ebbc995811.png" alt="图片.png"><br>地址块1发送请求给路由器，路由器之间通过路由表发生交互，对应起地址块2的ip地址，实现连通。<br>4.路由表组成：源IP，源MAC,目的IP，目的MAC<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204074238-5710e8eb-dc13-4cd7-8097-4eb6fd6a1620.png" alt="图片.png">pc1把物理地址和ip地址发送给交换机，由交换机转发到路由器1，路由器1通过路由表对应，把数据发送到路由器2，路由器2通过路由表发送到pc2,实现连通。</p>
-<h2 id="三-VMware-workstation"><a href="#三-VMware-workstation" class="headerlink" title="三. VMware workstation"></a>三. VMware workstation</h2><p>1.利用驱动使用硬件设备,官网可以下载驱动<br>2.虚拟机连接外部网络<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204686868-146f57f9-5dda-4663-8d8c-b7a473206ea6.png" alt="图片.png" style="zoom:67%;" /></p>
-<p>3.地址装换nat</p>
-<p>pc2和pc3能ping通pc1,但pc1不能ping通pc2,pc3<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204937620-3916e1d6-b5ae-4b18-8791-a8ab037780c2.png" alt="图片.png" style="zoom:67%;" /></p>
-<p>4.三种网络模式<br>（1）桥接: 网络设备（如无线路由器、虚拟机管理程序等）在连接不同网络 段时的一种操作方式<br>（2）仅主机：断网<br>（3）nat: 是一种网络地址转换技术，它在IP数据包通过路由器或防火墙时修改这些数据包的源或目的地址。<br>5.浏览器把所有请求发给猫（代理）的本地端口，再发送出去<br>6.ssh通过代理出去<br> （1）下载proxifier,链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B4%8B%E8%91%B1/ProxifierSetup.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B4%8B%E8%91%B1/ProxifierSetup.exe</a><br>（2）编辑代理服务器，地址填127.0.0.1，端口填自己的clash的端口<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701781641490-21043bc4-7e78-475b-a6bc-4b70300bc2c5.png" alt="图片.png" style="zoom:67%;" /><br>（3）编辑代理规则<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782167254-ba54eb49-b8dc-469c-888b-4c241a45b65a.png" alt="图片.png">                                              （4）重新启动 proxifier，win+r,cmd,输入命令ssh  <a href="mailto:&#114;&#x6f;&#111;&#116;&#64;&#49;&#x2e;&#x31;&#46;&#49;&#x2e;&#x31;">&#114;&#x6f;&#111;&#116;&#64;&#49;&#x2e;&#x31;&#46;&#49;&#x2e;&#x31;</a> ,观察 proxifier的变化<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701781875612-5d3dc995-8f1d-42e5-b278-1a19f57a7237.png" alt="图片.png"><br>（5）在ssh<em>后面加steam</em>,打开steam，可以打开steam社区的创意工坊。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782230382-9820d816-f9b2-4d70-85d4-1730cc6e6ac9.png" alt="图片.png"><br>7.下载武器库Maye，链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/Maye%201.2.6-20211001%E6%AD%A6%E5%99%A8%E5%BA%93%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.zip">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/Maye%201.2.6-20211001%E6%AD%A6%E5%99%A8%E5%BA%93%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.zip</a></p>
-<ol start="8">
-<li>tcp三次握手，四次挥手<br>（1）TCP三次握手（建立连接）<br> SYN：客户端发送一个SYN（synchronize）标志的TCP段到服务器，以开始新的连接。这个段中包含客户端的初始序列号，用于同步序列号。<br> SYN-ACK：服务器收到客户端的SYN后，会发送一个包含服务器初始序列号的SYN段，并且将确认号设置为客户端序列号加1（即ACK）。这个响应同时包含了SYN和ACK标志。<br> ACK：客户端收到服务器的SYN-ACK后，会发送一个ACK段作为响应，其中的确认号是服务器序列号加1。此时，客户端到服务器的单向连接就建立好了；当服务器收到这个ACK段后，服务器到客户端的单向连接也建立好了。至此，双向连接建立完成。</li>
-</ol>
-<p>（2）TCP四次挥手（断开连接）<br>    FIN：当客户端完成数据发送任务后，它需要发送一个FIN（finish）标志的TCP段给服务器，表示客户端没有数据要发送了，请求关闭连接。<br>    ACK：服务器收到这个FIN后，会发送一个ACK段作为响应，确认号为客户端的序列号加1。此时，客户端到服务器方向的连接被关闭，但服务器如果还有数据要发送，可以继续发送。<br>    FIN：服务器发送完所有数据后，它也需要发送一个FIN段给客户端，请求关闭从服务器到客户端的连接。<br>    ACK：客户端收到服务器的FIN后，发送一个ACK段作为响应，确认号为服务器的序列号加1。经过一段时间等待（称为TIME_WAIT）之后，以确保服务器收到最终的ACK，客户端关闭连接。</p>
-<h2 id="三-网络分析工具wireshark的使用"><a href="#三-网络分析工具wireshark的使用" class="headerlink" title="三.网络分析工具wireshark的使用"></a>三.网络分析工具wireshark的使用</h2><ol>
-<li>下载网络分析工具wireshark ，链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/Wireshark-win64-3.0.0%E4%B8%AD%E6%96%87%E7%89%88.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/Wireshark-win64-3.0.0%E4%B8%AD%E6%96%87%E7%89%88.exe</a><br>（1）抓网卡的包<br>（2）DNS发送的数据包大小一般是78bit</li>
-<li>wireshark过滤规则，源ip过滤，目的ip过滤<br>3.（1）在wireshark先选择WLAN<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782900551-7a6b8dc0-d8bc-49a9-867e-db75312bc8e4.png" alt="图片.png"><br>（2）然后点蓝色按钮开启抓包 注意，右边的矩形是停止抓包<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701783020186-05266205-d101-4013-b6da-9819915adc96.png" alt="图片.png"><br>下图是在物理机win+r,cmd,  Ping 同桌的ip地址所抓的包，在绿色框输入icmp过滤<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701783137906-5fa8e0c5-7aef-4299-92d0-2978f201e3aa.png" alt="图片.png"></li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
 </div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2023 Tangxianshen
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<style>
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        line-height: 55px;
+        border-radius: 45px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    #prev-cover {
+        position: absolute;
+        top: 48%;
+        left: 8px;
+    }
+
+    #next-cover {
+        position: absolute;
+        top: 48%;
+        right: 8px;;
+    }
+
+    #prev-cover i {
+        margin-right: 3px;
+    }
+
+    #next-cover i {
+        margin-left: 3px;
+    }
+
+    .carousel-control:hover {
+        background-color: rgba(0, 0, 0, .4);
+    }
+
+    .carousel-control i {
+        color: #fff;
+        font-size: 2.4rem;
+    }
+</style>
+
+
+
+<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
+    
+
+    <div class="carousel-item red white-text bg-cover about-cover">
+        <div class="container">
+            <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    subtitle
+                
             </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
             </div>
         </div>
-        
-            <div class="visit">
+    </div>
+</div>
+
+
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
+
+
+
+            <div class="cover-btns">
+                <a href="#articles" class="waves-effect waves-light btn">
+                    <i class="fa fa-angle-double-down"></i>Start
+                </a>
+
                 
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
+                    <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light btn" target="_blank">
+                        <i class="fab fa-github-alt"></i>Github
+                    </a>
                 
             </div>
+            <div class="cover-social-link">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3108957189" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3108957189" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script>
+    $(function () {
+        let coverSlider = $('.carousel');
+
+        //用户触摸轮播自动 restartPlay 是否生效
+        let initUserPressedOrDraggedActive = false
+
+        //用户触摸轮播自动 restartPlay
+        function initUserPressedOrDragged(instance) {
+            setInterval(() => {
+                if (instance.pressed || instance.dragged) {
+                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
+                    restartPlay()
+                }
+            }, 1000)
+        }
+
+        coverSlider.carousel({
+            duration: Number('120'),
+            fullWidth: true,
+            indicators: 'true' === 'true',
+            onCycleTo() {
+                if (!initUserPressedOrDraggedActive) {
+                    // console.log('initUserPressedOrDraggedActive')
+                    initUserPressedOrDragged(this)
+                    initUserPressedOrDraggedActive = true
+                }
+            },
+        })
+
+        let carouselIntervalId;
         
+        // Loop to call the next cover article picture.
+        let autoCarousel = function () {
+            carouselIntervalId = setInterval(function () {
+                coverSlider.carousel('next');
+            }, 5000);
+        };
+        autoCarousel();
+        
+
+        function restartPlay() {
+            
+            clearInterval(carouselIntervalId);
+            autoCarousel();
+            
+        };
+
+        
+        // prev and next cover post.
+        $('#prev-cover').click(function () {
+            coverSlider.carousel('prev');
+            restartPlay();
+        });
+        $('#next-cover').click(function () {
+            coverSlider.carousel('next');
+            restartPlay();
+        });
+        
+    });
+</script>
+
+
+
+<main class="content">
+
+    
+    <div id="indexCard" class="index-card">
+        <div class="container ">
+            <div class="card">
+                <div class="card-content">
+                    
+                        <div class="dream">
+    
+    <div class="title center-align">
+        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的梦想
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
+            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
+        </div>
+    </div>
+</div>
+
+                    
+
+                    
+
+                    
+
+                    
+                    <div id="recommend-sections" class="recommend">
+                        
+
+
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/13/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B014/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="用vue写网页">
+                            
+                            <span class="card-title">用vue写网页</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.引入Element按钮，Container布局容器，菜单侧边栏1.简单回顾vue的安装和创建项目。2.访问Element官网。   链接：https://element-plus.org/zh-CN/component/button.h
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/12/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B007/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="form表单，写政府网页">
+                            
+                            <span class="card-title">form表单，写政府网页</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.form表单1.提交方式：post 格式:   协议名：&#x2F;&#x2F;目标ip:端口&#x2F;请求资源路径？参数&#x3D;值；参数&#x3D;值； 2.端口范围：1-65535常见协议的端口号：  ssh——-22  ht
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B008/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="vue3的使用">
+                            
+                            <span class="card-title">vue3的使用</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.vue项目的创建1.在vscode的终端输入以下命令：
+1234npm create vue@latestcd vue-projectnpm installnpm run dev
+
+2.安装插件第3个和第7个，让代码有颜色3.在vue-
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B013/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="字符集和编码">
+                            
+                            <span class="card-title">字符集和编码</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.字符集1.ascii &#x3D;&gt;编排了128个文字符号，只需要7个0和1就可以表示了。01111111 &#x3D;&gt;1 byte &#x3D;&gt;8bitANSI&#x3D;&gt; 一套标准，每个字符 16bit
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B012/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="字典">
+                            
+                            <span class="card-title">字典</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.字典的概念1.字典以键值对的形式进行存储数据的2.字典的表示方法：{key:value,key2:value,key3:value}
+123dic=&#123;&quot;jay&quot;:&quot;周杰伦&quot;,&quot;
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="列表，元组，set集合">
+                            
+                            <span class="card-title">列表，元组，set集合</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.列表1.定义：能装东西的东西2.在python中用[]表示列一个列表列表中的元素通过，隔开
+1a=[&quot;张三丰&quot;,&quot;张无忌&quot;,&quot;张绍刚&quot;,[1,2,3,True]]
+
+3.特性：
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B010/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="循环语句,字符串">
+                            
+                            <span class="card-title">循环语句,字符串</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.循环语句1.break和continue（1）.break的作用：让当前这个循环立即停止（2）.continue的作用：停止当前本次循环，继续执行下一次循环2.for循环2.1字符串是可迭代的for 循环的语法：   for 变量 in
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="第一个python程序，用户交互，if条件判断">
+                            
+                            <span class="card-title">第一个python程序，用户交互，if条件判断</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.第一个python1.打开pycharm,右击文件夹，新建一个task3.py文件，输入以下代码
+1print（&quot;hello!world&quot;）
+
+2.点击运行3.python注释
+​    单行注释
+   多行注释有两
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页">
+                            
+                            <span class="card-title">复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一.复盘Linux命令
+127.0.0.1是本地回环地址
+
+0.0.0.0  *    0.0.0.0 是一个特殊的 IP 地址，通常用于表示”未指定”或”任意”地址。在计算机网络中，它有几种不同的含义。
+（1）在 IPv4 地址中，0.0
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-06
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="介绍路由，代理和OSI模型，VMware workstation，wireshark">
+                            
+                            <span class="card-title">介绍路由，代理和OSI模型，VMware workstation，wireshark</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一. 静态路由和动态路由1.静态路由：必须由管理员手工指定 动态路由：自动生成，指明下一跳是谁，自动协商最优解。2.dhcp(动态主机配置协议），是一个网络管理协议，用于自动为网络中的设备分配IP地址，以及配置其他相关网络信息，如子网掩码、
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Tangxianshen
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+
+</main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <span id="year">2023</span>
+            <a href="/about" target="_blank">Tangxianshen</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3108957189" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3108957189" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
     </div>
 </footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
     </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
-
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
 </div>
-<script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
 </script>
-  </div>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
 </body>
+
 </html>
