@@ -262,6 +262,77 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记05" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/" class="article-date">
+      <time datetime="2023-12-05T15:03:17.000Z" itemprop="datePublished">2023-12-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/">介绍路由，代理和OSI模型，VMware workstation，wireshark</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-静态路由和动态路由"><a href="#一-静态路由和动态路由" class="headerlink" title="一. 静态路由和动态路由"></a>一. 静态路由和动态路由</h2><p>1.静态路由：必须由管理员手工指定<br> 动态路由：自动生成，指明下一跳是谁，自动协商最优解。<br>2.dhcp(动态主机配置协议），是一个网络管理协议，用于自动为网络中的设备分配IP地址，以及配置其他相关网络信息，如子网掩码、默认网关和DNS服务器地址。它在TCP&#x2F;IP网络中广泛使用，极大地简化了网络管理员的工作。<br>3.静态ip和动态ip    Ip相同时，静态ip的优先级高于动态ip<br> 静态ip设置好后，设置动态ip,动态ip一定上不了网<br> 动态ip设置好后，设置静态ip,动态ip可能上不了网</p>
+<h2 id="二-代理和OSI模型"><a href="#二-代理和OSI模型" class="headerlink" title="二.代理和OSI模型"></a>二.代理和OSI模型</h2><p>1.socks5： tcp&#x2F;ip的数据都可以走<br>2.OSI模型介绍： OSI （Open System Interconnect）模型全称为开放式通信系统互连参考模型，是国际标准化组织 ( ISO ) 提出的一个试图使各种计算机在世界范围内互连为网络的标准框架。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702206485972-a7b05fda-4162-46a7-99b0-bb6cfb3d5395.png" alt="图片.png"></p>
+<p>用户使用qq在应用层发送数据，通过一系列的数据加密，传送到物理层，数据在物理层通过一系列的数据解密，发送到另一个用户的qq。<br>注意： ping不能走socks5<br>3.子网掩码含义：子网掩码(subnet mask)又叫<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E6%8E%A9%E7%A0%81/7862514?fromModule=lemma_inlink">网络掩码</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9C%B0%E5%9D%80%E6%8E%A9%E7%A0%81/8623995?fromModule=lemma_inlink">地址掩码</a>、子网络遮罩，它用来指明一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IP%E5%9C%B0%E5%9D%80/0?fromModule=lemma_inlink">IP地址</a>的哪些位标识的是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>所在的子网，以及哪些位标识的是主机的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702200418355-b325b79e-80b1-4a17-ac89-69ebbc995811.png" alt="图片.png"><br>地址块1发送请求给路由器，路由器之间通过路由表发生交互，对应起地址块2的ip地址，实现连通。<br>4.路由表组成：源IP，源MAC,目的IP，目的MAC<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204074238-5710e8eb-dc13-4cd7-8097-4eb6fd6a1620.png" alt="图片.png">pc1把物理地址和ip地址发送给交换机，由交换机转发到路由器1，路由器1通过路由表对应，把数据发送到路由器2，路由器2通过路由表发送到pc2,实现连通。</p>
+<h2 id="三-VMware-workstation"><a href="#三-VMware-workstation" class="headerlink" title="三. VMware workstation"></a>三. VMware workstation</h2><p>1.利用驱动使用硬件设备,官网可以下载驱动<br>2.虚拟机连接外部网络<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204686868-146f57f9-5dda-4663-8d8c-b7a473206ea6.png" alt="图片.png" style="zoom:67%;" /></p>
+<p>3.地址装换nat</p>
+<p>pc2和pc3能ping通pc1,但pc1不能ping通pc2,pc3<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204937620-3916e1d6-b5ae-4b18-8791-a8ab037780c2.png" alt="图片.png" style="zoom:67%;" /></p>
+<p>4.三种网络模式<br>（1）桥接: 网络设备（如无线路由器、虚拟机管理程序等）在连接不同网络 段时的一种操作方式<br>（2）仅主机：断网<br>（3）nat: 是一种网络地址转换技术，它在IP数据包通过路由器或防火墙时修改这些数据包的源或目的地址。<br>5.浏览器把所有请求发给猫（代理）的本地端口，再发送出去<br>6.ssh通过代理出去<br> （1）下载proxifier,链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B4%8B%E8%91%B1/ProxifierSetup.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B4%8B%E8%91%B1/ProxifierSetup.exe</a><br>（2）编辑代理服务器，地址填127.0.0.1，端口填自己的clash的端口<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701781641490-21043bc4-7e78-475b-a6bc-4b70300bc2c5.png" alt="图片.png" style="zoom:67%;" /><br>（3）编辑代理规则<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782167254-ba54eb49-b8dc-469c-888b-4c241a45b65a.png" alt="图片.png">                                              （4）重新启动 proxifier，win+r,cmd,输入命令ssh  <a href="mailto:&#114;&#111;&#x6f;&#116;&#x40;&#49;&#x2e;&#49;&#x2e;&#x31;&#x2e;&#49;">&#114;&#111;&#x6f;&#116;&#x40;&#49;&#x2e;&#49;&#x2e;&#x31;&#x2e;&#49;</a> ,观察 proxifier的变化<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701781875612-5d3dc995-8f1d-42e5-b278-1a19f57a7237.png" alt="图片.png"><br>（5）在ssh<em>后面加steam</em>,打开steam，可以打开steam社区的创意工坊。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782230382-9820d816-f9b2-4d70-85d4-1730cc6e6ac9.png" alt="图片.png"><br>7.下载武器库Maye，链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/Maye%201.2.6-20211001%E6%AD%A6%E5%99%A8%E5%BA%93%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.zip">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/Maye%201.2.6-20211001%E6%AD%A6%E5%99%A8%E5%BA%93%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.zip</a></p>
+<ol start="8">
+<li>tcp三次握手，四次挥手<br>（1）TCP三次握手（建立连接）<br> SYN：客户端发送一个SYN（synchronize）标志的TCP段到服务器，以开始新的连接。这个段中包含客户端的初始序列号，用于同步序列号。<br> SYN-ACK：服务器收到客户端的SYN后，会发送一个包含服务器初始序列号的SYN段，并且将确认号设置为客户端序列号加1（即ACK）。这个响应同时包含了SYN和ACK标志。<br> ACK：客户端收到服务器的SYN-ACK后，会发送一个ACK段作为响应，其中的确认号是服务器序列号加1。此时，客户端到服务器的单向连接就建立好了；当服务器收到这个ACK段后，服务器到客户端的单向连接也建立好了。至此，双向连接建立完成。</li>
+</ol>
+<p>（2）TCP四次挥手（断开连接）<br>    FIN：当客户端完成数据发送任务后，它需要发送一个FIN（finish）标志的TCP段给服务器，表示客户端没有数据要发送了，请求关闭连接。<br>    ACK：服务器收到这个FIN后，会发送一个ACK段作为响应，确认号为客户端的序列号加1。此时，客户端到服务器方向的连接被关闭，但服务器如果还有数据要发送，可以继续发送。<br>    FIN：服务器发送完所有数据后，它也需要发送一个FIN段给客户端，请求关闭从服务器到客户端的连接。<br>    ACK：客户端收到服务器的FIN后，发送一个ACK段作为响应，确认号为服务器的序列号加1。经过一段时间等待（称为TIME_WAIT）之后，以确保服务器收到最终的ACK，客户端关闭连接。</p>
+<h2 id="三-网络分析工具wireshark的使用"><a href="#三-网络分析工具wireshark的使用" class="headerlink" title="三.网络分析工具wireshark的使用"></a>三.网络分析工具wireshark的使用</h2><ol>
+<li>下载网络分析工具wireshark ，链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/Wireshark-win64-3.0.0%E4%B8%AD%E6%96%87%E7%89%88.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/Wireshark-win64-3.0.0%E4%B8%AD%E6%96%87%E7%89%88.exe</a><br>（1）抓网卡的包<br>（2）DNS发送的数据包大小一般是78bit</li>
+<li>wireshark过滤规则，源ip过滤，目的ip过滤<br>3.（1）在wireshark先选择WLAN<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782900551-7a6b8dc0-d8bc-49a9-867e-db75312bc8e4.png" alt="图片.png"><br>（2）然后点蓝色按钮开启抓包 注意，右边的矩形是停止抓包<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701783020186-05266205-d101-4013-b6da-9819915adc96.png" alt="图片.png"><br>下图是在物理机win+r,cmd,  Ping 同桌的ip地址所抓的包，在绿色框输入icmp过滤<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701783137906-5fa8e0c5-7aef-4299-92d0-2978f201e3aa.png" alt="图片.png"></li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记04" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
