@@ -262,6 +262,90 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记06" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/" class="article-date">
+      <time datetime="2023-12-06T13:39:35.000Z" itemprop="datePublished">2023-12-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/">复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-复盘Linux命令"><a href="#一-复盘Linux命令" class="headerlink" title="一.复盘Linux命令"></a>一.复盘Linux命令</h2><ol>
+<li><p>127.0.0.1是本地回环地址</p>
+</li>
+<li><p>0.0.0.0  *    0.0.0.0 是一个特殊的 IP 地址，通常用于表示”未指定”或”任意”地址。在计算机网络中，它有几种不同的含义。</p>
+<p>（1）在 IPv4 地址中，0.0.0.0 通常用作未指定地址。在服务器中，当需要监听所有可用的网络接口时，可以将服务绑定到 0.0.0.0 地址。</p>
+<p>（2）在某些情况下，0.0.0.0 还可以表示”任意地址”，例如在路由表中指示默认路由。</p>
+</li>
+</ol>
+<p>3.打开虚拟机CentOS,安装网络命令和工具。输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools.x86_64 -y         安装网络命令</span><br><span class="line">yum -y install epel-release             安装软件源</span><br><span class="line">yum -y install vim                      安装编辑器</span><br><span class="line">yum install unzip -y                    安装unzip工具</span><br><span class="line">yum search wget -y(yum install wget)    搜索并安装wget工具</span><br><span class="line">yum install -y git                      安装Git版本控制工具</span><br><span class="line">yum install docker -y                   安装容器引擎</span><br><span class="line">yum -y install python-pip               安装python的pip包管理工具</span><br><span class="line">yum install -y docker-compose           安装用于定义和运行多个容器的工具</span><br><span class="line"></span><br><span class="line">yum -y install python-pip^c             安装python-pip包</span><br></pre></td></tr></table></figure>
+
+<h2 id="二-HTML5介绍"><a href="#二-HTML5介绍" class="headerlink" title="二.HTML5介绍"></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701866213572-dba507a2-78f1-40c0-84ea-2bba881fb4a6.png" alt="图片.png">二.HTML5介绍</h2><p>1.HTML:超文本标记语言5, HTML5 是最新的 HTML 标准，于2014年由万维网联盟（W3C）正式推出。HTML5 提供了许多新的功能和语义化标签，旨在改进 Web 开发体验并提供更丰富的内容。<br>2.打开vscode，新建1.html的文件， 输入 ！按tab键， 在<body></body>中输入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;b&lt;/b&gt;                              //加粗</span><br><span class="line">    &lt;i&gt;i&lt;/i&gt;                          //斜体</span><br><span class="line">    &lt;sup&gt;sup&lt;/sup&gt;                    //上标</span><br><span class="line">    </span><br><span class="line">                            //换行</span><br><span class="line">    &lt;sub&gt;sub&lt;/sub&gt;                    //下标</span><br><span class="line">    &lt;hr /&gt;                            //水平线</span><br><span class="line">    &lt;strong&gt;加粗&lt;/strong&gt;             //加粗</span><br><span class="line">    &lt;!--     --&gt;                     //注释 Ctrl+/</span><br><span class="line">&lt;em&gt;em&lt;/em&gt;                          //强调表示斜体</span><br><span class="line">    &lt;h1&gt;标题&lt;/h1&gt;                    //标题1</span><br><span class="line">    &lt;h6&gt;标题&lt;/h6&gt;                    //标题6</span><br><span class="line">    &lt;s&gt;sifuef&lt;/s&gt;                   //文字中下方有横线穿过</span><br><span class="line">    &lt;del&gt;del&lt;/del&gt;                  //删除</span><br><span class="line">    &lt;a href=&quot;https://home.firefoxchina.cn&quot;&gt;火狐&lt;/a&gt;          //超链接</span><br><span class="line">    &lt;img src=&quot;./1.jpg&quot; alt=&quot;1&quot;&gt;                             //引入图片</span><br><span class="line">    &lt;p&gt;老默，我想吃鱼了快去&lt;img src=&quot;./1.jpg&quot; width=&quot;50&quot; height=&quot;70&quot; alt=&quot;树&quot;&gt;钓几条鱼&lt;/p&gt;  //文字中引入图片</span><br><span class="line">      &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;4&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;5&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;6&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701867060599-47d73f04-c5fa-485c-8889-fe9ae5bb56dc.png" alt="图片.png" style="zoom:50%;" />
+
+
+
+
+
+<p>3.写一个from表单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/submit-form&quot; method=&quot;post&quot;&gt;  </span><br><span class="line">        &lt;label for=&quot;name&quot;&gt;姓名：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;email&quot;&gt;电子邮件：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;message&quot;&gt;留言：&lt;/label&gt;  </span><br><span class="line">        &lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;  </span><br><span class="line">      &lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231206215421975.png" alt="image-20231206215421975"></p>
+<h2 id="三-写一个网页"><a href="#三-写一个网页" class="headerlink" title="三.写一个网页"></a>三.写一个网页</h2><p>1.新建2.html文件，输入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;简单的网页布局&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #container &#123;</span><br><span class="line">            width: 600px;</span><br><span class="line">            text-align: center;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #header &#123;</span><br><span class="line">            height: 300px;</span><br><span class="line">            width: 500px;</span><br><span class="line">            background-color: aqua;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box02 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 200px;</span><br><span class="line">            background-color: burlywood;</span><br><span class="line">            float: left;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box03 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 300px;</span><br><span class="line">            float: left;</span><br><span class="line">            background-color: chartreuse;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;header&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是顶部盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box02&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第二个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box03&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第三个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701869852940-bd77b4b2-0c1f-43cd-b2e3-85831460b788.png" alt="图片.png" style="zoom:50%;" />
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记05" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
