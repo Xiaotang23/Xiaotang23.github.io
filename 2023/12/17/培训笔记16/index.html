@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478241936-99f04e0f-0a46-45ea-8cec-2849c886f97f.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478272976-d56c923e-07ad-4c65-a0c9-0ca9a971be3a.png">
 <meta property="article:published_time" content="2023-12-17T01:13:41.000Z">
-<meta property="article:modified_time" content="2023-12-17T01:16:17.921Z">
+<meta property="article:modified_time" content="2023-12-17T01:28:16.336Z">
 <meta property="article:author" content="Tangxianshen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702477935327-f9d694eb-44fc-46d6-8140-63ab3670947e.png">
@@ -325,7 +325,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const handleOpen = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">const handleClose = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>7.把span&#x3D;12改成span&#x3D;24，侧边栏span&#x3D;24表示占满      el-col :span&#x3D;”24”表示竖直方向占满<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702298169039-6bf73205-5c61-4b50-b56b-518fa680bfea.png" alt="image.png"><br>8.在侧边栏导入图标，复制代码在对应的用户管理，权限管理，商品管理，订单管理语句各自的前一行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478133938-4a3a0f16-2685-47d7-b5fc-2fa4e3f3f26c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702298662954-37b0eb22-a73f-4b8f-badd-6a21f1a55a4b.png" alt="image.png"></p>
-<h2 id="二-在el-header设置阴影，圆角边框"><a href="#二-在el-header设置阴影，圆角边框" class="headerlink" title="二.在el-header设置阴影，圆角边框"></a>二.在el-header设置阴影，圆角边框</h2><p>1.在el-header中创建styled-box1类。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299037715-c342f095-d463-419a-98bf-1b325dcfdd94.png" alt="image.png"><br> 在<style>创建styled-box1样式。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299210651-716ae9ad-d358-4049-82fe-ba1e0fdf90f0.png" alt="image.png"><br>2.CTRL+S保存，在终端输入npm run dev, 结果如下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299408016-718c337f-2f6d-4c53-8f5f-db3ee347fe6f.png" alt="image.png"><br>3.引入搜索框input和搜索，添加用户两个按钮，注意el-row是行，el-col是列。</p>
+<h2 id="二-在el-header设置阴影，圆角边框"><a href="#二-在el-header设置阴影，圆角边框" class="headerlink" title="二.在el-header设置阴影，圆角边框"></a>二.在el-header设置阴影，圆角边框</h2><p>1.在el-header中创建styled-box1类。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299037715-c342f095-d463-419a-98bf-1b325dcfdd94.png" alt="image.png"><br> 在style创建styled-box1样式。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299210651-716ae9ad-d358-4049-82fe-ba1e0fdf90f0.png" alt="image.png"><br>2.CTRL+S保存，在终端输入npm run dev, 结果如下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299408016-718c337f-2f6d-4c53-8f5f-db3ee347fe6f.png" alt="image.png"><br>3.引入搜索框input和搜索，添加用户两个按钮，注意el-row是行，el-col是列。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-row&gt;</span><br><span class="line">          &lt;el-col :span=&quot;4&quot;</span><br><span class="line">            &gt;&lt;el-input v-model=&quot;input&quot; placeholder=&quot;请输入搜索内容&quot;</span><br><span class="line">          /&gt;&lt;/el-col&gt;</span><br><span class="line">          &lt;el-col :span=&quot;2&quot;&gt;&lt;el-button type=&quot;success&quot;&gt;搜索&lt;/el-button&gt;&lt;/el-col&gt;</span><br><span class="line">          &lt;el-col :span=&quot;2&quot;&gt;   &lt;el-button type=&quot;success&quot;&gt;添加用户&lt;/el-button&gt;&lt;/el-col&gt;</span><br><span class="line">        &lt;/el-row&gt;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702300021651-558624ba-d852-43da-aa59-4fad9e072223.png" alt="image.png"></p>
@@ -347,7 +347,7 @@
         <p><span>Title:</span><a href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B016/">用vue写网页</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2023-12-17, 09:13:41</p>
-        <p><span>Updated:</span>2023-12-17, 09:16:17</p>
+        <p><span>Updated:</span>2023-12-17, 09:28:16</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B016/" title="用vue写网页">http://example.com/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B016/</a>
             <span class="copy-path" data-clipboard-text="From http://example.com/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B016/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -383,7 +383,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%BC%95%E5%85%A5Element%E6%8C%89%E9%92%AE%EF%BC%8CContainer%E5%B8%83%E5%B1%80%E5%AE%B9%E5%99%A8%EF%BC%8C%E8%8F%9C%E5%8D%95%E4%BE%A7%E8%BE%B9%E6%A0%8F"><span class="toc-number">1.</span> <span class="toc-text">一.引入Element按钮，Container布局容器，菜单侧边栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%9C%A8el-header%E8%AE%BE%E7%BD%AE%E9%98%B4%E5%BD%B1%EF%BC%8C%E5%9C%86%E8%A7%92%E8%BE%B9%E6%A1%86"><span class="toc-number">2.</span> <span class="toc-text">二.在el-header设置阴影，圆角边框</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%BC%95%E5%85%A5Element%E6%8C%89%E9%92%AE%EF%BC%8CContainer%E5%B8%83%E5%B1%80%E5%AE%B9%E5%99%A8%EF%BC%8C%E8%8F%9C%E5%8D%95%E4%BE%A7%E8%BE%B9%E6%A0%8F"><span class="toc-number">1.</span> <span class="toc-text">一.引入Element按钮，Container布局容器，菜单侧边栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%9C%A8el-header%E8%AE%BE%E7%BD%AE%E9%98%B4%E5%BD%B1%EF%BC%8C%E5%9C%86%E8%A7%92%E8%BE%B9%E6%A1%86"><span class="toc-number">2.</span> <span class="toc-text">二.在el-header设置阴影，圆角边框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%BC%95%E5%85%A5%E8%A1%A8%E6%A0%BC%E5%92%8C%E5%88%86%E9%A1%B5"><span class="toc-number">3.</span> <span class="toc-text">三.引入表格和分页</span></a></li></ol>
         
     </div>
     <style>
