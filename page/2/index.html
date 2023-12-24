@@ -262,6 +262,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记08" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B008/" class="article-date">
+      <time datetime="2023-12-10T12:09:48.000Z" itemprop="datePublished">2023-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B008/">vue3的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-vue项目的创建"><a href="#一-vue项目的创建" class="headerlink" title="一.vue项目的创建"></a>一.vue项目的创建</h2><p>1.在vscode的终端输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm create vue@latest</span><br><span class="line">cd vue-project</span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702100878521-6a4b4cd4-3877-47b5-8d29-83bdc8f4b216.png" alt="Image.png"><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702100897444-c75ca7da-315f-4b89-aed3-71623cc45b44.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702100908313-cf8ff7f9-7339-4495-9f81-7cbdb765e453.png" alt="Image.png" style="zoom:50%;" /><br>2.安装插件第3个和第7个，让代码有颜色<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702100943583-a3d246e3-08ca-44ef-b871-d5c9167840f0.png" alt="Image.png" style="zoom:50%;" /><br>3.在vue-project中找到App.vue文件，将<header>到</main>注释掉，删掉</style>以下内容。ctrl+s保存，右键vue-project，复制vue-project的路径,   在终端cd  vue-project的路径，之后输入npm run dev<br>点击生成的网站。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702101088527-59c7db29-791c-4be2-b5b0-953485fad9da.png" alt="Image.png" style="zoom:50%;" /><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1702101131944-9178b087-4ef6-457e-8bf2-14a245528858.png#averageHue=%23d8a76d&clientId=uc49066be-e585-4&from=paste&height=428&id=u25a955c7&originHeight=657&originWidth=895&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22371&status=done&style=none&taskId=ue76fd09f-ac23-43d5-a103-69f4c1ad670&title=&width=583" alt="Image.png"></p>
+<h2 id="二-element-组件库的使用"><a href="#二-element-组件库的使用" class="headerlink" title="二.element 组件库的使用"></a>二.element 组件库的使用</h2><p>1.导入按钮。组件库链接：<a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/component/button.html">https://element-plus.org/zh-CN/component/button.html</a>  复制组件库的Button按钮代码粘贴到App.vue，ctrl+s保存，在终端输入npm run dev,点击生成的链接<br><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1702101260517-5c6410ab-46b3-434c-983d-71e258c7529c.png#averageHue=%23fbf9f8&clientId=uc49066be-e585-4&from=paste&height=429&id=uae642383&originHeight=804&originWidth=1134&originalType=binary&ratio=1&rotation=0&showTitle=false&size=144890&status=done&style=none&taskId=u43fd234e-86fa-4a56-8522-86783482a89&title=&width=605" alt="Image.png"><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1702101267401-e4236309-2314-42bc-a6f6-1507e3d8d5cb.png#averageHue=%231f1e1d&clientId=uc49066be-e585-4&from=paste&height=758&id=u487920c6&originHeight=758&originWidth=601&originalType=binary&ratio=1&rotation=0&showTitle=false&size=37920&status=done&style=none&taskId=u61520dc8-d024-4001-a8a6-f93239c59b6&title=&width=601" alt="Image.png"><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702101273696-27317fc5-b92b-429b-8b1d-abd85eaac28e.png" alt="Image.png" style="zoom:50%;" /><br>2.导入form表单<br> （1）vue3中使用如下命令通过 npm 安装  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install element-plus --save</span><br></pre></td></tr></table></figure>
+
+<p>（2） 在vue3中按需引入ElementUI，需要使用其他的插件辅助，需要安装unplugin-vue-components 和 unplugin-auto-import这两款插件；安装方法如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D unplugin-vue-components unplugin-auto-import</span><br></pre></td></tr></table></figure>
+
+<p>（3） 在vue.config.js中，添加相应配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const &#123; defineConfig &#125; = require(&#x27;@vue/cli-service&#x27;)</span><br><span class="line">const AutoImport = require(&#x27;unplugin-auto-import/webpack&#x27;)</span><br><span class="line">const Components = require(&#x27;unplugin-vue-components/webpack&#x27;)</span><br><span class="line">const &#123; ElementPlusResolver &#125; = require(&#x27;unplugin-vue-components/resolvers&#x27;)</span><br><span class="line"></span><br><span class="line">module.exports = defineConfig(&#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">  	plugins: [</span><br><span class="line">        AutoImport(&#123;</span><br><span class="line">          resolvers: [ElementPlusResolver()],</span><br><span class="line">        &#125;),</span><br><span class="line">        Components(&#123;</span><br><span class="line">          resolvers: [ElementPlusResolver()],</span><br><span class="line">        &#125;),</span><br><span class="line">      ],</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>（4） 引入完毕之后，我们可进行按需引入需要使用的组件，引入form表单。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记13" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -928,97 +997,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br><span class="line">:set nu 显示行号</span><br><span class="line">：wq!</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495106862-761cb740-d728-433f-a314-2097c996ce0e.png" alt="图片.png"><br>5.在物理机输入ssh root@虚拟机ip地址：ssh root@+ip<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495876372-9f26ad19-5554-4c45-b99b-e6604c4d0fd1.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记02" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B002/" class="article-date">
-      <time datetime="2023-12-02T15:27:54.000Z" itemprop="datePublished">2023-12-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/02/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B002/">在物理机下载软件，利用github搭建hexo博客，验证图片上传和更换博客主题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="day04"><a href="#day04" class="headerlink" title="day04"></a>day04</h1><h2 id="一-在物理机下载软件"><a href="#一-在物理机下载软件" class="headerlink" title="一.在物理机下载软件"></a>一.在物理机下载软件</h2><p>1.下载Dism,清理c盘存储空间   链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E7%B3%BB%E7%BB%9F%E6%B8%85%E7%90%86%E5%B7%A5%E5%85%B7/Dism++10.1.1002.1.zip">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E7%B3%BB%E7%BB%9F%E6%B8%85%E7%90%86%E5%B7%A5%E5%85%B7/Dism++10.1.1002.1.zip</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701351697730-5e9af3c6-0902-43a1-b205-294e913fe26c.png" alt="图片.png"><br>2.下载spaceSniff,查看磁盘应用所占空间大小<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701351837313-380c54aa-e987-4a7f-a31c-f4d7d439df2f.png" alt="图片.png"><br>3.在物理机edge浏览器下载SwitchyQmega插件，设置代理协议为socks5，代理服务器127.0.0.1代理端口8080<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701351876810-35d7ecc7-98d5-4e51-a078-4227ed102543.png" alt="图片.png"><br>4.从老师那下载node-v20.10.0-x64，Git-2.43.0-64-bit，  Typroa软件<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701352221273-ce469044-109f-4549-a611-a0bdfc44cecd.png" alt="图片.png"></p>
-<h2 id="二-利用github搭建hexo博客"><a href="#二-利用github搭建hexo博客" class="headerlink" title="二.利用github搭建hexo博客"></a>二.利用github搭建hexo博客</h2><p>1.注册github官网的账号并登录<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701352552572-3cf03604-514d-4496-b81e-23561276f5b3.png" alt="图片.png">2.在f盘创建一个hexo文件夹，点击路径，输入cmd，回车， 使用npm命令安装Hexo ,然后输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">hexo g  </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701354479615-540745d4-5710-4f42-9b4a-3a1c6906722d.png" alt="图片.png"><br>3.切换到blog目录，输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd blog</span><br><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701354534097-c35b70ac-8ef7-4fce-a31b-5dd6362f5a21.png" alt="图片.png"><br>4.在物理机浏览器访问127.0.0.1:4000</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701354065770-2311cbb2-d8df-4614-8b82-7745164c128e.png" alt="图片.png"><br>5.配置ssh</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh </span><br></pre></td></tr></table></figure>
-
-<p>  如果提示：No such file or directory 说明你是第一次使用git。 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C “邮件地址”</span><br></pre></td></tr></table></figure>
-
-<p> 然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701355111977-77f44dcb-9cca-487c-a7b9-a25053d58c1b.png" alt="图片.png">6.   key填写C:\Users\Administrator.ssh\id_rsa.pub中的内容<br>    尝试ssh连接,测试是否成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com # 注意邮箱地址不用改</span><br></pre></td></tr></table></figure>
-
-<pre><code>如果提示Are you sure you want to continue connecting (yes/no)?，输入yes，然后会看到下面这个，就算成功：
-Hi liuxianan! You’ve successfully authenticated, but GitHub does not provide shell access.
-在选中的位置(blog目录下)打开cmd(以管理员身份)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git –save</span><br></pre></td></tr></table></figure>
-
-<p>  7.在上一个Git Bash Here还需要继续配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config –global user.name “luozhixiaowo”// 你的github用户名，非昵称</span><br><span class="line">git config –global user.email “xxx@qq.com“// 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
-
-<p>  8.上传代码<br>    在github上新建一个存储库，命名为Xiaotang23 .github.io<br>    编辑_config.yml文件，在最后改成这样<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701355561136-8fd27816-9007-4328-954e-e8d3ed7c0c61.png" alt="图片.png"> 注意保持格式，缩进不对，会导致一会儿，上传不成功，最后上传。<br>下图是上传成功的截图。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701355686214-2dd018bc-ce3e-4ce7-8d7a-b952ffbc3776.png" alt="图片.png"><br>9.最终的结果如下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701355851349-d8c5bdff-0549-48bc-bb8f-cee823451196.png" alt="图片.png"></p>
-<h2 id="三-验证图片上传和更换博客主题"><a href="#三-验证图片上传和更换博客主题" class="headerlink" title="三.验证图片上传和更换博客主题"></a>三.验证图片上传和更换博客主题</h2><h3 id="3-1验证图片上传"><a href="#3-1验证图片上传" class="headerlink" title="3.1验证图片上传"></a>3.1验证图片上传</h3><p>1.原理：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701420768464-fb378a73-b4a2-4e66-a554-0c2218c6ed20.png" alt="图片.png"><br>1.下载安装Typora， 链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/typora%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6.zip">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/typora%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6.zip</a>    激活Typora, 邮箱填<a href="mailto:&#x31;&#x32;&#51;&#x34;&#53;&#x36;&#55;&#56;&#57;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#109;">&#x31;&#x32;&#51;&#x34;&#53;&#x36;&#55;&#56;&#57;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#109;</a>  序列号填<br>JCEKRV-4V7ZSU-PSQKQ7-G2NT2Q  ，结果如下图<br>   <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701410220059-3ca84f03-503b-4fd0-9e85-1b57ddcbdc85.png" alt="图片.png"><br>下载安装 PicGo，链接为：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">https://github.com/Molunerfinn/PicGo/releases</a><br>2.打开Typora,点击文件的偏好设置，点击图像，在右栏插入图片选择第三项，勾选四个，上传至PigGo app,路径填F:\picGo\PicGo.exe<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701413934657-4c828369-5071-45e4-8ebe-0bd7ff601914.png" alt="图片.png"><br>3.打开github官网，登陆自己的账号，创建图片存储库。首先，点击窗口右上角的加号的New respository<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701416693846-00c81ca0-2e32-4934-b9c7-61ac0913997e.png" alt="图片.png"><br>4.在Respository name *的下方方框输入tu,再点击Create repository<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701417525448-357e4c42-a5ff-4b77-b306-3b11b25cbe85.png" alt="图片.png"><br>5.点击settings,再点击Developer settings,然后点击Tockens,再点击Generate new tacken(classic)，生成密钥，复制密钥。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701418066611-68a89995-f952-488c-bce6-8c5adb542747.png" alt="图片.png"><br>6.打开PciGo,在左栏找到github,把复制的密钥粘贴到设定Token一栏，其他栏按以下图填写，设定自定义域名一栏不填，最后点确定。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701410443112-d1c3376a-b123-478d-99ef-f39dd4d77901.png" alt="图片.png">7.然后点击设为默认图床<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701418444774-de3e67f2-08b3-4ee7-a431-36fc7c67f614.png" alt="图片.png">8.打开Typora,点击文件的偏好设置，点击图像，点击验证图片上传选项，出现如下结果。</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701418995573-3c7f175f-540f-41e2-b463-07c7a02efbf2.png" alt="图片.png"></p>
-<h3 id="3-2更换博客主题"><a href="#3-2更换博客主题" class="headerlink" title="3.2更换博客主题"></a>3.2更换博客主题</h3><p>1.在浏览器搜索下载hexo主题压缩包，我下载的是hexo-theme-matery-master.zip</p>
-<ol start="2">
-<li>下载完成后，解压文件，把主题文件重命名为theme01（名字是随意的，可以不重命名，但是一般默认名称比较长，后面填主题名称不方便）。<br>把这个文件放到 博客根目录&#x2F;themes&#x2F; 下面 ，例如：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701419791556-91fd5e9c-1e8a-4547-b848-2a057f157d2d.png" alt="图片.png">  3. 然后在博客根目录下 找到 _config.yml 这个配置文件并打开，找到theme：landscape  , 将其改为heme： theme （注意冒号后面必须有一个空格） ，修改后如下：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701419925682-01e05ca4-2ce1-4086-a151-b0afd42816ac.png" alt="图片.png">Ctrl+s保存<br>4.软后依次执行：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean //这个命令一般在修改配置文件才需要执行</span><br><span class="line">hexo  g</span><br><span class="line">hexo  d</span><br></pre></td></tr></table></figure>
-
-<p>5.在浏览器访问自己的博客：<a target="_blank" rel="noopener" href="https://xiaotang23.github.io/">https://Xiaotang23.github.io/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701420488701-4d1ef292-698a-4cf5-8298-2ce9d2a0424f.png" alt="图片.png"></p>
 
       
     </div>
