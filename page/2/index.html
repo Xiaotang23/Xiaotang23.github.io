@@ -262,6 +262,83 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记14" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/14/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B014/" class="article-date">
+      <time datetime="2023-12-14T06:09:08.000Z" itemprop="datePublished">2023-12-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/14/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B014/">postman、phpstudy安装，php基本语法，php连接数据库</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-postman、phpstudy安装"><a href="#一-postman、phpstudy安装" class="headerlink" title="一.postman、phpstudy安装"></a>一.postman、phpstudy安装</h2><p>1.由于数据绑定，数据交互在这个阶段不适合去学习，就直接转到了后端学习。下载安装postman,Postman是一款常用的API测试工具，它提供了一个用户友好的界面，可以帮助开发人员更加方便地发送HTTP请求并查看响应结果，以便于测试和调试API接口。链接：<a target="_blank" rel="noopener" href="https://www.postman.com/">https://www.postman.com/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702385016305-e10bd786-5e2c-477c-a526-b7d92375dd53.png" alt="image.png"><br>2.下载phpstudy,链接：<a target="_blank" rel="noopener" href="https://www.xp.cn/">https://www.xp.cn/</a>   然后把这个软件复制到虚拟机win10hei，最后安装<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702385661733-fc4fe7dd-d851-4628-a60b-2ff1fb41a7c6.png" alt="image.png"></p>
+<h2 id="二-php基本语法"><a href="#二-php基本语法" class="headerlink" title="二.php基本语法"></a>二.php基本语法</h2><p>1.开启Apache2.4.39和MySQL5.7.26<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702385948034-25cd2416-0be3-4eb0-9103-8fb67083714b.png" alt="Image.png"><br>2.点击网站，再点击高级设置，开启目录索引。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702386176329-034e71fa-1b83-4c4c-b60d-26d057f4e760.png" alt="Image.png"><br>3.点击管理，打开根目录，删除第二张图下的四个文件<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702386312283-2213bc21-fca1-4727-a0e9-d3d0e1760cdc.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702386266153-327832f2-e12b-44ba-8feb-4f1e1a15986f.png" alt="Image.png"><br>4.在物理机创建一个文本文档并重命名为Index.php,用vscode打开，输入以下代码并保存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;123&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>把这个文件复制到phpstudy的根目录下，然后打开网站<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702387512170-a4d0ef7a-b8c9-413b-9813-8cbae5ec70d5.png" alt="Image.png"><br><strong>注意：apache只能在根目录下解析</strong><br>5.php语法<br>（1）变量与变量之间用 . 隔开。  变量与符号之间用 . 隔开    符号与符号之间用 . 隔开<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702387728662-1d17884c-e8a1-431e-be59-61ac75953523.png" alt="image.png"><br>（2）弱类型匹配：指的是在进行变量之间的操作（比如赋值、运算等）时，PHP会自动进行类型转换，以使得操作可以顺利进行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702387889226-19c008b4-a1fa-422c-aff0-c6acf767fe32.png" alt="Image.png"><br>（3）强类型匹配：全等符 “&#x3D;&#x3D;&#x3D;” 是用来进行强类型匹配的。它与双等符 “&#x3D;&#x3D;” 的区别在于，它不仅比较值是否相等，还比较数据类型是否相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$a = 5;</span><br><span class="line">$b = &quot;5&quot;;</span><br><span class="line"></span><br><span class="line">if ($a === $b) &#123;</span><br><span class="line">    echo &quot;相等&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    echo &quot;不相等&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，由于 $a 和 $b 的数据类型不同，即便它们的值相等，也会被视为不相等，因此这段代码将会输出 “不相等”。<br>（4）输入下图代码：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702390484049-03f10f71-a427-4ca6-8357-baf6f7e8d72f.png" alt="Image.png"><br>在phpstudy的打开网站的地址栏输入  ？a&#x3D;1433223结果为:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702390620728-f6fdc0a8-f2df-4e7f-9177-131d1603f246.png" alt="Image.png"><br>（5）问题1：假设在笼子里有头数为8的动物，总共有22只脚。<br>        写出代码如下：<br>        <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702391329336-1757f42a-305f-4ba3-9304-62ad5f3d22b9.png" alt="Image.png"><br>         结果：<br>         <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702391487270-b0684bb4-0bc3-4b93-9fa8-d112b56a03c9.png" alt="image.png"></p>
+<pre><code>    问题2：n张5毛，y张1块，z张10块，t张50，x张100，问我手上一共有156钱，一共有多少种组合，满足我手上的钱。
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function countCombinations($totalAmount) &#123;</span><br><span class="line">    $combinations = 0;</span><br><span class="line">    for ($n = 0; $n &lt;= $totalAmount / 0.5; $n++) &#123;</span><br><span class="line">        for ($y = 0; $y &lt;= $totalAmount / 1; $y++) &#123;</span><br><span class="line">            for ($z = 0; $z &lt;= $totalAmount / 10; $z++) &#123;</span><br><span class="line">                for ($t = 0; $t &lt;= $totalAmount / 50; $t++) &#123;</span><br><span class="line">                    for ($x = 0; $x &lt;= $totalAmount / 100; $x++) &#123;</span><br><span class="line">                        if (($n * 0.5 + $y * 1 + $z * 10 + $t * 50 + $x * 100) == $totalAmount) &#123;</span><br><span class="line">                            $combinations++;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return $combinations;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$totalAmount = 156;</span><br><span class="line">$result = countCombinations($totalAmount);</span><br><span class="line">echo &quot;满足条件的组合数量为：&quot;.$result;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-php连接数据库"><a href="#三-php连接数据库" class="headerlink" title="三.php连接数据库"></a>三.php连接数据库</h2><p>1.在主机创建link.php文件，并将其复制到phpstudy的根目录，以下的是用到的函数<br>  isset（）判断传参是否正确<br>  trim（）  把字符串中所有空格去掉<br>2.在虚拟机下载navicat软件，打开软件，点击连接。填写下图的参数，密码：root ，新建连接con1。连接mysql数据库。下载老师的sqli.zip,复制到虚拟机phpstudy的根目录并解压。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702392460652-1dbf6bb4-08c6-4fc5-897c-4162239a7856.png" alt="image.png"><br>右击con1,新建数据库security,，把老师发的security.sql中的代码复制到新建的s数据库security，运行。出现以下四个表<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702396058892-f8e6d2c1-8c2b-41b3-afee-7d50173d4232.png" alt="image.png"><br>3.连接mysql数据库的步骤如下：<br>（1）在虚拟机win10hei的C:\phpstudy_pro\Extensions\MySQL5.7.26\bin的路径，输入cmd，配置命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">use mysql;</span><br><span class="line">update user set Host=&#x27;%&#x27; where User=&#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702393359910-444ed64e-c97d-4ee6-8c43-6d3e7b448b24.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702393676620-fc0cbc61-8fed-46a6-aa26-c4b0be300eaa.png" alt="Image.png"><br>apache在根目录下解析,生成网站，apache通过php解析，PHP运行在网站上<br>（2）在vscode的index.php文件写入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=&quot;/&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    &lt;!-- 文本输入框 --&gt;</span><br><span class="line">    &lt;label for=&quot;name&quot;&gt;用户名:&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;</span><br><span class="line"></span><br><span class="line">    &lt;br&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 密码输入框 --&gt;</span><br><span class="line">    &lt;label for=&quot;password&quot;&gt;密码:&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; required&gt;</span><br><span class="line"></span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;!-- 提交按钮 --&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在link.php文件写入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&#x27;content-type: text/html; charset=utf-8&#x27;);</span><br><span class="line"></span><br><span class="line">$u=&quot;admin1&quot;;</span><br><span class="line">$p=&quot;admin1&quot;;</span><br><span class="line">$link=mysqli_connect(&quot;127.0.0.1&quot;,&quot;root&quot;,&quot;root&quot;,&quot;security&quot;)or exit(&quot;Error connecting&quot;);</span><br><span class="line">  mysqli_query($link,&quot;set names utf8&quot;);</span><br><span class="line">  $sql=&quot;select * from users  where username=&#x27;$u&#x27; and password=&#x27;$p&#x27;&quot;;</span><br><span class="line">  $result=mysqli_query($link,$sql);</span><br><span class="line">  $row=mysqli_fetch_array($result);</span><br><span class="line">  echo &#x27;Your Login name:&#x27;.$row[&#x27;username&#x27;].&quot;&lt;br&gt;&quot;;</span><br><span class="line">  echo &#x27;Your  Password:&#x27;.$row[&#x27;password&#x27;];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（3）把这两个文件复制到phpstudy的根目录保存,打开网站，在from表单输入姓名和密码，提交。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702396568690-fb64f298-eae6-4db1-8f88-af3854dcfaab.png" alt="image.png"><br>出现以下结果：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702396628150-36341ce9-9252-46c4-8e2b-a4e7eddaa535.png" alt="Image.png"><br>成功了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记07" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -907,77 +984,6 @@
 <li>下载网络分析工具wireshark ，链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/Wireshark-win64-3.0.0%E4%B8%AD%E6%96%87%E7%89%88.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/Wireshark-win64-3.0.0%E4%B8%AD%E6%96%87%E7%89%88.exe</a><br>（1）抓网卡的包<br>（2）DNS发送的数据包大小一般是78bit</li>
 <li>wireshark过滤规则，源ip过滤，目的ip过滤<br>3.（1）在wireshark先选择WLAN<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782900551-7a6b8dc0-d8bc-49a9-867e-db75312bc8e4.png" alt="图片.png"><br>（2）然后点蓝色按钮开启抓包 注意，右边的矩形是停止抓包<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701783020186-05266205-d101-4013-b6da-9819915adc96.png" alt="图片.png"><br>下图是在物理机win+r,cmd,  Ping 同桌的ip地址所抓的包，在绿色框输入icmp过滤<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701783137906-5fa8e0c5-7aef-4299-92d0-2978f201e3aa.png" alt="图片.png"></li>
 </ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记04" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/04/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B004/" class="article-date">
-      <time datetime="2023-12-04T12:42:57.000Z" itemprop="datePublished">2023-12-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/04/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B004/">复盘上周知识&amp;网络基础知识</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-正向shell和反向shell"><a href="#一-正向shell和反向shell" class="headerlink" title="一.正向shell和反向shell"></a>一.正向shell和反向shell</h2><p>1.下载老师发的自动关闭win10安全防护的stopDefender.exe<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701686956663-2638a707-7aaa-4133-ad4f-ae13095871cb.png" alt="图片.png"><br>2.CVE,cnvd,cnnvd三个网站的介绍<br>CVE: CVE全称是Common Vulnerabilities and Exposures，即通用漏洞披露，它是MITRE公司维护和更新的安全漏洞列表，列表中的每个条目都会有一个唯一的CVE编号，即CVE ID，供安全研究员和受攻击的软件供应商使用，以便确定和回应安全漏洞。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701687353021-890b689c-d290-4857-b8fd-e3f954f950b6.png" alt="图片.png"><br>cnvd,国家信息安全漏洞共享平台,即中国国家信息安全漏洞库（China National Vulnerability Database of Information Security），是中国官方的信息安全漏洞公共服务系统，由国家互联网应急中心（CNCERT&#x2F;CC）负责运营管理。CNVD旨在收集、整理、分析和发布信息安全漏洞信息，为用户提供漏洞咨询、预警、修复等服务，以增强国内网络环境的安全性。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701687664807-57f178fe-8f46-4fe4-a379-baa135b8aa0a.png" alt="图片.png"><br>cnnvd,即中国国家信息安全漏洞共享平台（China National Vulnerability Database of Information Security），它是由中国信息安全测评中心（CNITSEC）负责维护的国家级信息安全漏洞库。CNNVD和CNVD在名称上非常相似，但它们是由不同的机构运营管理的。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701687884875-7c3d7ed6-b2f4-489a-934c-d53e542fec4c.png" alt="图片.png"><br>3.正向shell和反向shell原理图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192629320.png" alt="image-20231210192629320"></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192648318.png" alt="image-20231210192648318"></p>
-<p>正向shell可能会出现bug，会有window或者Linux的防火墙抵御来自sever的监听。<br>但是反向shell不会，因为反向shell是客户机c出栈，正向shell是入栈。<br>4.解决防火墙抵御bug的解决方法<br>  直接关闭防火墙或者在防火墙高级设置中允许连接<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701688564533-4da27c5b-6e1f-4526-beed-495823f3bd76.png" alt="图片.png"></p>
-<h2 id="二-安卓远控软件AhMyth的使用"><a href="#二-安卓远控软件AhMyth的使用" class="headerlink" title="二.安卓远控软件AhMyth的使用"></a>二.安卓远控软件AhMyth的使用</h2><ol>
-<li>下载并演示安卓远控软件AhMyth   链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E8%BF%9C%E6%8E%A7/%E5%AE%89%E5%8D%93%E7%97%85%E6%AF%92%E7%9B%91%E5%90%AC/AhMyth_Win64.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E8%BF%9C%E6%8E%A7/%E5%AE%89%E5%8D%93%E7%97%85%E6%AF%92%E7%9B%91%E5%90%AC/AhMyth_Win64.exe</a>以及下载MuMu6，链接：<a target="_blank" rel="noopener" href="https://mumu.163.com/">https://mumu.163.com/</a><br>2.首先win+r,cmd,用ipconfig命令查询本机的ip地址 ，在AHMyth的左上角APK输入物理机ip地址，生成木马，复制木马的路径，粘贴在盘符并找到木马。然后在AhMyth开启监听，在MuMu6模拟器双击木马。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701689219407-2ac220f4-5675-47c9-8a63-608913533d50.png" alt="图片.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701692904616-df935809-2da4-4bbd-84a1-89c62104a03e.png" alt="图片.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701689294935-fdb551e6-8a49-426d-a612-ea5992c70438.png" alt="图片.png"><br>3.下载evething.exe，谷歌搜索evething,链接：<a target="_blank" rel="noopener" href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a><br>在evething.exe搜索java.exe,右击java.exe，打开路径，在路径输入cmd,输入java -version查看java的版本<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701689716547-54431333-6412-4d56-999c-2328b9404503.png" alt="图片.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701689666994-eac56817-b7b0-4537-b285-dfe228ecb299.png" alt="图片.png"><br>4.查看环境变量，编辑path,路径越靠上，优先级越高。</li>
-</ol>
-<p>5.计划<br>（1）文件名命名空格以下划线_做代替<br>（2）遇到报错以管理员身份运行<br>（3）应用不要装c盘<br>（4）卸载软件不能直接删除文件夹，用geek<br>（5）每天写笔记<br>（6）早晚打卡（必做）<br>（7）请假在企业微信<br>（8）每个知识点有提高部分（隐藏）</p>
-<h2 id="三-网络基础知识"><a href="#三-网络基础知识" class="headerlink" title="三.网络基础知识"></a>三.网络基础知识</h2><ol>
-<li>以太网适配器：有线插槽</li>
-<li>IPv6的写法<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192742123.png" alt="image-20231210192742123"></li>
-<li>ipuu网站。 ipv6连接测试</li>
-<li>.1是网关地址，  .255是广播地址</li>
-<li>在可活动的地址内，必须有一个广播地址和一个网关地址<br>例如255.255.255.255&#x2F;30     32-30&#x3D;2   01 00 10 11   11作为广播地址，00不算</li>
-<li>公网(外网）ip<br>私网（内网）ip<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192803857.png" alt="image-20231210192803857"><br>D,E类地址用于科研<br>5.光猫可以把私网地址转化为公网地址，下图是手机连接百度的拓扑图：</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210192822098.png" alt="image-20231210192822098"><br>光纤：光信号转为电信号<br>内网ip只能访问内网<br>6.下图是校园网拓扑图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231210193022006.png" alt="image-20231210193022006"></p>
 
       
     </div>

@@ -262,6 +262,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记24" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/01/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B024/" class="article-date">
+      <time datetime="2024-01-01T14:07:33.000Z" itemprop="datePublished">2024-01-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/01/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B024/">安全狗的安装，WAF绕过，SQL注入Oracle数据库，Burp的安装与使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="安全狗的安装"><a href="#安全狗的安装" class="headerlink" title="安全狗的安装"></a>安全狗的安装</h2><p>1.在虚拟机win10浏览器的安全狗官网，链接：<a target="_blank" rel="noopener" href="https://www.safedog.cn/">https://www.safedog.cn/</a>     在首页的免费安全产品下载网站安全狗。下载后先不要安装。<br>2.关闭小皮的Apache，加入一个新的Apache到系统服务中，管理员权限打开<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=dos%E5%91%BD%E4%BB%A4&spm=1001.2101.3001.7020">dos命令</a>面板，进入phpstudy_pro\Extensions\Apache2.4.39\bin文件夹，输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">httpd.exe -k install -n apache2.4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703923927662-0a71ce58-3788-4976-9b87-bfb04d28c63d.png" alt="image.png"><br>3.安装完成后打开系统服务列表查看是否安装成功。win+r ，services.msc。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703924194205-137e4869-69af-4c52-8ac7-40f316fe14fa.png" alt="image.png"><br>4.安全前先启动Apache2.4服务，点击安全狗安装包安装，安装目录自定义<br>5.用管理员权限启动安全狗。</p>
+<h2 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h2><p>1.WAF（Web应用防火墙）是一种安全解决方案，旨在保护Web应用程序免受各种攻击，如SQL注入、跨站脚本（XSS）和命令执行等。然而，由于WAF通常基于正则表达式和预定义的规则集来检测攻击，因此存在被绕过的可能性。<br>2.WAF绕过方法总结，链接:<br><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15072903/4074643">WAF绕过方法总结_51CTO博客_如何绕过waf</a><br>3.安装了安全狗后，以sqli的第1关为例<br>输入<code>?id=1&#39; union select</code>,被安全狗的过滤规则检测到了<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703926489604-9c1db1db-d658-419e-8c86-4769d0d96022.png" alt="image.png"><br>4.打开Yakit软件，把第一关链接192.168.2.2&#x2F;sqli&#x2F;Less&#x2F;?id&#x3D;1复制到Yakit内置浏览器，然后抓包。<br>5.点击Fuzz，然后在下图位置插入字典。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703927865832-e7d97cc8-d142-480e-ae9c-58453e4c949b.png" alt="image.png"><br>6.字典中添加如下内容<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704091196967-1b6ad3ce-fc70-4816-95a7-914469d17e7b.png" alt="image.png"><br>7.点击发送请求，1,2行数据报错，原因是字典中的空格没有编码。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704091317501-59a742e3-933d-4fa4-b207-6adf649c2352.png" alt="image.png"><br>8.给空格编码%20后，1，2行数据没有报错了。响应大小为5276说明被安全狗拦截了。4~8整个过程被称为模糊测试。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704091836408-6b5ba193-d829-452b-84ac-3a819cbbe172.png" alt="image.png"></p>
+<p>9.在12345处插入6位验证码<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704092850626-f66efa29-7940-4091-a927-1207860dfe92.png" alt="image.png"><br>10.得到我们需要的payloads<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704093298003-42fd35f4-ff58-4816-aab3-b0d09e84435b.png" alt="image.png"><br>11.把之前的12345换成00044<br>12.输入以下代码：<br><code>?id=0&#39;union/*//*//*!00044select*/1,/*//*/!00044database*//*//*//*!00044()*/,3-- -</code><br>结果成功绕过安全狗：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704093728644-e0d33e6f-b6a1-4357-a42d-a38e18f24af2.png" alt="image.png"></p>
+<h2 id="SQL注入Oracle数据库"><a href="#SQL注入Oracle数据库" class="headerlink" title="SQL注入Oracle数据库"></a>SQL注入Oracle数据库</h2><p>1.访问靶场网站，链接：<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/all-labs">https://portswigger.net/web-security/all-labs</a>    注册并登录<br>2.第一关，右键翻译网页，溶液代表答案，然后访问实验室。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704096500832-6383d77a-1822-484a-bc9c-a0537242ffae.png#averageHue=%23fbf8f6&clientId=ud97d2098-215c-4&from=paste&height=877&id=uf96c988a&originHeight=877&originWidth=1129&originalType=binary&ratio=1&rotation=0&showTitle=false&size=131118&status=done&style=none&taskId=ua9172af0-2cf5-4be1-b2d3-40b6ec41f22&title=&width=1129" alt="image.png"><br>3.在地址栏输入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter?category=%27+OR+1=1--</span><br></pre></td></tr></table></figure>
+
+<p>成功注入，结果如下:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704097664693-eaf05e4f-57b5-4ea4-8520-ef490c5c8679.png" alt="image.png"></p>
+<p>3.第二关，是SQL注入登录框  username填administrator’–，密码是随机的，填1<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704098378506-87a87d3b-cbe1-4c77-b406-c39f80a7f377.png" alt="image.png"></p>
+<p>成功注入，结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704098169171-41e3c47d-77a8-4780-bbef-7d4fabf0ef8b.png" alt="image.png"></p>
+<h2 id="Burp的安装与使用"><a href="#Burp的安装与使用" class="headerlink" title="Burp的安装与使用"></a>Burp的安装与使用</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>1.下载并安装Burp抓包软件（半汉化版），官网链接：<a target="_blank" rel="noopener" href="https://portswigger.net/burp">https://portswigger.net/burp</a><br>2.cmd打开这个路径<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099517933-ca05e238-4f50-46e5-a61c-672dfb2bf9cf.png" alt="image.png"><br>3.在命令窗口输入<code>Java -vision</code>确认java版本是java19<br>再输入<code>java -jar burp-loader-keygen-2_1_06.jar</code>然后会弹出下面的窗口<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099918098-4560d7e0-6f8d-4082-ab16-dbeaa56809ea.png" alt="image.png"><br>4.然后再双击汉化启动。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099987988-6c2f6504-bbc1-4feb-b1fb-55c2d69c3f8c.png" alt="image.png"><br>5.把左边的License复制到右边，点击下一步&#x3D;&gt;手动激活。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704100090794-9822c05b-cac7-4b5c-ae09-8efafe815648.png" alt="image.png"><br>6.过程1：把右边内容复制到左边<br> 过程2：把左边下方内容复制到右边下方<br>点击下一个，激活成功<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704100270809-953b141b-b872-4df5-adcb-93610018d4ab.png" alt="image.png"></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>1.sqli第一关，用Burp抓包。依次点击Proxy–&gt;intercept–&gt;打开内置浏览器–&gt;复制第一关的链接粘贴到内置浏览器–&gt;HTTP history–&gt;对应的数据包<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704100894006-a526597e-2688-40b2-a763-995a0f90cb74.png" alt="image.png"><br>2.用Burp爆破。右击数据包–&gt;发送到repeat<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704101529865-2dc05e81-8d1b-42df-98bc-96ce3ee02698.png" alt="image.png" style="zoom:80%;" />3.    1-50迭代。右击数据包–&gt;发送到intruder     （intruder是爆破器 ）选择1–&gt;添加<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704101973577-46b49ac2-6ccc-4b8a-a5d4-96c488729f8d.png" alt="image.png"><br>4.点击Payloads–&gt;Payloads  type选择Numbers–&gt;1  50  1–&gt;点击发送<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704102160879-12f3da70-3151-418b-b89b-913f8d34bcf4.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记23" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -863,83 +932,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;</span><br><span class="line">&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">&lt;label for=&quot;upload&quot;&gt;上传你的头像&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;file&quot; id=&quot;upload&quot; type=&quot;file&quot; &gt;</span><br><span class="line">&lt;label for=&quot;submit&quot;  &gt;文件上传&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;submit&quot; id=&quot;submit&quot; type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;h1&gt;下面是接收到的文件&lt;/h1&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&#x27;;</span><br><span class="line">header(&#x27;Content-Type: text/html; charset=utf-8&#x27;);</span><br><span class="line">if(isset($_FILES[&quot;file&quot;]))&#123;</span><br><span class="line">    $upload_dir = &quot;uploads&quot;;</span><br><span class="line">    $file_name = $_FILES[&quot;file&quot;][&quot;name&quot;];</span><br><span class="line">    $file_type = $_FILES[&quot;file&quot;][&quot;type&quot;];</span><br><span class="line">    $file_size = $_FILES[&quot;file&quot;][&quot;size&quot;];</span><br><span class="line">    $file_tmp = $_FILES[&quot;file&quot;][&quot;tmp_name&quot;];</span><br><span class="line">    $target_path = $upload_dir.&#x27;/&#x27;.$file_name;</span><br><span class="line">    if (move_uploaded_file($file_tmp, $target_path))&#123;</span><br><span class="line">        echo &quot;上传成功&quot;.&quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件类型: &quot; . $file_type . &quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件大小: &quot; . ($file_size / 1024) . &quot; kB&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件存储的位置: &quot; . $target_path;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        echo &quot;上传失败&quot;.&quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">	echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo &quot;&lt;img src=&#x27;./$target_path.&#x27;&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533932378-558e04a2-28a6-4504-a756-4f754d3d7b42.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记14" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/14/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B014/" class="article-date">
-      <time datetime="2023-12-14T06:09:08.000Z" itemprop="datePublished">2023-12-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/14/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B014/">postman、phpstudy安装，php基本语法，php连接数据库</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-postman、phpstudy安装"><a href="#一-postman、phpstudy安装" class="headerlink" title="一.postman、phpstudy安装"></a>一.postman、phpstudy安装</h2><p>1.由于数据绑定，数据交互在这个阶段不适合去学习，就直接转到了后端学习。下载安装postman,Postman是一款常用的API测试工具，它提供了一个用户友好的界面，可以帮助开发人员更加方便地发送HTTP请求并查看响应结果，以便于测试和调试API接口。链接：<a target="_blank" rel="noopener" href="https://www.postman.com/">https://www.postman.com/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702385016305-e10bd786-5e2c-477c-a526-b7d92375dd53.png" alt="image.png"><br>2.下载phpstudy,链接：<a target="_blank" rel="noopener" href="https://www.xp.cn/">https://www.xp.cn/</a>   然后把这个软件复制到虚拟机win10hei，最后安装<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702385661733-fc4fe7dd-d851-4628-a60b-2ff1fb41a7c6.png" alt="image.png"></p>
-<h2 id="二-php基本语法"><a href="#二-php基本语法" class="headerlink" title="二.php基本语法"></a>二.php基本语法</h2><p>1.开启Apache2.4.39和MySQL5.7.26<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702385948034-25cd2416-0be3-4eb0-9103-8fb67083714b.png" alt="Image.png"><br>2.点击网站，再点击高级设置，开启目录索引。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702386176329-034e71fa-1b83-4c4c-b60d-26d057f4e760.png" alt="Image.png"><br>3.点击管理，打开根目录，删除第二张图下的四个文件<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702386312283-2213bc21-fca1-4727-a0e9-d3d0e1760cdc.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702386266153-327832f2-e12b-44ba-8feb-4f1e1a15986f.png" alt="Image.png"><br>4.在物理机创建一个文本文档并重命名为Index.php,用vscode打开，输入以下代码并保存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;123&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>把这个文件复制到phpstudy的根目录下，然后打开网站<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702387512170-a4d0ef7a-b8c9-413b-9813-8cbae5ec70d5.png" alt="Image.png"><br><strong>注意：apache只能在根目录下解析</strong><br>5.php语法<br>（1）变量与变量之间用 . 隔开。  变量与符号之间用 . 隔开    符号与符号之间用 . 隔开<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702387728662-1d17884c-e8a1-431e-be59-61ac75953523.png" alt="image.png"><br>（2）弱类型匹配：指的是在进行变量之间的操作（比如赋值、运算等）时，PHP会自动进行类型转换，以使得操作可以顺利进行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702387889226-19c008b4-a1fa-422c-aff0-c6acf767fe32.png" alt="Image.png"><br>（3）强类型匹配：全等符 “&#x3D;&#x3D;&#x3D;” 是用来进行强类型匹配的。它与双等符 “&#x3D;&#x3D;” 的区别在于，它不仅比较值是否相等，还比较数据类型是否相同。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$a = 5;</span><br><span class="line">$b = &quot;5&quot;;</span><br><span class="line"></span><br><span class="line">if ($a === $b) &#123;</span><br><span class="line">    echo &quot;相等&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    echo &quot;不相等&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>上述代码中，由于 $a 和 $b 的数据类型不同，即便它们的值相等，也会被视为不相等，因此这段代码将会输出 “不相等”。<br>（4）输入下图代码：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702390484049-03f10f71-a427-4ca6-8357-baf6f7e8d72f.png" alt="Image.png"><br>在phpstudy的打开网站的地址栏输入  ？a&#x3D;1433223结果为:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702390620728-f6fdc0a8-f2df-4e7f-9177-131d1603f246.png" alt="Image.png"><br>（5）问题1：假设在笼子里有头数为8的动物，总共有22只脚。<br>        写出代码如下：<br>        <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702391329336-1757f42a-305f-4ba3-9304-62ad5f3d22b9.png" alt="Image.png"><br>         结果：<br>         <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702391487270-b0684bb4-0bc3-4b93-9fa8-d112b56a03c9.png" alt="image.png"></p>
-<pre><code>    问题2：n张5毛，y张1块，z张10块，t张50，x张100，问我手上一共有156钱，一共有多少种组合，满足我手上的钱。
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function countCombinations($totalAmount) &#123;</span><br><span class="line">    $combinations = 0;</span><br><span class="line">    for ($n = 0; $n &lt;= $totalAmount / 0.5; $n++) &#123;</span><br><span class="line">        for ($y = 0; $y &lt;= $totalAmount / 1; $y++) &#123;</span><br><span class="line">            for ($z = 0; $z &lt;= $totalAmount / 10; $z++) &#123;</span><br><span class="line">                for ($t = 0; $t &lt;= $totalAmount / 50; $t++) &#123;</span><br><span class="line">                    for ($x = 0; $x &lt;= $totalAmount / 100; $x++) &#123;</span><br><span class="line">                        if (($n * 0.5 + $y * 1 + $z * 10 + $t * 50 + $x * 100) == $totalAmount) &#123;</span><br><span class="line">                            $combinations++;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return $combinations;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$totalAmount = 156;</span><br><span class="line">$result = countCombinations($totalAmount);</span><br><span class="line">echo &quot;满足条件的组合数量为：&quot;.$result;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三-php连接数据库"><a href="#三-php连接数据库" class="headerlink" title="三.php连接数据库"></a>三.php连接数据库</h2><p>1.在主机创建link.php文件，并将其复制到phpstudy的根目录，以下的是用到的函数<br>  isset（）判断传参是否正确<br>  trim（）  把字符串中所有空格去掉<br>2.在虚拟机下载navicat软件，打开软件，点击连接。填写下图的参数，密码：root ，新建连接con1。连接mysql数据库。下载老师的sqli.zip,复制到虚拟机phpstudy的根目录并解压。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702392460652-1dbf6bb4-08c6-4fc5-897c-4162239a7856.png" alt="image.png"><br>右击con1,新建数据库security,，把老师发的security.sql中的代码复制到新建的s数据库security，运行。出现以下四个表<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702396058892-f8e6d2c1-8c2b-41b3-afee-7d50173d4232.png" alt="image.png"><br>3.连接mysql数据库的步骤如下：<br>（1）在虚拟机win10hei的C:\phpstudy_pro\Extensions\MySQL5.7.26\bin的路径，输入cmd，配置命令。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">use mysql;</span><br><span class="line">update user set Host=&#x27;%&#x27; where User=&#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702393359910-444ed64e-c97d-4ee6-8c43-6d3e7b448b24.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702393676620-fc0cbc61-8fed-46a6-aa26-c4b0be300eaa.png" alt="Image.png"><br>apache在根目录下解析,生成网站，apache通过php解析，PHP运行在网站上<br>（2）在vscode的index.php文件写入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=&quot;/&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    &lt;!-- 文本输入框 --&gt;</span><br><span class="line">    &lt;label for=&quot;name&quot;&gt;用户名:&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;</span><br><span class="line"></span><br><span class="line">    &lt;br&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 密码输入框 --&gt;</span><br><span class="line">    &lt;label for=&quot;password&quot;&gt;密码:&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; required&gt;</span><br><span class="line"></span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;!-- 提交按钮 --&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在link.php文件写入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&#x27;content-type: text/html; charset=utf-8&#x27;);</span><br><span class="line"></span><br><span class="line">$u=&quot;admin1&quot;;</span><br><span class="line">$p=&quot;admin1&quot;;</span><br><span class="line">$link=mysqli_connect(&quot;127.0.0.1&quot;,&quot;root&quot;,&quot;root&quot;,&quot;security&quot;)or exit(&quot;Error connecting&quot;);</span><br><span class="line">  mysqli_query($link,&quot;set names utf8&quot;);</span><br><span class="line">  $sql=&quot;select * from users  where username=&#x27;$u&#x27; and password=&#x27;$p&#x27;&quot;;</span><br><span class="line">  $result=mysqli_query($link,$sql);</span><br><span class="line">  $row=mysqli_fetch_array($result);</span><br><span class="line">  echo &#x27;Your Login name:&#x27;.$row[&#x27;username&#x27;].&quot;&lt;br&gt;&quot;;</span><br><span class="line">  echo &#x27;Your  Password:&#x27;.$row[&#x27;password&#x27;];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>（3）把这两个文件复制到phpstudy的根目录保存,打开网站，在from表单输入姓名和密码，提交。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702396568690-fb64f298-eae6-4db1-8f88-af3854dcfaab.png" alt="image.png"><br>出现以下结果：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702396628150-36341ce9-9252-46c4-8e2b-a4e7eddaa535.png" alt="Image.png"><br>成功了。</p>
 
       
     </div>
