@@ -262,6 +262,78 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记15" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/14/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B015/" class="article-date">
+      <time datetime="2023-12-14T06:17:43.000Z" itemprop="datePublished">2023-12-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/14/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B015/">PHP跳转页面，PHP写评论区和文件上传框</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-PHP跳转页面"><a href="#一-PHP跳转页面" class="headerlink" title="一.PHP跳转页面"></a>一.PHP跳转页面</h2><p>1.cookie和session的区别<br>Cookie数据存储在本地，session在服务器下发cookie<br>2.首先，创建并编写index.php  ,  link.php,  zhuye.php三个文件并用vscode打开。先编写index.php文件，用from表单写一个简单的登录页面。代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;?php header(&#x27;Content-Type: text/html; charset=utf-8&#x27;);?&gt;</span><br><span class="line"></span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;汗流浃背了&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form method=&quot;post&quot; action=&quot;link.php&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;用户名&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; &gt;&lt;/td&gt;&lt;/tr&gt;&lt;br&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;密码&amp;nbsp&amp;nbsp&amp;nbsp&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; &gt;&lt;/td&gt;&lt;/tr&gt;&lt;br&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;checkbox&quot;name=&quot;remeber&quot; value=&quot;yes&quot; &gt;记住密码&lt;/td&gt;&lt;br&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;submit&quot; name=&quot;submit&quot;  value=&quot;提交&quot; &gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;reset&quot;   value=&quot;重置&quot; &gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3.再编写link.php，用于连接数据库。用session存储index.php传递过来的用户名和密码<br>然后在数据库中查询是否存在该用户名和密码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&#x27;content-type: text/html; charset=utf-8&#x27;);</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">if(isset($_POST[&#x27;submit&#x27;]))&#123;</span><br><span class="line">    $u = trim($_POST[&#x27;username&#x27;]);</span><br><span class="line">    $p = trim($_POST[&#x27;password&#x27;]);</span><br><span class="line"> $link=mysqli_connect(&quot;127.0.0.1&quot;,&quot;root&quot;,&quot;root&quot;,&quot;security&quot;)or exit(&quot;Error connecting&quot;);</span><br><span class="line">      mysqli_query($link,&quot;set names utf8&quot;);</span><br><span class="line">  $sql=  &quot;select * from users where username=&#x27;$u&#x27; and password=&#x27;$p&#x27;&quot;;</span><br><span class="line">  $result=mysqli_query($link, $sql) ;</span><br><span class="line">  if(mysqli_num_rows($result)&gt;=1)&#123;</span><br><span class="line">        $_SESSION[&#x27;user&#x27;]=$u;       </span><br><span class="line">        setcookie(&#x27;password&#x27;,$p,time()+7*12*60*60);</span><br><span class="line">        header(&#x27;Location:zhuye.php&#x27;);</span><br><span class="line">        exit();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &#x27;用户名或密码错误!请重新输入!&#x27;;</span><br><span class="line">		//sleep(3);</span><br><span class="line">		echo &#x27;&lt;h1&gt;&lt;a href=&quot;./index.php&quot;&gt;返回&lt;/a&gt;&lt;/h1&gt;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4.编写 zhuye.php,传递数据库对应的用户名并显示。然后实现用户注销的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">header(&#x27;Content-Type: text/html; charset=utf-8&#x27;);</span><br><span class="line"></span><br><span class="line">if(isset($_SESSION[&#x27;user&#x27;]))&#123;</span><br><span class="line">	echo &#x27;当前登录用户:&#x27;.$_SESSION[&#x27;user&#x27;].&#x27;&#x27;; </span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if (isset($_GET[&#x27;logout&#x27;])) &#123;</span><br><span class="line">    // 清除会话数据</span><br><span class="line">    session_unset();</span><br><span class="line">    session_destroy();</span><br><span class="line">    echo &quot;您已成功注销。&lt;br&gt;&quot;;</span><br><span class="line">	header(&#x27;Location:index.php&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &#x27;&lt;h1&gt;&lt;a href=&quot;?logout=true&quot;&gt;注销&lt;/a&gt;&lt;/h1&gt;&#x27;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line">echo &#x27;错误!&#x27;;</span><br><span class="line">header(&#x27;Location:index.php&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533754028-987090e7-37f6-4657-a464-0840383139fd.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533813498-778c26c5-716f-4c69-8646-f9e434d80953.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533856093-d60c12af-4786-408b-97a8-49d059b7f072.png" alt="Image.png"></p>
+<h2 id="二-PHP写评论区和文件上传框"><a href="#二-PHP写评论区和文件上传框" class="headerlink" title="二.PHP写评论区和文件上传框"></a>二.PHP写评论区和文件上传框</h2><p>1.创建并编写comment.php,先用from表单的textarea写一个评论区。右击虚拟机的navicat.exe的之前创的数据库security，新建数据表security,把用户输入的评论插入到security数据库的数据表comments。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702524986431-b3c47b78-8c75-42d2-b442-546de11d4f37.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .ab &#123;</span><br><span class="line">            color:blue;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form method=&quot;post&quot; action=&quot;&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;comment&quot;&gt;发表评论&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">        &lt;textarea name=&quot;comment&quot; id=&quot;comment&quot; rows=&quot;10&quot; cols=&quot;80&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">        &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交评论&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;h1 class=&quot;ab&quot;&gt;历史评论&lt;/h1&gt;</span><br><span class="line">    &lt;?php</span><br><span class="line">    if ($_SERVER[&#x27;REQUEST_METHOD&#x27;] == &#x27;POST&#x27;) &#123;</span><br><span class="line">        if (isset($_POST[&#x27;comment&#x27;]) &amp;&amp; !empty($_POST[&#x27;comment&#x27;])) &#123;</span><br><span class="line">            $comment = $_POST[&#x27;comment&#x27;];</span><br><span class="line">            $link = mysqli_connect(&quot;localhost&quot;, &quot;root&quot;, &quot;root&quot;, &quot;security&quot;) or exit(&quot;数据库连接失败！&quot;);</span><br><span class="line">            mysqli_query($link, &quot;set names utf8&quot;);</span><br><span class="line">            $ChaRu = &quot;insert INTO comments (comment) VALUES(&#x27;$comment&#x27;)&quot;;</span><br><span class="line">            if (mysqli_query($link, $ChaRu)) &#123;</span><br><span class="line">                echo &quot;&lt;p&gt;你的评论已成功保存到数据库。&lt;/p&gt;&quot;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                echo &quot;&lt;p style=&#x27;color: red;&#x27;&gt;保存评论时出错。&lt;/p&gt;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            mysqli_close($link);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 显示最近的20条评论</span><br><span class="line">    $link = mysqli_connect(&quot;localhost&quot;, &quot;root&quot;, &quot;root&quot;, &quot;security&quot;) or exit(&quot;数据库连接失败！&quot;);</span><br><span class="line">    mysqli_query($link, &quot;set names utf8&quot;);</span><br><span class="line"></span><br><span class="line">    $query = &quot;SELECT * FROM comments ORDER BY id DESC LIMIT 20&quot;;    </span><br><span class="line">    $result = mysqli_query($link, $query);</span><br><span class="line"></span><br><span class="line">    if ($result) &#123;</span><br><span class="line">        echo &quot;&lt;h2&gt;最近的评论&lt;/h2&gt;&quot;;</span><br><span class="line">        while ($row = mysqli_fetch_assoc($result)) &#123;</span><br><span class="line">            echo &quot;&lt;p&gt;&#123;$row[&#x27;comment&#x27;]&#125;&lt;/p&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo &quot;&lt;p style=&#x27;color: red;&#x27;&gt;获取评论时出错。&lt;/p&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mysqli_close($link);</span><br><span class="line">    ?&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.创建并编写upload.php,再创建upload文件夹，存储用户上传的文件，把index.php， link.php,  zhuye.php，comment.php，upload文件夹复制到phpstudy的根目录下，启动apache和mysql，打开网站，登录，输入评论，上传头像。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;</span><br><span class="line">&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">&lt;label for=&quot;upload&quot;&gt;上传你的头像&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;file&quot; id=&quot;upload&quot; type=&quot;file&quot; &gt;</span><br><span class="line">&lt;label for=&quot;submit&quot;  &gt;文件上传&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;submit&quot; id=&quot;submit&quot; type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;h1&gt;下面是接收到的文件&lt;/h1&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&#x27;;</span><br><span class="line">header(&#x27;Content-Type: text/html; charset=utf-8&#x27;);</span><br><span class="line">if(isset($_FILES[&quot;file&quot;]))&#123;</span><br><span class="line">    $upload_dir = &quot;uploads&quot;;</span><br><span class="line">    $file_name = $_FILES[&quot;file&quot;][&quot;name&quot;];</span><br><span class="line">    $file_type = $_FILES[&quot;file&quot;][&quot;type&quot;];</span><br><span class="line">    $file_size = $_FILES[&quot;file&quot;][&quot;size&quot;];</span><br><span class="line">    $file_tmp = $_FILES[&quot;file&quot;][&quot;tmp_name&quot;];</span><br><span class="line">    $target_path = $upload_dir.&#x27;/&#x27;.$file_name;</span><br><span class="line">    if (move_uploaded_file($file_tmp, $target_path))&#123;</span><br><span class="line">        echo &quot;上传成功&quot;.&quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件类型: &quot; . $file_type . &quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件大小: &quot; . ($file_size / 1024) . &quot; kB&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件存储的位置: &quot; . $target_path;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        echo &quot;上传失败&quot;.&quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">	echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo &quot;&lt;img src=&#x27;./$target_path.&#x27;&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533932378-558e04a2-28a6-4504-a756-4f754d3d7b42.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记14" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -913,77 +985,6 @@
 
 <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701869852940-bd77b4b2-0c1f-43cd-b2e3-85831460b788.png" alt="图片.png" style="zoom:50%;" />
 
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记05" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/" class="article-date">
-      <time datetime="2023-12-05T15:03:17.000Z" itemprop="datePublished">2023-12-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/05/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B005/">介绍路由，代理和OSI模型，VMware workstation，wireshark</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-静态路由和动态路由"><a href="#一-静态路由和动态路由" class="headerlink" title="一. 静态路由和动态路由"></a>一. 静态路由和动态路由</h2><p>1.静态路由：必须由管理员手工指定<br> 动态路由：自动生成，指明下一跳是谁，自动协商最优解。<br>2.dhcp(动态主机配置协议），是一个网络管理协议，用于自动为网络中的设备分配IP地址，以及配置其他相关网络信息，如子网掩码、默认网关和DNS服务器地址。它在TCP&#x2F;IP网络中广泛使用，极大地简化了网络管理员的工作。<br>3.静态ip和动态ip    Ip相同时，静态ip的优先级高于动态ip<br> 静态ip设置好后，设置动态ip,动态ip一定上不了网<br> 动态ip设置好后，设置静态ip,动态ip可能上不了网</p>
-<h2 id="二-代理和OSI模型"><a href="#二-代理和OSI模型" class="headerlink" title="二.代理和OSI模型"></a>二.代理和OSI模型</h2><p>1.socks5： tcp&#x2F;ip的数据都可以走<br>2.OSI模型介绍： OSI （Open System Interconnect）模型全称为开放式通信系统互连参考模型，是国际标准化组织 ( ISO ) 提出的一个试图使各种计算机在世界范围内互连为网络的标准框架。</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702206485972-a7b05fda-4162-46a7-99b0-bb6cfb3d5395.png" alt="图片.png"></p>
-<p>用户使用qq在应用层发送数据，通过一系列的数据加密，传送到物理层，数据在物理层通过一系列的数据解密，发送到另一个用户的qq。<br>注意： ping不能走socks5<br>3.子网掩码含义：子网掩码(subnet mask)又叫<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E6%8E%A9%E7%A0%81/7862514?fromModule=lemma_inlink">网络掩码</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9C%B0%E5%9D%80%E6%8E%A9%E7%A0%81/8623995?fromModule=lemma_inlink">地址掩码</a>、子网络遮罩，它用来指明一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IP%E5%9C%B0%E5%9D%80/0?fromModule=lemma_inlink">IP地址</a>的哪些位标识的是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>所在的子网，以及哪些位标识的是主机的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702200418355-b325b79e-80b1-4a17-ac89-69ebbc995811.png" alt="图片.png"><br>地址块1发送请求给路由器，路由器之间通过路由表发生交互，对应起地址块2的ip地址，实现连通。<br>4.路由表组成：源IP，源MAC,目的IP，目的MAC<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204074238-5710e8eb-dc13-4cd7-8097-4eb6fd6a1620.png" alt="图片.png">pc1把物理地址和ip地址发送给交换机，由交换机转发到路由器1，路由器1通过路由表对应，把数据发送到路由器2，路由器2通过路由表发送到pc2,实现连通。</p>
-<h2 id="三-VMware-workstation"><a href="#三-VMware-workstation" class="headerlink" title="三. VMware workstation"></a>三. VMware workstation</h2><p>1.利用驱动使用硬件设备,官网可以下载驱动<br>2.虚拟机连接外部网络<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204686868-146f57f9-5dda-4663-8d8c-b7a473206ea6.png" alt="图片.png" style="zoom:67%;" /></p>
-<p>3.地址装换nat</p>
-<p>pc2和pc3能ping通pc1,但pc1不能ping通pc2,pc3<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702204937620-3916e1d6-b5ae-4b18-8791-a8ab037780c2.png" alt="图片.png" style="zoom:67%;" /></p>
-<p>4.三种网络模式<br>（1）桥接: 网络设备（如无线路由器、虚拟机管理程序等）在连接不同网络 段时的一种操作方式<br>（2）仅主机：断网<br>（3）nat: 是一种网络地址转换技术，它在IP数据包通过路由器或防火墙时修改这些数据包的源或目的地址。<br>5.浏览器把所有请求发给猫（代理）的本地端口，再发送出去<br>6.ssh通过代理出去<br> （1）下载proxifier,链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B4%8B%E8%91%B1/ProxifierSetup.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B4%8B%E8%91%B1/ProxifierSetup.exe</a><br>（2）编辑代理服务器，地址填127.0.0.1，端口填自己的clash的端口<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701781641490-21043bc4-7e78-475b-a6bc-4b70300bc2c5.png" alt="图片.png" style="zoom:67%;" /><br>（3）编辑代理规则<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782167254-ba54eb49-b8dc-469c-888b-4c241a45b65a.png" alt="图片.png">                                              （4）重新启动 proxifier，win+r,cmd,输入命令ssh  <a href="mailto:&#114;&#111;&#111;&#116;&#64;&#49;&#x2e;&#x31;&#x2e;&#x31;&#46;&#49;">&#114;&#111;&#111;&#116;&#64;&#49;&#x2e;&#x31;&#x2e;&#x31;&#46;&#49;</a> ,观察 proxifier的变化<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701781875612-5d3dc995-8f1d-42e5-b278-1a19f57a7237.png" alt="图片.png"><br>（5）在ssh<em>后面加steam</em>,打开steam，可以打开steam社区的创意工坊。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782230382-9820d816-f9b2-4d70-85d4-1730cc6e6ac9.png" alt="图片.png"><br>7.下载武器库Maye，链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/Maye%201.2.6-20211001%E6%AD%A6%E5%99%A8%E5%BA%93%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.zip">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/Maye%201.2.6-20211001%E6%AD%A6%E5%99%A8%E5%BA%93%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.zip</a></p>
-<ol start="8">
-<li>tcp三次握手，四次挥手<br>（1）TCP三次握手（建立连接）<br> SYN：客户端发送一个SYN（synchronize）标志的TCP段到服务器，以开始新的连接。这个段中包含客户端的初始序列号，用于同步序列号。<br> SYN-ACK：服务器收到客户端的SYN后，会发送一个包含服务器初始序列号的SYN段，并且将确认号设置为客户端序列号加1（即ACK）。这个响应同时包含了SYN和ACK标志。<br> ACK：客户端收到服务器的SYN-ACK后，会发送一个ACK段作为响应，其中的确认号是服务器序列号加1。此时，客户端到服务器的单向连接就建立好了；当服务器收到这个ACK段后，服务器到客户端的单向连接也建立好了。至此，双向连接建立完成。</li>
-</ol>
-<p>（2）TCP四次挥手（断开连接）<br>    FIN：当客户端完成数据发送任务后，它需要发送一个FIN（finish）标志的TCP段给服务器，表示客户端没有数据要发送了，请求关闭连接。<br>    ACK：服务器收到这个FIN后，会发送一个ACK段作为响应，确认号为客户端的序列号加1。此时，客户端到服务器方向的连接被关闭，但服务器如果还有数据要发送，可以继续发送。<br>    FIN：服务器发送完所有数据后，它也需要发送一个FIN段给客户端，请求关闭从服务器到客户端的连接。<br>    ACK：客户端收到服务器的FIN后，发送一个ACK段作为响应，确认号为服务器的序列号加1。经过一段时间等待（称为TIME_WAIT）之后，以确保服务器收到最终的ACK，客户端关闭连接。</p>
-<h2 id="三-网络分析工具wireshark的使用"><a href="#三-网络分析工具wireshark的使用" class="headerlink" title="三.网络分析工具wireshark的使用"></a>三.网络分析工具wireshark的使用</h2><ol>
-<li>下载网络分析工具wireshark ，链接：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/Wireshark-win64-3.0.0%E4%B8%AD%E6%96%87%E7%89%88.exe">http://192.168.2.6:5244/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/Wireshark-win64-3.0.0%E4%B8%AD%E6%96%87%E7%89%88.exe</a><br>（1）抓网卡的包<br>（2）DNS发送的数据包大小一般是78bit</li>
-<li>wireshark过滤规则，源ip过滤，目的ip过滤<br>3.（1）在wireshark先选择WLAN<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701782900551-7a6b8dc0-d8bc-49a9-867e-db75312bc8e4.png" alt="图片.png"><br>（2）然后点蓝色按钮开启抓包 注意，右边的矩形是停止抓包<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701783020186-05266205-d101-4013-b6da-9819915adc96.png" alt="图片.png"><br>下图是在物理机win+r,cmd,  Ping 同桌的ip地址所抓的包，在绿色框输入icmp过滤<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701783137906-5fa8e0c5-7aef-4299-92d0-2978f201e3aa.png" alt="图片.png"></li>
-</ol>
 
       
     </div>
