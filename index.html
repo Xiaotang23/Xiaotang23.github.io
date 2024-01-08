@@ -952,13 +952,13 @@
 </ol>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703773921659-cc02d845-4a59-4a1f-98aa-ad996f44354a.png" alt="image.png"></p>
 <h3 id="常见绕过"><a href="#常见绕过" class="headerlink" title="常见绕过"></a>常见绕过</h3><p>   详细SQL注入绕过技术见链接：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1849607">https://cloud.tencent.com/developer/article/1849607</a></p>
-<h2 id="Sqlmap的Tamper脚本"><a href="#Sqlmap的Tamper脚本" class="headerlink" title="Sqlmap的Tamper脚本"></a>Sqlmap的Tamper脚本</h2><h3 id="1-Tamper脚本的介绍："><a href="#1-Tamper脚本的介绍：" class="headerlink" title="1.Tamper脚本的介绍："></a>1.Tamper脚本的介绍：</h3><p>它允许用户在执行SQL注入攻击时对 payload（攻击载荷）进行修改，以绕过目标服务器的防护机制，如WAF（Web Application Firewall）或IDS（Intrusion Detection System）。这些防护系统通常会检测和过滤掉某些特定的关键字或模式，以防止恶意攻击。Tamper脚本对payload进行转换或编码，使其能够逃避这些检测。</p>
-<h3 id="2-Sqlmap常用命令（面试考）"><a href="#2-Sqlmap常用命令（面试考）" class="headerlink" title="2.Sqlmap常用命令（面试考）"></a>2.Sqlmap常用命令（面试考）</h3><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703774560959-2550790a-2d02-4e02-b7da-de1dbb8ee384.png" alt="Image.png"></p>
-<h3 id="3-Sqlmap跑sqli-labs-26a关"><a href="#3-Sqlmap跑sqli-labs-26a关" class="headerlink" title="3.Sqlmap跑sqli-labs 26a关"></a>3.Sqlmap跑sqli-labs 26a关</h3><p>在vscode中新建1.py  并在它中编写26a关的Tamper脚本，将其复制到kali机的&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;  的目录下。在kali的命令窗口运行以下命令;</p>
+<h2 id="Sqlmap的Tamper脚本"><a href="#Sqlmap的Tamper脚本" class="headerlink" title="Sqlmap的Tamper脚本"></a>Sqlmap的Tamper脚本</h2><h3 id="Tamper脚本的介绍："><a href="#Tamper脚本的介绍：" class="headerlink" title="Tamper脚本的介绍："></a>Tamper脚本的介绍：</h3><p>它允许用户在执行SQL注入攻击时对 payload（攻击载荷）进行修改，以绕过目标服务器的防护机制，如WAF（Web Application Firewall）或IDS（Intrusion Detection System）。这些防护系统通常会检测和过滤掉某些特定的关键字或模式，以防止恶意攻击。Tamper脚本对payload进行转换或编码，使其能够逃避这些检测。</p>
+<h3 id="Sqlmap常用命令（面试考）"><a href="#Sqlmap常用命令（面试考）" class="headerlink" title="Sqlmap常用命令（面试考）"></a>Sqlmap常用命令（面试考）</h3><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703774560959-2550790a-2d02-4e02-b7da-de1dbb8ee384.png" alt="Image.png"></p>
+<h3 id="Sqlmap跑sqli-labs-26a关"><a href="#Sqlmap跑sqli-labs-26a关" class="headerlink" title="Sqlmap跑sqli-labs 26a关"></a>Sqlmap跑sqli-labs 26a关</h3><p>在vscode中新建1.py  并在它中编写26a关的Tamper脚本，将其复制到kali机的&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;  的目录下。在kali的命令窗口运行以下命令;</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.2.2/sqli/Less-26a/?id=1&quot; -p id --dbms=MySQL --tamper=&quot;1.py&quot; --dbs --batch</span><br></pre></td></tr></table></figure>
 
 <p>成功爆出数据库<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703775172152-497ec8a3-68f9-4164-b79c-473774736168.png" alt="Image.png"></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+
       
     </div>
     
