@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Tangxianshen" />
+
+
+
+<meta name="description" content="一.PHP跳转页面1.cookie和session的区别Cookie数据存储在本地，session在服务器下发cookie2.首先，创建并编写index.php  ,  link.php,  zhuye.php三个文件并用vscode打开。先编写index.php文件，用from表单写一个简单的登录页面。代码如下： 12345678910111213141516171819202122232425">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP跳转页面，PHP写评论区和文件上传框">
+<meta property="og:url" content="http://example.com/2023/12/14/PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%EF%BC%8CPHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一.PHP跳转页面1.cookie和session的区别Cookie数据存储在本地，session在服务器下发cookie2.首先，创建并编写index.php  ,  link.php,  zhuye.php三个文件并用vscode打开。先编写index.php文件，用from表单写一个简单的登录页面。代码如下： 12345678910111213141516171819202122232425">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533754028-987090e7-37f6-4657-a464-0840383139fd.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533813498-778c26c5-716f-4c69-8646-f9e434d80953.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533856093-d60c12af-4786-408b-97a8-49d059b7f072.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702524986431-b3c47b78-8c75-42d2-b442-546de11d4f37.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533932378-558e04a2-28a6-4504-a756-4f754d3d7b42.png">
+<meta property="article:published_time" content="2023-12-14T06:17:43.000Z">
+<meta property="article:modified_time" content="2023-12-14T06:21:49.673Z">
+<meta property="article:author" content="Tangxianshen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533754028-987090e7-37f6-4657-a464-0840383139fd.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>PHP跳转页面，PHP写评论区和文件上传框 | Hexo</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/R-C.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/R-C.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-PHP跳转页面，PHP写评论区和文件上传框" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/14/PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%EF%BC%8CPHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86/" class="article-date">
+      <time datetime="2023-12-14T06:17:43.000Z" itemprop="datePublished">2023-12-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP跳转页面，PHP写评论区和文件上传框
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-PHP跳转页面"><a href="#一-PHP跳转页面" class="headerlink" title="一.PHP跳转页面"></a>一.PHP跳转页面</h2><p>1.cookie和session的区别<br>Cookie数据存储在本地，session在服务器下发cookie<br>2.首先，创建并编写index.php  ,  link.php,  zhuye.php三个文件并用vscode打开。先编写index.php文件，用from表单写一个简单的登录页面。代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;?php header(&#x27;Content-Type: text/html; charset=utf-8&#x27;);?&gt;</span><br><span class="line"></span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;汗流浃背了&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form method=&quot;post&quot; action=&quot;link.php&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;用户名&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; &gt;&lt;/td&gt;&lt;/tr&gt;&lt;br&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;密码&amp;nbsp&amp;nbsp&amp;nbsp&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; &gt;&lt;/td&gt;&lt;/tr&gt;&lt;br&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;checkbox&quot;name=&quot;remeber&quot; value=&quot;yes&quot; &gt;记住密码&lt;/td&gt;&lt;br&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;submit&quot; name=&quot;submit&quot;  value=&quot;提交&quot; &gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;reset&quot;   value=&quot;重置&quot; &gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3.再编写link.php，用于连接数据库。用session存储index.php传递过来的用户名和密码<br>然后在数据库中查询是否存在该用户名和密码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&#x27;content-type: text/html; charset=utf-8&#x27;);</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">if(isset($_POST[&#x27;submit&#x27;]))&#123;</span><br><span class="line">    $u = trim($_POST[&#x27;username&#x27;]);</span><br><span class="line">    $p = trim($_POST[&#x27;password&#x27;]);</span><br><span class="line"> $link=mysqli_connect(&quot;127.0.0.1&quot;,&quot;root&quot;,&quot;root&quot;,&quot;security&quot;)or exit(&quot;Error connecting&quot;);</span><br><span class="line">      mysqli_query($link,&quot;set names utf8&quot;);</span><br><span class="line">  $sql=  &quot;select * from users where username=&#x27;$u&#x27; and password=&#x27;$p&#x27;&quot;;</span><br><span class="line">  $result=mysqli_query($link, $sql) ;</span><br><span class="line">  if(mysqli_num_rows($result)&gt;=1)&#123;</span><br><span class="line">        $_SESSION[&#x27;user&#x27;]=$u;       </span><br><span class="line">        setcookie(&#x27;password&#x27;,$p,time()+7*12*60*60);</span><br><span class="line">        header(&#x27;Location:zhuye.php&#x27;);</span><br><span class="line">        exit();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &#x27;用户名或密码错误!请重新输入!&#x27;;</span><br><span class="line">		//sleep(3);</span><br><span class="line">		echo &#x27;&lt;h1&gt;&lt;a href=&quot;./index.php&quot;&gt;返回&lt;/a&gt;&lt;/h1&gt;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4.编写 zhuye.php,传递数据库对应的用户名并显示。然后实现用户注销的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">header(&#x27;Content-Type: text/html; charset=utf-8&#x27;);</span><br><span class="line"></span><br><span class="line">if(isset($_SESSION[&#x27;user&#x27;]))&#123;</span><br><span class="line">	echo &#x27;当前登录用户:&#x27;.$_SESSION[&#x27;user&#x27;].&#x27;&#x27;; </span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if (isset($_GET[&#x27;logout&#x27;])) &#123;</span><br><span class="line">    // 清除会话数据</span><br><span class="line">    session_unset();</span><br><span class="line">    session_destroy();</span><br><span class="line">    echo &quot;您已成功注销。&lt;br&gt;&quot;;</span><br><span class="line">	header(&#x27;Location:index.php&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &#x27;&lt;h1&gt;&lt;a href=&quot;?logout=true&quot;&gt;注销&lt;/a&gt;&lt;/h1&gt;&#x27;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line">echo &#x27;错误!&#x27;;</span><br><span class="line">header(&#x27;Location:index.php&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533754028-987090e7-37f6-4657-a464-0840383139fd.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533813498-778c26c5-716f-4c69-8646-f9e434d80953.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533856093-d60c12af-4786-408b-97a8-49d059b7f072.png" alt="Image.png"></p>
+<h2 id="二-PHP写评论区和文件上传框"><a href="#二-PHP写评论区和文件上传框" class="headerlink" title="二.PHP写评论区和文件上传框"></a>二.PHP写评论区和文件上传框</h2><p>1.创建并编写comment.php,先用from表单的textarea写一个评论区。右击虚拟机的navicat.exe的之前创的数据库security，新建数据表security,把用户输入的评论插入到security数据库的数据表comments。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702524986431-b3c47b78-8c75-42d2-b442-546de11d4f37.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .ab &#123;</span><br><span class="line">            color:blue;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form method=&quot;post&quot; action=&quot;&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;comment&quot;&gt;发表评论&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">        &lt;textarea name=&quot;comment&quot; id=&quot;comment&quot; rows=&quot;10&quot; cols=&quot;80&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">        &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交评论&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;h1 class=&quot;ab&quot;&gt;历史评论&lt;/h1&gt;</span><br><span class="line">    &lt;?php</span><br><span class="line">    if ($_SERVER[&#x27;REQUEST_METHOD&#x27;] == &#x27;POST&#x27;) &#123;</span><br><span class="line">        if (isset($_POST[&#x27;comment&#x27;]) &amp;&amp; !empty($_POST[&#x27;comment&#x27;])) &#123;</span><br><span class="line">            $comment = $_POST[&#x27;comment&#x27;];</span><br><span class="line">            $link = mysqli_connect(&quot;localhost&quot;, &quot;root&quot;, &quot;root&quot;, &quot;security&quot;) or exit(&quot;数据库连接失败！&quot;);</span><br><span class="line">            mysqli_query($link, &quot;set names utf8&quot;);</span><br><span class="line">            $ChaRu = &quot;insert INTO comments (comment) VALUES(&#x27;$comment&#x27;)&quot;;</span><br><span class="line">            if (mysqli_query($link, $ChaRu)) &#123;</span><br><span class="line">                echo &quot;&lt;p&gt;你的评论已成功保存到数据库。&lt;/p&gt;&quot;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                echo &quot;&lt;p style=&#x27;color: red;&#x27;&gt;保存评论时出错。&lt;/p&gt;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            mysqli_close($link);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 显示最近的20条评论</span><br><span class="line">    $link = mysqli_connect(&quot;localhost&quot;, &quot;root&quot;, &quot;root&quot;, &quot;security&quot;) or exit(&quot;数据库连接失败！&quot;);</span><br><span class="line">    mysqli_query($link, &quot;set names utf8&quot;);</span><br><span class="line"></span><br><span class="line">    $query = &quot;SELECT * FROM comments ORDER BY id DESC LIMIT 20&quot;;    </span><br><span class="line">    $result = mysqli_query($link, $query);</span><br><span class="line"></span><br><span class="line">    if ($result) &#123;</span><br><span class="line">        echo &quot;&lt;h2&gt;最近的评论&lt;/h2&gt;&quot;;</span><br><span class="line">        while ($row = mysqli_fetch_assoc($result)) &#123;</span><br><span class="line">            echo &quot;&lt;p&gt;&#123;$row[&#x27;comment&#x27;]&#125;&lt;/p&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo &quot;&lt;p style=&#x27;color: red;&#x27;&gt;获取评论时出错。&lt;/p&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mysqli_close($link);</span><br><span class="line">    ?&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.创建并编写upload.php,再创建upload文件夹，存储用户上传的文件，把index.php， link.php,  zhuye.php，comment.php，upload文件夹复制到phpstudy的根目录下，启动apache和mysql，打开网站，登录，输入评论，上传头像。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;</span><br><span class="line">&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">&lt;label for=&quot;upload&quot;&gt;上传你的头像&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;file&quot; id=&quot;upload&quot; type=&quot;file&quot; &gt;</span><br><span class="line">&lt;label for=&quot;submit&quot;  &gt;文件上传&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;submit&quot; id=&quot;submit&quot; type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;h1&gt;下面是接收到的文件&lt;/h1&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&#x27;;</span><br><span class="line">header(&#x27;Content-Type: text/html; charset=utf-8&#x27;);</span><br><span class="line">if(isset($_FILES[&quot;file&quot;]))&#123;</span><br><span class="line">    $upload_dir = &quot;uploads&quot;;</span><br><span class="line">    $file_name = $_FILES[&quot;file&quot;][&quot;name&quot;];</span><br><span class="line">    $file_type = $_FILES[&quot;file&quot;][&quot;type&quot;];</span><br><span class="line">    $file_size = $_FILES[&quot;file&quot;][&quot;size&quot;];</span><br><span class="line">    $file_tmp = $_FILES[&quot;file&quot;][&quot;tmp_name&quot;];</span><br><span class="line">    $target_path = $upload_dir.&#x27;/&#x27;.$file_name;</span><br><span class="line">    if (move_uploaded_file($file_tmp, $target_path))&#123;</span><br><span class="line">        echo &quot;上传成功&quot;.&quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件类型: &quot; . $file_type . &quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件大小: &quot; . ($file_size / 1024) . &quot; kB&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;文件存储的位置: &quot; . $target_path;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        echo &quot;上传失败&quot;.&quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">	echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo &quot;&lt;img src=&#x27;./$target_path.&#x27;&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702533932378-558e04a2-28a6-4504-a756-4f754d3d7b42.png" alt="image.png"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2023/12/14/PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%EF%BC%8CPHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86/">PHP跳转页面，PHP写评论区和文件上传框</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
+        <p><span>Created:</span>2023-12-14, 14:17:43</p>
+        <p><span>Updated:</span>2023-12-14, 14:21:49</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2023/12/14/PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%EF%BC%8CPHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86/" title="PHP跳转页面，PHP写评论区和文件上传框">http://example.com/2023/12/14/PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%EF%BC%8CPHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86/</a>
+            <span class="copy-path" data-clipboard-text="From http://example.com/2023/12/14/PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%EF%BC%8CPHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2023/12/17/%E7%94%A8vue%E5%86%99%E7%BD%91%E9%A1%B5/">
+                    用vue写网页
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2023/12/14/postman%E3%80%81phpstudy%E5%AE%89%E8%A3%85%EF%BC%8Cphp%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%8Cphp%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                    postman、phpstudy安装，php基本语法，php连接数据库
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">一.PHP跳转页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-PHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86"><span class="toc-number">2.</span> <span class="toc-text">二.PHP写评论区和文件上传框</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"PHP跳转页面，PHP写评论区和文件上传框　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2023/12/17/%E7%94%A8vue%E5%86%99%E7%BD%91%E9%A1%B5/" title="Pre: 用vue写网页">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2023/12/14/postman%E3%80%81phpstudy%E5%AE%89%E8%A3%85%EF%BC%8Cphp%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%8Cphp%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" title="Next: postman、phpstudy安装，php基本语法，php连接数据库">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/%E6%95%99%E8%82%B2SRC%E5%88%86%E6%9E%90,%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%BC%8F%E6%B4%9E/">教育SRC分析,弱口令漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%8C%E5%B0%8F%E7%B1%B3%E8%8C%83%E7%9A%84%E4%BD%BF%E7%94%A8/">信息收集，小米范的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/%E5%9F%BA%E4%BA%8E%E8%A1%A8%E5%8D%95%E7%9A%84%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%8CBurp,Yakit%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E9%AA%8C%E8%AF%81%E7%A0%81%E7%BB%95%E8%BF%87%EF%BC%8C%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BAmoneybox/">基于表单的暴力破解，Burp,Yakit的使用，验证码绕过，攻破靶机moneybox</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%AD%90%E5%9F%9F%E5%90%8D%E8%8E%B7%E5%8F%96%EF%BC%8C%E7%99%BE%E5%BA%A6%E5%92%8C%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E8%AF%AD%E6%B3%95/">域名，子域名获取，百度和谷歌搜索语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/06/%E6%B8%97%E9%80%8F%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%20,web%E6%89%93%E7%82%B9%EF%BC%8C%E9%9D%B6%E6%9C%BA%E6%94%BB%E7%A0%B4/">渗透基本流程 ,web打点，靶机攻破</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/01/%E5%AE%89%E5%85%A8%E7%8B%97%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%8CWAF%E7%BB%95%E8%BF%87%EF%BC%8CSQL%E6%B3%A8%E5%85%A5Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8CBurp%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">安全狗的安装，WAF绕过，SQL注入Oracle数据库，Burp的安装与使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/01/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%EF%BC%8C%E7%BB%95%E8%BF%87%20,Tamper%E8%84%9A%E6%9C%AC/">宽字节注入，堆叠注入，绕过 ,Tamper脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/25/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%9B%B2%E6%B3%A8%E5%9E%8B,%E6%8A%A5%E9%94%99%E5%9E%8B%EF%BC%8Cpostman%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/">SQL注入之盲注型,报错型，postman软件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/25/%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E5%AE%9E%E4%BE%8B,%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8,%E6%8E%A7%E5%88%B6%E7%BD%91%E7%AB%99,sqlmap%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82/">布尔盲注实例,时间盲注,控制网站,sqlmap工具的使用。</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/23/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%81%94%E5%90%88%E5%9E%8B/">SQL注入之联合型</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/23/axios%E5%92%8Capi.php%E7%9A%84%E4%BD%BF%E7%94%A8/">axios和api.php的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/17/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/17/%E7%94%A8vue2%E5%86%99%E7%BD%91%E9%A1%B5/">用vue2写网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/17/%E7%94%A8vue%E5%86%99%E7%BD%91%E9%A1%B5/">用vue写网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/14/PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%EF%BC%8CPHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86/">PHP跳转页面，PHP写评论区和文件上传框</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/14/postman%E3%80%81phpstudy%E5%AE%89%E8%A3%85%EF%BC%8Cphp%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%8Cphp%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">postman、phpstudy安装，php基本语法，php连接数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/12/form%E8%A1%A8%E5%8D%95%EF%BC%8C%E5%86%99%E6%94%BF%E5%BA%9C%E7%BD%91%E9%A1%B5/">form表单，写政府网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/vue3%E7%9A%84%E4%BD%BF%E7%94%A8/">vue3的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E7%BC%96%E7%A0%81/">字符集和编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E5%AD%97%E5%85%B8/">字典</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E5%88%97%E8%A1%A8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8Cset%E9%9B%86%E5%90%88/">列表，元组，set集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5,%E5%AD%97%E7%AC%A6%E4%B8%B2/">循环语句,字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E7%AC%AC%E4%B8%80%E4%B8%AApython%E7%A8%8B%E5%BA%8F%EF%BC%8C%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%EF%BC%8Cif%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/">第一个python程序，用户交互，if条件判断</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/06/%E5%A4%8D%E7%9B%98Linux%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%92%8C%E5%B7%A5%E5%85%B7%EF%BC%8CHTML5%E4%BB%8B%E7%BB%8D,%E5%86%99%E4%B8%80%E4%B8%AA%E7%BD%91%E9%A1%B5/">复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/05/%E4%BB%8B%E7%BB%8D%E8%B7%AF%E7%94%B1%EF%BC%8C%E4%BB%A3%E7%90%86%E5%92%8COSI%E6%A8%A1%E5%9E%8B%EF%BC%8CVMware%20workstation%EF%BC%8Cwireshark/">介绍路由，代理和OSI模型，VMware workstation，wireshark</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/04/%E5%A4%8D%E7%9B%98%E4%B8%8A%E5%91%A8%E7%9F%A5%E8%AF%86&%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">复盘上周知识&网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/02/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%8Cssh%E7%99%BB%E5%BD%95/">Linux的基本命令，ssh登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/02/%E5%9C%A8%E7%89%A9%E7%90%86%E6%9C%BA%E4%B8%8B%E8%BD%BD%E8%BD%AF%E4%BB%B6%EF%BC%8C%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%EF%BC%8C%E9%AA%8C%E8%AF%81%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%92%8C%E6%9B%B4%E6%8D%A2%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98/">在物理机下载软件，利用github搭建hexo博客，验证图片上传和更换博客主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/02/%E7%A4%BE%E5%B7%A5%E5%BA%93%E6%9F%A5%E8%AF%A2%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%EF%BC%8C%E6%B0%B8%E6%81%92%E4%B9%8B%E9%BB%91%EF%BC%8C%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB%EF%BC%8Cflash%E6%8D%86%E7%BB%91%E6%9C%A8%E9%A9%AC%EF%BC%8C%E7%BD%91%E7%AB%99%E6%8F%92%E5%85%A5js%E7%BD%91%E9%A1%B5/">社工库查询个人信息，永恒之黑，钓鱼攻击，flash捆绑木马，网站插入js网页</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2024 Tangxianshen
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
