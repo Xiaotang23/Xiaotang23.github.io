@@ -262,6 +262,275 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-培训笔记19" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B019/" class="article-date">
+      <time datetime="2023-12-23T14:29:31.000Z" itemprop="datePublished">2023-12-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/23/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B019/">axios和api.php的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="axios的使用"><a href="#axios的使用" class="headerlink" title="axios的使用"></a>axios的使用</h2><p>1.在vscode创建index.php，导入index.js，vue.js，index.js，axios.min.js四个包<br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/zip/40675946/1702896649350-83e99bd5-f450-45df-b6bd-191782c72372.zip?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/zip/40675946/1702896649350-83e99bd5-f450-45df-b6bd-191782c72372.zip%22,%22name%22:%22html%E4%BD%BF%E7%94%A8vue%E6%9D%90%E6%96%99%E5%8C%85.zip%22,%22size%22:396254,%22ext%22:%22zip%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u83b244ba-1d15-4404-ac0b-95d567d07c7%22,%22taskType%22:%22upload%22,%22type%22:%22application/x-zip-compressed%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22ue688691f%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">html使用vue材料包.zip</a><br>2.（1）编写index.php，写入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./index.css&quot;&gt;</span><br><span class="line">    &lt;script src=&quot;./vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;login1&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;login2&quot;&gt;</span><br><span class="line">                &lt;i class=&quot;el-icon-reading&quot;&gt;&lt;/i&gt;</span><br><span class="line">                &lt;h1&gt;图书管理系统登录&lt;/h1&gt;</span><br><span class="line">                &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;userData.username&quot; clearable&gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;userData.password&quot; clearable show-password&gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;el-button type=&quot;primary&quot; @click=&quot;login&quot;&gt;登录&lt;/el-button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .el-icon-reading &#123;</span><br><span class="line">            font-size: 100px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .login2 &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            height: 20vh;</span><br><span class="line">            width: 20vw;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .login1 &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            flex-direction: column;</span><br><span class="line">            align-items: center;</span><br><span class="line">            background-image: url(./img/6.jpg);</span><br><span class="line">            background-repeat: no-repeat;</span><br><span class="line">            background-size: 100% 100%;</span><br><span class="line">            background-attachment: fixed;</span><br><span class="line">            width: 100vw;</span><br><span class="line">            height: 100vh;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;script src=&quot;./axios.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;./index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        new Vue(&#123;</span><br><span class="line">            el: &#x27;#app&#x27;,</span><br><span class="line">            data: function() &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    visible: false,</span><br><span class="line">                    userData: &#123;</span><br><span class="line">                        username: &#x27;&#x27;,</span><br><span class="line">                        password: &#x27;&#x27;,</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                login: function() &#123;</span><br><span class="line">                    axios.post(&#x27;http://192.168.17.128/api.php&#x27;, this.userData)</span><br><span class="line">                        .then((response) =&gt; &#123;</span><br><span class="line">                                console.log(response);</span><br><span class="line">                                if (response.data.includes(&#x27;success&#x27;)) &#123;</span><br><span class="line">                                    window.location.href = &quot;http://192.168.17.128/zhuye.php&quot;;</span><br><span class="line">                                &#125; else &#123;</span><br><span class="line">                                    this.open4();</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        )</span><br><span class="line">                &#125;,</span><br><span class="line">                open4: function() &#123;</span><br><span class="line">                    this.$notify.error(&#123;</span><br><span class="line">                        title: &#x27;错误&#x27;,</span><br><span class="line">                        message: &#x27;账号密码错误&#x27;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（2）45到78行使用了axios和数据绑定，我们来进行分析。代码创建了一个Vue实例并绑定到id为”app”的元素上。在data选项中定义了一些数据属性，包括visible、userData和其中的username和password属性。<br>在methods选项中定义了一个名为login的方法。该方法使用Axios发送一个POST请求到”<a target="_blank" rel="noopener" href="http://192.168.17.128/api.php%22%EF%BC%8C%E5%B9%B6%E4%BC%A0%E9%80%92userData%E4%BD%9C%E4%B8%BA%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8F%82%E6%95%B0%E3%80%82%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%EF%BC%8C%E9%80%9A%E8%BF%87%E5%88%A4%E6%96%AD%E8%BF%94%E5%9B%9E%E7%9A%84%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%22success%22%E6%9D%A5%E7%A1%AE%E5%AE%9A%E7%99%BB%E5%BD%95%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E3%80%82%E5%A6%82%E6%9E%9C%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%B0%86%E8%B7%B3%E8%BD%AC%E5%88%B0%22http://192.168.2.70/zhuye.php%22%EF%BC%9B%E5%A6%82%E6%9E%9C%E5%A4%B1%E8%B4%A5%EF%BC%8C%E5%B0%86%E8%B0%83%E7%94%A8open4%E6%96%B9%E6%B3%95%E3%80%82">http://192.168.17.128/api.php&quot;，并传递userData作为请求的参数。请求成功后，通过判断返回的响应数据中是否包含&quot;success&quot;来确定登录是否成功。如果成功，代码将跳转到&quot;http://192.168.2.70/zhuye.php&quot;；如果失败，将调用open4方法。</a><br>open4方法使用了Vue的$notify方法来显示一个错误通知，通知的标题是”错误”，内容是”账号密码错误”。</p>
+<h2 id="api-php的使用"><a href="#api-php的使用" class="headerlink" title="api.php的使用"></a>api.php的使用</h2><p>1.编写api.php,写入以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&quot;Access-Control-Allow-Origin: *&quot;);</span><br><span class="line">header(&quot;Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE&quot;);</span><br><span class="line">header(&quot;Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With&quot;);</span><br><span class="line">$link = mysqli_connect(&quot;192.168.17.128&quot;, &quot;root&quot;, &quot;root&quot;, &quot;security&quot;) or exit(json_encode([&#x27;error&#x27; =&gt; &#x27;数据库连接失败！&#x27;]));</span><br><span class="line">mysqli_query($link, &quot;set names utf8&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$requertPath = $_SERVER[&#x27;REQUEST_URI&#x27;];</span><br><span class="line">$requestMethod = $_SERVER[&#x27;REQUEST_METHOD&#x27;];</span><br><span class="line">if ($requertPath === &#x27;/api.php&#x27; &amp;&amp; $requestMethod === &#x27;POST&#x27;) &#123;</span><br><span class="line">    $inputJSON = file_get_contents(&quot;php://input&quot;);</span><br><span class="line">    $input = json_decode($inputJSON, true);</span><br><span class="line">    if ($input === null) &#123;</span><br><span class="line">        header(&#x27;HTTP/1.1 400 Bad Request&#x27;);</span><br><span class="line">        echo json_encode([&#x27;error&#x27; =&gt; &#x27;Invalid JSON&#x27;]);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line"></span><br><span class="line">        $username = $input[&#x27;username&#x27;];</span><br><span class="line">        $password = $input[&#x27;password&#x27;];</span><br><span class="line">        $sql = &quot;SELECT username, password FROM users WHERE username=&#x27;$username&#x27; and  password=&#x27;$password&#x27;LIMIT 0,1&quot;;</span><br><span class="line">        $result = mysqli_query($link, $sql);</span><br><span class="line">        if (mysqli_num_rows($result) &gt; 0) &#123;</span><br><span class="line">            echo &#x27;success&#x27;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            echo &#x27;账号和密码错误&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    header(&#x27;http/1.1 400 Bad Request&#x27;);</span><br><span class="line">    echo json_encode([&#x27;error&#x27; =&gt; &#x27;Invalid JSON&#x27;]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我们对这段代码进行分析：<br>（1）首先通过设置HTTP头部信息，允许跨域请求，这在前后端分离的项目中是非常常见的。<br>（2）使用mysqli_connect函数连接到MySQL数据库服务器，并选择名为”security”的数据库。如果连接失败，则会返回一个包含错误信息的JSON响应并退出程序。<br>（3）根据接收到的HTTP请求的路径和方法，判断是否为预期的接口路径和请求类型。如果是预期的POST请求，就从请求中获取JSON格式的数据，并解析为关联数组。<br>（4）如果解析JSON数据出错，返回400 Bad Request响应；否则，从接收到的数据中获取用户名和密码，并构造一个SQL查询语句，查询名为”users”的表中是否存在对应的用户名和密码记录。<br>（5）如果查询结果存在匹配的用户名和密码，则返回”success”字符串，表示登录成功；否则，返回”账号和密码错误”字符串，表示登录失败。在未收到预期的路径和请求方法时，同样返回400 Bad Request响应。<br>2.把index.php和api.php复制到虚拟机win10hei的phpstudy的根目录下，打开网站，点击登录，可以跳转到主页页面。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703340415039-2ff8e0a3-feb0-42c9-9f62-564858825c25.png" alt="图片2.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703340431465-a425e375-7478-4140-9748-ce946165134a.png" alt="图片1.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记18" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B018/" class="article-date">
+      <time datetime="2023-12-17T02:15:13.000Z" itemprop="datePublished">2023-12-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B018/">文件操作</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>1.找到这个文件，双击打开它<br>open(文件路径，mode&#x3D;””,encoding&#x3D;””)<br>mode:打开这个文件的目的是什么,分为读和写<br>pycharm里面创建的文件默认是UTF-8<br>文件路径:<br>      绝对路径:<br>      d:&#x2F;test1&#x2F;XXX.txt #这种路径不安全,可能不存在<br>      相对路径:相对你当前的程序而言你要找的文件在哪(相对于当前你的程序所在的文件夹)<br>       ..&#x2F;    表示上一次文件夹<br>mode:<br>       r  read(读取)</p>
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>用open打开文件路径不报错就说明打开成功，找文件一定要找到相对应的路径<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702217700254-8328f029-68c3-465c-bc0e-d02ca676bcd2.png" alt="image.png"><br>你代表你的程序，文代表文件，f相当于一个管道，mode决定了方向因为是读取，所以市场文件的方向出发到你的程序终止，为什么open的时候没有把整个文件全部加载到内存呢？因为对于该文件是没办法判断大小的<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702218263980-b15f1ba9-2a4f-4c0c-a5f5-317749359102.png" alt="image.png"><br>这里直接print(f.read()),直接输出资源.txt里面的内容<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702218546907-3107eb95-9281-49ae-960b-04bd26f2131e.png" alt="image.png"><br>centent&#x3D;f.read()#全部读取<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702218655474-82e96e1d-a098-444d-be86-c16f4d077c86.png" alt="image.png"><br>经过自我摸索write写的方法已经实践出来了<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702219051979-35544fe0-07a7-493b-90f7-dc1b65e753c8.png" alt="image.png"><br>结果如下：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702219132293-3afe7d03-7421-4ede-aab8-f35ef2ba20a2.png" alt="image.png"><br>readline这是一行一行的读取文本的内容，可以接着读取<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702219680159-f75e51b4-85de-4473-8f6c-f905e62a00f1.png" alt="image.png"></p>
+<p> strip可以消除字符串左右两端的空白。空格，换行符，制表符<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702220134813-08bb9ebd-33a7-4172-b849-aa1148c7af41.png" alt="image.png"><br>那用什么方法可以看到换行符呢？用readlines进行查看，此时输出的是一个数组<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702220321397-db7e971a-9b62-4873-b94e-3216c69828a1.png" alt="image.png"><br>readlines和f.read()都无法解决文件太大的问题，所以readline更加重要<br> 最重要的文本读取方式(必须掌握)<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702220963610-9e1168c4-7b60-42ab-b4a0-00cf92e16bfb.png" alt="image.png"></p>
+<h2 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h2><p>w:write(写入)，write可以创建在该文件路径没有的文件，例如，下面美女.txt是不存在的，当我输入这一段之后进行的是创建了这个美女.txt。<br>w模式下，如果文件不存在就会自动的创建一个文件。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702550796040-be9eee5e-b285-4355-b48d-014538361ad4.png" alt="image.png"><br>在美女txt中随便输入一些内容<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551391134-95e9295e-48eb-4a81-be3b-f2303797e329.png" alt="image.png"><br>再次运行发现文件清空:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551453613-aaca6a19-a80f-4dcb-a741-c3cc1e56fc8c.png" alt="image.png"><br>写入一个嘎嘎威在这个美女.txt中<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551546591-f918d816-f29a-410f-b481-662f52388df9.png" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/40666686/1702551609744-3830891f-5f59-45cb-b2b0-9f36553be65d.png#averageHue=%23f6f5f0&clientId=ua058a9ba-9a99-4&from=paste&height=81&id=u87f610f0&originHeight=101&originWidth=427&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=5816&status=done&style=none&taskId=ud0cab006-6f78-4684-8344-4fa374a4990&title=&width=341.6" alt="image.png"><br>写入之后记得进行close<br>左边是文件,右边是程序,进行调用插根管子.<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551717668-6f95d2e9-643c-416e-895c-15cccb4479a8.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702551867898-ff54fa1c-b511-48cd-a11c-e85275fa672c.png" alt="image.png"><br>案例:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702552518330-45a7735e-e71b-4333-ae54-2fe599cdebf5.png" alt="image.png"><br>可是发现一个问题就是写入之后数据是连在一起的<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702552624853-805f2b12-2aba-415c-85b4-10887c82a6d9.png" alt="image.png"><br>这需要进行换行,可以直接在lst[0]+”\n”:<br>也可以直接去在每一次输出的后面加上f.write(“\n”),也可以实现换行的效果.<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702552921079-b9d3a9cd-d343-41e5-b8cf-945426bb67f5.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553033397-3fc0dccc-16c9-4d55-a208-e3b9bb32c795.png" alt="image.png"><br>这个只是单个数据的输出,如果是多个数据那咋办?所以此时就需要用到for循环<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553277094-aea390e6-0c2f-4b6a-a413-d038e4b4b2d5.png" alt="image.png"><br>如果把f&#x3D;open(file&#x3D;”美女.txt”,mode&#x3D;”w”,encoding&#x3D;”utf-8”)放入到循环体中发现永远都是处于清空状态,只有最后一个数据写入时才有效果.此时发现只有赵敏和?.<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553441903-05bdd68b-6b5c-43dc-aeec-d1837eca2c3d.png" alt="image.png"><br>将管道放在循环体外就可以正常写入</p>
+<p>接着就是a模式:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553834877-6bb769e3-f4c8-4695-aace-3e66a98b4a66.png" alt="image.png"><br>此时输出结果为:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553885806-82a1d9c3-34f8-4324-a0c0-129753cbb89a.png" alt="image.png"><br>整个笔记为:<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553980783-8b82e9c8-a93b-415f-9cb0-393152fd7946.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记17" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B017/" class="article-date">
+      <time datetime="2023-12-17T01:16:31.000Z" itemprop="datePublished">2023-12-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B017/">用vue2写网页</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-引入按钮"><a href="#一-引入按钮" class="headerlink" title="一.引入按钮"></a>一.引入按钮</h2><p>1.访问element  zn-cn官网，链接：<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/installation">https://element.eleme.cn/#/zh-CN/component/installation</a>   引入样式和组件库<br>2.在左侧的菜单栏的安装，复制以下代码，在vscode中新建index.php文件，粘贴到index.php文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/element-ui/lib/theme-chalk/index.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;app&quot;&gt;                              //3,4行是body中的内容</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- import Vue before Element --&gt;</span><br><span class="line"> &lt;script src=&quot;https://unpkg.com/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"> &lt;!-- import JavaScript --&gt;</span><br><span class="line"> &lt;script src=&quot;https://unpkg.com/element-ui/lib/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">   new Vue(&#123;</span><br><span class="line">     el: &#x27;#app&#x27;,</span><br><span class="line">     data: function() &#123;</span><br><span class="line">       return &#123; visible: false &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3.在左侧的菜单栏找到button按钮，复制一个蓝色按钮的代码，粘贴到<div id="app"> </div>中。复制以下三个链接在浏览器打开，然后复制代码，新建index.css  vue.js    index.js，把代码对应粘贴到这三个文件，引入样式和组件库 。<br>1.<a target="_blank" rel="noopener" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">https://unpkg.com/element-ui/lib/theme-chalk/index.css</a><br>2.<a target="_blank" rel="noopener" href="https://unpkg.com/vue@2/dist/vue.js">https:&#x2F;&#x2F;unpkg.com&#x2F;vue@2&#x2F;dist&#x2F;vue.js</a><br>3.<a target="_blank" rel="noopener" href="https://unpkg.com/element-ui/lib/index.js">https://unpkg.com/element-ui/lib/index.js</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553518275-0506f334-7b1c-4fb0-8bce-e36dca6be611.png" alt="image.png"><br>4.右击index.php,在文件管理器中显示，复制上图四个文件，粘贴到虚拟机win10hei的PHPstudy的根目录下，ctrl+s保存，在phpstudy中打开网站，出现按钮。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553812206-166b195f-d1d8-4e62-9cf8-8cddb5e9cc12.png" alt="image.png"></p>
+<h2 id="二-制作网页"><a href="#二-制作网页" class="headerlink" title="二.制作网页"></a>二.制作网页</h2><p>1.仿照老师发的网页图，制作一个图书管理系统<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702553970138-a22c4747-e55a-4f5c-8dbb-fb1abb7a3447.png" alt="b93486f7a701fa3193a7a784f352c91.png"><br>2.因为还在编写网页，还未上传结果图</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702777105558-f4839df8-c2f9-46bc-a72a-8d0e2f846fdc.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702777169175-db788011-ec0b-4d59-9ee6-924fdb4b3491.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702777313628-c3d7544e-fcf2-4e66-9ba6-fc9d108fa1c2.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-培训笔记16" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B016/" class="article-date">
+      <time datetime="2023-12-17T01:13:41.000Z" itemprop="datePublished">2023-12-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/17/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B016/">用vue写网页</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-引入Element按钮，Container布局容器，菜单侧边栏"><a href="#一-引入Element按钮，Container布局容器，菜单侧边栏" class="headerlink" title="一.引入Element按钮，Container布局容器，菜单侧边栏"></a>一.引入Element按钮，Container布局容器，菜单侧边栏</h2><p>1.简单回顾vue的安装和创建项目。<br>2.访问Element官网。   链接：<a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/component/button.html">https://element-plus.org/zh-CN/component/button.html</a>  选择红色按钮，<br>复制红色按钮的代码到vscode的app.vue文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ElButton &#125; from &#x27;element-plus&#x27;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;el-button type=&quot;info&quot;&gt;Danger&lt;/el-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3.发现红色按钮位置是在正中间，是错误的。后来经过老师的提示，要把main.js文件中下列居中代码删掉。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702477935327-f9d694eb-44fc-46d6-8140-63ab3670947e.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;./assets/main.css&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>4.找到要用到的布局，先查看它的代码，再复制到app.vue。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702477982134-682e8b51-64a8-4a95-9d30-9f950184080b.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;common-layout&quot;&gt;</span><br><span class="line">   &lt;el-container&gt;</span><br><span class="line">     &lt;el-aside width=&quot;200px&quot;&gt;Aside&lt;/el-aside&gt;</span><br><span class="line">     &lt;el-container&gt;</span><br><span class="line">       &lt;el-header&gt;Header&lt;/el-header&gt;</span><br><span class="line">       &lt;el-main&gt;Main&lt;/el-main&gt;</span><br><span class="line">     &lt;/el-container&gt;</span><br><span class="line">   &lt;/el-container&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>5.找到要用到的菜单侧边栏，先查看它的代码，再复制到app.vue。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478014643-2c19b422-9987-4c66-a26b-05ed460f4661.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-row class=&quot;tac&quot;&gt;</span><br><span class="line">    &lt;el-col :span=&quot;12&quot;&gt;</span><br><span class="line">      &lt;h5 class=&quot;mb-2&quot;&gt;Default colors&lt;/h5&gt;</span><br><span class="line">      &lt;el-menu</span><br><span class="line">        default-active=&quot;2&quot;</span><br><span class="line">        class=&quot;el-menu-vertical-demo&quot;</span><br><span class="line">        @open=&quot;handleOpen&quot;</span><br><span class="line">        @close=&quot;handleClose&quot;</span><br><span class="line">      &gt;</span><br><span class="line">       </span><br><span class="line">        &lt;el-menu-item index=&quot;2&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;icon-menu /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Two&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;3&quot; disabled&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;document /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Three&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;4&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;setting /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Four&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">      &lt;/el-menu&gt;</span><br><span class="line">    &lt;/el-col&gt;</span><br><span class="line">    &lt;el-col :span=&quot;12&quot;&gt;</span><br><span class="line">      &lt;h5 class=&quot;mb-2&quot;&gt;Custom colors&lt;/h5&gt;</span><br><span class="line">      &lt;el-menu</span><br><span class="line">        active-text-color=&quot;#ffd04b&quot;</span><br><span class="line">        background-color=&quot;#545c64&quot;</span><br><span class="line">        class=&quot;el-menu-vertical-demo&quot;</span><br><span class="line">        default-active=&quot;2&quot;</span><br><span class="line">        text-color=&quot;#fff&quot;</span><br><span class="line">        @open=&quot;handleOpen&quot;</span><br><span class="line">        @close=&quot;handleClose&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;el-sub-menu index=&quot;1&quot;&gt;</span><br><span class="line">          &lt;template #title&gt;</span><br><span class="line">            &lt;el-icon&gt;&lt;location /&gt;&lt;/el-icon&gt;</span><br><span class="line">            &lt;span&gt;Navigator One&lt;/span&gt;</span><br><span class="line">          &lt;/template&gt;</span><br><span class="line">          &lt;el-menu-item-group title=&quot;Group One&quot;&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-1&quot;&gt;item one&lt;/el-menu-item&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-2&quot;&gt;item two&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-menu-item-group&gt;</span><br><span class="line">          &lt;el-menu-item-group title=&quot;Group Two&quot;&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-3&quot;&gt;item three&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-menu-item-group&gt;</span><br><span class="line">          &lt;el-sub-menu index=&quot;1-4&quot;&gt;</span><br><span class="line">            &lt;template #title&gt;item four&lt;/template&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-4-1&quot;&gt;item one&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-sub-menu&gt;</span><br><span class="line">        &lt;/el-sub-menu&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;2&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;icon-menu /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Two&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;3&quot; disabled&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;document /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Three&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;el-menu-item index=&quot;4&quot;&gt;</span><br><span class="line">          &lt;el-icon&gt;&lt;setting /&gt;&lt;/el-icon&gt;</span><br><span class="line">          &lt;span&gt;Navigator Four&lt;/span&gt;</span><br><span class="line">        &lt;/el-menu-item&gt;</span><br><span class="line">      &lt;/el-menu&gt;</span><br><span class="line">    &lt;/el-col&gt;</span><br><span class="line">  &lt;/el-row&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123;</span><br><span class="line">  Document,</span><br><span class="line">  Menu as IconMenu,</span><br><span class="line">  Location,</span><br><span class="line">  Setting,</span><br><span class="line">&#125; from &#x27;@element-plus/icons-vue&#x27;</span><br><span class="line">const handleOpen = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">const handleClose = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>6.在app.vue中删除下列代码的string</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const handleOpen = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br><span class="line">const handleClose = (key: string, keyPath: string[]) =&gt; &#123;</span><br><span class="line">  console.log(key, keyPath)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7.把span&#x3D;12改成span&#x3D;24，侧边栏span&#x3D;24表示占满      el-col :span&#x3D;”24”表示竖直方向占满<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702298169039-6bf73205-5c61-4b50-b56b-518fa680bfea.png" alt="image.png"><br>8.在侧边栏导入图标，复制代码在对应的用户管理，权限管理，商品管理，订单管理语句各自的前一行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478133938-4a3a0f16-2685-47d7-b5fc-2fa4e3f3f26c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702298662954-37b0eb22-a73f-4b8f-badd-6a21f1a55a4b.png" alt="image.png"></p>
+<h2 id="二-在el-header设置阴影，圆角边框"><a href="#二-在el-header设置阴影，圆角边框" class="headerlink" title="二.在el-header设置阴影，圆角边框"></a>二.在el-header设置阴影，圆角边框</h2><p>1.在el-header中创建styled-box1类。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299037715-c342f095-d463-419a-98bf-1b325dcfdd94.png" alt="image.png"><br> 在style创建styled-box1样式。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299210651-716ae9ad-d358-4049-82fe-ba1e0fdf90f0.png" alt="image.png"><br>2.CTRL+S保存，在终端输入npm run dev, 结果如下图<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702299408016-718c337f-2f6d-4c53-8f5f-db3ee347fe6f.png" alt="image.png"><br>3.引入搜索框input和搜索，添加用户两个按钮，注意el-row是行，el-col是列。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-row&gt;</span><br><span class="line">          &lt;el-col :span=&quot;4&quot;</span><br><span class="line">            &gt;&lt;el-input v-model=&quot;input&quot; placeholder=&quot;请输入搜索内容&quot;</span><br><span class="line">          /&gt;&lt;/el-col&gt;</span><br><span class="line">          &lt;el-col :span=&quot;2&quot;&gt;&lt;el-button type=&quot;success&quot;&gt;搜索&lt;/el-button&gt;&lt;/el-col&gt;</span><br><span class="line">          &lt;el-col :span=&quot;2&quot;&gt;   &lt;el-button type=&quot;success&quot;&gt;添加用户&lt;/el-button&gt;&lt;/el-col&gt;</span><br><span class="line">        &lt;/el-row&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702300021651-558624ba-d852-43da-aa59-4fad9e072223.png" alt="image.png"></p>
+<h2 id="三-引入表格和分页"><a href="#三-引入表格和分页" class="headerlink" title="三.引入表格和分页"></a>三.引入表格和分页</h2><p>1.找到表格，复制代码引入app.vue<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478209116-41c089fd-0661-4edf-a77a-0c4c56681425.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-table :data=&quot;tableData&quot; style=&quot;width: 100%&quot;&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;date&quot; label=&quot;Date&quot; width=&quot;180&quot; /&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;name&quot; label=&quot;Name&quot; width=&quot;180&quot; /&gt;</span><br><span class="line">    &lt;el-table-column prop=&quot;address&quot; label=&quot;Address&quot; /&gt;</span><br><span class="line">  &lt;/el-table&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">const tableData = [</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-03&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-02&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-04&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    date: &#x27;2016-05-01&#x27;,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    address: &#x27;No. 189, Grove St, Los Angeles&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.找到分页，引入分页<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478241936-99f04e0f-0a46-45ea-8cec-2849c886f97f.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-pagination</span><br><span class="line">    :page-size=&quot;20&quot;</span><br><span class="line">    :pager-count=&quot;11&quot;</span><br><span class="line">    layout=&quot;prev, pager, next&quot;</span><br><span class="line">    :total=&quot;1000&quot;</span><br><span class="line">  /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>刷新浏览器页面，最终的页面如下：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702478272976-d56c923e-07ad-4c65-a0c9-0ca9a971be3a.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-培训笔记15" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -664,327 +933,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dic= &#123;</span><br><span class="line">&quot;张三&quot;: &quot;高&quot;,</span><br><span class="line">&quot;李四&quot;: &quot;矮&quot;,</span><br><span class="line">&quot;王五&quot;: &quot;胖&quot;,</span><br><span class="line">&quot;王六&quot;: &quot;瘦&quot;,</span><br><span class="line">&#125;</span><br><span class="line">temp=[]</span><br><span class="line">for key in dic:</span><br><span class="line">    if key.startswith(&quot;王&quot;):</span><br><span class="line">        temp.append(key)</span><br><span class="line">for t in temp:</span><br><span class="line">    dic.pop(t)</span><br><span class="line">    </span><br><span class="line">print(dic)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702108729624-665cacff-b8e8-4301-b664-5844d8980f97.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记11" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/" class="article-date">
-      <time datetime="2023-12-10T01:38:52.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B011/">列表，元组，set集合</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-列表"><a href="#一-列表" class="headerlink" title="一.列表"></a>一.列表</h2><p>1.定义：能装东西的东西<br>2.在python中用[]表示列一个列表列表中的元素通过，隔开</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=[&quot;张三丰&quot;,&quot;张无忌&quot;,&quot;张绍刚&quot;,[1,2,3,True]]</span><br></pre></td></tr></table></figure>
-
-<p>3.特性：<br>（1）也像想字符串一样也有索引和切片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst=[&quot;马化腾&quot;,&quot;马云&quot;,&quot;雷军&quot;,&quot;任正非&quot;]</span><br><span class="line">print（lst[0]）</span><br><span class="line">print(lst[0:3])</span><br><span class="line">print(lst[::-1])</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702025581090-44508f8b-fb19-4600-917f-0af631351ba5.png" alt="图片.png"><br>（2）索引超过范围会报错<br>（3）可以用for循环进行遍历<br>（4）可以用len拿到列表的长度</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst=[&quot;马化腾&quot;,&quot;马云&quot;,&quot;雷军&quot;,&quot;任正非&quot;]</span><br><span class="line">for item in lst:</span><br><span class="line">print（item）</span><br><span class="line">print(len(lst))</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702026304717-cbd7ef70-8816-41f8-805d-76f743d69a4f.png" alt="图片.png"></p>
-<h2 id="二-列表的增删改查（重点）"><a href="#二-列表的增删改查（重点）" class="headerlink" title="二.列表的增删改查（重点）"></a>二.列表的增删改查（重点）</h2><p>1.向列表中添加内容  ** append（<strong>）和</strong>insert（）<strong>以及</strong>extend（）**</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lst=[]</span><br><span class="line">lst.append(&quot;华为&quot;)                       </span><br><span class="line">lst.append(&quot;小米&quot;)</span><br><span class="line">lst.append(&quot;苹果&quot;)</span><br><span class="line">lst.insert(0,&quot;vivo&quot;)                      //insert可以选择插入的位置</span><br><span class="line">lst.extend(&#x27;华为&#x27;,&#x27;小米&#x27;,&#x27;苹果&#x27;)           //extend可以批量的加</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702027505032-6ed7635c-d403-4ba6-8edd-0e423afdf42a.png" alt="图片.png"><br>2.删除列表中的内容**   pop（）  remve()**</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ret=lst.pop(3)</span><br><span class="line">print(lst)</span><br><span class="line">print(ret)</span><br><span class="line">lst.remove(&quot;小米&quot;)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702033913762-ae86bd90-3e7f-4d3b-9aa7-d64ca8a83606.png" alt="图片.png"><br>3.修改内容。   直接用索引级就可以进行修改操作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst[4]=&quot;三星&quot;</span><br><span class="line">print（lst）</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702034352927-766b531f-2f44-4bd6-bf94-39ab9550fb9e.png" alt="图片.png"><br>4.查询。直接用索引级就可以进行查询操作<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702034838083-ea2ecaa3-3266-4686-b302-0021c77b5fd8.png" alt="图片.png"><br>5.补充</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst.sort()             //对列表进行升序排序</span><br><span class="line">lst=[&quot;牛&quot;，&quot;羊&quot;，&quot;鸡&quot;，[&quot;狗&quot;，&quot;鹅&quot;，[&quot;鸭&quot;，&quot;马&quot;]]，&quot;猫&quot;]</span><br><span class="line">print(lst[3][2][1])     //列表的嵌套</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="三-元组"><a href="#三-元组" class="headerlink" title="三.元组"></a>三.元组</h2><p>1.tuple 元组，特点：不可变的列表。固定了某些数据，不允许外界修改。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t=(&quot;张无忌&quot;,&quot;赵敏&quot;,&quot;呵呵哒&quot;)</span><br><span class="line">t[0]=&quot;樵夫&quot;          ---报错</span><br></pre></td></tr></table></figure>
-
-<p>2.<strong>（1）元祖如果只有一个元素（*），需要在元素的末尾添加一个逗号</strong><br>**   （2）元祖的内存地址不能变**</p>
-<h2 id="四-set集合"><a href="#四-set集合" class="headerlink" title="四.set集合"></a>四.set集合</h2><p>1.s&#x3D;{1,2,4,3}<br>  set集合是无序的<br>2.输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s=&#123;1,2,3,&quot;呵呵&quot;,[]&#125;</span><br><span class="line">print(s)             ------报错unhashable type:&#x27;set&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>不可哈希：python中set集合进行数据存储时，要对数据进行哈希计算。根据计算出来的哈希值存储数据<br>可变的数据类型：list,dict,set<br>可哈希：不可变的数据类型：int,str,tuple,bool<br>3.输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">set集合元素的增加</span><br><span class="line">s=set()</span><br><span class="line">s.add(&quot;张三&quot;)</span><br><span class="line">s.add(&quot;李四&quot;)</span><br><span class="line">s.add(&quot;王五&quot;)</span><br><span class="line"></span><br><span class="line">set集合元素的删除</span><br><span class="line">s.remove(&quot;张三&quot;)</span><br><span class="line"></span><br><span class="line">set集合元素的修改</span><br><span class="line">s.remove(&quot;张三&quot;)</span><br><span class="line">s.add(&quot;小六&quot;)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1702044832079-01152cb9-eff2-4aea-806e-52359a4edc9f.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记10" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B010/" class="article-date">
-      <time datetime="2023-12-10T01:26:50.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B010/">循环语句,字符串</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-循环语句"><a href="#一-循环语句" class="headerlink" title="一.循环语句"></a>一.循环语句</h2><p>1.break和continue<br>（1）.break的作用：让当前这个循环立即停止<br>（2）.continue的作用：停止当前本次循环，继续执行下一次循环<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701613952137-c72b6d8b-d111-4b2d-ac19-77fee9982dd0.png" alt="图片.png"><br>2.for循环<br>2.1字符串是可迭代的<br>for 循环的语法：<br>   for 变量 in 可迭代的东西：<br>        代码<br>把可迭代的东西中的每一项内容拿出来，挨个的赋值给变量，每一次赋值都要执行一次循环体（dai）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701614950920-7e445c7b-a656-46cc-8d10-e6d44f8b22c2.png" alt="图片.png"></p>
-<p>2.2for循环想要计数，必须借助于range</p>
-<p>（1）range（n）:从0数到n,不包含n<br>（2）range(m,n):从m数到n,不包含n<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701790146767-cc00ca9f-ff80-4452-87bd-959d858010b0.png" alt="图片.png" style="zoom:50%;" /><br>（3）range(m,n,s):从m数到n,不包含n,每次的间隔是s<br>         <img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701791581991-b78c9866-6fd0-488b-9bc0-7747772163aa.png" alt="图片.png" style="zoom:33%;" /></p>
-<h2 id="二-字符串索引和切片"><a href="#二-字符串索引和切片" class="headerlink" title="二.字符串索引和切片"></a>二.字符串索引和切片</h2><p>索引：按位置提取图片     可以采用索引的方式提取某一个字符切片：从字符串中提取一部分内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;我要去长城&quot;</span><br><span class="line">print(s[3])                 //程序员从0开始数数</span><br><span class="line">print(s[-1])               //表示倒数第一个  </span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701792604990-abbc28e9-fbad-41a6-a3ac-9315d13c609f.png" alt="图片.png"><br>切片语法：1.s[start:end] 从start到end进行切片，但是取不到end<br>                 2.目前只能从左往右切片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;我要去长城,你呢，你要去天安门吗&quot;</span><br><span class="line">print(s[3])           //提取第三个字符，注意从0开始计数</span><br><span class="line">print(s[-1])          //提取倒数第一个字符</span><br><span class="line">print(s[3:6])         //提取第3个到第六个</span><br><span class="line">print(s[:5])          //提取前六个</span><br><span class="line">print(s[6:])          //从第六个开始提取</span><br><span class="line">print(s[:])           //提取全部</span><br><span class="line">print(s[-3:-1])       //倒数第三提取到到倒数第二，最后一个取不到</span><br><span class="line">print(s[-1:-3])       //没结果</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701861192617-b294caad-9631-41dc-935e-fc0336cdc69a.png" alt="图片.png" style="zoom:50%;" />
-
-<p> 3.可以给切片添加步长来控制切片的方向<br>4.s[start:end:step] 从start切到end,每step个元素出来一个元素<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863028474-8cf74e4b-6d11-493c-9fb1-b19f51e332af.png" alt="图片.png" style="zoom:50%;" /></p>
-<h2 id="三-字符串常规操作"><a href="#三-字符串常规操作" class="headerlink" title="三.字符串常规操作"></a>三.字符串常规操作</h2><p>1.字符串的操作一般不会原字符产生影响，一般返回一个新的字符串<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863408101-4faff75d-a959-4044-a9f6-a6915b2571da.png" alt="图片.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;I have a problem&quot;</span><br><span class="line">s1=s.title()</span><br><span class="line">print(s1)</span><br><span class="line">s1=s.lower()</span><br><span class="line">print(s1)</span><br><span class="line">s1=s.upper()</span><br><span class="line">print(s1)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701863920314-03e86144-ed9d-41f4-85d9-44a20366cd57.png" alt="图片.png"><br>2.忽略大小写进行判断</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701864270641-92eabaac-f549-406c-91f1-2298e1adaa17.png" alt="图片.png"></p>
-<h2 id="四-字符串切割与替换"><a href="#四-字符串切割与替换" class="headerlink" title="四.字符串切割与替换"></a>四.字符串切割与替换</h2><p>1.strip（） ,去掉字符串左右两端的空白符（空格，\t, \n）<br>2.replace（old，new），字符串替换<br>3.replace（“ ”，“”）&#x2F;去掉所有空格<br>4.split（用什么切割）字符串切割，用什么去切，就会损失掉谁。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;pyhton_c_c++_javaweb&quot;</span><br><span class="line">s1=s.split(&quot;_&quot;)</span><br><span class="line">print(s1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701871876733-07fd61ab-b3cc-4740-8b65-a1399cca230c.png" alt="图片.png"></p>
-<h2 id="五-字符串查找和判断"><a href="#五-字符串查找和判断" class="headerlink" title="五.字符串查找和判断"></a>五.字符串查找和判断</h2><p>1.查找，三种方式：find,index,in,not in输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;你好啊，我叫吴彦祖&quot;</span><br><span class="line">ret=s.find(&quot;吴彦祖12123&quot;)            //如果结果是-1则查找不到</span><br><span class="line">print(ret)</span><br><span class="line"></span><br><span class="line">ret=s.index(&quot;吴彦祖12312&quot;)           //如果报错则查找不到</span><br><span class="line">print(ret)</span><br><span class="line"></span><br><span class="line">print(&quot;吴彦祖12123&quot; in s)            //结果为false则查不到</span><br><span class="line">print(&quot;吴彦祖&quot; not in s)             //结果为flase则查不到</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701873569659-6652826c-4260-469e-a466-2685a9d182b3.png" alt="图片.png"><br>2.判断，startwith（）  判断字符串是否以xxx开头<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701875519140-6c8b4d72-81a3-4737-a391-6cb8a1bde4bf.png" alt="图片.png"></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701876011247-d181d976-4cc2-4c4b-a44b-797c86b745d9.png" alt="图片.png"></h2><h2 id="六-补充和总结"><a href="#六-补充和总结" class="headerlink" title="六.补充和总结"></a>六.补充和总结</h2><p>1.len（）显示字符串的长度<br>2.join（）拼接一个列表中的内容成为新字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s=&quot;hello,world!&quot;</span><br><span class="line">print(len(s))</span><br><span class="line">lst=[&quot;神舟一号&quot;,&quot;神舟二号&quot;,&quot;神舟三号&quot;,&quot;神舟四号&quot;]</span><br><span class="line">s=&quot;_&quot;.join(lst)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701956551310-5788d21e-05ba-4d04-a40b-edc94911cd4e.png" alt="图片.png"><br>3.%s——-字符串占位<br>  %d———-占位整数<br>  %f———-占位小数</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记09" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/" class="article-date">
-      <time datetime="2023-12-10T01:18:23.000Z" itemprop="datePublished">2023-12-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/10/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B009/">第一个python程序，用户交互，if条件判断</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-第一个python"><a href="#一-第一个python" class="headerlink" title="一.第一个python"></a>一.第一个python</h2><p>1.打开pycharm,右击文件夹，新建一个task3.py文件，输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print（&quot;hello!world&quot;）</span><br></pre></td></tr></table></figure>
-
-<p>2.点击运行<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701586196273-c2fe14bc-a74e-4001-9bb6-607e410eac13.png" alt="图片.png"><br>3.python注释</p>
-<p>​    单行注释</p>
-<p>   多行注释有两种方式              （1）  “”””            （2）‘ ’’<br>                                                        多行注释                多行注释<br>                                                         “”””                       ‘ ’’<br>4.装饰器的返回值问题<br>4.1通用装饰器的写法<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701592422626-8fd54359-d72e-41ac-b60e-8538909869a1.png" alt="图片.png"><br>5.常量<br>含义：可以把变量的字母变成大写的就可以认为常量。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701593880857-4852d27e-f728-40c0-a6e4-126928e1420e.png" alt="图片.png"></p>
-<h2 id="二-最简单的用户交互"><a href="#二-最简单的用户交互" class="headerlink" title="二.最简单的用户交互"></a>二.最简单的用户交互</h2><p>1.语法：变量&#x3D;input(提示语），首先会出现提示语，用户输入内容，然后把用户输入的内容传给变量。<br>想把xxx转化成谁，就用int套起来<br>字符串 str &#x3D;&gt;int  int(str)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=input(&quot;请输入第一个数字：&quot;)</span><br><span class="line">b=input(&quot;请输入第二个数字：&quot;)</span><br><span class="line">a=int(a)</span><br><span class="line">b=int(b)</span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701600871438-2cab81f5-5b34-4212-8978-80be7ed139fd.png" alt="图片.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-培训笔记06" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/" class="article-date">
-      <time datetime="2023-12-06T13:39:35.000Z" itemprop="datePublished">2023-12-06</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/06/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B006/">复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-复盘Linux命令"><a href="#一-复盘Linux命令" class="headerlink" title="一.复盘Linux命令"></a>一.复盘Linux命令</h2><ol>
-<li><p>127.0.0.1是本地回环地址</p>
-</li>
-<li><p>0.0.0.0  *    0.0.0.0 是一个特殊的 IP 地址，通常用于表示”未指定”或”任意”地址。在计算机网络中，它有几种不同的含义。</p>
-<p>（1）在 IPv4 地址中，0.0.0.0 通常用作未指定地址。在服务器中，当需要监听所有可用的网络接口时，可以将服务绑定到 0.0.0.0 地址。</p>
-<p>（2）在某些情况下，0.0.0.0 还可以表示”任意地址”，例如在路由表中指示默认路由。</p>
-</li>
-</ol>
-<p>3.打开虚拟机CentOS,安装网络命令和工具。输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools.x86_64 -y         安装网络命令</span><br><span class="line">yum -y install epel-release             安装软件源</span><br><span class="line">yum -y install vim                      安装编辑器</span><br><span class="line">yum install unzip -y                    安装unzip工具</span><br><span class="line">yum search wget -y(yum install wget)    搜索并安装wget工具</span><br><span class="line">yum install -y git                      安装Git版本控制工具</span><br><span class="line">yum install docker -y                   安装容器引擎</span><br><span class="line">yum -y install python-pip               安装python的pip包管理工具</span><br><span class="line">yum install -y docker-compose           安装用于定义和运行多个容器的工具</span><br><span class="line"></span><br><span class="line">yum -y install python-pip^c             安装python-pip包</span><br></pre></td></tr></table></figure>
-
-<h2 id="二-HTML5介绍"><a href="#二-HTML5介绍" class="headerlink" title="二.HTML5介绍"></a><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701866213572-dba507a2-78f1-40c0-84ea-2bba881fb4a6.png" alt="图片.png">二.HTML5介绍</h2><p>1.HTML:超文本标记语言5, HTML5 是最新的 HTML 标准，于2014年由万维网联盟（W3C）正式推出。HTML5 提供了许多新的功能和语义化标签，旨在改进 Web 开发体验并提供更丰富的内容。<br>2.打开vscode，新建1.html的文件， 输入 ！按tab键， 在<body></body>中输入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;b&lt;/b&gt;                              //加粗</span><br><span class="line">    &lt;i&gt;i&lt;/i&gt;                          //斜体</span><br><span class="line">    &lt;sup&gt;sup&lt;/sup&gt;                    //上标</span><br><span class="line">    </span><br><span class="line">                            //换行</span><br><span class="line">    &lt;sub&gt;sub&lt;/sub&gt;                    //下标</span><br><span class="line">    &lt;hr /&gt;                            //水平线</span><br><span class="line">    &lt;strong&gt;加粗&lt;/strong&gt;             //加粗</span><br><span class="line">    &lt;!--     --&gt;                     //注释 Ctrl+/</span><br><span class="line">&lt;em&gt;em&lt;/em&gt;                          //强调表示斜体</span><br><span class="line">    &lt;h1&gt;标题&lt;/h1&gt;                    //标题1</span><br><span class="line">    &lt;h6&gt;标题&lt;/h6&gt;                    //标题6</span><br><span class="line">    &lt;s&gt;sifuef&lt;/s&gt;                   //文字中下方有横线穿过</span><br><span class="line">    &lt;del&gt;del&lt;/del&gt;                  //删除</span><br><span class="line">    &lt;a href=&quot;https://home.firefoxchina.cn&quot;&gt;火狐&lt;/a&gt;          //超链接</span><br><span class="line">    &lt;img src=&quot;./1.jpg&quot; alt=&quot;1&quot;&gt;                             //引入图片</span><br><span class="line">    &lt;p&gt;老默，我想吃鱼了快去&lt;img src=&quot;./1.jpg&quot; width=&quot;50&quot; height=&quot;70&quot; alt=&quot;树&quot;&gt;钓几条鱼&lt;/p&gt;  //文字中引入图片</span><br><span class="line">      &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;4&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;5&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;6&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701867060599-47d73f04-c5fa-485c-8889-fe9ae5bb56dc.png" alt="图片.png" style="zoom:50%;" />
-
-
-
-
-
-<p>3.写一个from表单</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/submit-form&quot; method=&quot;post&quot;&gt;  </span><br><span class="line">        &lt;label for=&quot;name&quot;&gt;姓名：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;email&quot;&gt;电子邮件：&lt;/label&gt;  </span><br><span class="line">        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;label for=&quot;message&quot;&gt;留言：&lt;/label&gt;  </span><br><span class="line">        &lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;&lt;br&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;  </span><br><span class="line">      &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/image-20231206215421975.png" alt="image-20231206215421975"></p>
-<h2 id="三-写一个网页"><a href="#三-写一个网页" class="headerlink" title="三.写一个网页"></a>三.写一个网页</h2><p>1.新建2.html文件，输入以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;简单的网页布局&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #container &#123;</span><br><span class="line">            width: 600px;</span><br><span class="line">            text-align: center;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #header &#123;</span><br><span class="line">            height: 300px;</span><br><span class="line">            width: 500px;</span><br><span class="line">            background-color: aqua;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box02 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 200px;</span><br><span class="line">            background-color: burlywood;</span><br><span class="line">            float: left;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #box03 &#123;</span><br><span class="line">            height: 400px;</span><br><span class="line">            width: 300px;</span><br><span class="line">            float: left;</span><br><span class="line">            background-color: chartreuse;</span><br><span class="line">            margin-bottom: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;header&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是顶部盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box02&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第二个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;box03&quot;&gt;</span><br><span class="line">            &lt;p&gt;这是第三个盒子&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701869852940-bd77b4b2-0c1f-43cd-b2e3-85831460b788.png" alt="图片.png" style="zoom:50%;" />
-
 
       
     </div>
