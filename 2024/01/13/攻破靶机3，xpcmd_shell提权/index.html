@@ -15,26 +15,46 @@
 
 
 
-<meta name="description" content="day05一.Linux的基本命令1.下载CentOS-7-x86_64-Minimal-2009.iso镜像文件，链接为：http:&#x2F;&#x2F;192.168.2.6:5244&#x2F;d&#x2F;%E7%BD%91%E7%9B%98&#x2F;%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98&#x2F;%E9%95%9C%E5%83%8F%E5%A4%A7%E5%85%A8&#x2F;CentOS-7-x86_64-Min">
+<meta name="description" content="扫描端口1.下载AttackMachine镜像，打开AttackMachine虚拟机。打开桌面的武器库中的Nmap-Zenmap GUI，输入命令：nmap -p- 192.168.2.197 扫描目录打开御剑后台扫描工具，在域名处输入http：&#x2F;&#x2F;192.168.2.197:27689&#x2F;  开始扫描 登录文件上传系统1.在武器库的浏览器访问192.168.2.197">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux的基本命令，ssh登录">
-<meta property="og:url" content="http://example.com/2023/12/02/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%8Cssh%E7%99%BB%E5%BD%95/index.html">
+<meta property="og:title" content="攻破靶机3，xpcmd_shell提权">
+<meta property="og:url" content="http://example.com/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="day05一.Linux的基本命令1.下载CentOS-7-x86_64-Minimal-2009.iso镜像文件，链接为：http:&#x2F;&#x2F;192.168.2.6:5244&#x2F;d&#x2F;%E7%BD%91%E7%9B%98&#x2F;%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98&#x2F;%E9%95%9C%E5%83%8F%E5%A4%A7%E5%85%A8&#x2F;CentOS-7-x86_64-Min">
+<meta property="og:description" content="扫描端口1.下载AttackMachine镜像，打开AttackMachine虚拟机。打开桌面的武器库中的Nmap-Zenmap GUI，输入命令：nmap -p- 192.168.2.197 扫描目录打开御剑后台扫描工具，在域名处输入http：&#x2F;&#x2F;192.168.2.197:27689&#x2F;  开始扫描 登录文件上传系统1.在武器库的浏览器访问192.168.2.197">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701421725737-98295f79-2048-4223-82c6-d304dd9eb780.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701422807416-ea99f47d-f805-489f-a5f6-f5ba99c707ad.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701423348835-69d57f1f-bc94-4025-9990-90c6de378de1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701423643765-ebe42b79-ac3e-4837-961a-3586247959ac.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701425065579-61cf8cd4-a9a9-4e3c-8583-72c3ab20b68e.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495784457-47f94908-e41d-479f-9876-fc74a35168e9.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495106862-761cb740-d728-433f-a314-2097c996ce0e.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495876372-9f26ad19-5554-4c45-b99b-e6604c4d0fd1.png">
-<meta property="article:published_time" content="2023-12-02T15:40:36.000Z">
-<meta property="article:modified_time" content="2023-12-12T11:05:52.964Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704977290982-e5929f1d-9650-4723-8fd5-e56977aaa9f5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704976906442-8b11f617-522d-42f1-b419-0a58f751e467.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704977914799-6d421459-3b37-42b8-ae5f-847697b8ff04.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704979906080-f51c2b58-3937-4d63-8778-81a6f70ba619.png#averageHue=%23efeeeb&clientId=u190a0499-6ac5-4&from=paste&height=374&id=u9ae5524b&originHeight=374&originWidth=340&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51702&status=done&style=none&taskId=u308c3760-a74b-40e8-8eb2-0f66fb5472d&title=&width=340">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704980928757-1dafd58e-ff5f-459a-86f7-190c183dbe37.png#averageHue=%23242a31&clientId=u190a0499-6ac5-4&from=paste&height=676&id=u3a7cf51e&originHeight=676&originWidth=1139&originalType=binary&ratio=1&rotation=0&showTitle=false&size=515870&status=done&style=none&taskId=ub6202cb0-398b-4cff-8261-85e3a896d64&title=&width=1139">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704982330794-b03af0a9-d474-45f6-85af-2a0191888e80.png#averageHue=%23f3f3f1&clientId=u2c49fb85-0133-4&from=paste&height=447&id=u299889d7&originHeight=447&originWidth=433&originalType=binary&ratio=1&rotation=0&showTitle=false&size=84111&status=done&style=none&taskId=uf1843aa8-9f01-469d-a2fc-dfff892d722&title=&width=433">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704982665607-9fd2d9ca-61d3-428b-8fcf-2ec2bfda533f.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704983417775-3d154fa3-9193-43ef-81c7-5eba48665d5d.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704983553394-f3946d8b-d940-4f9f-892a-3c1d1ec82982.png#averageHue=%23f8f8f8&clientId=uf8bf4b3a-fd32-4&from=paste&height=594&id=u31528798&originHeight=594&originWidth=835&originalType=binary&ratio=1&rotation=0&showTitle=false&size=152762&status=done&style=none&taskId=ue715bec7-126a-4930-a39b-95ce9fb51d0&title=&width=835">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705067630506-a0ee2a93-8901-4c02-a81e-b905d33055f6.png#averageHue=%23f7f6f5&clientId=u5c96cd8b-c7f3-4&from=paste&height=429&id=ud1409434&originHeight=429&originWidth=462&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31791&status=done&style=none&taskId=ue16a71bc-30ca-44ad-b247-c49e8586dfd&title=&width=462">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704984228374-7982d392-9482-4731-9f7b-9561d6f7ce22.png#averageHue=%23c1c1c1&clientId=uf8bf4b3a-fd32-4&from=paste&height=491&id=u72096783&originHeight=491&originWidth=430&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32210&status=done&style=none&taskId=ub9351f9e-bdd6-475a-8236-294a4d251c1&title=&width=430">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704984276624-4baab891-e3e4-4a38-9b4a-212766f72045.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704985551106-513dedfd-e1f9-4681-b1a3-7b7668257598.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704985895843-d5020136-6d97-4265-9afe-fe609608e5ab.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704986062311-131dce03-3c06-4c58-ad76-4708e40f490d.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061291701-b636fe2e-7d90-499a-920b-dc2162c70cb3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061444832-018f1895-3e39-4db6-8654-dcdd3c88e368.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061858380-40d2f8a5-32ac-4a6c-849b-2017e658daa2.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705062398289-36c0a266-30a2-453a-b293-187cb0d8478d.png#averageHue=%23292e23&clientId=u6cc2c564-ed7c-4&from=paste&height=327&id=u932be3f4&originHeight=327&originWidth=1176&originalType=binary&ratio=1&rotation=0&showTitle=false&size=188467&status=done&style=none&taskId=u7e14266b-fa1f-44ee-91a3-aafbf20e2e1&title=&width=1176">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705063261270-8742829a-9543-43dd-8b71-7528e1eb164e.png#averageHue=%23c9c7c5&clientId=u6cc2c564-ed7c-4&from=paste&height=335&id=udd0a066c&originHeight=335&originWidth=1103&originalType=binary&ratio=1&rotation=0&showTitle=false&size=71505&status=done&style=none&taskId=u62b84920-4871-4bf9-a963-e5227c6a510&title=&width=1103">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705063761816-435e7e19-7d96-4789-96ee-f4400bfa34d7.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705064321473-01ee06df-596d-421c-8b87-2d13720087da.png#averageHue=%23f7f7f7&clientId=u6cc2c564-ed7c-4&from=paste&height=431&id=uffa3d926&originHeight=431&originWidth=605&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51718&status=done&style=none&taskId=ue5d57972-4254-46fc-9912-6e76d6afb9c&title=&width=605">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705064651744-5108cc2a-6076-410e-9291-9089a54ebdd3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705064836132-5159adbc-e4d5-41e3-ac22-bda4af23401c.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705065929566-f24e8c3b-1ef1-4f4f-858e-4faa98ed1f06.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705066664850-12191b19-d7dc-4651-8827-47e2470b9e73.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705067072995-e42e8bba-9cbb-40ef-b4c7-5d0213aac4c6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705067046588-31a376a1-e334-4244-853c-e0efceddbeeb.png">
+<meta property="article:published_time" content="2024-01-13T14:56:32.000Z">
+<meta property="article:modified_time" content="2024-01-13T15:07:36.358Z">
 <meta property="article:author" content="Tangxianshen">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701421725737-98295f79-2048-4223-82c6-d304dd9eb780.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704977290982-e5929f1d-9650-4723-8fd5-e56977aaa9f5.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -68,7 +88,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Linux的基本命令，ssh登录 | Hexo</title>
+<title>攻破靶机3，xpcmd_shell提权 | Hexo</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -268,11 +288,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-Linux的基本命令，ssh登录" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-攻破靶机3，xpcmd_shell提权" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2023/12/02/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%8Cssh%E7%99%BB%E5%BD%95/" class="article-date">
-      <time datetime="2023-12-02T15:40:36.000Z" itemprop="datePublished">2023-12-02</time>
+      <a href="/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/" class="article-date">
+      <time datetime="2024-01-13T14:56:32.000Z" itemprop="datePublished">2024-01-13</time>
 </a>
 
 
@@ -287,7 +307,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Linux的基本命令，ssh登录
+      攻破靶机3，xpcmd_shell提权
     </h1>
   
 
@@ -304,36 +324,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="day05"><a href="#day05" class="headerlink" title="day05"></a>day05</h1><h2 id="一-Linux的基本命令"><a href="#一-Linux的基本命令" class="headerlink" title="一.Linux的基本命令"></a>一.Linux的基本命令</h2><p>1.下载CentOS-7-x86_64-Minimal-2009.iso镜像文件，链接为：<a target="_blank" rel="noopener" href="http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E9%95%9C%E5%83%8F%E5%A4%A7%E5%85%A8/CentOS-7-x86_64-Minimal-2009.iso">http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E9%95%9C%E5%83%8F%E5%A4%A7%E5%85%A8/CentOS-7-x86_64-Minimal-2009.iso</a>   <strong>注意不要下到中文目录</strong><br>2.打开VMware,创建虚拟机，点击浏览，选择已经安装的镜像文件的路径，如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701421725737-98295f79-2048-4223-82c6-d304dd9eb780.png" alt="图片.png"><br>3.然后一直点下一步，安装。更改语言为简体中文，root的密码设置为123456。进入CentOS虚拟机。输入root,再输入密码123456，进入交互式的shell。<br>4.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls      //查看当前目录文件</span><br><span class="line">ls /    //看根目录   </span><br><span class="line">ls -a   //看隐藏文件</span><br><span class="line">touch 123    //创建123文件</span><br><span class="line">touch  .1    //创建隐藏文件 .1   隐藏文件格式：隐藏文件  .xxxxxx</span><br><span class="line">ls -al       //显示所有文件</span><br></pre></td></tr></table></figure>
-
-<p>  结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701422807416-ea99f47d-f805-489f-a5f6-f5ba99c707ad.png" alt="图片.png"><br>5.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir test1   //创建目录</span><br><span class="line">mkdir -p test1/test2/test3    //-p 递归创建</span><br></pre></td></tr></table></figure>
-
-<p>ps:r w x   读 、写、 执行、权限<br>    4 2 1<br>结果如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701423348835-69d57f1f-bc94-4025-9990-90c6de378de1.png" alt="图片.png"></p>
-<p>6.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701423643765-ebe42b79-ac3e-4837-961a-3586247959ac.png" alt="图片.png"></p>
-<p>根目录下<br>bin        放置二进制执行文件<br>boot      放驱动<br>dev       储存硬件设备<br>etc        放编辑文件<br>home   存储用户的个人信息。例如用户的个人文件夹和系统设置文件<br>sbin      放置系统管理的必备程序<br>tmp     临时目录<br>var      放日志文件<br>lib lib64     系统库<br>7.输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">whoami                      //用户</span><br><span class="line">id                          //查看用户名和所属组</span><br><span class="line">pwd                         //显示当前目录</span><br><span class="line">rm -f   文件名              //强制删除  </span><br><span class="line">rm -rf  w文件名             //强制递归删除</span><br><span class="line">ls /bin|grep mv            //查找bin目录下含有mv字母的文件</span><br><span class="line">ls /bin |more</span><br><span class="line">ls /bin |grep ls</span><br><span class="line">cat                        //查看文本文件</span><br><span class="line">wq!                        //保存退出</span><br><span class="line">q！                        //不保存退出</span><br><span class="line">cat -n 123                //看123文件的内容</span><br><span class="line">chmod 755 123             //改123文件的权限</span><br><span class="line">echo &quot;123&quot;   &gt;&gt;test1/4    //输出123追加到test1目录下</span><br><span class="line">find / -name ls           //在根目录下搜索名字为ls的文件</span><br></pre></td></tr></table></figure>
-
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701425065579-61cf8cd4-a9a9-4e3c-8583-72c3ab20b68e.png" alt="图片.png"></p>
-<h2 id="二-ssh登录"><a href="#二-ssh登录" class="headerlink" title="二.ssh登录"></a>二.ssh登录</h2><p>1.设定指定服务开机开启</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable sshd </span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>重新启动服务</li>
+        <h2 id="扫描端口"><a href="#扫描端口" class="headerlink" title="扫描端口"></a>扫描端口</h2><p>1.下载AttackMachine镜像，打开AttackMachine虚拟机。打开桌面的武器库中的Nmap-<br>Zenmap GUI，输入命令：<code>nmap -p- 192.168.2.197</code><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704977290982-e5929f1d-9650-4723-8fd5-e56977aaa9f5.png" alt="Image.png"></p>
+<h2 id="扫描目录"><a href="#扫描目录" class="headerlink" title="扫描目录"></a>扫描目录</h2><p>打开御剑后台扫描工具，在域名处输入http：&#x2F;&#x2F;192.168.2.197:27689&#x2F;  开始扫描<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704976906442-8b11f617-522d-42f1-b419-0a58f751e467.png" alt="image.png"></p>
+<h2 id="登录文件上传系统"><a href="#登录文件上传系统" class="headerlink" title="登录文件上传系统"></a>登录文件上传系统</h2><p>1.在武器库的浏览器访问192.168.2.197:27689<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704977914799-6d421459-3b37-42b8-ae5f-847697b8ff04.png" alt="image.png"><br>2.因为之前扫到了robots.txt文件，尝试打开另一个网页访问192.168.2.197&#x2F;robots.txt<br>发现有两个文件，但没有什么用<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704979906080-f51c2b58-3937-4d63-8778-81a6f70ba619.png#averageHue=%23efeeeb&clientId=u190a0499-6ac5-4&from=paste&height=374&id=u9ae5524b&originHeight=374&originWidth=340&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51702&status=done&style=none&taskId=u308c3760-a74b-40e8-8eb2-0f66fb5472d&title=&width=340" alt="image.png"><br>3.用kali来扫目录，输入命令<code>dirsearch -u http://192.1682.197:27689 -x 403</code><br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704980928757-1dafd58e-ff5f-459a-86f7-190c183dbe37.png#averageHue=%23242a31&clientId=u190a0499-6ac5-4&from=paste&height=676&id=u3a7cf51e&originHeight=676&originWidth=1139&originalType=binary&ratio=1&rotation=0&showTitle=false&size=515870&status=done&style=none&taskId=ub6202cb0-398b-4cff-8261-85e3a896d64&title=&width=1139" alt="image.png"><br>发现config.js，config.js 是一个配置文件，它在各种应用程序中用于存储配置设置。这个文件通常包含了应用程序运行所必需的设置，如数据库连接信息、API密钥、服务端口、环境变量等。访问&#x2F;js&#x2F;config.js<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704982330794-b03af0a9-d474-45f6-85af-2a0191888e80.png#averageHue=%23f3f3f1&clientId=u2c49fb85-0133-4&from=paste&height=447&id=u299889d7&originHeight=447&originWidth=433&originalType=binary&ratio=1&rotation=0&showTitle=false&size=84111&status=done&style=none&taskId=uf1843aa8-9f01-469d-a2fc-dfff892d722&title=&width=433" alt="image.png"><br>发现是一些编码，没有什么用。<br>4.访问default.aspx。发现还是登录页面<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704982665607-9fd2d9ca-61d3-428b-8fcf-2ec2bfda533f.png" alt="image.png"></p>
+<p>5.访问&#x2F;web.config.bak。发现弹出一个窗口。尝试保存config.bak文件。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704983417775-3d154fa3-9193-43ef-81c7-5eba48665d5d.png" alt="image.png"><br>6.用记事本打开config.bak文件，发现用户名：down   密码：downsql  把这两记录下来。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704983553394-f3946d8b-d940-4f9f-892a-3c1d1ec82982.png#averageHue=%23f8f8f8&clientId=uf8bf4b3a-fd32-4&from=paste&height=594&id=u31528798&originHeight=594&originWidth=835&originalType=binary&ratio=1&rotation=0&showTitle=false&size=152762&status=done&style=none&taskId=ue715bec7-126a-4930-a39b-95ce9fb51d0&title=&width=835" alt="image.png"></p>
+<ol start="7">
+<li>然后尝试去登录文件上传系统，发现登不进去。然后我们去思考扫描出来的开放的1433端口，sqlserver数据库的默认端口号正是1433端口。我们尝试去连接sqlserver数据库。下图是常见数据库默认端口，必记。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705067630506-a0ee2a93-8901-4c02-a81e-b905d33055f6.png#averageHue=%23f7f6f5&clientId=u5c96cd8b-c7f3-4&from=paste&height=429&id=ud1409434&originHeight=429&originWidth=462&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31791&status=done&style=none&taskId=ue16a71bc-30ca-44ad-b247-c49e8586dfd&title=&width=462" alt="image.png"></li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemct1 restart sshd</span><br></pre></td></tr></table></figure>
-
-<p>3.查看虚拟机的Ip地址,IP为192.168.228.130</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip add</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495784457-47f94908-e41d-479f-9876-fc74a35168e9.png" alt="图片.png"><br>4.打开sshd_config文件，找到38行，将最前面的#删掉</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br><span class="line">:set nu 显示行号</span><br><span class="line">：wq!</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495106862-761cb740-d728-433f-a314-2097c996ce0e.png" alt="图片.png"><br>5.在物理机输入ssh root@虚拟机ip地址：ssh root@+ip<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1701495876372-9f26ad19-5554-4c45-b99b-e6604c4d0fd1.png" alt="图片.png"></p>
+<p>8.打开武器库的Navicat,连接sqlserver。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704984228374-7982d392-9482-4731-9f7b-9561d6f7ce22.png#averageHue=%23c1c1c1&clientId=uf8bf4b3a-fd32-4&from=paste&height=491&id=u72096783&originHeight=491&originWidth=430&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32210&status=done&style=none&taskId=ub9351f9e-bdd6-475a-8236-294a4d251c1&title=&width=430" alt="image.png"><br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704984276624-4baab891-e3e4-4a38-9b4a-212766f72045.png" alt="image.png"><br>填写用户名：down   密码：downsql<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704985551106-513dedfd-e1f9-4681-b1a3-7b7668257598.png" alt="image.png"><br>9.找到用户列表userLists，发现admin和他的密码<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704985895843-d5020136-6d97-4265-9afe-fe609608e5ab.png" alt="image.png"><br>10.然后去登录admin, 登陆成功，获得第一个key<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704986062311-131dce03-3c06-4c58-ad76-4708e40f490d.png" alt="image.png"></p>
+<h2 id="上传木马"><a href="#上传木马" class="headerlink" title="上传木马"></a>上传木马</h2><p>1.找到文件上传，翻到第三页，发现文件过长会被截取，因为这是一个aspx网站，所以我们要找一个aspx木马上传。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061291701-b636fe2e-7d90-499a-920b-dc2162c70cb3.png" alt="image.png"><br>2.在武器库中找到aspx木马，找到名称为一句话木马的文件。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061444832-018f1895-3e39-4db6-8654-dcdd3c88e368.png" alt="image.png"><br>3.因为这个木马文件拖不出来，右击它并用cmd打开，用python写web程序。输入命令<code>python -m Simple HttpServer 80</code> 运行这个命令后， Python 解释器将启动 SimpleHTTPServer 服务，并且默认会在当前工作目录下提供一个 HTTP 服务。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705061858380-40d2f8a5-32ac-4a6c-849b-2017e658daa2.png" alt="image.png"><br>4.在主机的浏览器访问AttackMachine虚拟机的ip地址，然后下载木马文件。并把这个文件重命名为123defgh.jpg<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705062398289-36c0a266-30a2-453a-b293-187cb0d8478d.png#averageHue=%23292e23&clientId=u6cc2c564-ed7c-4&from=paste&height=327&id=u932be3f4&originHeight=327&originWidth=1176&originalType=binary&ratio=1&rotation=0&showTitle=false&size=188467&status=done&style=none&taskId=u7e14266b-fa1f-44ee-91a3-aafbf20e2e1&title=&width=1176" alt="image.png"><br>5.上传木马成功。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705063261270-8742829a-9543-43dd-8b71-7528e1eb164e.png#averageHue=%23c9c7c5&clientId=u6cc2c564-ed7c-4&from=paste&height=335&id=udd0a066c&originHeight=335&originWidth=1103&originalType=binary&ratio=1&rotation=0&showTitle=false&size=71505&status=done&style=none&taskId=u62b84920-4871-4bf9-a963-e5227c6a510&title=&width=1103" alt="image.png"></p>
+<h2 id="连接蚁剑"><a href="#连接蚁剑" class="headerlink" title="连接蚁剑"></a>连接蚁剑</h2><p>1..然后去找木马的路径，右击这个木马文件，复制链接到另一个网页，删木马名称的几个字母，一般让浏览器访问不到这个文件，它就会报错，显示木马的路径。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705063761816-435e7e19-7d96-4789-96ee-f4400bfa34d7.png" alt="image.png"><br>2.复制木马的路径到kali的蚁剑，密码为abcd,连接蚁剑。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1705064321473-01ee06df-596d-421c-8b87-2d13720087da.png#averageHue=%23f7f7f7&clientId=u6cc2c564-ed7c-4&from=paste&height=431&id=uffa3d926&originHeight=431&originWidth=605&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51718&status=done&style=none&taskId=ue5d57972-4254-46fc-9912-6e76d6afb9c&title=&width=605" alt="image.png"><br>3.在蚁剑的文件里找到了Kay2！<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705064651744-5108cc2a-6076-410e-9291-9089a54ebdd3.png" alt="image.png"></p>
+<h2 id="xpcmd-shell提权"><a href="#xpcmd-shell提权" class="headerlink" title="xpcmd_shell提权"></a>xpcmd_shell提权</h2><p>1.在config.bak文件里发现了新数据库：FileManage  新用户名sa，新密码cisp pte@sa   所以我们尝试去Navicat去连接并登录这个数据库（属于SQLserver数据库）。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705064836132-5159adbc-e4d5-41e3-ac22-bda4af23401c.png" alt="image.png"><br>2.新建查询，目的是使用命令，实现远程桌面连接。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705065929566-f24e8c3b-1ef1-4f4f-858e-4faa98ed1f06.png" alt="image.png"><br>3.在主机的搜索框内输入rdp,以管理员身份运行   远程桌面连接。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705066664850-12191b19-d7dc-4651-8827-47e2470b9e73.png" alt="image.png"><br>4.在新建的查询中改用户名和密码。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705067072995-e42e8bba-9cbb-40ef-b4c7-5d0213aac4c6.png" alt="f4c90cff3c9dceb6199c562e2629786.png"><br>5.重新去实现远程桌面连接，登陆靶机桌面成功，获得最后的key3</p>
+<p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1705067046588-31a376a1-e334-4244-853c-e0efceddbeeb.png" alt="image.png"></p>
 
       
     </div>
@@ -342,13 +344,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2023/12/02/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%8Cssh%E7%99%BB%E5%BD%95/">Linux的基本命令，ssh登录</a></p>
+        <p><span>Title:</span><a href="/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/">攻破靶机3，xpcmd_shell提权</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2023-12-02, 23:40:36</p>
-        <p><span>Updated:</span>2023-12-12, 19:05:52</p>
+        <p><span>Created:</span>2024-01-13, 22:56:32</p>
+        <p><span>Updated:</span>2024-01-13, 23:07:36</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2023/12/02/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%8Cssh%E7%99%BB%E5%BD%95/" title="Linux的基本命令，ssh登录">http://example.com/2023/12/02/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%8Cssh%E7%99%BB%E5%BD%95/</a>
-            <span class="copy-path" data-clipboard-text="From http://example.com/2023/12/02/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%8Cssh%E7%99%BB%E5%BD%95/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/" title="攻破靶机3，xpcmd_shell提权">http://example.com/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/</a>
+            <span class="copy-path" data-clipboard-text="From http://example.com/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -361,15 +363,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2023/12/04/%E5%A4%8D%E7%9B%98%E4%B8%8A%E5%91%A8%E7%9F%A5%E8%AF%86&%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-                    复盘上周知识&amp;网络基础知识
+                <a href="/2024/01/13/Burp,Yakit%E5%AF%BC%E5%85%A5%E8%AF%81%E4%B9%A6%EF%BC%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%EF%BC%8C%E5%9B%9B%E5%A4%A7webshell%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                    Burp,Yakit导入证书，流量分析，四大webshell管理工具
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2023/12/02/%E5%9C%A8%E7%89%A9%E7%90%86%E6%9C%BA%E4%B8%8B%E8%BD%BD%E8%BD%AF%E4%BB%B6%EF%BC%8C%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%EF%BC%8C%E9%AA%8C%E8%AF%81%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%92%8C%E6%9B%B4%E6%8D%A2%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98/">
-                    在物理机下载软件，利用github搭建hexo博客，验证图片上传和更换博客主题
+                <a href="/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                    文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用
                 </a>
             </div>
         
@@ -381,7 +383,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#day05"><span class="toc-number">1.</span> <span class="toc-text">day05</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">一.Linux的基本命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-ssh%E7%99%BB%E5%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">二.ssh登录</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.</span> <span class="toc-text">扫描端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E7%9B%AE%E5%BD%95"><span class="toc-number">2.</span> <span class="toc-text">扫描目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">登录文件上传系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%9C%A8%E9%A9%AC"><span class="toc-number">4.</span> <span class="toc-text">上传木马</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%9A%81%E5%89%91"><span class="toc-number">5.</span> <span class="toc-text">连接蚁剑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xpcmd-shell%E6%8F%90%E6%9D%83"><span class="toc-number">6.</span> <span class="toc-text">xpcmd_shell提权</span></a></li></ol>
         
     </div>
     <style>
@@ -417,7 +419,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Linux的基本命令，ssh登录　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"攻破靶机3，xpcmd_shell提权　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,7 +439,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2023/12/04/%E5%A4%8D%E7%9B%98%E4%B8%8A%E5%91%A8%E7%9F%A5%E8%AF%86&%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Pre: 复盘上周知识&amp;网络基础知识">
+            <a href="/2024/01/13/Burp,Yakit%E5%AF%BC%E5%85%A5%E8%AF%81%E4%B9%A6%EF%BC%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%EF%BC%8C%E5%9B%9B%E5%A4%A7webshell%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" title="Pre: Burp,Yakit导入证书，流量分析，四大webshell管理工具">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -445,7 +447,7 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2023/12/02/%E5%9C%A8%E7%89%A9%E7%90%86%E6%9C%BA%E4%B8%8B%E8%BD%BD%E8%BD%AF%E4%BB%B6%EF%BC%8C%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%EF%BC%8C%E9%AA%8C%E8%AF%81%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%92%8C%E6%9B%B4%E6%8D%A2%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98/" title="Next: 在物理机下载软件，利用github搭建hexo博客，验证图片上传和更换博客主题">
+            <a href="/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Next: 文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用">
                 <i class="fa fa-angle-right"></i>
             </a>
         

